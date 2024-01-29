@@ -1,0 +1,133 @@
+// mygcdlib.lib
+// A Singular library for containing my gcd algo 
+// Author: Miguel Gomez
+// Date: 1/26/24
+
+// proc for gcd of integer
+proc myintGCD(number a, number b) {
+    number A,B,t;
+    B = b;
+    A = a;
+    while (B != 0) {
+        t = B;
+        B = A % B;
+        A = t;
+    }
+    return(A);
+}
+
+// Example Usage (Uncomment to test)
+/*
+ring r = integer, (x), lp;
+integer a = 24;
+integer b = 16;
+integer result = gcd(a, b);
+printf("The computed GCD of %d and %d is: %d\n", a, b, result);
+*/
+
+
+// Procedure for GCD of a list of integers
+proc myIntListGCD(list L) {
+    if (size(L) == 0) {
+        print("Empty list, no GCD to compute.");
+        return(0);
+    }
+
+    number gcdResult = L[1]; // Initialize with the first element
+    for (int i = 2; i <= size(L); i++) {
+        gcdResult = myintGCD(gcdResult, L[i]);
+    }
+    return(gcdResult);
+}
+
+// basic euclids algo
+proc myEuclid(number a, number b) {
+    number R1, R2, r, t, Q;
+    R2 = b;
+    R1 = a;
+    while (R2 != 0) {
+        Q = R1/R2;
+        r = R1 - Q*R2;
+        R1 = R2;
+        R2 = t;
+    }
+    
+    return(r);
+}
+
+// proc for the extended algo for euclids 
+proc myExtendedEuclid(number a, number b) {
+    number R1, R2, r,
+    S1, S2, s,
+    T1, T2, t,
+    Q;
+    R1 = a;R2 = b;
+    S1 = 1;S2 = 0;
+    T1 = 0;T2 = 1;
+    
+    while (R2 > 0) {
+        Q = R1/R2;
+	// r part
+        r = R1 - Q*R2;
+        R1 = R2;
+        R2 = r;
+	// s part
+	s = S1 - Q*S2;
+        S1 = S2;
+        S2 = s;
+	// t part
+	t = T1 - Q*T2;
+	T1 = T2;
+	T2 = t;
+    }
+    printf("
+GCD(%s,%s) = %s",a,b,(S1*a + T1*b));
+    printf("s = %s",S1);
+    printf("t = %s
+    ",T1);
+    list L = list();
+    L = list((S1*a + T1*b),S1,T1);
+    return(L);
+}
+
+
+proc findModularInverse(number a, number b) {
+    list eeuc = myExtendedEuclid(a, b);
+    number resulting_gcd = eeuc[1];
+    
+    if (resulting_gcd == 1) {
+        number inverse = eeuc[2];
+        if (inverse < 0) {
+            inverse = inverse + b; // Adjusting negative inverse to positive
+        }
+        printf("The inverse of %s modulo %s is %s", a, b, inverse);
+    } else {
+        printf("%s has no inverse modulo %s", a, b);
+    }
+}
+
+
+// still not working. need to change it up to correctly do this instead of returning the arg
+// Define a procedure to calculate GCD of a polynomial
+proc mypolyGCD(poly a, poly b) {
+    poly t;
+    while (b != 0) {
+        t = b;
+        b = a % b;
+        a = t;
+    }
+    return(a);
+}
+
+
+// Example Usage (Uncomment to test)
+/*
+ring R = 0, (x, y), dp;
+poly p1 = x^4 - 4*x^3 + 6*x^2 - 4*x + 1;
+poly p2 = x^3 - 3*x^2 + 3*x - 1;
+poly result = mypolyGCD(p1, p2);
+print("The computed GCD of the polynomials is:");
+result;
+*/
+
+
