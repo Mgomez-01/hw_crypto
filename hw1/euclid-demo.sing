@@ -1,0 +1,53 @@
+// The first Demo of Singular
+// The simplest GCD computation
+// Euclid's Algorithms
+
+// Declare a ring of integers
+// 'x' is the indeterminate, which is not used
+// lp = orders the terms of a polynomial lexicographically
+// lp is needed for ring declation, but this is not used
+
+LIB "/home/speedy/repos/coursework/hw_crypto/lib/mygcdlib.lib";
+
+ring r = integer, (x), lp;
+
+// number is an element in the coefficient ring, integers in this case
+number a, b, t;
+a = 24;
+b = 16;
+
+while (b != 0){
+      t = b;
+      b = a % b;
+      a = t;
+}
+
+printf("The computed GCD of 24 and 16 is:");
+a;
+
+
+ring R = 0, (x, y), dp;
+poly p1 = x^4 - 4*x^3 + 6*x^2 - 4*x + 1;
+poly p2 = x^3 - 3*x^2 + 3*x - 1;
+poly result = mypolyGCD(p1, p2);
+print("The computed mypolyGCD of the polynomials is:");
+result;
+
+ring r = integer, (x), lp;
+
+number a, b, s;
+a = 24;
+b = 16;
+s = myintGCD(a,b);
+print("The computed myintGCD of the numbers is:");
+s;
+s = myExtendedEuclid(a,b);
+print("The computed myExtendedEuclid of the numbers is:");
+s;
+
+
+// Example usage of the procedure
+list numbers = 200, 180, 450, 610; // List of numbers
+number result = myIntListGCD(numbers);
+print("The computed GCD of the list is:");
+result;

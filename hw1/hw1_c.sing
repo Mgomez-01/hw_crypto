@@ -1,0 +1,18 @@
+LIB "/home/speedy/repos/coursework/hw_crypto/lib/mygcdlib.lib";
+ring r = integer, (x), lp;
+
+number a, b, c, s, s1;
+a = 7;
+b = 180;
+c = 38;
+s = myintGCD(a,b);
+printf("The computed myintGCD of %s is:", a);
+s;
+s1 = myintGCD(c,b);
+printf("The computed myintGCD of %s is:", c);
+s1;
+
+findModularInverse(a,b);
+findModularInverse(c,b);
+
+quit;

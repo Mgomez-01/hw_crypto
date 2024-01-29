@@ -1,0 +1,285 @@
+#+TITLE: Homework Assignment # 1
+#+AUTHOR: Miguel Gomez U1318856
+#+DATE: 2024-01-29 13:34:56
+#+LATEX_HEADER: \documentclass[a4paper, 11pt]{exam}
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \usepackage{url}
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{graphics}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \usepackage[dvipsnames]{xcolor}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{ragged2e}
+#+LATEX_HEADER: \usepackage{courier}
+#+LATEX_HEADER: \usepackage{textcomp}
+#+LATEX_HEADER: \usepackage{circuitikz}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage{karnaugh-map}
+#+LATEX_HEADER: \usepackage{bytefield}
+#+LATEX_HEADER: \usepackage{mathrsfs}
+#+LATEX_HEADER: \usepackage{cancel}
+#+LATEX_HEADER: \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage{environ}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \usepackage{algorithm}
+#+LATEX_HEADER: \usepackage{algpseudocode}
+#+LATEX_HEADER: \lstset{breaklines=true, basicstyle=\ttfamily\tiny, frame=single}
+
+
+* Homework 1
+The extended euclidean algorithm is a spin on the usual algo that allows for us to split the number into two intermediate values. one that is equal to the number we are dividing in the algo multiplied by a number, and another that is the divisor multiplied by the quotient. This expression below is the one we end up with:
+** expression
+#+begin_export latex
+\[
+\begin{align*}
+g &= gcd(a,b)\\
+\exists\ s,t\ |\ s\cdot a + t\cdot b &= g
+\end{align*}
+\]
+#+end_export
+
+
+
+#+begin_src bash :results scalar
+  start=$(date +%s.%N)
+  Singular hw1_b.sing | grep -v -e "\*\* loaded\|\*\* library"
+  end=$(date +%s.%N)
+  echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+#+end_src
+
+#+RESULTS:
+#+begin_example
+                     SINGULAR                                 /  Development
+ A Computer Algebra System for Polynomial Computations       /   version 4.2.1
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   May 2021
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 1:4.2.1-p3+ds-1
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+The example computed GCD of 24 and 16 is:
+8
+// ** redefining r (ring r = integer, (x), lp;) hw1_b.sing:21
+The computed myintGCD of 24 is: 8
+The computed myEuclid of 24 is: 8
+The computed myExtendedEuclid of the numbers is:
+
+GCD(24,16) = 8
+s = 1
+t = -1
+    
+The computed GCD of the list of numbers for problem 1-b is:
+10
+Auf Wiedersehen.
+Execution Time: .028753389 seconds
+#+end_example
+
+
+#+begin_export latex
+\[
+\subsection{output of hw$6\_1$ results}
+\begin{lstlisting}[language=Singular]
+                     SINGULAR                                 /  Development
+ A Computer Algebra System for Polynomial Computations       /   version 4.2.1
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   May 2021
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 1:4.2.1-p3+ds-1
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+The example computed GCD of 24 and 16 is:
+8
+// ** redefining r (ring r = integer, (x), lp;) hw1_b.sing:21
+The computed myintGCD of 24 is: 8
+The computed myEuclid of 24 is: 8
+The computed myExtendedEuclid of the numbers is:
+
+GCD(24,16) = 8
+s = 1
+t = -1
+    
+The computed GCD of the list of numbers for problem 1-b is:
+10
+Auf Wiedersehen.
+Execution Time: .028753389 seconds
+\end{lstlisting}
+\]
+#+end_export
+
+
+#+begin_export latex
+\[
+\subsection{Pseudocode for the Euclidean algo}
+\begin{algorithm}
+\caption{Euclidean Algorithm}
+\begin{algorithmic}[1]
+\Procedure{myExtendedEuclid}{$a$, $b$}
+    \State $R1 \gets a$
+    \State $R2 \gets b$
+    \While{$R2 \neq 0$}
+        \State $Q \gets (R1/R2)$
+        \State $r \gets R1 - Q \times R2$
+        \State $R1 \gets R2$
+        \State $R2 \gets r$
+    \EndWhile
+    \State \textbf{return} $r$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\]
+#+end_export
+
+
+#+begin_export latex
+\[
+\subsection{Pseudocode for the Euclidean algo}
+\begin{algorithm}
+\caption{Extended Euclidean Algorithm}
+\begin{algorithmic}[1]
+\Procedure{myExtendedEuclid}{$a$, $b$}
+    \State $R1 \gets a$
+    \State $R2 \gets b$
+    \State $S1 \gets 1$
+    \State $S2 \gets 0$
+    \State $T1 \gets 0$
+    \State $T2 \gets 1$
+    \While{$R2 > 0$}
+        \State $Q \gets \text{floor}(R1/R2)$
+        \State $r \gets R1 - Q \times R2$
+        \State $R1 \gets R2$
+        \State $R2 \gets r$
+        \State $s \gets S1 - Q \times S2$
+        \State $S1 \gets S2$
+        \State $S2 \gets s$
+        \State $t \gets T1 - Q \times T2$
+        \State $T1 \gets T2$
+        \State $T2 \gets t$
+    \EndWhile
+    \State \textbf{print} "GCD(", $a$, ",", $b$, ") = ", $S1 \times a + T1 \times b$
+    \State \textbf{print} "s = ", $S1$
+    \State \textbf{print} "t = ", $T1$
+    \State $L \gets \text{list}()$
+    \State $L \gets \text{list}(S1 \times a + T1 \times b, S1, T1)$
+    \State \textbf{return} $L$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\]
+#+end_export
+
+
+** identify whether the integers 38 and 7 have multiplicative inverses in \mathcal{Z}_{180}
+Since the number $p$ we are working with is even, we will not have multiplicative inverses for even numbers. Therefore we only need to find the inverse for the one we can, for 7. 
+
+#+begin_export latex
+\[
+a \in \mathcal{Z}_{180}\ ,\ a^{-1} \in \mathcal{Z}_{180}\ \text{if}\ gcd(a,180) = 1
+\]
+#+end_export
+
+#+begin_src bash :results scalar
+  start=$(date +%s.%N)
+  Singular hw1_c.sing | grep -v -e "\*\* loaded\|\*\* library"
+  end=$(date +%s.%N)
+  echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+#+end_src
+
+#+RESULTS:
+#+begin_example
+                     SINGULAR                                 /  Development
+ A Computer Algebra System for Polynomial Computations       /   version 4.2.1
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   May 2021
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 1:4.2.1-p3+ds-1
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+The computed myintGCD of 7 is:
+1
+The computed myintGCD of 38 is:
+2
+
+GCD(7,180) = 1
+s = -77
+t = 3
+    
+The inverse of 7 modulo 180 is 103
+
+GCD(38,180) = 2
+s = 19
+t = -4
+    
+38 has no inverse modulo 180
+Auf Wiedersehen.
+Execution Time: .022770642 seconds
+#+end_example
+
+#+begin_export latex
+\[
+\subsection{output of hw$6\_1$ results}
+\begin{lstlisting}[language=Singular]
+                     SINGULAR                                 /  Development
+ A Computer Algebra System for Polynomial Computations       /   version 4.2.1
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   May 2021
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 1:4.2.1-p3+ds-1
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+The computed myintGCD of 7 is:
+1
+The computed myintGCD of 38 is:
+2
+
+GCD(7,180) = 1
+s = -77
+t = 3
+    
+The inverse of 7 modulo 180 is 103
+
+GCD(38,180) = 2
+s = 19
+t = -4
+    
+38 has no inverse modulo 180
+Auf Wiedersehen.
+Execution Time: .022770642 seconds
+\end{lstlisting}
+\]
+#+end_export
+
+
+Since the gcd for the expression comes out to 1, the inverse exists and is printed out. Since 38 is even, no inverse is possible modulo 180.
+
+* Problem 2
+Solving linear diophantine equations using linear congruences.
+** a) solving LC $4x \equiv 4\ \text{mod}\ 6$
+Solving this is easiest with a table of the results we would get by plugging in any values for x from the set mod 6.
+
+#+begin_export latex
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\( x \) & \( 4x \mod 6 \) & Congruent to 4? \\
+\hline
+0 & \( 4 \cdot 0 \mod 6 = 0 \) & No \\
+1 & \( 4 \cdot 1 \mod 6 = 4 \) & Yes \\
+2 & \( 4 \cdot 2 \mod 6 = 2 \) & No \\
+3 & \( 4 \cdot 3 \mod 6 = 0 \) & No \\
+4 & \( 4 \cdot 4 \mod 6 = 4 \) & Yes \\
+5 & \( 4 \cdot 5 \mod 6 = 2 \) & No \\
+\hline
+\end{tabular}
+\end{center}
+#+end_export
+$\therefore$ we have exactly two solutions which are congruent for this problem.
+
+** Solving as an LDE instead
+using the expression $4x \equiv 4\ \text{mod}\ 6$, we can transform the expression into the following:
+#+begin_export latex
+\begin{align*}
+4x &\equiv 4\ \text{mod}\ 6\\
+6 &|\ 4x - 4\\
+6k &= 4(x - 1)
+\end{align*}
+#+end_export
