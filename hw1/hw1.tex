@@ -1,4 +1,4 @@
-% Created 2024-01-29 Mon 13:34
+% Created 2024-01-31 Wed 10:58
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -44,7 +44,7 @@
 \usepackage{algpseudocode}
 \lstset{breaklines=true, basicstyle=\ttfamily\tiny, frame=single}
 \author{Miguel Gomez U1318856}
-\date{2024-01-29 13:34:56}
+\date{2024-01-31 10:58:02}
 \title{Homework Assignment \# 1}
 \hypersetup{
  pdfauthor={Miguel Gomez U1318856},
@@ -61,10 +61,10 @@
 
 
 \section{Homework 1}
-\label{sec:org819744b}
+\label{sec:org3a8c9a5}
 The extended euclidean algorithm is a spin on the usual algo that allows for us to split the number into two intermediate values. one that is equal to the number we are dividing in the algo multiplied by a number, and another that is the divisor multiplied by the quotient. This expression below is the one we end up with:
 \subsection{expression}
-\label{sec:org1c8de93}
+\label{sec:org4585130}
 \[
 \begin{align*}
 g &= gcd(a,b)\\
@@ -76,14 +76,14 @@ g &= gcd(a,b)\\
 
 \begin{verbatim}
 start=$(date +%s.%N)
-Singular hw1_b.sing | grep -v -e "\*\* loaded\|\*\* library"
+Singular sing/hw1_b.sing | grep -v -e "\*\* loaded\|\*\* library"
 end=$(date +%s.%N)
 echo "Execution Time: $(echo "$end - $start" | bc) seconds"
 \end{verbatim}
 
 
 \[
-\subsection{output of hw$6\_1$ results}
+\subsection{output of hw$1_b$ results}
 \begin{lstlisting}[language=Singular]
                      SINGULAR                                 /  Development
  A Computer Algebra System for Polynomial Computations       /   version 4.2.1
@@ -112,6 +112,7 @@ Execution Time: .028753389 seconds
 
 
 \[
+\newpage
 \subsection{Pseudocode for the Euclidean algo}
 \begin{algorithm}
 \caption{Euclidean Algorithm}
@@ -133,6 +134,7 @@ Execution Time: .028753389 seconds
 
 
 \[
+\newpage
 \subsection{Pseudocode for the Euclidean algo}
 \begin{algorithm}
 \caption{Extended Euclidean Algorithm}
@@ -165,11 +167,12 @@ Execution Time: .028753389 seconds
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+\newpage
 \]
 
 
-\subsection{identify whether the integers 38 and 7 have multiplicative inverses in \mathcal{Z}\textsubscript{180}}
-\label{sec:org38dcabe}
+\subsection{Identify whether the integers 38 and 7 have multiplicative inverses in \mathcal{Z}\textsubscript{180}}
+\label{sec:orgd73733f}
 Since the number \(p\) we are working with is even, we will not have multiplicative inverses for even numbers. Therefore we only need to find the inverse for the one we can, for 7. 
 
 \[
@@ -178,13 +181,13 @@ a \in \mathcal{Z}_{180}\ ,\ a^{-1} \in \mathcal{Z}_{180}\ \text{if}\ gcd(a,180) 
 
 \begin{verbatim}
 start=$(date +%s.%N)
-Singular hw1_c.sing | grep -v -e "\*\* loaded\|\*\* library"
+Singular sing/hw1_c.sing | grep -v -e "\*\* loaded\|\*\* library"
 end=$(date +%s.%N)
 echo "Execution Time: $(echo "$end - $start" | bc) seconds"
 \end{verbatim}
 
 \[
-\subsection{output of hw$6\_1$ results}
+\subsection{output of hw$1_c$ results}
 \begin{lstlisting}[language=Singular]
                      SINGULAR                                 /  Development
  A Computer Algebra System for Polynomial Computations       /   version 4.2.1
@@ -218,10 +221,10 @@ Execution Time: .022770642 seconds
 Since the gcd for the expression comes out to 1, the inverse exists and is printed out. Since 38 is even, no inverse is possible modulo 180.
 
 \section{Problem 2}
-\label{sec:org42237e5}
+\label{sec:orgba1025a}
 Solving linear diophantine equations using linear congruences.
 \subsection{a) solving LC \(4x \equiv 4\ \text{mod}\ 6\)}
-\label{sec:orgf508326}
+\label{sec:org71924a8}
 Solving this is easiest with a table of the results we would get by plugging in any values for x from the set mod 6.
 
 \begin{center}
@@ -241,11 +244,74 @@ Solving this is easiest with a table of the results we would get by plugging in 
 \(\therefore\) we have exactly two solutions which are congruent for this problem.
 
 \subsection{Solving as an LDE instead}
-\label{sec:org7702bd0}
+\label{sec:org1d80056}
 using the expression \(4x \equiv 4\ \text{mod}\ 6\), we can transform the expression into the following:
 \begin{align*}
 4x &\equiv 4\ \text{mod}\ 6\\
 6 &|\ 4x - 4\\
-6k &= 4(x - 1)
+6k &= 4(x - 1)\\
+3k &= 2(x - 1)
 \end{align*}
+Now we find values of $x$ that would allow the expression to be integer valued when $x \in \{0..5\}$. In general, the solutions will be the same as they were before giving us just two possible solutions to the expression. Using the following:
+\begin{align*}
+ x &= 1\\
+ 3k &= 2(1 - 1) = 0\\
+ k &= 0 \\
+ x &= 4\\
+ 3k &= 2(4 - 1) = 6\\
+ k &= 2 
+\end{align*}
+
+\section{Problem 3}
+\label{sec:org7d156fd}
+We must find a solution to the affine cipher and obtain the keys \([k_1, k_2]\). We can set this up in singular to solve for the key vector using the inverse matrix algorithm that utilizes the transformation to a reduced row eschelon form of the matrix.
+
+
+
+\begin{verbatim}
+start=$(date +%s.%N)
+Singular sing/hw3.sing | grep -v -e \
+	    "\*\* loaded\|\*\* library\|\*\* redefining"
+end=$(date +%s.%N)
+echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+\end{verbatim}
+
+
+\[
+\subsection{output of hw$3$ results}
+\begin{lstlisting}[language=Singular]
+                     SINGULAR                                 /  Development
+ A Computer Algebra System for Polynomial Computations       /   version 4.2.1
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   May 2021
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 1:4.2.1-p3+ds-1
+print matrix A
+18,1,
+19,1 
+print matrix B
+4,
+19
+Determinant of A:
+printing det(A)
+25
+gcd(det(A), 26) is:
+1
+inverse of A exists
+inverse of A:
+inv_A[1,1]=25
+inv_A[1,2]=1
+inv_A[2,1]=19
+inv_A[2,2]=8
+check of inv_A*A = I:
+_[1,1]=1
+_[1,2]=0
+_[2,1]=0
+_[2,2]=1
+Solutions for x = :
+_[1,1]=15
+_[2,1]=20
+Auf Wiedersehen.
+Execution Time: .053407240 seconds
+\end{lstlisting}
+\]
 \end{document}

@@ -1,0 +1,17 @@
+make a directory in your .emacs.d
+
+ex: .emacs.d/singular/
+
+add the file included into that directory. 
+
+ex: .emacs.d/singular/sing-mode.el
+
+add the following to your .emacs 
+
+  (add-to-list 'load-path "~/.emacs.d/singular/")
+  ;; Automatically use sing-mode for .sing files
+  (add-to-list 'auto-mode-alist '("\\.sing\\'" . sing-mode))
+  (load "sing-mode.el")
+
+
+Now you should be able to see the sing-mode available in emacs when you start it up. Feel free to make changes to the sing-mode.el file if you so choose. Simple to make additions once you have an understanding of the structure of sing-mode.el. All captures for the highlighting are done with regex patterns and colors can be chosen using the emacs colors interface. 

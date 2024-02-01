@@ -1,0 +1,73 @@
+// This is a comment
+
+// This is a Boolean ring, variable x, i.e. F_2 = Z (mod 2)
+// ring r = 2, x, lp;
+// lp = order the monomials lexicographically
+
+
+// This is how you describe galois extension fields F_{2^k}
+ring r = (2, A), x, lp;
+// (2, A) = 2 is the characteristic of the field
+// A = is your alpha, root of the irreducible polynomial
+
+
+// minimal polynomial of alpha
+// = irreducible polynomial to construct a field
+// the one below happens to be a primitive polynomial
+minpoly = A^4 + A^3 + 1;
+
+
+// This is how you declare polynomials
+// These are univariate polynomials with coefficients in GF(2^4)
+poly f1 = (A2)*x2+(A)*x+(A3);
+
+// In f1, A2 = A^2 = (\alpha)^2 = constant, x is the variable
+// Note, Singular can take the degree as x^2, or also as x2
+
+poly f2 = (A)*x2+(A3+A2)*x+(A);
+
+poly f3 = (A2+A)*x2+(A3+A2+A)*x;
+
+poly f4 = x^4 - x;
+
+
+// This is how you and multiply polynomials
+poly f5;
+
+f5 = f1*f2 + (f3)^2*(f4);
+
+// This is a C-like printf statement
+printf("The computed polynomial f5 is: %s", f5);
+printf("Notice that coefficients are reduced modulo A^4+A^3+1");
+
+
+//////////////////////////////////////
+// Conjugates
+
+A;
+A^2;
+A^4;
+A^8;
+A^16;
+
+// 
+poly f6;
+f6 = (x+A)*(x+A^2)*(x+A^4)*(x+A^8);
+
+printf("Minimal polynomial from conjugates A, A^2, A^4, A^8 is: %s", f6);
+;
+
+printf("Compute other conjugates and construct their minimal polynomials yourself!");
+
+// This is how you compute gcd of two elements/polynomials
+
+poly g;
+g = gcd(f3, f4);
+
+// Just print the GCD g
+g;
+
+
+// bye bye in Deutsch
+//quit;
+

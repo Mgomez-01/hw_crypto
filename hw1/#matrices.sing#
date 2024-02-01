@@ -1,0 +1,81 @@
+/*******************
+C-style Comments
+This is how you can solve linear algebra integer modulo arithmetic in
+Singular. Suppose you wish to solve the following Linear Congruences:
+
+3x + 5y + 7z = 3 (mod 16)
+x + 4y + 13z = 5 (mod 16)
+2x + 7y + 3z = 4 (mod 16)
+
+
+********************/
+
+LIB "linalg.lib";
+LIB "matrix.lib";
+
+// This is also a comment
+
+// This is how to declare a ring of polynomials in x, y, z variables
+// with coefiicients in integer (mod n = 16), i.e. in Z_{16}
+ring r = (integer, 16), (x, y, z), lp;
+
+//  3 X 3 Matrix A
+matrix A [3][3] = 3, 5, 7, 1, 4, 13, 2, 7, 3;
+
+// 3 X 1 Matrix B
+
+matrix B [3][1] = 3, 5, 4;
+
+"print matrix A";
+print(A);
+
+"print matrix B";
+print(B);
+
+// We have to solve Ax = B (mod n)
+
+poly f = 0;
+
+
+"Determinant of A:";
+f = det(A);
+
+"printing det(A)";
+f;
+
+// A has an inverse if GCD(det(A), 16) = 1;
+printf("Debug: gcd(det(A), 16) = %s", gcd(det(A), 16));
+printf("Debug: gcd(15, 16) = %s", gcd(15, 16));
+printf("Debug: gcd(17, 16) = %s", gcd(17, 16));
+
+int det_A = int(det(A));
+if (gcd(det_A, 16) == 1){
+   printf("gcd(det(A), 16) is:");
+   gcd(det_A, 16);
+   printf("inverse of A exists");
+} else {
+   "Exiting b/c gcd failed";
+   printf("gcd(det(A), 16): %s",gcd(det_A, 16));
+   quit;
+}
+
+matrix inv_A = inverse(A);
+
+printf("inverse of A:");
+inv_A;
+
+"check of inv_A*A = I:";
+
+inv_A*A;
+
+// Ax = B
+// So, x = inv_A * B;
+
+"Solutions for x = :";
+inv_A*B;
+
+// "Alternate way to solve using row-reduction on 3X4 matrix A|b";
+
+// matrix D [3][4]= 3, 5, 7, 3, 1, 4, 13, 5, 2, 7, 3, 4;
+// rowred(D);
+
