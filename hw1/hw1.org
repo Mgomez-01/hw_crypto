@@ -1,6 +1,6 @@
 #+TITLE: Homework Assignment # 1
 #+AUTHOR: Miguel Gomez U1318856
-#+DATE: 2024-01-31 10:58:02
+#+DATE: 2024-02-02 11:07:53
 #+LATEX_HEADER: \documentclass[a4paper, 11pt]{exam}
 #+LATEX_HEADER: \usepackage[T1]{fontenc}
 #+LATEX_HEADER: \usepackage{titling}
@@ -386,3 +386,34 @@ Execution Time: .053407240 seconds
 \end{lstlisting}
 \]
 #+end_export
+
+Shown above is the results and we see that the key $[k_1, k_2]$ is $[15, 20]$.
+
+* Problem 4 - Hill Cypher
+Considering the Hill Cypher, we are restricted to using only 8 letters. Therefore we must do everything modulo 8. Getting the encryption $\mathbf{C} = \mathbf{P}\cdot \mathbf{K}$, and the decryption $\mathbf{P} = \mathbf{C}\cdot \mathbf{K}^{-1}$  will be done as follows:
+#+begin_export latex
+\[
+\mathbf{K} = \left(
+\begin{matrix}
+k_{11}\ k_{12} \\
+k_{21}\ k_{22}
+\end{matrix}
+\right)
+\]
+#+end_export
+
+
+
+
+#+begin_export latex
+\begin{itemize}
+\item[a)] Set up the problem as a system of linear congruences to identify $\mathbf{K}$.\\
+\item[b)]Is the given matrix $\mathbf{P}$ invertible? Is the given matrix $\mathbf{C}$ invertible? In other words, can we
+We apply the encryption algorithm to the plaintext, character by character:
+compute the key as $\mathbf{C} \cdot \mathbf{P}^{−1} = \mathbf{K}$? \\
+\item[c)]  Does there exist a unique (one and only one) key matrix $\mathbf{K}$ that satisfies these constraints? If not, how many distinct matrices $\mathbf{K}$ can be used for this cipher?\\
+\item[d)]  Based on the above analysis, explain whether the above system is secure to a known-plaintext or a chosen-plaintext attack? [Note: A known-plaintext attack is one where some $(\mathbf{P}, \mathbf{C})$ pairs are known to Eve. A chosen-plaintext attack is similar to the known-plaintext one, except that the $(\mathbf{P}, \mathbf{C})$ pairs are chosen by the attacker herself.] \\
+\end{itemize}
+#+end_export
+
+

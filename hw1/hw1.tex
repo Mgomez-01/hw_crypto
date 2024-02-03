@@ -1,4 +1,4 @@
-% Created 2024-01-31 Wed 10:58
+% Created 2024-02-02 Fri 11:07
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -44,7 +44,7 @@
 \usepackage{algpseudocode}
 \lstset{breaklines=true, basicstyle=\ttfamily\tiny, frame=single}
 \author{Miguel Gomez U1318856}
-\date{2024-01-31 10:58:02}
+\date{2024-02-02 11:07:53}
 \title{Homework Assignment \# 1}
 \hypersetup{
  pdfauthor={Miguel Gomez U1318856},
@@ -61,10 +61,10 @@
 
 
 \section{Homework 1}
-\label{sec:org3a8c9a5}
+\label{sec:orgf7bfe6c}
 The extended euclidean algorithm is a spin on the usual algo that allows for us to split the number into two intermediate values. one that is equal to the number we are dividing in the algo multiplied by a number, and another that is the divisor multiplied by the quotient. This expression below is the one we end up with:
 \subsection{expression}
-\label{sec:org4585130}
+\label{sec:org51ef5e0}
 \[
 \begin{align*}
 g &= gcd(a,b)\\
@@ -172,7 +172,7 @@ Execution Time: .028753389 seconds
 
 
 \subsection{Identify whether the integers 38 and 7 have multiplicative inverses in \mathcal{Z}\textsubscript{180}}
-\label{sec:orgd73733f}
+\label{sec:org64d3918}
 Since the number \(p\) we are working with is even, we will not have multiplicative inverses for even numbers. Therefore we only need to find the inverse for the one we can, for 7. 
 
 \[
@@ -221,10 +221,10 @@ Execution Time: .022770642 seconds
 Since the gcd for the expression comes out to 1, the inverse exists and is printed out. Since 38 is even, no inverse is possible modulo 180.
 
 \section{Problem 2}
-\label{sec:orgba1025a}
+\label{sec:org617710b}
 Solving linear diophantine equations using linear congruences.
 \subsection{a) solving LC \(4x \equiv 4\ \text{mod}\ 6\)}
-\label{sec:org71924a8}
+\label{sec:org15943f8}
 Solving this is easiest with a table of the results we would get by plugging in any values for x from the set mod 6.
 
 \begin{center}
@@ -244,7 +244,7 @@ Solving this is easiest with a table of the results we would get by plugging in 
 \(\therefore\) we have exactly two solutions which are congruent for this problem.
 
 \subsection{Solving as an LDE instead}
-\label{sec:org1d80056}
+\label{sec:orgaba87d7}
 using the expression \(4x \equiv 4\ \text{mod}\ 6\), we can transform the expression into the following:
 \begin{align*}
 4x &\equiv 4\ \text{mod}\ 6\\
@@ -263,7 +263,7 @@ Now we find values of $x$ that would allow the expression to be integer valued w
 \end{align*}
 
 \section{Problem 3}
-\label{sec:org7d156fd}
+\label{sec:orgb987cf0}
 We must find a solution to the affine cipher and obtain the keys \([k_1, k_2]\). We can set this up in singular to solve for the key vector using the inverse matrix algorithm that utilizes the transformation to a reduced row eschelon form of the matrix.
 
 
@@ -314,4 +314,30 @@ Auf Wiedersehen.
 Execution Time: .053407240 seconds
 \end{lstlisting}
 \]
+
+Shown above is the results and we see that the key \([k_1, k_2]\) is \([15, 20]\).
+
+\section{Problem 4 - Hill Cypher}
+\label{sec:orgd1d1aab}
+Considering the Hill Cypher, we are restricted to using only 8 letters. Therefore we must do everything modulo 8. Getting the encryption \(\mathbf{C} = \mathbf{P}\cdot \mathbf{K}\), and the decryption \(\mathbf{P} = \mathbf{C}\cdot \mathbf{K}^{-1}\)  will be done as follows:
+\[
+\mathbf{K} = \left(
+\begin{matrix}
+k_{11}\ k_{12} \\
+k_{21}\ k_{22}
+\end{matrix}
+\right)
+\]
+
+
+
+
+\begin{itemize}
+\item[a)] Set up the problem as a system of linear congruences to identify $\mathbf{K}$.\\
+\item[b)]Is the given matrix $\mathbf{P}$ invertible? Is the given matrix $\mathbf{C}$ invertible? In other words, can we
+We apply the encryption algorithm to the plaintext, character by character:
+compute the key as $\mathbf{C} \cdot \mathbf{P}^{−1} = \mathbf{K}$? \\
+\item[c)]  Does there exist a unique (one and only one) key matrix $\mathbf{K}$ that satisfies these constraints? If not, how many distinct matrices $\mathbf{K}$ can be used for this cipher?\\
+\item[d)]  Based on the above analysis, explain whether the above system is secure to a known-plaintext or a chosen-plaintext attack? [Note: A known-plaintext attack is one where some $(\mathbf{P}, \mathbf{C})$ pairs are known to Eve. A chosen-plaintext attack is similar to the known-plaintext one, except that the $(\mathbf{P}, \mathbf{C})$ pairs are chosen by the attacker herself.] \\
+\end{itemize}
 \end{document}
