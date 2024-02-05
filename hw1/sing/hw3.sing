@@ -45,15 +45,71 @@ if (gcd(det_A, 26) == 1){
 matrix inv_A = inverse(A);
 
 printf("inverse of A:");
-inv_A;
+print(inv_A);
 
 "check of inv_A*A = I:";
 
-inv_A*A;
+print(inv_A*A);
 
 // Ax = B
 // So, x = inv_A * B;
 
 "Solutions for x = :";
-inv_A*B;
+matrix K = inv_A*B;
+print(K);
+K;
+
+proc numToChar(int n)
+{
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Define the mapping
+    return(chars[n+1]); // Singular strings are 1-indexed
+}
+
+proc charToNum(string c)
+{
+    string chars = "UJYNCRGVKZODSHWLAPETIXMBQF"; // Define the mapping
+    // Search for the character in the mapping string
+    for (int i = 1; i <= size(chars); i++)
+    {
+        if (chars[i] == c)
+        {
+            return(i-1); // Return the index adjusted for 0-based numbering
+        }
+    }
+    return(-1); // Return -1 if the character is not found
+}
+
+
+"Mapping given the keys is:";
+int val = 0;
+for (int i = 0; i < 26; i++){
+    val = 0;
+    val = i*int(K[1,1]) + int(K[2,1]);
+    val = val % 26;
+    printf("%s -> %s", numToChar(i), numToChar(val));
+}
+
+"Mapping back to plain text uses the reverse list";
+for (i = 0; i < 26; i++){
+    val = 0;
+    val = i*int(K[1,1]) + int(K[2,1]);
+    val = val % 26;
+    printf("%s -> %s", numToChar(val), numToChar(i));
+}
+
+string cipher_text = "HWXUEYWTKU";
+string plain_text = "HWXUEYWTKU";
+string single = "";
+int pt_number = 0;
+"The place where bob should meet on vacation is:";
+for (i = 0; i < 10; i++){
+    // replace the char at index i+1 with the correct char given the mapping.
+    single = cipher_text[i+1];
+    pt_number = charToNum(single);
+    plain_text[i+1] = numToChar(pt_number);
+}
+print(plain_text);
+"Canada should be nice in a few months.";
+
 quit;
+

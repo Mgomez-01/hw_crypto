@@ -1,0 +1,46 @@
+LIB "linalg.lib";
+LIB "matrix.lib";
+LIB "resources.lib";
+LIB "/home/speedy/repos/coursework/hw_crypto/lib/mygcdlib.lib";
+
+
+print("Setting cores:");
+int num_cores = getcores();
+setcores(num_cores);
+
+ring r = (integer, 8), (k11, k12, k21, k22), lp;
+
+// Define the ideal 
+ideal intermediate_I =
+2*k11 + 3*k21 - 4,
+2*k12 + 3*k22 - 5,
+2*k11 + 5*k21 - 0,
+2*k12 + 5*k22 - 7;
+// restrict by choosing values:
+ideal I = intermediate_I, k22 - 1, k21 - 2;
+// Compute a Groebner basis for the ideal
+ideal G = groebner(I);
+// Print the Groebner basis
+G;
+
+matrix K[2][2] = 1, 1, -2, -7;
+"For K to be invertible, the gcd of the determinant mod 8 and 8 should be 1.
+Since 8 is even, we expect only odd elements to have an inverse mod 8.";
+for (int i = 0; i< 8; i++){
+    if (gcd(i,8) == 1){
+       printf("gcd(%s,%s)= %s", i, 8, gcd(i,8));
+    }
+}
+"We see that only odd elements have inveerses. Given our K, we can proceed if det(K) is in the set Z_8^*.";
+print(K);
+printf("det(K):%s",det(K));
+"K matrix found by groebner gives determinant 3 which is in the star-set.";
+matrix P [2][2] = 2, 3, 2, 5;
+matrix C [2][2] = 4, 5, 0, 7;
+"The result of P*K:";
+print(P*K);
+"Which is equal to the  we expect to get:";
+print(C);
+
+
+quit;

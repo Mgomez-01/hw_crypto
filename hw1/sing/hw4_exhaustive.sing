@@ -1,0 +1,49 @@
+LIB "linalg.lib";
+LIB "matrix.lib";
+LIB "resources.lib";
+LIB "/home/speedy/repos/coursework/hw_crypto/lib/mygcdlib.lib";
+
+
+print("Setting cores:");
+int num_cores = getcores();
+setcores(num_cores);
+int modulus = 8;
+
+ring r = (integer, modulus), (k11, k12, k21, k22), lp;
+
+matrix K[2][2] = 1, 1, -2, -7;
+
+int i,j,k,l;
+
+for (i = 0; i < modulus; i++){
+    for (j = 0; j < modulus; j++){
+    	for (k = 0; k < modulus; k++){
+	    for (l = 0; l < modulus; l++){
+    		K[1,1] = i;
+		K[1,2] = j;
+		K[2,1] = k;
+		K[2,2] = l;
+		if (gcd(det(K), modulus) == 1){
+		   print("" + string(i)+" "+string(j)+" "+string(k)+" "+string(l)+" invertible");
+		}
+		else{
+		   print("" + string(i)+" "+string(j)+" "+string(k)+" "+string(l)+" not invertible");
+		}
+	    }
+	}
+    }
+}
+
+"We see that only odd elements have inveerses. Given our K, we can proceed if det(K) is in the set Z_8^*.";
+print(K);
+printf("det(K):%s",det(K));
+"K matrix found by groebner gives determinant 3 which is in the star-set.";
+matrix P [2][2] = 2, 3, 2, 5;
+matrix C [2][2] = 4, 5, 0, 7;
+"The result of P*K:";
+print(P*K);
+"Which is equal to the  we expect to get:";
+print(C);
+
+
+quit;

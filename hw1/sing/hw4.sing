@@ -1,0 +1,73 @@
+
+LIB "linalg.lib";
+LIB "matrix.lib";
+LIB "resources.lib";
+print("Setting cores:");
+int num_cores = getcores();
+setcores(num_cores);
+
+
+ring r = (integer, 8), (k11, k12, k21, k22), lp;
+
+
+matrix P [2][2] =
+2, 3,
+2, 5;
+matrix C [2][2] =
+4, 5,
+0, 7;
+matrix K [2][2] =
+k11, k12,
+k21, k22;
+
+
+"P:";
+print(P);
+"C";
+print(C);
+
+
+poly f = 0;
+
+matrix expr1 = P*K;
+"expr1";
+print(expr1);
+
+matrix expr2 = P*K + C;
+
+"expr2";
+print(expr2);
+
+"Determinant of P:";
+f = det(P);
+
+"printing det(P)";
+f;
+
+"Determinant of C:";
+poly det_C = det(C);
+
+"printing det(C)";
+det_C;
+
+"since the determinant of P and C are both outside of the star-set Z_{8^*}, they are not invertible.";
+int det_P = int(det(P));
+if (gcd(det_P, 8) == 1){
+   printf("gcd(det(P), 8) is:");
+   gcd(det_P, 8);
+   printf("inverse of P exists");
+   matrix P_inv = inverse(P);
+
+   "printing inverse(P)";	
+   P_inv;
+
+} else {
+   "Exiting b/c gcd failed";
+   printf("gcd(det(P), 8): %s",gcd(det_P, 8));
+}
+"inverse(P)";
+inverse(P);
+"inverse(C)";
+inverse(C);
+
+quit;
