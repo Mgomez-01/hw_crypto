@@ -3,3 +3,7 @@
 **/simulation/*
 **/db/*
 **/incremental_db/*
+**/output_files/*
+**/*.ini
+**/*.bak
+**/work/*
