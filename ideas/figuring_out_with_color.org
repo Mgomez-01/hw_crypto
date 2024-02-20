@@ -1,0 +1,3 @@
+
+* Find a way to do some cryptographic analysis with colors. finding data info using entrpy, or better encrypting with entropy
+
