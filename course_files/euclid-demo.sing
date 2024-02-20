@@ -1,0 +1,25 @@
+// The first Demo of Singular
+// The simplest GCD computation
+// Euclid's Algorithms
+
+// Declare a ring of integers
+// 'x' is the indeterminate, which is not used
+// lp = orders the terms of a polynomial lexicographically
+// lp is needed for ring declation, but this is not used
+
+ring r = integer, (x), lp;
+
+// number is an element in the coefficient ring, integers in this case
+number a, b, t;
+
+a = 24;
+b = 16;
+
+while (b != 0){
+      t = b;
+      b = a % b;
+      a = t;
+}
+
+printf("The computed GCD of 24 and 16 is:");
+a;

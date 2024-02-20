@@ -1,0 +1,33 @@
+LIB "linalg.lib";
+LIB "matrix.lib";
+
+ring r = (2, A), x, lp;
+minpoly = A8 + A4+A3+A+1;
+
+poly p = x3+x2;
+poly pinv = x7+x5+x4;
+reduce(p*pinv, x8+x4+x3+x+1);
+
+
+matrix mixcolumn [4][4] = A, A+1, 1, 1, 1, A, A+1, 1, 1, 1, A, A+1, A+1, 1, 1, A;
+
+mixcolumn;
+
+"print mixcolumn matrix:";
+print(mixcolumn);
+
+"print Determinant of mixcolumn:";
+det(mixcolumn);
+
+"print inverse of mixcolumn:";
+
+print(inverse(mixcolumn));
+
+
+// This is mixcolumn inverse:
+/*
+(\alpha^3+\alpha^2+\alpha)&(\alpha^3+\alpha+1)& (\alpha^3+\alpha^2+1)&(\alpha^3+1)&   
+(\alpha^3+1)&   (\alpha^3+\alpha^2+\alpha)&(\alpha^3+\alpha+1)& (\alpha^3+\alpha^2+1)&
+(\alpha^3+\alpha^2+1)&(\alpha^3+1)&   (\alpha^3+\alpha^2+\alpha)&(\alpha^3+\alpha+1)& 
+(\alpha^3+\alpha+1)& (\alpha^3+\alpha^2+1)&(\alpha^3+1)&   (\alpha^3+\alpha^2+\alpha)
+*/
