@@ -1,0 +1,73 @@
+% Created 2024-02-19 Mon 14:48
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{titling}
+\usepackage{url}
+\usepackage{amsmath,amsthm,amssymb}
+\author{Miguel}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Miguel},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.2 (Org mode 9.4.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+// extending F2 with A
+ring r = (2, x), (A,B,Z,z0,z1,z2,a0,b0,a1,b1,a2,b2), lp;
+
+// adding in the minpoly 
+minpoly = x\textsuperscript{3} + x\textsuperscript{2} + 1;
+
+
+for (int i = 0; i < 8; i++)\{
+printf("printing x\^{}\%s = \%s",i,x\textsuperscript{i});
+\}
+
+poly s0,s1,s2,s3,s4,zp0,zp1,zp2;
+
+s0 = a0*b0;
+s1 = a1*b0 + a0*b1;
+s2 = a2*b0 + a1*b1 + a0*b2;
+s3 = a2*b1 + a1*b2;
+s4 = a2*b2;
+
+zp0 = s0 + s3 + s4;
+zp1 = s1 + s4;
+zp2 = s2 + s3 + s4;
+
+poly f1 = A + a0 + a1*x + a2*x\textsuperscript{2};
+poly f2 = B + b0 + b1*x + b2*x\textsuperscript{2};
+poly f3 = Z + z0 + z1*x + z2*x\textsuperscript{2};
+
+poly Z\textsubscript{test} = A*B + Z;
+poly Z\textsubscript{mine} = zp0 + zp1*x + zp2*x\textsuperscript{2};
+
+poly miter = Z\textsubscript{mine} + Z\textsubscript{test};
+
+ideal I = s0,s1,s2,s3,s4,zp0,zp1,zp2, f1, f2, f3;
+"Expected";
+groebner(Z\textsubscript{test}, std(I));
+"Mine";
+groebner(Z\textsubscript{mine}, std(I));
+"Miter";
+groebner(miter, std(I));
+quit;
+\end{document}
