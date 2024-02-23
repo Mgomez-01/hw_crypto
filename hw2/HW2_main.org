@@ -1,6 +1,6 @@
 #+TITLE: Homework Assignment # 2
 #+AUTHOR: Miguel Gomez U1318856
-#+DATE: 2024-02-19 22:54:17
+#+DATE: 2024-02-21 22:01:27
 #+LATEX_CLASS: exam
 #+LATEX_HEADER: \usepackage{titling}
 #+LATEX_HEADER: \usepackage{url}
@@ -806,22 +806,332 @@ $\mathbb{F}_8 \equiv \mathbb{F}_2 [x] (mod P(x) = x^3 + x^2 + 1)$ with $P(\alpha
 \end{center}
 ** a)
 First, you will design a Montgomery Block $MM(A, B, \alpha^{-k} ) = A \cdot B \cdot \alpha^{-k} (mod P(\alpha))$, as shown in the slides as well as in my book chapter.
+#+begin_src bash :results scalar :exports none
+  start=$(date +%s.%N)
+  cat ./verilog/MM.v
+  end=$(date +%s.%N)
+  echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+#+end_src
+
+#+RESULTS:
+#+begin_example
+module MM (
+	   input wire [2:0] A,
+	   input wire [2:0] B,
+	   input wire	   clk,
+	   input wire	   reset,
+	   output reg [2:0] Z
+	   );
+
+   // add in the signals that are combinational below for MM block.
+
+   // this represents the P(x) or 1*x^3 + 1*x^2 + 0*x + 1*1 = 4'b1101
+   // a^-k = a^-3 or the cube of the inverse of a, or the inverse of the cube of a.
+   // inv of cube is a^4 = a*(a^3) = a*(a^2 + 1) = a^3 + a = a^2 + a + 1 = 0111
+   wire [3:0]		    _P = 4'b1101;
+   reg [3:0]		    mid0_0;
+   reg [3:0]		    mid0_1;
+   reg [3:0]		    mid0_2;
+
+   reg [3:0]		    mid1_0;
+   reg [3:0]		    mid1_1;
+   reg [3:0]		    mid1_2;
+
+   reg [3:0]		    mid2_0;
+   reg [3:0]		    mid2_1;
+   reg [3:0]		    mid2_2;
+   
+
+   
+   // previously clocked on posedge reset and negedge clk
+   always@(*) begin
+      if(reset) begin
+	 Z = 3'b0;
+	 // mid0_0 <= 4'b0;
+	 // mid0_1 <= 4'b0;
+	 // mid0_2 <= 4'b0;
+
+	 // mid1_0 <= 4'b0;
+	 // mid1_1 <= 4'b0;
+	 // mid1_2 <= 4'b0;
+
+	 // mid2_0 <= 4'b0;
+	 // mid2_1 <= 4'b0;
+	 // mid2_2 <= 4'b0; 
+      end
+      else begin
+	 // mid0_0 <= 4'b0 ^ ({4{A[0]}} & B);
+         // mid0_1 <= mid0_0 ^ ({4{mid0_0[0]}} & _P); // This relies on previous step's result
+         // mid0_2 <= mid0_1 >> 1;
+	 
+         // mid1_0 <= mid0_2[1] ^ ({4{A[1]}} & B); // This starts with the result of mid0_2
+         // mid1_1 <= mid1_0 ^ ({4{mid1_0[0]}} & _P);
+         // mid1_2 <= mid1_1 >> 1;
+
+         // mid2_0 <= mid1_2[2] ^ ({4{A[2]}} & B);
+         // mid2_1 <= mid2_0 ^ ({4{mid2_0[0]}} & _P);
+         // mid2_2 <= mid2_1 >> 1;
+	 mid0_0 = 4'b0^({4{A[0]}}&B);
+	 mid0_1 = mid0_0^({4{mid0_0[0]}}&_P);
+	 mid0_2 = mid0_1 >> 1'b1;
+
+
+	 mid1_0 = mid0_2[1]^({4{A[1]}}&B);
+	 mid1_1 = mid1_0^({4{mid1_0[0]}}&_P);
+	 mid1_2 = mid1_1 >> 1'b1;
+
+
+	 mid2_0 = mid1_2[2]^({4{A[2]}}&B);
+	 mid2_1 = mid2_0^({4{mid2_0[0]}}&_P);
+	 mid2_2 = mid2_1 >> 1'b1;
+ 	 
+	 Z = mid2_2[2:0];      
+      // Z[1] <= Z[1]^({A[1],A[1],A[1]}&B);      
+      // Z[2] <= Z[2]^({A[2],A[2],A[2]}&B);
+      end
+   end
+endmodule // MM
+Execution Time: .002747122 seconds
+#+end_example
+
+#+begin_export latex
+\begin{lstlisting}
+module MM (
+	   input wire [2:0] A,
+	   input wire [2:0] B,
+	   input wire	   clk,
+	   input wire	   reset,
+	   output reg [2:0] Z
+	   );
+
+   // add in the signals that are combinational below for MM block.
+
+   // this represents the P(x) or 1*x^3 + 1*x^2 + 0*x + 1*1 = 4'b1101
+   // a^-k = a^-3 or the cube of the inverse of a, or the inverse of the cube of a.
+   // inv of cube is a^4 = a*(a^3) = a*(a^2 + 1) = a^3 + a = a^2 + a + 1 = 0111
+   wire [3:0]		    _P = 4'b1101;
+   reg [3:0]		    mid0_0;
+   reg [3:0]		    mid0_1;
+   reg [3:0]		    mid0_2;
+
+   reg [3:0]		    mid1_0;
+   reg [3:0]		    mid1_1;
+   reg [3:0]		    mid1_2;
+
+   reg [3:0]		    mid2_0;
+   reg [3:0]		    mid2_1;
+   reg [3:0]		    mid2_2;
+   
+
+   
+   // previously clocked on posedge reset and negedge clk
+   always@(*) begin
+      if(reset) begin
+	 Z = 3'b0;
+      end
+      else begin
+	 mid0_0 = 4'b0^({4{A[0]}}&B);
+	 mid0_1 = mid0_0^({4{mid0_0[0]}}&_P);
+	 mid0_2 = mid0_1 >> 1'b1;
+
+
+	 mid1_0 = mid0_2[1]^({4{A[1]}}&B);
+	 mid1_1 = mid1_0^({4{mid1_0[0]}}&_P);
+	 mid1_2 = mid1_1 >> 1'b1;
+
+
+	 mid2_0 = mid1_2[2]^({4{A[2]}}&B);
+	 mid2_1 = mid2_0^({4{mid2_0[0]}}&_P);
+	 mid2_2 = mid2_1 >> 1'b1;
+ 	 
+	 Z = mid2_2[2:0];      
+      // Z[1] <= Z[1]^({A[1],A[1],A[1]}&B);      
+      // Z[2] <= Z[2]^({A[2],A[2],A[2]}&B);
+      end
+   end
+endmodule // MM
+Execution Time: .002747122 seconds
+\end{lstlisting}
+#+end_export
 
 ** b)
 Then, you will put 4 of these blocks together to design a multiplication circuit that computes $G = A \cdot B (mod P(x))$.
 
 ** c)
 For the design of a MM block, you should use Algorithm 1 in my textbook chapter, unroll the loop k-times and design a $\text{\it{combinational circuit}}$.
+Attempt was made to do this but I am unable to get results that make sense in the overall behavior. Here is a block showing what I came up with:
+#+begin_src bash :results scalar :exports none
+  start=$(date +%s.%N)
+  cat ./verilog/testbenches/TB_MM.v
+  end=$(date +%s.%N)
+  echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+#+end_src
+
+#+RESULTS:
+#+begin_example
+`timescale 1ns / 1ps
+`include "../MM.v"
+module TB_MM;
+
+   reg        clk;
+   reg	      clk2;
+   reg	      reset;
+   reg [2:0]  A;
+   reg [2:0]  B;
+   wire [2:0] Z0;
+   wire [2:0] Z1;
+   wire [2:0] Z2;
+   wire [2:0] Z3;
+   // P is the poly x^3 + x^2 + 1
+   reg [2:0]  P = 3'b111;
+   // P_inv is the poly 1 + x^-1 + x^-3
+   reg [2:0]  P_inv = 3'b011;
+   
+
+   MM uut0 (.A(P),.B(A),.clk(clk),.reset(reset),.Z(Z0));
+   MM uut1 (.A(P),.B(B),.clk(clk),.reset(reset),.Z(Z1));
+   MM uut2 (.A(Z0),.B(Z1),.clk(clk),.reset(reset),.Z(Z2));
+   MM uut3 (.A(Z2),.B(3'b001),.clk(clk),.reset(reset),.Z(Z3));
+
+
+     // Clock generation
+initial begin
+    clk = 0;
+    forever #5 clk = ~clk; // Generate a clock with a period of 10ns
+end
+
+     // Clock generation
+initial begin
+    clk2 = 0;
+    forever #20 clk2 = ~clk2; // Generate a clock with a period of 10ns
+end
+
+   always@(posedge clk2) begin
+      A = A + 1;
+      if(A == 0) begin
+	 B = B + 1;
+      end
+   end
+
+// Test sequence
+initial begin
+   // Initialize simulation
+   //file = $fopen("TB_MM.log", "w");
+   //file2 = $fopen("MM_results.log", "w");
+   $display("Time\tClk\tA\tB\tZ0\tZ1\tZ2\tZ3");
+   //$fwrite(file,"\tTime\tClk\tA\tB\tZ\n");
+   $monitor("%g\t%g\t%b\t%b\t%b\t%b\t%b\t%b", $time, clk, A, B, Z0, Z1, Z2, Z3);
+   // Reset sequence
+   reset = 1; // Activate reset
+   #25;       // Hold reset for 10ns
+   A = 3'b0;
+   B = 3'b0;
+   reset = 0; // Deactivate reset to start the LFSR
+   
+
+    // Let the LFSR run for a while
+    #16500;
+
+    // End simulation
+   $display("End of simulation @ %g ns", $time);
+   //$fwrite(file,"End of simulation @ %g ns", $time);
+   $finish;
+   
+end // initial begin
+
+   
+endmodule
+Execution Time: .001868000 seconds
+#+end_example
+
+#+begin_export latex
+\begin{lstlisting}
+`timescale 1ns / 1ps
+`include "../MM.v"
+module TB_MM;
+
+   reg        clk;
+   reg	      clk2;
+   reg	      reset;
+   reg [2:0]  A;
+   reg [2:0]  B;
+   wire [2:0] Z0;
+   wire [2:0] Z1;
+   wire [2:0] Z2;
+   wire [2:0] Z3;
+   // P is the poly x^3 + x^2 + 1
+   reg [2:0]  P = 3'b111;
+   // P_inv is the poly 1 + x^-1 + x^-3
+   reg [2:0]  P_inv = 3'b011;
+   
+
+   MM uut0 (.A(P),.B(A),.clk(clk),.reset(reset),.Z(Z0));
+   MM uut1 (.A(P),.B(B),.clk(clk),.reset(reset),.Z(Z1));
+   MM uut2 (.A(Z0),.B(Z1),.clk(clk),.reset(reset),.Z(Z2));
+   MM uut3 (.A(Z2),.B(3'b001),.clk(clk),.reset(reset),.Z(Z3));
+
+
+     // Clock generation
+initial begin
+    clk = 0;
+    forever #5 clk = ~clk; // Generate a clock with a period of 10ns
+end
+
+     // Clock generation
+initial begin
+    clk2 = 0;
+    forever #20 clk2 = ~clk2; // Generate a clock with a period of 10ns
+end
+
+   always@(posedge clk2) begin
+      A = A + 1;
+      if(A == 0) begin
+	 B = B + 1;
+      end
+   end
+
+// Test sequence
+initial begin
+   // Initialize simulation
+   //file = $fopen("TB_MM.log", "w");
+   //file2 = $fopen("MM_results.log", "w");
+   $display("Time\tClk\tA\tB\tZ0\tZ1\tZ2\tZ3");
+   //$fwrite(file,"\tTime\tClk\tA\tB\tZ\n");
+   $monitor("%g\t%g\t%b\t%b\t%b\t%b\t%b\t%b", $time, clk, A, B, Z0, Z1, Z2, Z3);
+   // Reset sequence
+   reset = 1; // Activate reset
+   #25;       // Hold reset for 10ns
+   A = 3'b0;
+   B = 3'b0;
+   reset = 0; // Deactivate reset to start the LFSR
+   
+
+    // Let the LFSR run for a while
+    #16500;
+
+    // End simulation
+   $display("End of simulation @ %g ns", $time);
+   //$fwrite(file,"End of simulation @ %g ns", $time);
+   $finish;
+   
+end // initial begin
+
+   
+endmodule
+Execution Time: .001868000 seconds
+\end{lstlisting}
+#+end_export
 
 ** d)
- Design the circuit in Verilog.
-/
+ Design the circuit in Verilog.\newline\newline
+Done as shown above. Unfortunately it is not working as I was hoping. 
 ** e)
-Simulate the multiplier exhaustively to demonstrate its correct operation.
-
+Simulate the multiplier exhaustively to demonstrate its correct operation.\newline\newline
+Also done in the testbench logic. You can see that I increment A and B through all possible combinations in it before exiting. I would make a comparison to the known results and what it should come out to, but I lost time by focusing on getting the system outputting results as I believed it should. 
 ** f)
 Synthesize the circuit, report the area and delay statistics, comparing it with the Mastrovito
-design.
+design.\newline\newline
+For this, I also lost the ability to get this done since I am unable to get the design working as it should. I can export to the RTL design and compare, but it would be moot if it does not function as intended. The correct design may be much larger or smaller than this, so I cannot produce these results with any level of certainty. 
 
 * Problem 4
 If $P$ is a primitive polynomial, then $P^*$ will be as well. Therefore if $\alpha$ is a root of $P$, $\alpha^{-1}$ will be a root of $P^*$.
@@ -839,6 +1149,6 @@ If $P$ is a primitive polynomial, then $P^*$ will be as well. Therefore if $\alp
     &= x^k\cdot(b_0x^{-k} +  b_1x^{-k+1} + b_2x^{-k+2} + \ldots + b_{k-1}x^{-1} + b_k)\\
     &= b_0 +  b_1x + b_2x^{2} + \ldots + b_{k-1}x^{k-1} + b_kx^k 
   \end{align*}
-  Now we can see that the expression is equal to the first with the coefficients reversed. 
+  Now we can see that the expression is equal to the first with the coefficients reversed, so there is a symmetry between the $\alpha$ and$\alpha^{-1}$. To give a rigorous proof of this fact requires more than what we have gone over in class, but I believe this should do for now. 
 #+end_export
 

@@ -1,0 +1,15 @@
+# vlib /home/speedy/repos/courses/hw_crypto/hw2/verilog/testbenches/work
+# ** Warning: (vlib-34) Library already exists at "/home/speedy/repos/courses/hw_crypto/hw2/verilog/testbenches/work".
+#  vmap work /home/speedy/repos/courses/hw_crypto/hw2/verilog/testbenches/work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work /home/speedy/repos/courses/hw_crypto/hw2/verilog/testbenches/work 
+# Modifying modelsim.ini
+#  vsim work.MasMult
+# vsim work.MasMult 
+# Start time: 20:42:58 on Feb 21,2024
+# Loading work.MasMult
+# Loading work.MM
+#  add wave -r /*
+#  run -all
+# 
+# Break key hit

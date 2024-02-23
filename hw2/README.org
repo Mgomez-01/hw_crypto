@@ -1,0 +1,12 @@
+* HW files for HW2
+- all testbenches are in verilog->testbenches
+- quartus related files are in the quartus directory
+- HW2_main.[tex|pdf|org|toc] are the files used to make the hw latex output from org mode to latex.
+
+  The easiest way to understand how to run the code I made is to look at the SRC blocks in the org file. they have the commands necessary to run the code from the parent directory where the org file is.
+
+  I know this method of submitting and organizing homework is unconventional, so please let me know if you have any difficulties with my files. They should run fine, but I would like a chance to explain further if there are any issues with it.
+
+  Thank you!!!
+
+  - Miguel Gomez - U1318856

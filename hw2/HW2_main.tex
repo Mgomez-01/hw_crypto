@@ -1,4 +1,4 @@
-% Created 2024-02-19 Mon 22:53
+% Created 2024-02-21 Wed 22:01
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{exam}
 \usepackage[utf8]{inputenc}
@@ -43,7 +43,7 @@
 \lstset{breaklines=true, basicstyle=\ttfamily\tiny, frame=single, escapeinside={(*@}{@*)}}
 \usepackage[margin=0.75in]{geometry}
 \author{Miguel Gomez U1318856}
-\date{2024-02-19 22:53:17}
+\date{2024-02-21 22:01:27}
 \title{Homework Assignment \# 2}
 \hypersetup{
  pdfauthor={Miguel Gomez U1318856},
@@ -59,19 +59,19 @@
 
 \(\newpage\)
 \section{Problem 1}
-\label{sec:org9074b0a}
+\label{sec:org05a5948}
 \subsection{a)}
-\label{sec:orgd433859}
+\label{sec:org4d37062}
 Consider the polynomial $P(x) = x^5 + x^2 + 1 \in \mathbb{F}_2[x]$ with coefficients in the finite field $\mathbb{F}_2$.
 You are asked to check if this polynomial is a primitive polynomial. Describe an approach to test if $P(x)$ is primitive. [Refer to the lecture slides on primitive polynomials and LFSRs]. Write a program in Singular to test if $P(x)$ is a primitive polynomial.
 
 \subsubsection{Describing the approach}
-\label{sec:org7465ecf}
+\label{sec:org50bd0c6}
 Testing whether or not a $P(x)$ is a primitive requires a proof of the properties of the primitive polynomial. To do this, we can show that $P(x) \in \mathbb{F}_2[x]$ has a degree such that the smallest integer $n$ that allows $P(x)$ to divide $x^n + 1$ is $2^k - 1$. So for our case, we would like to show that $n = 2^5 - 1 = 31$. We can do this with the code we wrote in HW 1 for checking the gcd of the target, or just perform the exhaustive calculation showing the gcd being 1 for all except our target. \\\\
 Additionally, we could show that the primitive polynomial is capable of generating all exponents? \textcolor{red}{reword this} 
 
 \subsubsection{Program output}
-\label{sec:org9429d8b}
+\label{sec:org55dc8f2}
 \begin{lstlisting}[language=sing]
                      SINGULAR                                 /  Development
  A Computer Algebra System for Polynomial Computations       /   version 4.3.2
@@ -118,15 +118,15 @@ Execution Time: .056282630 seconds
 \end{lstlisting}
 
 \subsection{b)}
-\label{sec:org0a5b6ca}
+\label{sec:orgcfcdd02}
 Design a Type-I or Type-II linear feedback shift register (LFSR) using the above $P(x)$ as its characteristic polynomial. Starting with a non-0 seed value (reset values in the LFSR flip-flops should be non-zero), does your LFSR produce a maximal-length pseudo-random sequence? Show the 5-bit sequences produced by your LFSR. You can do this in Verilog (preferable), or Singular, or any other software.
 \newpage
 
 \subsubsection{LFSR Design}
-\label{sec:org628d953}
+\label{sec:orge378653}
 Design of the LFSR uses a DFF module and a 5-bit collection made of 5 DFFs in a row. The bits produce a maximal sequence as can be seen in the verilog output below. There is a copy of the testbench and LFSR.v as well as the DFF.v in the homework files:
 \subsubsection{Showing the maximal-length pseudo-random output}
-\label{sec:orgf8c5872}
+\label{sec:org2774d12}
 Below we can see that the LFSR cylces through all combinations of \(2^5\) before repeating, as expected. Here is a block of it running in emacs after compilation
 
 \begin{lstlisting}
@@ -251,10 +251,10 @@ Compilation finished at Sun Feb 18 18:02:17
   \end{lstlisting}
 
 \subsection{c)}
-\label{sec:org682501f}
+\label{sec:orge4d5bfc}
 Refer to Fig. 1. Using a 5-bit plaintext P, and a seed (reset) value for your LFSR, demonstrate that your LFSR can indeed be used as a stream cipher to encrypt (compute C) and decrypt (get back P) one-bit at a time. Once again, it is convenient to demonstrate this using Verilog coding and simulation.
 \subsubsection{Stream Cypher Results \(P\Rightarrow{}C\Rightarrow{}P\)}
-\label{sec:org6a6618e}
+\label{sec:orgaa4711b}
 The results of the system above, working is shown below. This was accomplished using the same LFSR testbench.
 \begin{lstlisting}
 : Time	P	Q	C	decrypted
@@ -266,15 +266,15 @@ The results of the system above, working is shown below. This was accomplished u
   \end{lstlisting}
 
 \section{Problem 2}
-\label{sec:org51be2ca}
+\label{sec:org93f0c14}
 Mastrovito Multiplier Design - In this question, you will design a digital logic circuit of a Mastrovito multiplier, i.e. the one that computes A · B (mod P(x)), as given in my slides. You will implement your design in Verilog, and demonstrate – by means of exhaustive simulation – that modulo-multiplication is being performed. Proceed as follows:
 
 \subsection{a)}
-\label{sec:orgec8be3a}
+\label{sec:org9e5e61a}
 
 We will use the finite field \(\mathbb{F}_8 \equiv \mathbb{F}_2[x] (\text{mod } P(x) = x^3 + x^2 + 1)\) with \(P(\alpha) = 0\). Denote the degree of  \(P(x)\) as \(k\); of course, here \(k = 3\).
 \subsection{b)}
-\label{sec:orgcb79204}
+\label{sec:org0473801}
 Design a \(k = 3\) bit finite field Mastrovito multiplier that takes \(A = \{a2 , a1 , a0\}\) and \(B = \{b2 , b1, b0 \}\) as 3-bit inputs, and produces \(Z = \{z2, z1 , z0 \}\) as a 3-bit output. Note that we will have:
 \begin{align*}
 A &= a_0 + a_1 \alpha + a_2\alpha^2\\
@@ -283,7 +283,7 @@ Z &= z_0 + z_1 \alpha + z_2\alpha^2
 \end{align*}
 Such that \(Z = A \cdot B\pmod{P(\alpha)}\).
 \subsection{c)}
-\label{sec:org284cc70}
+\label{sec:org40696b1}
 Give Boolean equations (or polynomial equations (mod 2)) of the outputs in terms of inputs, and draw the gate-level schematic. We covered Mastrovito multiplier design in the class when we studied GF circuits. It is given in the slides and in my Book Chapter that I’ve uploaded on Canvas.
 \begin{center}
 \begin{array}{cccccc}
@@ -336,7 +336,7 @@ Z_2 &= S_2 = s_2 + s_3 + s_4\\
 
 
 \subsection{d)}
-\label{sec:orgdf6a610}
+\label{sec:orgf6ad2a8}
 Implement the design in Verilog (as a GFMult(A, B, Z) module) and demonstrate its correctness via exhaustive simulation.
 \begin{lstlisting}
 Time	A	B	Z
@@ -488,7 +488,7 @@ The expression above can be shown to reduce to $\alpha$ by replacing $\alpha^3$ 
 
 
 \subsection{e)}
-\label{sec:org6f2a56c}
+\label{sec:org4337674}
 Using any Verilog synthesis and simulation tool, synthesize the circuit into a netlist.
 \begin{figure}[h]
 \centering
@@ -498,56 +498,190 @@ Using any Verilog synthesis and simulation tool, synthesize the circuit into a n
 \end{figure}  
 
 \subsection{f)}
-\label{sec:org0378165}
+\label{sec:org85464cf}
 Using any of the Cyclone V devices, synthesize the circuit for the selected FPGA architecture.
 \begin{itemize}
 \item Done.
 \end{itemize}
 
 \subsection{g)}
-\label{sec:org0bd3f09}
+\label{sec:orgee04339}
 Note down the area and the delay of the circuit. The synthesis tools will give this information in the synthesis report. Area could be the actual area, or in terms of the number of gates, or in terms of the number of LUTs of the FPGA. Delay could be the actual delay, or the topological depth of the circuit.
 \begin{itemize}
 \item Bit fuzzy on where this data is. \textcolor{red}{REVIEW THIS AND UPDATE BEFORE TURNIN}
 \end{itemize}
 
 \section{Problem 3}
-\label{sec:orgcd64d44}
+\label{sec:org495dea8}
 Now you will design a Montgomery multiplier for the same finite field as given above: \\
 
 \begin{center}
 $\mathbb{F}_8 \equiv \mathbb{F}_2 [x] (mod P(x) = x^3 + x^2 + 1)$ with $P(\alpha) = 0$.
 \end{center}
 \subsection{a)}
-\label{sec:org84d9b9e}
+\label{sec:org2369f9c}
 First, you will design a Montgomery Block \(MM(A, B, \alpha^{-k} ) = A \cdot B \cdot \alpha^{-k} (mod P(\alpha))\), as shown in the slides as well as in my book chapter.
+\begin{lstlisting}
+module MM (
+	   input wire [2:0] A,
+	   input wire [2:0] B,
+	   input wire	   clk,
+	   input wire	   reset,
+	   output reg [2:0] Z
+	   );
+
+   // add in the signals that are combinational below for MM block.
+
+   // this represents the P(x) or 1*x^3 + 1*x^2 + 0*x + 1*1 = 4'b1101
+   // a^-k = a^-3 or the cube of the inverse of a, or the inverse of the cube of a.
+   // inv of cube is a^4 = a*(a^3) = a*(a^2 + 1) = a^3 + a = a^2 + a + 1 = 0111
+   wire [3:0]		    _P = 4'b1101;
+   reg [3:0]		    mid0_0;
+   reg [3:0]		    mid0_1;
+   reg [3:0]		    mid0_2;
+
+   reg [3:0]		    mid1_0;
+   reg [3:0]		    mid1_1;
+   reg [3:0]		    mid1_2;
+
+   reg [3:0]		    mid2_0;
+   reg [3:0]		    mid2_1;
+   reg [3:0]		    mid2_2;
+   
+
+   
+   // previously clocked on posedge reset and negedge clk
+   always@(*) begin
+      if(reset) begin
+	 Z = 3'b0;
+      end
+      else begin
+	 mid0_0 = 4'b0^({4{A[0]}}&B);
+	 mid0_1 = mid0_0^({4{mid0_0[0]}}&_P);
+	 mid0_2 = mid0_1 >> 1'b1;
+
+
+	 mid1_0 = mid0_2[1]^({4{A[1]}}&B);
+	 mid1_1 = mid1_0^({4{mid1_0[0]}}&_P);
+	 mid1_2 = mid1_1 >> 1'b1;
+
+
+	 mid2_0 = mid1_2[2]^({4{A[2]}}&B);
+	 mid2_1 = mid2_0^({4{mid2_0[0]}}&_P);
+	 mid2_2 = mid2_1 >> 1'b1;
+ 	 
+	 Z = mid2_2[2:0];      
+      // Z[1] <= Z[1]^({A[1],A[1],A[1]}&B);      
+      // Z[2] <= Z[2]^({A[2],A[2],A[2]}&B);
+      end
+   end
+endmodule // MM
+Execution Time: .002747122 seconds
+\end{lstlisting}
 
 \subsection{b)}
-\label{sec:orgd8ad536}
+\label{sec:org100dffc}
 Then, you will put 4 of these blocks together to design a multiplication circuit that computes \(G = A \cdot B (mod P(x))\).
 
 \subsection{c)}
-\label{sec:orgdcb102d}
+\label{sec:org505573c}
 For the design of a MM block, you should use Algorithm 1 in my textbook chapter, unroll the loop k-times and design a \(\text{\it{combinational circuit}}\).
+Attempt was made to do this but I am unable to get results that make sense in the overall behavior. Here is a block showing what I came up with:
+\begin{lstlisting}
+`timescale 1ns / 1ps
+`include "../MM.v"
+module TB_MM;
+
+   reg        clk;
+   reg	      clk2;
+   reg	      reset;
+   reg [2:0]  A;
+   reg [2:0]  B;
+   wire [2:0] Z0;
+   wire [2:0] Z1;
+   wire [2:0] Z2;
+   wire [2:0] Z3;
+   // P is the poly x^3 + x^2 + 1
+   reg [2:0]  P = 3'b111;
+   // P_inv is the poly 1 + x^-1 + x^-3
+   reg [2:0]  P_inv = 3'b011;
+   
+
+   MM uut0 (.A(P),.B(A),.clk(clk),.reset(reset),.Z(Z0));
+   MM uut1 (.A(P),.B(B),.clk(clk),.reset(reset),.Z(Z1));
+   MM uut2 (.A(Z0),.B(Z1),.clk(clk),.reset(reset),.Z(Z2));
+   MM uut3 (.A(Z2),.B(3'b001),.clk(clk),.reset(reset),.Z(Z3));
+
+
+     // Clock generation
+initial begin
+    clk = 0;
+    forever #5 clk = ~clk; // Generate a clock with a period of 10ns
+end
+
+     // Clock generation
+initial begin
+    clk2 = 0;
+    forever #20 clk2 = ~clk2; // Generate a clock with a period of 10ns
+end
+
+   always@(posedge clk2) begin
+      A = A + 1;
+      if(A == 0) begin
+	 B = B + 1;
+      end
+   end
+
+// Test sequence
+initial begin
+   // Initialize simulation
+   //file = $fopen("TB_MM.log", "w");
+   //file2 = $fopen("MM_results.log", "w");
+   $display("Time\tClk\tA\tB\tZ0\tZ1\tZ2\tZ3");
+   //$fwrite(file,"\tTime\tClk\tA\tB\tZ\n");
+   $monitor("%g\t%g\t%b\t%b\t%b\t%b\t%b\t%b", $time, clk, A, B, Z0, Z1, Z2, Z3);
+   // Reset sequence
+   reset = 1; // Activate reset
+   #25;       // Hold reset for 10ns
+   A = 3'b0;
+   B = 3'b0;
+   reset = 0; // Deactivate reset to start the LFSR
+   
+
+    // Let the LFSR run for a while
+    #16500;
+
+    // End simulation
+   $display("End of simulation @ %g ns", $time);
+   //$fwrite(file,"End of simulation @ %g ns", $time);
+   $finish;
+   
+end // initial begin
+
+   
+endmodule
+Execution Time: .001868000 seconds
+\end{lstlisting}
 
 \subsection{d)}
-\label{sec:org2381b0e}
-Design the circuit in Verilog.
-
+\label{sec:org2ef8f2a}
+ Design the circuit in Verilog.\newline\newline
+Done as shown above. Unfortunately it is not working as I was hoping. 
 \subsection{e)}
-\label{sec:orgb4ac96e}
-Simulate the multiplier exhaustively to demonstrate its correct operation.
-
+\label{sec:org2d04b26}
+Simulate the multiplier exhaustively to demonstrate its correct operation.\newline\newline
+Also done in the testbench logic. You can see that I increment A and B through all possible combinations in it before exiting. I would make a comparison to the known results and what it should come out to, but I lost time by focusing on getting the system outputting results as I believed it should. 
 \subsection{f)}
-\label{sec:orgdce4247}
+\label{sec:orgf0fafa7}
 Synthesize the circuit, report the area and delay statistics, comparing it with the Mastrovito
-design.
+design.\newline\newline
+For this, I also lost the ability to get this done since I am unable to get the design working as it should. I can export to the RTL design and compare, but it would be moot if it does not function as intended. The correct design may be much larger or smaller than this, so I cannot produce these results with any level of certainty. 
 
 \section{Problem 4}
-\label{sec:orgff9155e}
+\label{sec:org1e42899}
 If \(P\) is a primitive polynomial, then \(P^*\) will be as well. Therefore if \(\alpha\) is a root of \(P\), \(\alpha^{-1}\) will be a root of \(P^*\).
 \subsection{Showing the process}
-\label{sec:org4a6ee18}
+\label{sec:orga90ddb8}
 \begin{align*}
   P(\alpha) &= 0 \\
   P(x) &= a_0x^{k} +  a_1x^{k-1} + a_2x^{k-2} + \ldots + a_{k-1}x + a_k\\
@@ -560,5 +694,5 @@ If \(P\) is a primitive polynomial, then \(P^*\) will be as well. Therefore if \
     &= x^k\cdot(b_0x^{-k} +  b_1x^{-k+1} + b_2x^{-k+2} + \ldots + b_{k-1}x^{-1} + b_k)\\
     &= b_0 +  b_1x + b_2x^{2} + \ldots + b_{k-1}x^{k-1} + b_kx^k 
   \end{align*}
-  Now we can see that the expression is equal to the first with the coefficients reversed. 
+  Now we can see that the expression is equal to the first with the coefficients reversed, so there is a symmetry between the $\alpha$ and$\alpha^{-1}$. To give a rigorous proof of this fact requires more than what we have gone over in class, but I believe this should do for now. 
 \end{document}

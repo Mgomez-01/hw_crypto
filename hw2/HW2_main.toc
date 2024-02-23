@@ -17,10 +17,10 @@
 \contentsline {subsection}{\numberline {2.7}g)}{8}{subsection.2.7}%
 \contentsline {section}{\numberline {3}Problem 3}{8}{section.3}%
 \contentsline {subsection}{\numberline {3.1}a)}{8}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}b)}{8}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}c)}{8}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}d)}{8}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}e)}{8}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}f)}{8}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Problem 4}{8}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Showing the process}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {3.2}b)}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}c)}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}d)}{9}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}e)}{10}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}f)}{10}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Problem 4}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Showing the process}{10}{subsection.4.1}%

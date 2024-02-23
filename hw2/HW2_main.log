@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2024.2.13)  19 FEB 2024 22:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2024.2.13)  21 FEB 2024 22:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1279,15 +1279,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 516--517
 
  []
 
-[8] [9]
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 668--670
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 672--674
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 676--679
+
+ []
+
+[10]
 This exam contains 0 questions with 0 parts, 0 subparts, and 0 subsubparts.
 (./HW2_main.aux)
 Package rerunfilecheck Info: File `HW2_main.out' has not changed.
 (rerunfilecheck)             Checksum: 89DF5988C3AEE87E25AA952FD68FD9DA;2627.
  ) 
 Here is how much of TeX's memory you used:
- 44012 strings out of 476025
- 988461 string characters out of 5796532
+ 44143 strings out of 476025
+ 990396 string characters out of 5796532
  2590388 words of memory out of 5000000
  63548 multiletter control sequences out of 15000+600000
  529524 words of font info for 77 fonts, out of 8000000 for 9000
@@ -1307,10 +1322,10 @@ x1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr
 st/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/
 public/cm-super/sfrm1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super
 /sfti1095.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on HW2_main.pdf (9 pages, 338255 bytes).
+Output written on HW2_main.pdf (10 pages, 348730 bytes).
 PDF statistics:
- 650 PDF objects out of 1000 (max. 8388607)
- 597 compressed objects within 6 object streams
- 339 named destinations out of 1000 (max. 500000)
+ 813 PDF objects out of 1000 (max. 8388607)
+ 757 compressed objects within 8 object streams
+ 470 named destinations out of 1000 (max. 500000)
  226 words of extra memory for PDF output out of 10000 (max. 10000000)
 
