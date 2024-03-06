@@ -1,0 +1,163 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5963,        153]
+NotebookOptionsPosition[      5488,        136]
+NotebookOutlinePosition[      5881,        152]
+CellTagsIndexPosition[      5838,        149]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"ContourPlot", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"y", "^", "2"}], "+", 
+        RowBox[{"a1", "*", "x", "*", "y"}], "+", 
+        RowBox[{"a2", "*", "y"}]}], "==", 
+       RowBox[{
+        RowBox[{"x", "^", "3"}], "+", 
+        RowBox[{"a3", "*", 
+         RowBox[{"x", "^", "2"}]}], "+", 
+        RowBox[{"a4", "*", "x"}], "+", "a6"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", 
+        RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"y", ",", 
+        RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+      RowBox[{"FrameLabel", "->", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"\"\<y\>\"", ",", "None"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<x\>\"", ",", "\"\<Elliptic Curve\>\""}], "}"}]}], 
+        "}"}]}], ",", 
+      RowBox[{"PlotPoints", "->", "50"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"a1", ",", "1", ",", "\"\<a1\>\""}], "}"}], ",", 
+      RowBox[{"-", "5"}], ",", "5", ",", "0.1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"a2", ",", "1", ",", "\"\<a2\>\""}], "}"}], ",", 
+      RowBox[{"-", "5"}], ",", "5", ",", "0.1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"a3", ",", "1", ",", "\"\<a3\>\""}], "}"}], ",", 
+      RowBox[{"-", "5"}], ",", "5", ",", "0.1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"a4", ",", "1", ",", "\"\<a4\>\""}], "}"}], ",", 
+      RowBox[{"-", "5"}], ",", "5", ",", "0.1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"a6", ",", "1", ",", "\"\<a6\>\""}], "}"}], ",", 
+      RowBox[{"-", "20"}], ",", "20", ",", "0.1"}], "}"}], ",", 
+    RowBox[{"ControlPlacement", "->", "Bottom"}]}], "]"}], "\n", 
+  "\n"}]], "Input",
+ CellChangeTimes->{{3.918171252467832*^9, 3.9181712545992107`*^9}, {
+  3.918171314741384*^9, 3.918171315623104*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"e9fb5c3e-e85b-4370-9c64-da7a8486190f"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a1$$ = -1.4, $CellContext`a2$$ = 
+    0.10000000000000053`, $CellContext`a3$$ = 
+    4.300000000000001, $CellContext`a4$$ = 5., $CellContext`a6$$ = 
+    0.40000000000000213`, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a1$$], 1, "a1"}, -5, 5, 0.1}, {{
+       Hold[$CellContext`a2$$], 1, "a2"}, -5, 5, 0.1}, {{
+       Hold[$CellContext`a3$$], 1, "a3"}, -5, 5, 0.1}, {{
+       Hold[$CellContext`a4$$], 1, "a4"}, -5, 5, 0.1}, {{
+       Hold[$CellContext`a6$$], 1, "a6"}, -20, 20, 0.1}}, Typeset`size$$ = {
+    759., {387., 392.3671875000001}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a1$$ = 1, $CellContext`a2$$ = 
+        1, $CellContext`a3$$ = 1, $CellContext`a4$$ = 1, $CellContext`a6$$ = 
+        1}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      ContourPlot[$CellContext`y^2 + $CellContext`a1$$ $CellContext`x \
+$CellContext`y + $CellContext`a2$$ $CellContext`y == $CellContext`x^3 + \
+$CellContext`a3$$ $CellContext`x^2 + $CellContext`a4$$ $CellContext`x + \
+$CellContext`a6$$, {$CellContext`x, -3, 3}, {$CellContext`y, -5, 5}, 
+        FrameLabel -> {{"y", None}, {"x", "Elliptic Curve"}}, PlotPoints -> 
+        50], "Specifications" :> {{{$CellContext`a1$$, 1, "a1"}, -5, 5, 
+         0.1}, {{$CellContext`a2$$, 1, "a2"}, -5, 5, 
+         0.1}, {{$CellContext`a3$$, 1, "a3"}, -5, 5, 
+         0.1}, {{$CellContext`a4$$, 1, "a4"}, -5, 5, 
+         0.1}, {{$CellContext`a6$$, 1, "a6"}, -20, 20, 0.1}}, 
+      "Options" :> {ControlPlacement -> Bottom}, "DefaultOptions" :> {}],
+     ImageSizeCache->{805., {480.1875, 485.8125}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.918171258121716*^9, 3.918171317401225*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"ad9f62ed-1f72-48ad-a875-c8319b5eebf2"]
+}, Open  ]]
+},
+WindowSize->{1920, 1149},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.2 for Linux x86 (64-bit) (January 31, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"89cb5317-8d0a-4858-824e-481cafaf25e0"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 2168, 60, 97, "Input",ExpressionUUID->"e9fb5c3e-e85b-4370-9c64-da7a8486190f"],
+Cell[2751, 84, 2721, 49, 1008, "Output",ExpressionUUID->"ad9f62ed-1f72-48ad-a875-c8319b5eebf2"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

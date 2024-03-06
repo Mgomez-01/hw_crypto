@@ -1,0 +1,5 @@
+* more on primes
+- complexity is still high and resulting
+ $O(log^{15/2}n)$
+
+
