@@ -1,6 +1,6 @@
 #+TITLE: Homework Assignment # 2
 #+AUTHOR: Miguel Gomez U1318856
-#+DATE: 2024-02-21 22:01:27
+#+DATE: 2024-02-28 12:28:13
 #+LATEX_CLASS: exam
 #+LATEX_HEADER: \usepackage{titling}
 #+LATEX_HEADER: \usepackage{url}
@@ -751,7 +751,6 @@ Time	A	B	Z
 \end{lstlisting}
 #+end_export
 
-#+begin_export latex
 Above we can see the exhaustive printed results of the multiplier. As an example, the final row we see gives
 \begin{center}
  \begin{array}{cccc}
@@ -776,7 +775,6 @@ The expression above can be shown to reduce to $\alpha$ by replacing $\alpha^3$ 
                                                       &= \alpha
 \end{align*}
 
-#+end_export
 
 
 ** e)

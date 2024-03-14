@@ -1,0 +1,35 @@
+#+TITLE: Homework Assignment # 3
+#+AUTHOR: Miguel Gomez U1318856
+#+DATE: 2024-03-13 10:50:51
+#+LATEX_CLASS: exam
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \usepackage{url}
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{graphics}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \usepackage[dvipsnames]{xcolor}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{ragged2e}
+#+LATEX_HEADER: \usepackage{courier}
+#+LATEX_HEADER: \usepackage{textcomp}
+#+LATEX_HEADER: \usepackage{circuitikz}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage{karnaugh-map}
+#+LATEX_HEADER: \usepackage{bytefield}
+#+LATEX_HEADER: \usepackage{mathrsfs}
+#+LATEX_HEADER: \usepackage{cancel}
+#+LATEX_HEADER: \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage{environ}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \usepackage{algorithm}
+#+LATEX_HEADER: \usepackage{algpseudocode}
+#+LATEX_HEADER: \lstset{breaklines=true, basicstyle=\ttfamily\tiny, frame=single, escapeinside={(*@}{@*)}}
+#+LATEX_HEADER: \usepackage[margin=0.75in]{geometry}
+
+* HW3 - Problem 1
+
+
+* HW3 - Problem 2
