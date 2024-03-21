@@ -17,24 +17,23 @@ number m, x3, y3;
 //"List P is:";
 //P;
 
-if (P[1] == 0) {
-R = 0,1;
-"Point at inf";
-return(R);
-}
+try{
 m = P[1] + P[2]/P[1];
-x3 = m^2 + m + x3;
+x3 = m^2 + m + A^2;
 y3 = P[1]^2 + (m+1)*x3;
-//"m, x3, y3 are:";
-//m;
-//x3;
-//y3;
+"m, x3, y3 are:";
+m;
+x3;
+y3;
 
 R = x3, y3;
 
-//"List R:";
-//R;
+"List R:";
+R;
+}
+catch {
 
+}
 return(R);
 
 }
@@ -89,7 +88,7 @@ number x1, y1;
 list P;
 
 x1 = A^2 + 1;
-y1 = 1;
+y1 = A + 1;
 P = x1, y1;
 
 list R;
