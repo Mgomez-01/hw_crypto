@@ -1,0 +1,77 @@
+/*
+This Singular file demonstrates Point addition in
+Projective Coordinates
+*/
+
+//option(redSB) = compute a reduced Groebner basis
+// reduced GB = removes all redundancy
+// simplifies your computations
+option(redSB);
+
+
+
+// Declare the ring over GF(8), with ALL variables
+// Make sure that the variable order is as given
+// C depends on B, so C appears before B, and so on
+// X1,Y1,Z1, X2,Y2,Z2 come last, as everything depends on them
+
+ring r = (2, al), (X3,Y3,Z3,D,C,B,A,X1,Y1,Z1,X2,Y2,Z2), lp;
+// This is the primitive polynomial given to us as a specification
+// Here al = \alpha
+minpoly = (al)^3 + (al) + 1;
+
+// This is the non-singular elliptic curve also given to us as the
+// spec in affine coordinates
+//poly E = y^2 + x*y + x^3 + (al^3)*x^2 + 1;
+
+// Now we will compute projective point addition
+// (X3,Y3,Z3) = (X1,Y1,Z1) + (X2,Y2,Z2)
+
+//for any affine (x1,y1), projective (x1,y1,1),
+// i.e select z1=1 for simplicity
+
+poly f1 = A + X2*Z1 + X1;
+poly f2 = B + Y2*Z1 + Y1;
+poly f3 = C+ A + B;
+poly f4 = D+ A*A*(A + al^3*Z1) + Z1*B*C;
+poly f5 = X3 + A*D;
+poly f6 = Y3 + C*D + A^2*(B*X1 + A*Y1);
+poly f7 = Z3+ A^3*Z1;
+
+ideal J = f1, f2, f3, f4, f5, f6, f7;
+ideal J0 = A^8-A, B^8-B, C^8-C, D^8-D, E^8-E, X1^8-X1, Y1^8-Y1,
+Z1^8-Z1, X2^8-X2, Y2^8-Y2, Z2^8-Z2;
+
+// Let us select P = (x1 = \al, y1 = \al^2)
+// and Q = (x2 = \al^3, y2 = \al^5)
+// In affine, R = P+Q = (\alpha^2,1)
+
+// Test in projective coordinates, let Z1 = Z2 = 1
+
+// Compute R using the substitute command and the Groebner basis
+// algorithm
+ideal G = slimgb(J); // slim groebner basis
+
+// ideal = set of polynomials
+
+//P = (al, al^2), Q = (al^3, al^5) = 2P,
+// See that R = 3P = (al^2,1)
+subst(G, X1,al, Y1,al^2, Z1, 1, X2,al^3, Y2, al^5, Z2,1);
+"In the above computation, Check if X3/Z3 = alpha^2, Y3/Z3=1";
+"========================";
+
+
+// 7P = (0,1) + 8P = (al^6, al)
+// R = 15 P = 14P + P = O + P = P = (al, al^2)
+subst(G, X1,0, Y1,1, Z1, 1, X2,al^6, Y2, al, Z2,1);
+"In the above computation, Check if X3/Z3 = alpha, Y3/Z3=alpha^2";
+"========================";
+
+
+// 13P = (al, al^4) + P = (al, al^2)
+// 13P + P = 14P = O
+subst(G, X1,al, Y1,al^4, Z1, 1, X2,al, Y2, al^2, Z2,1);
+"In the above computation, Check if R = (1:m:0) or (0:1:0)";
+"========================";
+
+quit;
