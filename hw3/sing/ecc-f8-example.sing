@@ -18,8 +18,11 @@ number m, x_3, y_3;
 //P;
 
 m = P[1] + P[2]/P[1];
+
 x_3 = m^2 + m + A^2;
+
 y_3 = P[1]^2 + (m+1)*x_3;
+
 //printf("m:%s", m);
 //printf("x_3:%s", x_3);
 //printf("y_3:%s", y_3);
@@ -38,7 +41,11 @@ number m, x_3, y_3;
 
 //"List P is:";
 //P;
-
+if((P[1] + Q[1]) == 0)
+{
+R = 0, 0;
+return(R);
+}
 m = (P[2] + Q[2])/(P[1] + Q[1]);
 
 x_3 = m^2 + m + P[1] + Q[1] + A^2;
@@ -106,22 +113,23 @@ number x1, y1;
 list P;
 
 x1 = A^3;
-y1 = A^6;
+y1 = A^5;
 P = x1, y1;
 
-list R;
+list R, Q;
 printf("P = (%s, %s)", P[1], P[2]);
 "Calling doubleP on P";
 R = doubleP(P);
-"received 2P:";
+"received/ 2P:";
 printf("2P = (%s, %s)", R[1], R[2]);
-P = PaddQ(P, R);
-
 int j;
+Q = R;
+
 for(j = 1; j<16; j = j+1){
 
-P = PaddQ(P, R);
+R = PaddQ(P, Q);
 
-printf("P + %sP = %sP = (%s, %s)",(j + 1), (j + 2), P[1], P[2]);
+printf("%sP = (%s, %s)", (j + 2), R[1], R[2]);
+Q = R;
 }
 quit;
