@@ -1,0 +1,90 @@
+/*
+********
+This is a Procedure to do point doubling (x3, y3) = 2P(x1, y1).
+Proc takes a "list" P
+P[1] = x1,
+P[2] = y1
+returns a list R = [x3, y3].
+********
+*/
+proc doubleP(list P){
+list R;
+number m, x_3, y_3;
+
+//"List P is:";
+//P;
+
+m = P[1] + P[2]/P[1];
+
+x_3 = m^2 + m + A^2;
+
+y_3 = P[1]^2 + (m+1)*x_3;
+
+//printf("m:%s", m);
+//printf("x_3:%s", x_3);
+//printf("y_3:%s", y_3);
+R = x_3, y_3;
+
+//"List R:";
+//R;
+return(R);
+}
+
+/* this represents P + Q = R.
+This design takes into account the kind of elliptic curve used in weirstrauss form
+ECC(A^2,1) = y^2 + x*y = x^3 + A^2x^2 + 1
+*/
+
+proc PaddQ(list P, list Q){
+list R;
+number m, x_3, y_3;
+
+//"List P is:";
+//P;
+if((P[1] + Q[1]) == 0)
+{
+R = 0, 0;
+return(R);
+}
+m = (P[2] + Q[2])/(P[1] + Q[1]);
+
+x_3 = m^2 + m + P[1] + Q[1] + A^2;
+
+y_3 = (m)*(x_3 + P[1]) + x_3 + P[2];
+
+//printf("m:%s", m);
+//printf("x_3:%s", x_3);
+//printf("y_3:%s", y_3);
+R = x_3, y_3;
+
+//"List R:";
+//R;
+return(R);
+
+}
+
+proc genPoints(list P){
+list R, Q;
+//printf("P = (%s, %s)", P[1], P[2]);
+R = doubleP(P);
+//printf("2P = (%s, %s)", R[1], R[2]);
+list points = list(P); // Starting with 2P as the first element
+points = insert(points, R, size(points)+1);
+Q = R;
+for(int j = 1; j<15; j = j+1){
+    R = PaddQ(P, Q);
+    //printf("%sP = (%s, %s)", (j + 2), R[1], R[2]);
+    // Add the newly computed point to the list of points
+    points = insert(points, R, size(points)+1);
+    Q = R;
+}
+return(points);
+}
+
+
+// Assuming that the list is a list of points from proc above. This takes the index
+// and the List to then provide the Point on the curve
+proc getPoint(list L, int index){
+list R = L[(2*index-1)][1], L[(2*index-1)][2];
+return(R);
+}
