@@ -1,0 +1,31 @@
+LIB "/home/speedy/repos/coursework/hw_crypto/lib/ecclib.lib";
+
+// Declare the ring over GF(8), with 2 variables, x and y
+ring r = (2, A), (y, x), lp;
+// This is the primitive polynomial given to us as a specification
+// Here X = \alpha
+minpoly = A^3 + A^2 + 1;
+
+// This is the non-singular elliptic curve also given to us as the spec Weirstrauss form E(A^2, 1)
+poly E = y^2 + x*y + x^3 + A^2*x^2 + 1;
+
+// number = element in the field
+number x1, y1;
+list P;
+
+x1 = A^3;
+y1 = A^5;
+P = x1, y1;
+
+list points = genPoints(P); 
+
+int j;
+// Iterate over the points list and print each point
+for (j = 1; j <= 14; j = j+1){
+    printf("printing %sP:", j); // Use %d here only for the point number (j)
+    // Ensure that we're accessing a defined and correctly structured list element
+    P = getPoint(points,j);
+    printf("(%s, %s)", P[1], P[2]);
+}
+
+quit;

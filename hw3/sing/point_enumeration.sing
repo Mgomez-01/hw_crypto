@@ -1,0 +1,46 @@
+LIB "/home/speedy/repos/coursework/hw_crypto/lib/ecclib.lib";
+
+
+// Declare the ring over GF(8), with 2 variables, x and y
+
+ring r = (2, A), (y, x), lp;
+// This is the primitive polynomial given to us as a specification
+// Here X = \alpha
+minpoly = A^3 + A^2 + 1;
+
+// This is the non-singular elliptic curve also given to us as the spec Weirstrauss form E(A^2, 1)
+poly E = y^2 + x*y + x^3 + A^2*x^2 + 1;
+
+// Now we will generate the points
+int i;
+list factored_res;
+// We use poly f to generate the points
+poly f;
+"================================";
+printf("when x = %s", 0);
+// Substitute x = 0 in E
+f = subst(E, x, 0);
+printf("poly f is:");
+f;
+printf("poly f factorizes as follows:");
+factorize(f);
+"================================";
+
+// 0 = special element, now we generate the remaining 7 elements
+for(i=0; i<8; i = i+1){
+printf("when x = A^%s, : x = %s", i, A^i);
+f = subst(E, x, A^i);
+//printf("poly f after substitution of x = %s:", A^i);
+//f;
+//printf("poly f factorizes as:");
+
+factored_res = factorize(f);
+//factored_res;
+printf("P1(x,y) = (%s,%s)", A^i, factored_res[1][2]-y);
+
+if (size(factored_res[1]) > 2 )
+{
+    printf("P2(x,y) = (%s,%s)", A^i, factored_res[1][3]);
+}"================================";
+}
+quit;
