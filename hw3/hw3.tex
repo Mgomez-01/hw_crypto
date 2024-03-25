@@ -1,4 +1,4 @@
-% Created 2024-03-25 Mon 00:30
+% Created 2024-03-25 Mon 14:55
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{exam}
 \usepackage[utf8]{inputenc}
@@ -43,7 +43,7 @@
 \lstset{breaklines=true, basicstyle=\ttfamily\tiny, frame=single, escapeinside={(*@}{@*)}}
 \usepackage[margin=0.75in]{geometry}
 \author{Miguel Gomez U1318856}
-\date{2024-03-25 00:30:34}
+\date{2024-03-25 14:55:16}
 \title{Homework Assignment \# 3}
 \hypersetup{
  pdfauthor={Miguel Gomez U1318856},
@@ -60,10 +60,10 @@
 \newpage
 
 \section{HW3 - Problem 1}
-\label{sec:org8e7941e}
+\label{sec:org9792939}
 design an elliptic curve crypto-cipher over a Galois field of the type \(\mathbb{F}_{2^k}\).  Implement the key generation, encryption and decryption modules in Singular, and demonstrate the correct simulation.
 \subsection{a) what are \(\alpha^4 , \alpha^5 , \alpha^6\) when reduced (mod \(P(\alpha)\))}
-\label{sec:org6c04178}
+\label{sec:orgabd0cd6}
 Consider the finite field \(\mathbb{F}_{2^k} \equiv \mathbb{F}_{2}[x]\) (mod \(P(x)\)) where \(P(x) = x^3 + x^2 + 1\). Let \(\alpha\) be a root of \(P(x)\), i.e. \(P(\alpha) = 0\). Note that \(P(x)\) is indeed a primitive polynomial. Using Singular, enumerate the field elements \(F_8 = {0, \alpha^7 = 1, \alpha, \alpha^2, \alpha^3 = \alpha^2 + 1, \alpha^4 =?, . . . , \alpha^6 =?}\). In other words, what are \(\alpha^4 , \alpha^5 , \alpha^6\) when reduced (mod \(P(\alpha)\))?
 
 \begin{verbatim}
@@ -143,7 +143,7 @@ Execution Time: .060719112 seconds
 
 
 \subsection{b)  Enumerate all the points on the curve}
-\label{sec:org7110c0f}
+\label{sec:org9aa2252}
 
 \begin{verbatim}
 start=$(date +%s.%N)
@@ -208,7 +208,7 @@ Shown above is the enumeration of the points and below they are added with nicer
  \end{align*}
 
 \subsection{c)  Identify a point \(P(x, y)\) that acts as a primitive element}
-\label{sec:org7dfe4e5}
+\label{sec:org0881c8c}
 
 This result above provided by the Singular procedure proves that we can generate the points on the curve as well as proving that our starting point below is a generator.
 
@@ -218,7 +218,7 @@ P &= (\alpha^3,\alpha^5) = (\alpha^2 + 1, \alpha + 1)
 
 
 \subsection{d) Is its inverse point \(P^{-1}\) also a generator of G?}
-\label{sec:org6d7057b}
+\label{sec:org2f89b8c}
 Let a point \(P(x1 , y1)\) be a generator of \(G = \left<E, +\right>\). Is its inverse point \(P^{-1}\) also a generator of \(G\)? If yes, then prove it. Otherwise, give a counterexample.
 
 
@@ -234,11 +234,10 @@ echo "Execution Time: $(echo "$end - $start" | bc) seconds"
 \subsubsection{output of inversion results}
 \begin{lstlisting}[language=Singular]
                      SINGULAR                                 /  Development
- A Computer Algebra System for Polynomial Computations       /   version 4.3.2
+ A Computer Algebra System for Polynomial Computations       /   version 4.2.1
                                                            0<
- by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Feb 2023
-FB Mathematik der Universitaet, D-67653 Kaiserslautern        \
-// ** executing /home/speedy/repos/singular/git/Singular/Singular/Singular/.libs/../LIB/.singularrc
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   May 2021
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 1:4.2.1-p3+ds-1
 // ** but for functionality you may wish to change to the new
 // ** format. Please refer to the manual for further information.
 printing 1P:
@@ -270,7 +269,7 @@ printing 13P:
 printing 14P:
 (0, 0)
 Auf Wiedersehen.
-Execution Time: .041399348 seconds
+Execution Time: .009570786 seconds
 \end{lstlisting}
 \]
 
@@ -281,11 +280,11 @@ Execution Time: .041399348 seconds
 
 
 \subsection{e) simulate El Gamal encipherment}
-\label{sec:org8895308}
+\label{sec:org7ea26e5}
 Using the solutions to the above questions, you will now simulate El Gamal encipherment over the above elliptic curve.
 
 \subsubsection{selecting parameters for encryption}
-\label{sec:orgec72a22}
+\label{sec:orga5602a2}
 Based on Fig.1, which is reproduced from our slides, select \(e_1\) as a generator of \(G = \left<E, +\right>\). Select integers \(d\), \(r\), such that \(d \ne r\).
 
 \begin{center}
@@ -298,31 +297,31 @@ Based on Fig.1, which is reproduced from our slides, select \(e_1\) as a generat
 \end{center}
 
 \subsubsection{Selecting plain-text}
-\label{sec:org14954c4}
+\label{sec:orgd4df783}
 Select the plaintext \(P\) as a point on the elliptic curve. Compute \(C_1\) , \(C_2\) to demonstrate encryption. [Avoid \(P = (0, 1)\), as it is a trivial point on our non-supersingular curves over \(\mathbb{F}_{2^k}\) ].
 
 \subsubsection{Demonstrate decryption by re-obtaining the plaintext \(P\)}
-\label{sec:org650e759}
+\label{sec:org352ce4e}
 
 \subsection{f) Notes:}
-\label{sec:orgab27071}
+\label{sec:org31b246e}
 Note: Implement the above in Singular. Please make use of “procedures” in Singular to make your code Modular. Print out the relevant parts of your computation to make it easier for me and  the grader  to grade it when I run your code.  Attach a README to help me understand how to run your code.  Also,  in a PDF file, please  describe  (briefly)  which points you are using as generators, what are your keys \(e_1\) , \(e_2\) , \(d\), \(r\) and the corresponding \(P\), \(C_1\), \(C_2\) values. 
 
 \subsection{g) Permissions for using skeleton provided}
-\label{sec:org8cdbd85}
+\label{sec:org4917ef0}
 It goes without saying: feel free to borrow inspirations from the Singular files I used to give you a demo of ECC El Gamal in class; those Singular files are uploaded on Canvas: ecc-f8-example.sing.
 
 
 \section{Problem 2}
-\label{sec:orge58b6d4}
+\label{sec:org71c5f93}
 In this question, you will design a digital logic circuit that performs point doubling \(R = 2P\)  (not point addition!) over elliptic curves using the projective coordinate system. You will first design (or re-use from HW 2) a multiplier circuit, use it as a building block to perform doubling. You will implement your design in Verilog or VHDL, and demonstrate that point addition is being performed correctly.
 
 \subsection{a) Defining field and terms}
-\label{sec:org23554a5}
+\label{sec:orgcc28b5d}
 We will use the same finite field as in the previous question: F8 ≡ F2 [x] (mod P(x) =x3 + x2 + 1) with P(α) = 0. Denote the degree of P(x) as k; of course, here k = 3.
 
 \subsection{b) Design multiplier}
-\label{sec:org5bea844}
+\label{sec:org150f9d5}
 Design a k = 3 bit finite field multiplier that takes A = \{a2, a1 , a0 \} and B = \{b2 , b1 , b0 \} as 3-bit inputs, and produces Z = \{z2 , z1 , z0\} as a 3-bit output. Note that we will have:
 
 \begin{align*}
@@ -335,7 +334,7 @@ Such that \(Z = A \cdot B\) mod \(P(\alpha))\). Of course, you have already desi
 
 
 \subsection{c) Implementation in Verilog}
-\label{sec:orgbd97ada}
+\label{sec:org207e1d6}
 Implement the design in Verilog/VHDL (GFMult(A, B, Z) module) and demonstrate/simulate using a testbench the following input-output combinations:
 
 
@@ -345,7 +344,7 @@ Implement the design in Verilog/VHDL (GFMult(A, B, Z) module) and demonstrate/si
  Z &= (1, 0, 1) = \alpha^2 + 1
 \end{align*}
 \subsubsection{2.}
-\label{sec:orgc8a414c}
+\label{sec:orgcba8b4a}
 
 \begin{align*}
 A &= \alpha^2 + 1\\
@@ -353,17 +352,17 @@ B &= \alpha^2 + \alpha + 1
 \\Z &= ?
 \end{align*}
 \subsection{d) Design Squarer}
-\label{sec:org6ceee77}
+\label{sec:orgba4a6d2}
 Using your GFMult module, create a squarer module by connecting \(A = B\) inputs; call it the
 GFSQR module.
 
 \subsection{e) Design GFADD}
-\label{sec:orgaa33f24}
+\label{sec:orgbbc5812}
 Design a GFADD(A, B, Z) Verilog Module, such that \(Z = A+B\) over \(\mathbb{F}_8\) . [Remember, addition
 in Galois Fields is just a bit-wise XOR].
 
 \subsection{f) Implement Point doubling in projective coordinates}
-\label{sec:orgd0213ee}
+\label{sec:orga502d71}
 In the lecture slides (ECC-GF.pdf), I have given you the correct formulas for point addition
 and doubling operations. Implement a Verilog Module to perform point doubling over projective
 coordinates. Your PointDouble\((X_3,Y_3,Z_3,X_1,Y_1,Z_1)\) Verilog/VHDL module should instan-
@@ -371,29 +370,29 @@ tiate GFADD, GFMult, GFSQR modules accordingly to compute each of the 3-bit \(X_
 outputs.
 
 \subsection{g) DFG}
-\label{sec:orgfeb249a}
+\label{sec:org967a100}
 Draw a Data Flow Graph (DFG) for \(X_3, Y_3, Z_3\), using the 3 operators, to show how your
 adders, multipliers and squarers are organized.
 
 \subsection{h) Simulation and example demonstrations}
-\label{sec:orge2dfc6f}
+\label{sec:org1cb98af}
  Demonstrate that your PointDouble() module correctly computes the doubling of the
 following affine points:
 
 \subsubsection{Defining projective plane}
-\label{sec:orgb8fd7ec}
+\label{sec:orgdea4bb2}
 Pick \(Z_1 = 1\) to keep computations simple. Note that since each coordinate of a point is
 in \(\mathbb{F}_8\) , each of \(X_1, Y_1, Z_1\) is a 3-bit vector.
 
 \subsubsection{\(P = (\alpha, 1)\) simulate \(2P\)}
-\label{sec:orgc66fb16}
+\label{sec:orge3960a3}
 For affine point \(P = (\alpha, 1)\), simulate \(2P\) on your Verilog Testbench. What is \(2P\)?
 \subsubsection{\(P = (\alpha^3, \alpha + 1)\) simulate \(2P\)}
-\label{sec:orgd6c437e}
+\label{sec:orgddaddf8}
 For affine point \(P = (\alpha^3, \alpha + 1)\), simulate \(2P\) on your Verilog Testbench. What is \(2P\) for
 this case?
 \subsubsection{Notes:}
-\label{sec:org024a86e}
+\label{sec:org984f520}
 Note that \((X_1 , Y_1 , Z_1 )\) computed by your circuit is actually \((\frac{X_1}{Z_1}, \frac{Y_1}{Z_1})\) in the affine
 space! You can of course check your answer with Singular.
 \end{document}
