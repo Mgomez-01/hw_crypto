@@ -11,14 +11,16 @@ poly E = y^2 + x*y + x^3 + A^2*x^2 + 1;
 
 // number = element in the field
 number x1, y1;
-list P;
+list P, P_inv;
 
 x1 = A^3;
 y1 = A^5;
 P = x1, y1;
-
-list points = genPoints(P); 
-
+printf("Normal  generator P     = (%s, %s)", P[1], P[2]);
+P_inv = x1, x1+y1;
+printf("Inverse generator P^-1  = (%s, %s)", P_inv[1], P_inv[2]);
+list points = genPoints(P_inv); 
+"Printing the inverse generated points:";
 int j;
 // Iterate over the points list and print each point
 for (j = 1; j <= 14; j = j+1){
@@ -27,5 +29,6 @@ for (j = 1; j <= 14; j = j+1){
     P = getPoint(points,j);
     printf("(%s, %s)", P[1], P[2]);
 }
+
 
 quit;
