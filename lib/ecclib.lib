@@ -63,6 +63,49 @@ return(R);
 
 }
 
+proc scalarMult(int r, list P) {
+    list Q = 0, 0; // Identity element of the elliptic curve
+    list R = P;    // Copy of the point P to be used in the multiplication
+    
+    while (r > 0) {
+        if (r % 2 == 1) {
+            Q = PaddQ(Q, R); // Add R to Q if the current bit of r is 1
+        }
+        R = doubleP(R); // Double R
+        r = r div 2; // Move to the next bit
+    }
+    
+    return(Q);
+}
+
+
+proc inverter(list P){
+// number = element in the field
+number x1, y1;
+list P_inv;
+P_inv = x1, x1+y1;
+return(P_inv);
+}
+
+
+// Encryption
+proc encryptChar(list Pval, int R) {
+    list C1 = scalarMult(R, e1); // r * e1
+    list e2 = scalarMult(D, e1); // d * e1, assuming d is known/private key
+    list C2 = PaddQ(Pval, scalarMult(R, e2)); // Pval + r * e2
+    
+    return(list(C1, C2));
+}
+
+// Decryption
+proc decryptChar(list C1, list C2) {
+    list dC1 = scalarMult(D, C1); // d * C1
+    list Pval = PaddQ(C2, inverter(dC1)); // Effectively C2 - dC1
+    
+    return(Pval);
+}
+
+
 proc genPoints(list P){
 list R, Q;
 //printf("P = (%s, %s)", P[1], P[2]);
@@ -87,4 +130,26 @@ return(points);
 proc getPoint(list L, int index){
 list R = L[(2*index-1)][1], L[(2*index-1)][2];
 return(R);
+}
+
+
+
+proc NumToChar(int n)
+{
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Define the mapping
+    return(chars[n+1]); // Singular strings are 1-indexed
+}
+
+proc CharToNum(string c)
+{
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Define the mapping
+    // Search for the character in the mapping string
+    for (int i = 1; i <= size(chars); i++)
+    {
+        if (chars[i] == c)
+        {
+            return(i-1); // Return the index adjusted for 0-based numbering
+        }
+    }
+    return(-1); // Return -1 if the character is not found
 }
