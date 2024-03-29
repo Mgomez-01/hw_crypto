@@ -1,0 +1,156 @@
+/*
+********
+This is a Procedure to do point doubling (x2, y2, z2) = 2* P(x1, y1, z1) .
+Proc takes a "list" P
+P[1] = x1,
+P[2] = y1,
+P[3] = z1
+returns a list R = [x2, y2, z2].
+********
+*/
+proc doubleP(list P){
+list R;
+number m, x_3, y_3;
+
+//"List P is:";
+//P;
+
+m = P[1] + P[2]/P[1];
+
+x_3 = m^2 + m + A^2;
+
+y_3 = P[1]^2 + (m+1)*x_3;
+
+//printf("m:%s", m);
+//printf("x_3:%s", x_3);
+//printf("y_3:%s", y_3);
+R = x_3, y_3;
+
+//"List R:";
+//R;
+return(R);
+}
+
+/* this represents P + Q = R.
+This design takes into account the kind of elliptic curve used in weirstrauss form
+ECC(A^2,1) = y^2 + x*y = x^3 + A^2x^2 + 1
+*/
+
+proc PaddQ(list P, list Q){
+list R;
+number m, x_3, y_3;
+
+//"List P is:";
+//P;
+if((P[1] + Q[1]) == 0)
+{
+R = 0, 0;
+return(R);
+}
+m = (P[2] + Q[2])/(P[1] + Q[1]);
+
+x_3 = m^2 + m + P[1] + Q[1] + A^2;
+
+y_3 = (m)*(x_3 + P[1]) + x_3 + P[2];
+
+//printf("m:%s", m);
+//printf("x_3:%s", x_3);
+//printf("y_3:%s", y_3);
+R = x_3, y_3;
+
+//"List R:";
+//R;
+return(R);
+
+}
+
+proc scalarMult(int r, list P) {
+    list Q = 0, 0; // Identity element of the elliptic curve
+    list R = P;    // Copy of the point P to be used in the multiplication
+    
+    while (r > 0) {
+        if (r % 2 == 1) {
+            Q = PaddQ(Q, R); // Add R to Q if the current bit of r is 1
+        }
+        R = doubleP(R); // Double R
+        r = r div 2; // Move to the next bit
+    }
+    
+    return(Q);
+}
+
+
+proc inverter(list P){
+// number = element in the field
+number x1, y1;
+list P_inv;
+P_inv = x1, x1+y1;
+return(P_inv);
+}
+
+
+// Encryption
+proc encryptChar(list Pval, int R) {
+    list C1 = scalarMult(R, e1); // r * e1
+    list e2 = scalarMult(D, e1); // d * e1, assuming d is known/private key
+    list C2 = PaddQ(Pval, scalarMult(R, e2)); // Pval + r * e2
+    
+    return(list(C1, C2));
+}
+
+// Decryption
+proc decryptChar(list C1, list C2) {
+    list dC1 = scalarMult(D, C1); // d * C1
+    list Pval = PaddQ(C2, inverter(dC1)); // Effectively C2 - dC1
+    
+    return(Pval);
+}
+
+
+proc genPoints(list P){
+list R, Q;
+//printf("P = (%s, %s)", P[1], P[2]);
+R = doubleP(P);
+//printf("2P = (%s, %s)", R[1], R[2]);
+list points = list(P); // Starting with 2P as the first element
+points = insert(points, R, size(points)+1);
+Q = R;
+for(int j = 1; j<15; j = j+1){
+    R = PaddQ(P, Q);
+    //printf("%sP = (%s, %s)", (j + 2), R[1], R[2]);
+    // Add the newly computed point to the list of points
+    points = insert(points, R, size(points)+1);
+    Q = R;
+}
+return(points);
+}
+
+
+// Assuming that the list is a list of points from proc above. This takes the index
+// and the List to then provide the Point on the curve
+proc getPoint(list L, int index){
+list R = L[(2*index-1)][1], L[(2*index-1)][2];
+return(R);
+}
+
+
+
+proc NumToChar(int n)
+{
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Define the mapping
+    return(chars[n+1]); // Singular strings are 1-indexed
+}
+
+proc CharToNum(string c)
+{
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Define the mapping
+    // Search for the character in the mapping string
+    for (int i = 1; i <= size(chars); i++)
+    {
+        if (chars[i] == c)
+        {
+            return(i-1); // Return the index adjusted for 0-based numbering
+        }
+    }
+    return(-1); // Return -1 if the character is not found
+}
