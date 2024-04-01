@@ -1,28 +1,43 @@
-\contentsline {section}{\numberline {1}HW3 - Problem 1}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}a) what are \(\alpha ^4 , \alpha ^5 , \alpha ^6\) when reduced (mod \(P(\alpha )\))}{2}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}output of point-enumeration.sing results}{2}{subsubsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.2}b) Enumerate all the points on the curve}{3}{subsection.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}output of point\_gen.sing results}{3}{subsubsection.1.2.1}%
+\contentsline {section}{\numberline {1}HW3 - Problem 1}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}a) what are \(\alpha ^4 , \alpha ^5 , \alpha ^6\) when reduced (mod \(P(\alpha )\))}{3}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}output of point-enumeration.sing results}{3}{subsubsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.2}b) Enumerate all the points on the curve}{4}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}output of point\_gen.sing results}{4}{subsubsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.3}c) Identify a point \(P(x, y)\) that acts as a primitive element}{4}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}d) Is its inverse point \(P^{-1}\) also a generator of G?}{4}{subsection.1.4}%
-\contentsline {subsubsection}{\numberline {1.4.1}output of inversion results}{4}{subsubsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.5}e) simulate El Gamal encipherment}{4}{subsection.1.5}%
-\contentsline {subsubsection}{\numberline {1.5.1}selecting parameters for encryption}{4}{subsubsection.1.5.1}%
-\contentsline {subsubsection}{\numberline {1.5.2}Selecting plain-text}{5}{subsubsection.1.5.2}%
-\contentsline {subsubsection}{\numberline {1.5.3}Demonstrate decryption by re-obtaining the plaintext \(P\)}{5}{subsubsection.1.5.3}%
-\contentsline {subsection}{\numberline {1.6}f) Notes:}{5}{subsection.1.6}%
-\contentsline {subsection}{\numberline {1.7}g) Permissions for using skeleton provided}{5}{subsection.1.7}%
-\contentsline {section}{\numberline {2}Problem 2}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}a) Defining field and terms}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}b) Design multiplier}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}c) Implementation in Verilog}{6}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}2.}{6}{subsubsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.4}d) Design Squarer}{6}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}e) Design GFADD}{6}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}f) Implement Point doubling in projective coordinates}{6}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}g) DFG}{6}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}h) Simulation and example demonstrations}{6}{subsection.2.8}%
-\contentsline {subsubsection}{\numberline {2.8.1}Defining projective plane}{7}{subsubsection.2.8.1}%
-\contentsline {subsubsection}{\numberline {2.8.2}\(P = (\alpha , 1)\) simulate \(2P\)}{7}{subsubsection.2.8.2}%
-\contentsline {subsubsection}{\numberline {2.8.3}\(P = (\alpha ^3, \alpha + 1)\) simulate \(2P\)}{7}{subsubsection.2.8.3}%
-\contentsline {subsubsection}{\numberline {2.8.4}Notes:}{7}{subsubsection.2.8.4}%
+\contentsline {subsection}{\numberline {1.4}d) Is its inverse point \(P^{-1}\) also a generator of G?}{5}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}output of inversion results}{5}{subsubsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.5}e) simulate El Gamal encipherment}{6}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}selecting parameters for encryption}{6}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Selecting plain-text}{7}{subsubsection.1.5.2}%
+\contentsline {subsubsection}{\numberline {1.5.3}process}{7}{subsubsection.1.5.3}%
+\contentsline {subsubsection}{\numberline {1.5.4}encrypter}{7}{subsubsection.1.5.4}%
+\contentsline {subsubsection}{\numberline {1.5.5}encrypt.sing file}{7}{subsubsection.1.5.5}%
+\contentsline {subsubsection}{\numberline {1.5.6}decrypter}{8}{subsubsection.1.5.6}%
+\contentsline {subsubsection}{\numberline {1.5.7}output of decrypt.sing results}{8}{subsubsection.1.5.7}%
+\contentsline {subsubsection}{\numberline {1.5.8}Demonstrate decryption by re-obtaining the plaintext \(P\)}{9}{subsubsection.1.5.8}%
+\contentsline {subsubsection}{\numberline {1.5.9}output of encrypt.sing}{10}{subsubsection.1.5.9}%
+\contentsline {subsubsection}{\numberline {1.5.10}output of decrypt.sing}{11}{subsubsection.1.5.10}%
+\contentsline {subsection}{\numberline {1.6}f) Notes:}{11}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}g) Permissions for using skeleton provided}{12}{subsection.1.7}%
+\contentsline {section}{\numberline {2}Problem 2}{12}{section.2}%
+\contentsline {subsection}{\numberline {2.1}a) Defining field and terms}{12}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}b) Design multiplier}{12}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Verilog code for mastro mult}{12}{subsubsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.3}c) Implementation in Verilog}{13}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}GFMULT.v file}{13}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}MM.v file}{13}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}output of TB\_MM.log}{14}{subsubsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.4}d) Design Squarer}{14}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}output of TB\_GFSQR}{14}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}output of TB\_GFSQR.log}{15}{subsubsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.5}e) Design GFADD}{15}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}GFADD.v file}{15}{subsubsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.6}f) Implement Point doubling in projective coordinates}{15}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Proj Point Doubling Implementation}{16}{subsubsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.7}g) DFG}{17}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}h) Simulation and example demonstrations}{17}{subsection.2.8}%
+\contentsline {subsubsection}{\numberline {2.8.1}Results of Point Doubling Projective log}{17}{subsubsection.2.8.1}%
+\contentsline {subsubsection}{\numberline {2.8.2}Defining projective plane}{17}{subsubsection.2.8.2}%
+\contentsline {subsubsection}{\numberline {2.8.3}\(P = (\alpha , 1)\) simulate \(2P\)}{18}{subsubsection.2.8.3}%
+\contentsline {subsubsection}{\numberline {2.8.4}\(P = (\alpha ^3, \alpha + 1)\) simulate \(2P\)}{18}{subsubsection.2.8.4}%
+\contentsline {subsubsection}{\numberline {2.8.5}Notes:}{18}{subsubsection.2.8.5}%
