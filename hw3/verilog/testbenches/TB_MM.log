@@ -1,0 +1,12 @@
+Time	A	B	Z
+0	xxx	xxx	xxx
+5	xxx	xxx	xxx
+10	010	100	xxx
+15	010	100	101
+20	010	100	101
+25	010	100	101
+30	101	111	101
+35	101	111	001
+
+If reached, no errors present in logic.
+End of simulation @ 40 ns

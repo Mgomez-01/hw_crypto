@@ -1,0 +1,29 @@
+# vlib /home/speedy/repos/coursework/hw_crypto/hw3/verilog/testbenches/work
+# ** Warning: (vlib-34) Library already exists at "/home/speedy/repos/coursework/hw_crypto/hw3/verilog/testbenches/work".
+#  vmap work /home/speedy/repos/coursework/hw_crypto/hw3/verilog/testbenches/work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work /home/speedy/repos/coursework/hw_crypto/hw3/verilog/testbenches/work 
+# Modifying modelsim.ini
+#  vsim work.TB_GFSQR
+# vsim work.TB_GFSQR 
+# Start time: 01:09:44 on Apr 01,2024
+# Loading work.TB_GFSQR
+# Loading work.GFSQR
+# Loading work.MM
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'sqrer'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_GFSQR/uut0/sqrer File: ../GFSQR.v Line: 10
+# ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'reset'.
+#  add wave -r /*
+#  run -all
+# Time	A	Z
+# 0	xxx	xxx
+# 10	010	100
+# 30	001	001
+# 50	011	101
+# End of simulation @ 60 ns
+# If reached, no errors present in logic.
+# ** Note: $finish    : /home/speedy/repos/coursework/hw_crypto/hw3/verilog/testbenches/TB_GFSQR.v(60)
+#    Time: 60 ns  Iteration: 0  Instance: /TB_GFSQR
+# End time: 01:09:44 on Apr 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 3
