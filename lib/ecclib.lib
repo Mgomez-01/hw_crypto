@@ -63,18 +63,30 @@ return(R);
 
 }
 
-proc scalarMult(int r, list P) {
+proc scalarMult(int num, list P) {
     list Q = 0, 0; // Identity element of the elliptic curve
     list R = P;    // Copy of the point P to be used in the multiplication
-    
+    int r = num;
+    int val = 0;
+    int multiplier = 1;
+    int testint = 1;
     while (r > 0) {
+    printf("r = %s",r);
+    printf("val = %s",val);
         if (r % 2 == 1) {
-            Q = PaddQ(Q, R); // Add R to Q if the current bit of r is 1
-        }
-        R = doubleP(R); // Double R
-        r = r div 2; // Move to the next bit
+	   "adding";
+	   Q = PaddQ(Q, R); // Add R to Q if the current bit of r is 1
+	   val = val + multiplier;
+	   r = r-1;
+        }else{
+	"doubling";
+	R = doubleP(R); // Double R
+	r = r div 2; // Move to the next bit
+	multiplier = multiplier * 2; // Update the multiplier for the next addition
+	}
     }
-    
+    printf("r = %s",r);
+    printf("val = %s",val);    
     return(Q);
 }
 
@@ -88,7 +100,7 @@ return(P_inv);
 }
 
 
-// Encryption
+// Encryption takes char as point on curve and R
 proc encryptChar(list Pval, int R) {
     list C1 = scalarMult(R, e1); // r * e1
     list e2 = scalarMult(D, e1); // d * e1, assuming d is known/private key
@@ -101,7 +113,6 @@ proc encryptChar(list Pval, int R) {
 proc decryptChar(list C1, list C2) {
     list dC1 = scalarMult(D, C1); // d * C1
     list Pval = PaddQ(C2, inverter(dC1)); // Effectively C2 - dC1
-    
     return(Pval);
 }
 
@@ -131,6 +142,84 @@ proc getPoint(list L, int index){
 list R = L[(2*index-1)][1], L[(2*index-1)][2];
 return(R);
 }
+
+
+// Assuming that the list is a list of points from proc above. This takes the index
+// and the List to then provide the index for the Point on the curve given 
+proc getIndex(list points, list target){
+    int index = - 1;
+    list point;
+    //"target";
+    //printf("(%s:%s)",target[1],target[2]);
+    int i = 1;
+    int cond = 1;
+    while (i < size(points) div 2)
+    {  
+	 point = points[(2*i-1)][1], points[(2*i-1)][2];
+	 //"point";
+	 //printf("(%s:%s)",point[1],point[2]);
+	 if(typeof(point) <> typeof(points)) {break;}
+	 if (target[1] == point[1])
+	 {
+	    //"x matches.";
+	    if (target[2] == point[2])
+	    {
+		index = i;
+		cond = 0;
+		//"y matches.------------------";
+	    }
+	 }
+	 if (cond==0)
+	 {
+	  //"exiting";
+	  break;
+	 }
+	 //printf("i:%s",i);
+         i = i + 1;
+    }
+    return(index);
+}
+
+
+
+// Assuming that the list is a list of points from proc above. This takes the index
+// and the List to then provide the index for the Point on the curve given 
+proc getInverseIndex(list points, list target){
+    int index = - 1;
+    list point;
+    //"target";
+    //printf("(%s:%s)",target[1],target[2]);
+    int i = 1;
+    int cond = 1;
+    while (i < size(points) div 2)
+    {  
+	 point = points[(2*i-1)][1], points[(2*i-1)][2];
+	 //"point";
+	 //printf("(%s:%s)",point[1],point[2]);
+	 if(typeof(point) <> typeof(points)) {break;}
+	 if (target[1] == point[1])
+	 {
+	    //"x matches.";
+	    if (target[2] == point[2])
+	    {
+		index = i;
+		cond = 0;
+		//"y matches.------------------";
+	    }
+	 }
+	 if (cond==0)
+	 {
+	  //"exiting";
+	  break;
+	 }
+	 //printf("i:%s",i);
+         i = i + 1;
+    }
+    
+    return((14 - index)%14);
+}
+
+
 
 
 
