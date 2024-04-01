@@ -44,13 +44,5 @@ P_text = e1; // point1 e1 = A
 C2 = PaddQ(PaddQ(doubleP(e2),e2),P_text);
 printf("C2 = P_text + %s*e2 = (%s, %s)",R, C2[1], C2[2]);
 "(C1,C2) -> Bob";
-"P = C2 - d*C1";
-"P = C2 + (d*C1)^-1";
-list d_c1 = PaddQ(doubleP(C1),C1);
-int inv_index = getInverseIndex(points, d_c1);
-int C2_index = getIndex(points, C2);
-printf("= (%s, %s) + (%s, %s)^-1 = P_%s + P_%s = P_%s = P_%s", C2[1], C2[2], d_c1[1], d_c1[2], C2_index, (14 - inv_index)-1, (C2_index + (14 - inv_index)-1 ), (C2_index + (14 - inv_index)-1 )%14);
-int plain_text_index = (C2_index + (14 - inv_index)-1 )%14;
-"now that we have the index, we can convert back to plain text with NumToChar function we made:";
-printf("point P_%s corresponds to %s", plain_text_index, NumToChar(plain_text_index - 1));
+printf("C1 (%s, %s) : C2 (%s, %s)", C1[1], C1[2], C2[1], C2[2]);
 quit;

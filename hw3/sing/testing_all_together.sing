@@ -1,0 +1,51 @@
+LIB "/home/speedy/repos/coursework/hw_crypto/lib/ecclib.lib";
+
+// Declare the ring over GF(8), with 2 variables, x and y
+ring r = (2, A), (y, x), lp;
+// This is the primitive polynomial given to us as a specification
+// Here X = \alpha
+minpoly = A^3 + A^2 + 1;
+
+// This is the non-singular elliptic curve also given to us as the spec Weirstrauss form E(A^2, 1)
+poly E = y^2 + x*y + x^3 + A^2*x^2 + 1;
+
+// number = element in the field
+int D, R;
+number x1, y1;
+list C1, C2;
+list e1, e2;
+list P_text;
+R = 3;
+D = 2;
+string P = "A";
+string ecrypted = "";
+x1 = A^3;
+y1 = A^5;
+e1 = x1, y1;
+list points = genPoints(e1);
+printf("Normal  generator P = (%s, %s)", e1[1], e1[2]);
+int value, ret_ind, enc_ind;
+list cur, enc_p, decrypted;
+
+// for (int i = 1; i <= size(P); i = i + 1){
+//     printf("i:%s", i);
+//     value = CharToNum(P[i]) + 1;
+//     cur = getPoint(points,value);
+//     printf("P[%s] = %s, char:%s", i, P[i], value);
+//     printf("corresponding point from gen: [%s]=(%s,%s)", value, cur[1], cur[2]);
+//     enc_p = encryptChar(cur,R);
+//     printf("corresponding encrypted C1 and C2 from gen:");
+//     printf("C1: (%s,%s)", enc_p[1][1], enc_p[1][2]);
+//     printf("C2: (%s,%s)", enc_p[2][1], enc_p[2][2]);
+//     decrypted = decryptChar(enc_p[1], enc_p[2]);
+//     printf("decrypted: (%s,%s)", decrypted[1],decrypted[2]);
+//     enc_ind = getIndex(points, enc_p[2]);
+//     ret_ind = getIndex(points, decrypted);
+//     if (ret_ind == -1)
+//     {
+//         "broken index. dec point not in generated list.";
+//     }
+//     else {
+//     printf("char before encrypting: %s, val:%s,  after:%s,  decrypted:%s", NumToChar(value - 1), value - 1,  NumToChar(enc_ind), NumToChar(ret_ind));
+//     }
+// }

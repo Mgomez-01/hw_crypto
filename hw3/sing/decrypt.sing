@@ -24,25 +24,14 @@ x1 = A^3;
 y1 = A^5;
 e1 = x1, y1;
 list points = genPoints(e1);
-printf("Normal  generator P = (%s, %s)", e1[1], e1[2]);
-
-
-printf("e1: (%s, %s)",e1[1], e1[2]);
 e2 = doubleP(e1);
 int e2_ind = getIndex(points,e2);
-printf("e2: (%s, %s)",e2[1], e2[2]);
-printf("e2 Index: %s",e2_ind);
 list point_at_e2_index = getPoint(points, e2_ind);
-printf("points[e2_index]: (%s,%s)",point_at_e2_index[1],point_at_e2_index[2]);
-"(e1,e2,Ep) -> Alice";
-"alice calcs C1 and C2";
-printf("C1 = r*e1 = %s*e1 =", R);
 C1 = PaddQ(doubleP(e1),e1);
-printf("C1: (%s, %s)",C1[1], C1[2]);
-printf("plain text P_tex:%s corresponds to point:%s",P,CharToNum(P)+1);
 P_text = e1; // point1 e1 = A
 C2 = PaddQ(PaddQ(doubleP(e2),e2),P_text);
-printf("C2 = P_text + %s*e2 = (%s, %s)",R, C2[1], C2[2]);
+// rest of the algo for the decrypting
+ 
 "(C1,C2) -> Bob";
 "P = C2 - d*C1";
 "P = C2 + (d*C1)^-1";
