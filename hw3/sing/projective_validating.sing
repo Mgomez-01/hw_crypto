@@ -1,0 +1,73 @@
+/*
+This Singular file demonstrates Point addition in
+Projective Coordinates
+*/
+
+//option(redSB) = compute a reduced Groebner basis
+// reduced GB = removes all redundancy
+// simplifies your computations
+option(redSB);
+
+
+
+// Declare the ring over GF(8), with ALL variables
+// Make sure that the variable order is as given
+// C depends on B, so C appears before B, and so on
+// X1,Y1,Z1, X2,Y2,Z2 come last, as everything depends on them
+
+ring r = (2, al), (X3,Y3,Z3,E,D,C,B,A,B2,A2,X1,Y1,Z1,X2,Y2,Z2), lp;
+// This is the primitive polynomial given to us as a specification
+// Here al = \alpha
+minpoly = (al)^3 + (al)^2 + 1;
+
+// This is the non-singular elliptic curve also given to us as the
+// spec in affine coordinates
+poly E = Y1^2 + X1*Y1 + X1^3 + (al^2)*X1^2 + 1;
+
+// Now we will compute projective point addition
+// (X3,Y3,Z3) = (X1,Y1,Z1) + (X2,Y2,Z2)
+
+//for any affine (x1,y1), projective (x1,y1,1),
+// i.e select z1=1 for simplicity
+
+poly f1 = A + X2*Z1 + X1;
+poly f2 = B + Y2*Z1 + Y1;
+poly f1 = A2 + X1*Z1;
+poly f2 = B2 + Z1^4 + X1^4;
+poly f3 = C+ A + B;
+poly f4 = D+ A*A*(A + al^3*Z1) + Z1*B*C;
+poly f5 = X3 + A2*B2;
+poly f6 = Y3 + A2*X1^4 + B2*(X1^2 +Y1*Z1 + A2);
+poly f7 = Z3 + A2^3;
+
+ideal J = f1, f2, f3, f4, f5, f6, f7;
+ideal J0 = A^8-A, B^8-B,A2^8-A2, B2^8-B2, C^8-C, D^8-D, E^8-E, X1^8-X1, Y1^8-Y1,
+Z1^8-Z1, X2^8-X2, Y2^8-Y2, Z2^8-Z2;
+
+// Let us select P = (x1 = \al, y1 = \al^2)
+// and Q = (x2 = \al^3, y2 = \al^5)
+// In affine, R = P+Q = (\alpha^2,1)
+
+// Test in projective coordinates, let Z1 = Z2 = 1
+
+// Compute R using the substitute command and the Groebner basis
+// algorithm
+ideal G = slimgb(J); // slim groebner basis
+
+// ideal = set of polynomials
+
+//P = (al, al^2), Q = (al^3, al^5) = 2P,
+// See that R = 3P = (al^2,1)
+"========================";
+"Working out the last HW points to convert back from projective:";
+"========================";
+ideal I = subst(G, X1,al^3, Y1,al+1, Z1, 1);I;
+printf("2P = 20P = 6P = (%s, %s)",(I[7] - X3) div (I[5] - Z3), (I[6] - Y3) div (I[5] - Z3));
+"========================";
+
+I = subst(G, X1,al, Y1,1, Z1, 1);I;
+printf("2P = (%s, %s)",(I[7] - X3) div (I[5] - Z3), (I[6] - Y3) div (I[5] - Z3));
+"========================";
+
+
+quit;
