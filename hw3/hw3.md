@@ -1,0 +1,634 @@
+
+# Table of Contents
+
+1.  [HW3 - Problem 1](#orgf60c1a5)
+    1.  [a) what are $\alpha^4 , \alpha^5 , \alpha^6$ when reduced (mod $P(\alpha)$)](#org2c2534a)
+    2.  [b)  Enumerate all the points on the curve](#org4a87574)
+    3.  [c)  Identify a point $P(x, y)$ that acts as a primitive element](#org2c9ab64)
+    4.  [d) Is its inverse point $P^{-1}$ also a generator of G?](#orga3078a1)
+    5.  [e) simulate El Gamal encipherment](#org205c00a)
+        1.  [selecting parameters for encryption](#org038cd02)
+        2.  [Selecting plain-text](#org13b0325)
+        3.  [process](#org8988d38)
+        4.  [encrypter](#org974f91b)
+        5.  [decrypter](#org6a3ce00)
+        6.  [Demonstrate decryption by re-obtaining the plaintext $P$](#orga4e8e1e)
+    6.  [f) Notes:](#orge5c67ac)
+    7.  [g) Permissions for using skeleton provided](#orga263e69)
+2.  [Problem 2](#orgebe27f1)
+    1.  [a) Defining field and terms](#org69b0e20)
+    2.  [b) Design multiplier](#org31aded2)
+    3.  [c) Implementation in Verilog](#org72130e5)
+    4.  [d) Design Squarer](#orge6195be)
+    5.  [e) Design GFADD](#orgb66f63a)
+    6.  [f) Implement Point doubling in projective coordinates](#orgd4de6fe)
+    7.  [g) DFG](#org582222d)
+    8.  [h) Simulation and example demonstrations](#org2dec782)
+        1.  [Defining projective plane](#orgfab4e54)
+        2.  [$P = (\alpha, 1)$ simulate $2P$](#orgba44309)
+        3.  [$P = (\alpha^3, \alpha + 1)$ simulate $2P$](#org327ffb9)
+        4.  [Notes:](#org76f73f1)
+3.  [Appendix A - ECC LIB](#orgdd087f4)
+
+\newpage
+
+
+<a id="orgf60c1a5"></a>
+
+# HW3 - Problem 1
+
+design an elliptic curve crypto-cipher over a Galois field of the type $\mathbb{F}_{2^k}$.  Implement the key generation, encryption and decryption modules in Singular, and demonstrate the correct simulation.
+
+
+<a id="org2c2534a"></a>
+
+## a) what are $\alpha^4 , \alpha^5 , \alpha^6$ when reduced (mod $P(\alpha)$)
+
+Consider the finite field $\mathbb{F}_{2^k} \equiv \mathbb{F}_{2}[x]$ (mod $P(x)$) where $P(x) = x^3 + x^2 + 1$. Let $\alpha$ be a root of $P(x)$, i.e. $P(\alpha) = 0$. Note that $P(x)$ is indeed a primitive polynomial. Using Singular, enumerate the field elements $F_8 = {0, \alpha^7 = 1, \alpha, \alpha^2, \alpha^3 = \alpha^2 + 1, \alpha^4 =?, . . . , \alpha^6 =?}$. In other words, what are $\alpha^4 , \alpha^5 , \alpha^6$ when reduced (mod $P(\alpha)$)?
+
+    start=$(date +%s.%N)
+    Singular ./sing/point_enumeration.sing | grep -v -e \
+    				      "Mathematik\|^ \|//\|\*\* loaded\|\*\* library"
+    end=$(date +%s.%N)
+    echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+
+As can be seen in the output below, $\alpha^4,\ \alpha^5,\ \alpha^6$ are as follows:
+
+\begin{align*}
+\alpha^4 &= \alpha^2+\alpha+1\\
+\alpha^5 &= \alpha+1\\
+\alpha^6 &= \alpha^2+\alpha
+\end{align*}
+
+
+<a id="org4a87574"></a>
+
+## b)  Enumerate all the points on the curve
+
+    start=$(date +%s.%N)
+    Singular ./sing/point_gen.sing  | grep -v -e \
+    				      "Mathematik\|^ \|//\|\*\* loaded\|\*\* library"
+    end=$(date +%s.%N)
+    echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+
+Shown above is the enumeration of the points and below they are added with nicer formatting.
+
+\begin{align*}
+  P &= (\alpha^2+1, \alpha+1)\\
+  2P &= (\alpha^2, \alpha^2+\alpha)\\
+  3P &= (\alpha^2+\alpha, \alpha^2+\alpha+1)\\
+  4P &= (\alpha, \alpha+1)\\
+  5P &= (\alpha+1, 0)\\
+  6P &= (\alpha^2+\alpha+1, \alpha^2+1)\\
+  7P &= (0, 1)\\
+  8P &= (\alpha^2+\alpha+1, \alpha)\\
+  9P &= (\alpha+1, \alpha+1)\\
+  10P &= (\alpha, 1)\\
+  11P &= (\alpha^2+\alpha, 1)\\
+  12P &= (\alpha^2, \alpha)\\
+  13P &= (\alpha^2+1, \alpha^2+\alpha)\\
+  14P &= (0, 0)
+ \end{align*}
+
+
+<a id="org2c9ab64"></a>
+
+## c)  Identify a point $P(x, y)$ that acts as a primitive element
+
+This result above provided by the Singular procedure proves that we can generate the points on the curve as well as proving that our starting point below is a generator.
+
+\begin{align*}
+P &= (\alpha^3,\alpha^5) = (\alpha^2 + 1, \alpha + 1)
+\end{align*}
+
+
+<a id="orga3078a1"></a>
+
+## d) Is its inverse point $P^{-1}$ also a generator of G?
+
+Let a point $P(x1 , y1)$ be a generator of $G = \left<E, +\right>$. Is its inverse point $P^{-1}$ also a generator of $G$? If yes, then prove it. Otherwise, give a counterexample.
+\newline
+\newline
+If we take the expression for the primitive inverse point and apply it to our point $P$, we can then run the same algorithm for generation of points on the inverse to see what we get.
+
+\begin{align*}
+ P &= (x_1,y_1)\\
+ P^{-1} &= (x_1,x_1+y_1)\\
+ P &= (\alpha^2+1, \alpha+1)\\
+ P^{-1} &= (\alpha^2+1, \alpha^2+\alpha)
+\end{align*}
+
+    start=$(date +%s.%N)
+    Singular ./sing/point_inversion.sing  | grep -v -e \
+    				      "Mathematik\|^ \|//\|\*\* loaded\|\*\* library"
+    end=$(date +%s.%N)
+    echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+
+\noindent
+Looks like the results show that we can indeed perform point generation using the inverse point. Here is the set of points generated by the inverse point. 
+
+\begin{align*}
+  P^{-1} &= (\alpha^2+1, \alpha^2+\alpha)\\
+  2P^{-1} &= (\alpha^2, \alpha)\\
+  3P^{-1} &= (\alpha^2+\alpha, 1)\\
+  4P^{-1} &= (\alpha, 1)\\
+  5P^{-1} &= (\alpha+1, \alpha+1)\\
+  6P^{-1} &= (\alpha^2+\alpha+1, \alpha)\\
+  7P^{-1} &= (0, 1)\\
+  8P^{-1} &= (\alpha^2+\alpha+1, \alpha^2+1)\\
+  9P^{-1} &= (\alpha+1, 0)\\
+  10P^{-1} &= (\alpha, \alpha+1)\\
+  11P^{-1} &= (\alpha^2+\alpha, \alpha^2+\alpha+1)\\
+  12P^{-1} &= (\alpha^2, \alpha^2+\alpha)\\
+  13P^{-1} &= (\alpha^2+1, \alpha+1)\\
+  14P^{-1} &= (0, 0)
+ \end{align*}
+
+ \noindent
+Notice that this list is the same as those generated by $P$ but in reverse. As in point $P$ is the same as point $13P^{-1}$, point $2P$ is point $12P^{-1}$, and so on.
+
+
+<a id="org205c00a"></a>
+
+## e) simulate El Gamal encipherment
+
+Using the solutions to the above questions, you will now simulate El Gamal encipherment over the above elliptic curve.
+
+
+<a id="org038cd02"></a>
+
+### selecting parameters for encryption
+
+Based on Fig.1, which is reproduced from our slides, select $e_1$ as a generator of $G = \left<E, +\right>$. Select integers $d$, $r$, such that $d \ne r$.
+
+\begin{center}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{./images/fig1_hw3.png}
+    \caption{El Gamal over ECC}
+    \label{fig:fig1_hw3}
+  \end{figure}
+\end{center}
+
+
+<a id="org13b0325"></a>
+
+### Selecting plain-text
+
+Select the plaintext $P$ as a point on the elliptic curve. Compute $C_1$ , $C_2$ to demonstrate encryption. \textcolor{red}{NOTE*}[Avoid $P = (0, 1)$, as it is a trivial point on our non-supersingular curves over $\mathbb{F}_{2^k}$ ].
+I will choose a $d$ to be some number and calculate the $e_2$ value. After that, we will calculate the $c_1$ and $c_2$ with the $r$ chosen. Once we are set, we can use the procedures in my ecclib library to process the data. We can map letters up to the 14th letter in the alphabet, and see how that goes.
+
+
+<a id="org8988d38"></a>
+
+### process
+
+\noindent
+As seen in the slides, we can follow the following process to get the encryption done. we select $e_1$ first, then proceed as Bob.
+
+\begin{align*}
+\text{Bob} : &\text{Select }e_1\\
+&\text{Select }d\\
+\text{Calculate: }e2 &= d\cdot e_1\\
+\text{Bob }(e1,e2,E_p) &\xrightarrow{}\text{Alice}\\
+\text{Alice} : C_1 &= r\cdot e_1\\
+C_2 &= P + r\cdot e_2\\
+\text{Alice }(C_1, C_2) &\xrightarrow{}\text{Bob}
+\end{align*}
+
+
+<a id="org974f91b"></a>
+
+### encrypter
+
+\begin{align*}
+\text{Alice} : C_1 &= r\cdot e_1\\
+C_2 &= P + r\cdot e_2\\
+\text{Alice }(C_1, C_2) &\xrightarrow{}\text{Bob}
+\end{align*}
+
+\noindent
+The encrypter expects that the $e_1$ and $e_2$ values are already known as well as the curve we use for encoding points. Knowing this, we can first set up the parameters needed for this calculation and then proceed with calculating the $C_1$ and $C_2$ values. This process is shown above and in the output of encrypter.sing below:
+
+    cat ./sing/encrypt.sing
+
+
+<a id="org6a3ce00"></a>
+
+### decrypter
+
+\begin{align*}
+\text{Bob} : P = C_2 - d\cdot C_1\\
+\end{align*}
+
+\noindent
+The decrypting happens on Bobs end and also requires the same setup. So here we set up the work needed to get $C_1$ and $C_2$ as we did before, but now calculate the $P$ value using that pair of points calculated by Alice. This process was already covered above but needed here and only the last calculation is relevant to the decryption:
+
+    cat ./sing/decrypt.sing
+
+
+<a id="orga4e8e1e"></a>
+
+### Demonstrate decryption by re-obtaining the plaintext $P$
+
+Using $d = 2$ and $r = 3$:
+
+\begin{align*}
+e_1 &= P_1 = (\alpha^3, \alpha^5)\\
+e_2 &= d\cdot e_1 = 2\cdot e_1\\
+e_2 &= 2\cdot P_1 = P_2 = (\alpha^2, \alpha^2+\alpha)
+\end{align*}
+
+Encrypting: $P = A$ and we can map this letter to the first point $P_1$. If we could continue for the other letters, we would have to stor at 14 since we only have that many unique points. Meaning we can use up to N in the alphabet.
+
+\begin{align}
+A &= P_{1}\\
+B &= P_{2}\\
+C &= P_{3}\\
+D &= P_{4}\\
+E &= P_{5}\\
+F &= P_{6}\\
+G &= P_{7}\\
+H &= P_{8}\\
+I &= P_{9}\\
+J &= P_{10}\\
+K &= P_{11}\\
+L &= P_{12}\\
+M &= P_{13}\\
+N &= P_{14}
+\end{align}
+
+Getting started, we calculate the $C_1$ and $C_2$ that we need to send back to Bob and include our point encoded letter $A$. 
+
+\begin{align*}
+C_1 &= r\cdot e_1 = 3\cdot P_1 = P_3\\
+    &= (\alpha^2+\alpha, \alpha^2+\alpha+1)\\
+C_2 &= P + r\cdot e_2 = P_1 + 3\cdot P_2 = P_1 + P_6 = P_7\\
+    &= (0, 1)
+\end{align*}
+
+Seeing it here, any letter we come up with would just have to have $P_6$ added to it if we keep the $r$ the same.
+  
+  
+Decrypting $A$:
+
+\begin{align*}
+\text{Bob} : P &= C_2 - d\cdot C_1\\
+&= P_7 - P_6 = P_7 + P_8 = P_{15}\mod{14} = P_1\\
+&= (\alpha^2+1, \alpha+1)
+\end{align*}
+
+Say we had a message like the text "JACK", we can encrypt each letter with the corresponding point.
+
+\begin{align*}
+\text{JACK} &\xrightarrow{MAP}P_{10}P_{1}P_{3}P_{11}\\
+P_{10} &\xrightarrow{ENC} P_{16}\mod{14} = P_{2}\\
+P_{1} &\xrightarrow{ENC} P_{7}\mod{14} = P_{7}\\
+P_{3} &\xrightarrow{ENC} P_{9}\mod{14} = P_{9}\\
+P_{11} &\xrightarrow{ENC} P_{17}\mod{14} = P_{3}\\
+ &\xrightarrow{} P_{2}P_{7}P_{9}P_{3}\\
+ &\xrightarrow{} BGIC
+\end{align*}
+
+\begin{align*}
+P_{2}P_{7}P_{9}P_{3}&\xrightarrow{DEC} \\
+P_{2} - P_6 &= P_{2} + P_{8} \xrightarrow{DEC} P_{10}\mod{14} = P_{10}\\
+P_{7} - P_6 &= P_{7} + P_{8} \xrightarrow{DEC} P_{15}\mod{14} = P_{1}\\
+P_{9} - P_6 &= P_{9} + P_{8} \xrightarrow{DEC} P_{17}\mod{14} = P_{3}\\
+P_{3} - P_6 &= P_{3} + P_{8} \xrightarrow{DEC} P_{11}\mod{14} = P_{11}\\
+P_{10}P_{1}P_{3}P_{11}&\xrightarrow{MAP}\text{JACK}
+ \end{align*}
+
+Obviously, this is not secure. We would really want to have a large number of points that we can use for mapping and include more chars. enough to hold all chars in the Unicode standard or something, and also change up the r value used in the calculation along the way. This just made it simpler for us in the displaying of the algo. Below is the output of the files covered above. Instead of running for the whole word like I wanted, I ran into some snags with indices as the way the list is populated in Singular is non trivial. It stores values linearly, so the indices are not a 1 to 1 mapping. I created some helper procedures that are shown in ecclib.lib, and the location of this must be updated in the files I submitted. Unfortunately, Singular is not great with library linking for lib inclusions like C. 
+
+    start=$(date +%s.%N)
+    Singular ./sing/encrypt.sing | grep -v -e \
+    				     "Mathematik\|^ \|//\|\*\* loaded\|\*\* library"
+    end=$(date +%s.%N)
+    echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+
+    start=$(date +%s.%N)
+    echo "#+end_example"
+    Singular ./sing/decrypt.sing | grep -v -e \
+    				    "Mathematik\|^ \|//\|\*\* loaded\|\*\* library"
+    echo "#+end_example"
+    end=$(date +%s.%N)
+    echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+
+\noindent
+To get this done, I implemented a few things in my own ecc library that I can use in the future. Included in this library are the following procedures:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Procedure Name  & args &  returns  & working \\
+\hline
+doubleP(a) & Point as list of $x,y$  & Point as list of $x,y$ & \checkmark \\
+\hline
+PaddQ(a,b) & Points P,Q as list of $x,y$ & Point as list of $x,y$ & \checkmark \\
+\hline
+genPoints(a) & Point as list of $x,y$ & List of points as a list of lists  & \checkmark \\
+\hline
+getPoint(a,b) & list of Points&&\\
+& an index & Point as list of $x,y$ & \checkmark \\
+\hline
+getIndex(a,b) & list of Points&&\\
+&  target Point as list of $x,y$ & Index of point  & \checkmark \\
+\hline
+getInverseIndex(a,b) & list of Points&&\\
+&  target Point as list of $x,y$ & Point as list of $x,y$  & \checkmark \\
+\hline
+NumToChar(a)&point number & char of letter & \checkmark\\
+\hline
+CharToNum(a)& string of letter & point number & \checkmark\\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+I did not include the full file here or the algos, but these can be referenced in ecclib.lib. There are some other procedures that I am working on that will be used for full message encryption and decryption later on when I get around to fixing the problems. 
+
+
+<a id="orge5c67ac"></a>
+
+## f) Notes:
+
+Note: Implement the above in Singular. Please make use of “procedures” in Singular to make your code Modular. Print out the relevant parts of your computation to make it easier for me and  the grader  to grade it when I run your code.  Attach a README to help me understand how to run your code.  Also,  in a PDF file, please  describe  (briefly)  which points you are using as generators, what are your keys $e_1$ , $e_2$ , $d$, $r$ and the corresponding $P$, $C_1$, $C_2$ values. 
+  
+\newline
+\noindent
+Description of params for easy lookup:
+
+\begin{align*}
+  d &= 2\\
+  r &= 3\\
+e_1 &= (\alpha^3,\alpha^5)\\
+e_2 &= (\alpha^2,\alpha^2 + \alpha)\\
+  P &= (\alpha^2 + 1,\alpha + 1)\\
+C_1 &= (\alpha^2 + \alpha,\alpha^2 + \alpha + 1)\\
+C_2 &= (0,1)\\
+\end{align*}
+
+\noindent
+The description technically lies within this file as the output of the code is inline as well as the commands run to get them. All of them can be copy pasted into the terminal and the same results should be present as long as the lib inclusion is set up for the environment the grader is using. Please reach out and let me know if there are problems with the execution, and I can help setting up your environment correctly. 
+
+
+<a id="orga263e69"></a>
+
+## g) Permissions for using skeleton provided
+
+It goes without saying: feel free to borrow inspirations from the Singular files I used to give you a demo of ECC El Gamal in class; those Singular files are uploaded on Canvas: ecc-f8-example.sing.
+
+
+<a id="orgebe27f1"></a>
+
+# Problem 2
+
+In this question, you will design a digital logic circuit that performs point doubling $R = 2P$  (not point addition!) over elliptic curves using the projective coordinate system. You will first design (or re-use from HW 2) a multiplier circuit, use it as a building block to perform doubling. You will implement your design in Verilog or VHDL, and demonstrate that point addition is being performed correctly.
+
+
+<a id="org69b0e20"></a>
+
+## a) Defining field and terms
+
+We will use the same finite field as in the previous question: F8 ≡ F2 [x] (mod P(x) =x3 + x2 + 1) with P(α) = 0. Denote the degree of P(x) as k; of course, here k = 3.
+
+
+<a id="org31aded2"></a>
+
+## b) Design multiplier
+
+Design a k = 3 bit finite field multiplier that takes A = {a2, a1 , a0 } and B = {b2 , b1 , b0 } as 3-bit inputs, and produces Z = {z2 , z1 , z0} as a 3-bit output. Note that we will have:
+
+\begin{align*}
+A &= a_0 + a_1 \alpha + a_2\alpha^2\\
+B &= b_0 + b_1 \alpha + b_2\alpha^2\\
+Z &= z_0 + z_1 \alpha + z_2\alpha^2
+\end{align*}
+
+\noindent
+Such that $Z = A \cdot B$ mod $P(\alpha))$. Of course, you have already designed 2 multipliers in the last HW (Mastrovito and Montgomery). Just pick whichever one you like. Also, please double check that the primitive polynomial that you used in the design of HW 2 was indeed $P(x) = x^3 + x^2 + 1$.
+  
+  
+\noindent 
+I prevously attempted implementation of the algorithm for the mastrovito multiplier over $\mathbb{F}_8$ but was unable to get it working as intended. Here I have tried setting up the professors implementation of the multiplier which is closer to the one that I made with my GFMult in HW2.
+
+    cat ./verilog/MM.v
+
+
+<a id="org72130e5"></a>
+
+## c) Implementation in Verilog
+
+Implement the design in Verilog/VHDL (GFMult(A, B, Z) module) and demonstrate/simulate using a testbench the following input-output combinations:
+
+\noindent
+Here is the GFMULT module in verilog:
+
+    cat ./verilog/GFMult.v
+
+1.  
+
+    \begin{align*}
+     A &= (0, 1, 0) = \alpha \\
+     B &= (1, 0, 0) = \alpha^2\\
+     Z &= (1, 0, 1) = \alpha^2 + 1
+    \end{align*}
+
+2.  
+
+    \begin{align*}
+    A &= \alpha^2 + 1\\
+    B &= \alpha^2 + \alpha + 1
+    \\Z &= ?
+    \end{align*}
+    
+    \noindent
+    Here is the results of my setup for these. I create a module and run in modelsim. The modules have testbenches that all export a log file to .log in the directory where the files exist. Looking at the output of this we can see that $\alpha\cdot \alpha^2$ comes out to be $101$ which matched up with what we expect given that $\alpha^3 = \alpha^2 + 1$. Similarly ,we see that multiplying $\alpha^2 + 1$ and $\alpha^2 + \alpha + 1$ results in $1$, shown below:
+    
+    \begin{align*}
+    (\alpha^2 + \alpha + 1)(\alpha^2 + 1) &= \alpha^4 + \alpha^2 + \alpha^3 + \alpha + \alpha^2 + 1\\
+    &= \alpha^4 + \textcolor{red}{\cancelto{\textcolor{black}{0}}{\textcolor{black}{2\alpha^2}}} + \alpha^3 + \alpha + 1 \\
+    &= \alpha^4 + \alpha^2 + 1 + \alpha + 1 \\
+    &= \alpha^3\alpha + \alpha^2 + \alpha + \textcolor{red}{\cancelto{\textcolor{black}{0}}{\textcolor{black}{2}}}\\
+    &= (\alpha^2 + 1)\alpha + \alpha^2 + \alpha\\
+    &= \alpha^3 + \alpha + \alpha^2 + \alpha\\
+    &= \alpha^3 + \textcolor{red}{\cancelto{\textcolor{black}{0}}{\textcolor{black}{2\alpha}}} + \alpha^2 \\
+    &=  \alpha^2 + 1 + \alpha^2 \\
+    &= \textcolor{red}{\cancelto{\textcolor{black}{0}}{\textcolor{black}{2\alpha^2}}} + 1\\
+    &= 1
+    \end{align*}
+    
+        cat ./verilog/testbenches/TB_MM.log
+    
+    \noindent
+    Looking at this output from GFMULT(), implemented using the MM style from HW2, we can see that the result of the second one turns out to be $1$. This agrees with the math performed by hand and adheres to the assertion checks for that as we see there were no errors present in the output log. 
+
+
+<a id="orge6195be"></a>
+
+## d) Design Squarer
+
+Using your GFMult module, create a squarer module by connecting $A = B$ inputs; call it the
+GFSQR module.
+  
+  
+\noindent
+Here is the module I made for the squarer using the MM block and tying the inputs together so that the multiplication happens with the same input twice:
+
+    cat ./verilog/GFSQR.v
+
+.
+
+\noindent
+Notice that the $B$ here is tied to be the same as $A$ prior to any working happening in the output $Z$. This is a simple way to implement it without needing a custom module. Below we can see the results of the testbench log created when testing the module.
+
+    cat ./verilog/testbenches/TB_GFSQR.log
+
+
+<a id="orgb66f63a"></a>
+
+## e) Design GFADD
+
+Design a GFADD(A, B, Z) Verilog Module, such that $Z = A+B$ over $\mathbb{F}_8$ . [Remember, addition
+in Galois Fields is just a bit-wise XOR].
+  
+\textcolor{white}{ d }
+
+\noindent
+GFADD is simplest since we know it to be an XOR operation.
+
+    cat ./verilog/GFADD.v
+
+
+<a id="orgd4de6fe"></a>
+
+## f) Implement Point doubling in projective coordinates
+
+In the lecture slides (ECC-GF.pdf), I have given you the correct formulas for point addition
+and doubling operations. Implement a Verilog Module to perform point doubling over projective
+coordinates. Your PointDouble$(X_3,Y_3,Z_3,X_1,Y_1,Z_1)$ Verilog/VHDL module should instan-
+tiate GFADD, GFMult, GFSQR modules accordingly to compute each of the 3-bit $X_3, Y_3, Z_3$
+outputs.
+
+  
+  
+\noindent
+Implementing this in verilog can be done in the same fashion that we do in the example projective coordinates sing file provided.
+
+    cat ./sing/ecc-projective.sing
+
+A few things to start with are shown below:
+
+\begin{align*}
+ E(\alpha^2, 1) &= y^2 + x*y + x^3 + (\alpha^2)*x^2 + 1\\
+ E_p(\alpha^2, 1) &= y^2Z + x*yZ + x^3Z + (\alpha^2)*x^2Z + 1Z^3\\
+(x,y) &\xrightarrow{Proj}(x,y,z)
+\end{align*}
+
+We need the calculations for point doubling to be the following:
+
+\begin{align*}
+A &= x\cdot z\\
+B &= b\cdot z^4 + x^4\\
+x_p &= A\cdot B\\
+y_p &= x^4\cdot A + B\cdot (x^2 + y\cdot z + A)\\
+z_p &= A^3\\
+(x_p,y_p,z_p) &= 2\cdot(x,y,z)
+\end{align*}
+
+\noindent
+Implementation in verilog is shown below and a few test vectors shown, but still not correct.
+
+    cat ./verilog/DOUB_PROJ.v
+
+
+<a id="org582222d"></a>
+
+## g) DFG
+
+Draw a Data Flow Graph (DFG) for $X_3, Y_3, Z_3$, using the 3 operators, to show how your
+adders, multipliers and squarers are organized.
+
+\begin{center}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=19.5cm]{./images/DATA_FLOW_GRAPH_projective.pdf}
+    \caption{Dataflow graph}
+    \label{fig:dfg}
+  \end{figure}
+\end{center}
+
+
+<a id="org2dec782"></a>
+
+## h) Simulation and example demonstrations
+
+ Demonstrate that your PointDouble() module correctly computes the doubling of the
+following affine points:
+
+
+<a id="orgfab4e54"></a>
+
+### Defining projective plane
+
+Pick $Z_1 = 1$ to keep computations simple. Note that since each coordinate of a point is
+in $\mathbb{F}_8$ , each of $X_1, Y_1, Z_1$ is a 3-bit vector.
+
+
+<a id="orgba44309"></a>
+
+### $P = (\alpha, 1)$ simulate $2P$
+
+For affine point $P = (\alpha, 1)$, simulate $2P$ on your Verilog Testbench. What is $2P$?  
+\noindent
+Since we have the point above $P$, which corresponds to the point $10P$ from our generated list, we can tell that the result should be $20P \mod{14}$ or $6P$.
+
+\begin{align*}
+ 2P &= 2*(\alpha, 1) = (\alpha^2 + \alpha + 1, \alpha^2 + 1)\\
+\end{align*}
+
+
+<a id="org327ffb9"></a>
+
+### $P = (\alpha^3, \alpha + 1)$ simulate $2P$
+
+For affine point $P = (\alpha^3, \alpha + 1)$, simulate $2P$ on your Verilog Testbench. What is $2P$ for
+this case?  
+\noindent
+In this one, we can see we have the same as point $P$ from our generated list. This point $P$ doubled would get us $2P$ or the result below: 
+
+\begin{align*}
+  2P &= (\alpha^2, \alpha^2+\alpha)\\
+\end{align*}
+
+
+<a id="org76f73f1"></a>
+
+### Notes:
+
+Note that $(X_1 , Y_1 , Z_1 )$ computed by your circuit is actually $(\frac{X_1}{Z_1}, \frac{Y_1}{Z_1})$ in the affine
+space! You can of course check your answer with Singular.
+
+    cat ./verilog/testbenches/TB_DOUB_PROJ.log
+
+We can now calculate the last bits with the projective version of the algorithm and show that the results are as we expect. The output being normalized by $Z$ means we must undo that to get back the normal points. The output of the testbench shows the resulting values are indeed normalized, and thus match the output shown in the results of the substitution in Singular. By undoing the normalization, we get back the results answered above.  
+
+\noindent
+Here, we can see the validation output agrees with our verilog results.
+
+    start=$(date +%s.%N)
+    Singular ./sing/projective_validating.sing | grep -v -e \
+    				      "Mathematik\|^ \|//\|\*\* loaded\|\*\* library"
+    end=$(date +%s.%N)
+    echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+
+\newpage 
+
+
+<a id="orgdd087f4"></a>
+
+# Appendix A - ECC LIB
+
+    cat ../lib/ecclib.lib
+

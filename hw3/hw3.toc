@@ -25,19 +25,21 @@
 \contentsline {subsubsection}{\numberline {2.2.1}Verilog code for mastro mult}{12}{subsubsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.3}c) Implementation in Verilog}{13}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}GFMULT.v file}{13}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}MM.v file}{13}{subsubsection.2.3.2}%
-\contentsline {subsubsection}{\numberline {2.3.3}output of TB\_MM.log}{14}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.2}output of TB\_MM.log}{14}{subsubsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.4}d) Design Squarer}{14}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}output of TB\_GFSQR}{14}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.1}output of TB\_GFSQR}{15}{subsubsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.2}output of TB\_GFSQR.log}{15}{subsubsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.5}e) Design GFADD}{15}{subsection.2.5}%
 \contentsline {subsubsection}{\numberline {2.5.1}GFADD.v file}{15}{subsubsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.6}f) Implement Point doubling in projective coordinates}{15}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.6}f) Implement Point doubling in projective coordinates}{16}{subsection.2.6}%
 \contentsline {subsubsection}{\numberline {2.6.1}Proj Point Doubling Implementation}{16}{subsubsection.2.6.1}%
 \contentsline {subsection}{\numberline {2.7}g) DFG}{17}{subsection.2.7}%
 \contentsline {subsection}{\numberline {2.8}h) Simulation and example demonstrations}{17}{subsection.2.8}%
-\contentsline {subsubsection}{\numberline {2.8.1}Results of Point Doubling Projective log}{17}{subsubsection.2.8.1}%
-\contentsline {subsubsection}{\numberline {2.8.2}Defining projective plane}{17}{subsubsection.2.8.2}%
-\contentsline {subsubsection}{\numberline {2.8.3}\(P = (\alpha , 1)\) simulate \(2P\)}{18}{subsubsection.2.8.3}%
-\contentsline {subsubsection}{\numberline {2.8.4}\(P = (\alpha ^3, \alpha + 1)\) simulate \(2P\)}{18}{subsubsection.2.8.4}%
-\contentsline {subsubsection}{\numberline {2.8.5}Notes:}{18}{subsubsection.2.8.5}%
+\contentsline {subsubsection}{\numberline {2.8.1}Defining projective plane}{17}{subsubsection.2.8.1}%
+\contentsline {subsubsection}{\numberline {2.8.2}\(P = (\alpha , 1)\) simulate \(2P\)}{17}{subsubsection.2.8.2}%
+\contentsline {subsubsection}{\numberline {2.8.3}\(P = (\alpha ^3, \alpha + 1)\) simulate \(2P\)}{18}{subsubsection.2.8.3}%
+\contentsline {subsubsection}{\numberline {2.8.4}Notes:}{18}{subsubsection.2.8.4}%
+\contentsline {subsubsection}{\numberline {2.8.5}Results of Point Doubling Projective log}{18}{subsubsection.2.8.5}%
+\contentsline {subsubsection}{\numberline {2.8.6}Projective Doubling Validation}{19}{subsubsection.2.8.6}%
+\contentsline {section}{\numberline {3}Appendix A - ECC LIB}{20}{section.3}%
+\contentsline {subsubsection}{\numberline {3.0.1}Singular ECC LIB}{20}{subsubsection.3.0.1}%

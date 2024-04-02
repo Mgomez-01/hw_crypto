@@ -1,6 +1,6 @@
 #+TITLE: Homework Assignment # 3
 #+AUTHOR: Miguel Gomez U1318856
-#+DATE: 2024-04-01 01:05:53
+#+DATE: 2024-04-01 22:33:40
 #+LATEX_CLASS: exam
 #+LATEX_HEADER: \usepackage{titling}
 #+LATEX_HEADER: \usepackage{url}
@@ -915,8 +915,6 @@ endmodule // MM
 
 
 
-
-
 ** c) Implementation in Verilog
 Implement the design in Verilog/VHDL (GFMult(A, B, Z) module) and demonstrate/simulate using a testbench the following input-output combinations:
 
@@ -996,57 +994,6 @@ endmodule
 \]
 #+end_export
 
-\noindent
-And here is the MM module implementation in verilog as well. This using the version by Prof Kalla since I was unable to get mine functioning as I wanted:
-
-#+begin_src bash :results output
-cat ./verilog/MM.v
-#+end_src
-
-#+RESULTS:
-#+begin_example
-module MM (
-	   input wire [2:0] A,
-	   input wire [2:0] B,
-	   input wire	   clk,
-	   input wire	   reset,
-	   output reg [2:0] Z
-	   );
-
-always@(*)
-  begin
-     Z[0] = (A[0] & B[0]) ^ (A[1] & B[2]) ^ (A[2] & B[1]) ^ (A[2] & B[2]);
-     Z[1] = (A[0] & B[1]) ^ (A[1] & B[0]) ^ (A[2] & B[2]);
-     Z[2] = (A[0] & B[2]) ^ (A[1] & B[2]) ^ (A[2] & B[0]) ^ (A[2] & B[2]) ^ (A[1] & B[1]) ^ (A[2] & B[1]);
-  
-  end 
-endmodule // MM
-#+end_example
-
-
-#+begin_export latex
-\[
-\subsubsection{MM.v file}
-\begin{lstlisting}[language=verilog]
-module MM (
-	   input wire [2:0] A,
-	   input wire [2:0] B,
-	   input wire	   clk,
-	   input wire	   reset,
-	   output reg [2:0] Z
-	   );
-
-always@(*)
-  begin
-     Z[0] = (A[0] & B[0]) ^ (A[1] & B[2]) ^ (A[2] & B[1]) ^ (A[2] & B[2]);
-     Z[1] = (A[0] & B[1]) ^ (A[1] & B[0]) ^ (A[2] & B[2]);
-     Z[2] = (A[0] & B[2]) ^ (A[1] & B[2]) ^ (A[2] & B[0]) ^ (A[2] & B[2]) ^ (A[1] & B[1]) ^ (A[2] & B[1]);
-  
-  end 
-endmodule // MM
-\end{lstlisting}
-\]
-#+end_export
 
 
 
@@ -1066,7 +1013,23 @@ B &= \alpha^2 + \alpha + 1
 \end{align*}
 
 \noindent
-Here is the results of my setup for these. I create a module and run in modelsim. The modules have testbenches that all export a log file to .log in the directory where the files exist.
+Here is the results of my setup for these. I create a module and run in modelsim. The modules have testbenches that all export a log file to .log in the directory where the files exist. Looking at the output of this we can see that $\alpha\cdot \alpha^2$ comes out to be $101$ which matched up with what we expect given that $\alpha^3 = \alpha^2 + 1$. Similarly ,we see that multiplying $\alpha^2 + 1$ and $\alpha^2 + \alpha + 1$ results in $1$, shown below:
+
+\begin{align*}
+(\alpha^2 + \alpha + 1)(\alpha^2 + 1) &= \alpha^4 + \alpha^2 + \alpha^3 + \alpha + \alpha^2 + 1\\
+&= \alpha^4 + \textcolor{red}{\cancelto{\textcolor{black}{0}}{\textcolor{black}{2\alpha^2}}} + \alpha^3 + \alpha + 1 \\
+&= \alpha^4 + \alpha^2 + 1 + \alpha + 1 \\
+&= \alpha^3\alpha + \alpha^2 + \alpha + \textcolor{red}{\cancelto{\textcolor{black}{0}}{\textcolor{black}{2}}}\\
+&= (\alpha^2 + 1)\alpha + \alpha^2 + \alpha\\
+&= \alpha^3 + \alpha + \alpha^2 + \alpha\\
+&= \alpha^3 + \textcolor{red}{\cancelto{\textcolor{black}{0}}{\textcolor{black}{2\alpha}}} + \alpha^2 \\
+&=  \alpha^2 + 1 + \alpha^2 \\
+&= \textcolor{red}{\cancelto{\textcolor{black}{0}}{\textcolor{black}{2\alpha^2}}} + 1\\
+&= 1
+\end{align*}
+
+
+
 
 #+begin_src bash :results output
 cat ./verilog/testbenches/TB_MM.log
@@ -1509,6 +1472,29 @@ adders, multipliers and squarers are organized.
  Demonstrate that your PointDouble() module correctly computes the doubling of the
 following affine points:
 
+*** Defining projective plane
+Pick $Z_1 = 1$ to keep computations simple. Note that since each coordinate of a point is
+in $\mathbb{F}_8$ , each of $X_1, Y_1, Z_1$ is a 3-bit vector.
+
+*** $P = (\alpha, 1)$ simulate $2P$
+For affine point $P = (\alpha, 1)$, simulate $2P$ on your Verilog Testbench. What is $2P$?\\
+\noindent
+Since we have the point above $P$, which corresponds to the point $10P$ from our generated list, we can tell that the result should be $20P \mod{14}$ or $6P$.
+\begin{align*}
+ 2P &= 2*(\alpha, 1) = (\alpha^2 + \alpha + 1, \alpha^2 + 1)\\
+\end{align*}
+*** $P = (\alpha^3, \alpha + 1)$ simulate $2P$
+For affine point $P = (\alpha^3, \alpha + 1)$, simulate $2P$ on your Verilog Testbench. What is $2P$ for
+this case?\\
+\noindent
+In this one, we can see we have the same as point $P$ from our generated list. This point $P$ doubled would get us $2P$ or the result below: 
+\begin{align*}
+  2P &= (\alpha^2, \alpha^2+\alpha)\\
+\end{align*}
+*** Notes:
+Note that $(X_1 , Y_1 , Z_1 )$ computed by your circuit is actually $(\frac{X_1}{Z_1}, \frac{Y_1}{Z_1})$ in the affine
+space! You can of course check your answer with Singular.
+
 #+begin_src bash :results output
 cat ./verilog/testbenches/TB_DOUB_PROJ.log
 #+end_src 
@@ -1524,11 +1510,14 @@ Time	X1	Y1	Z1	X3	Y3	Z3
 60	011	001	001	100	101	010
 70	011	001	001	100	101	010
 80	000	001	001	000	001	000
+90	000	001	001	000	001	000
+100	111	101	001	001	110	011
 If reached, no errors present in logic.
-End of simulation @ 80 ns
+End of simulation @ 100 ns
 #+end_example
 
 
+We can now calculate the last bits with the projective version of the algorithm and show that the results are as we expect. The output being normalized by $Z$ means we must undo that to get back the normal points. The output of the testbench shows the resulting values are indeed normalized, and thus match the output shown in the results of the substitution in Singular. By undoing the normalization, we get back the results answered above.  
 #+begin_export latex
 \[
 \subsubsection{Results of Point Doubling Projective log}
@@ -1542,26 +1531,592 @@ Time	X1	Y1	Z1	X3	Y3	Z3
 60	011	001	001	100	101	010
 70	011	001	001	100	101	010
 80	000	001	001	000	001	000
+90	000	001	001	000	001	000
+100	111	101	001	001	110	011
 If reached, no errors present in logic.
-End of simulation @ 80 ns
+End of simulation @ 100 ns
+\end{lstlisting}
+\]
+#+end_export
+
+\noindent
+Here, we can see the validation output agrees with our verilog results.
+#+begin_src bash :results scalar
+  start=$(date +%s.%N)
+  Singular ./sing/projective_validating.sing | grep -v -e \
+					"Mathematik\|^ \|//\|\*\* loaded\|\*\* library"
+  end=$(date +%s.%N)
+  echo "Execution Time: $(echo "$end - $start" | bc) seconds"
+#+end_src
+
+#+RESULTS:
+#+begin_example
+========================
+Working out the last HW points to convert back from projective:
+========================
+I[1]=A2+(al^2+1)
+I[2]=B2+(al)
+I[3]=C+B+A
+I[4]=D+B^2+B*A+A^3+(al^2+1)*A^2
+I[5]=Z3+(al^2)
+I[6]=Y3+(al)
+I[7]=X3+(al^2+al+1)
+2P = 20P = 6P = ((al^2), (al^2+al))
+========================
+I[1]=A2+(al)
+I[2]=B2+(al^2+al)
+I[3]=C+B+A
+I[4]=D+B^2+B*A+A^3+(al^2+1)*A^2
+I[5]=Z3+(al^2+1)
+I[6]=Y3+(al^2+al)
+I[7]=X3+1
+2P = ((al^2+al+1), (al^2+1))
+========================
+Auf Wiedersehen.
+Execution Time: .041061799 seconds
+#+end_example
+
+
+#+begin_export latex
+\[
+\subsubsection{Projective Doubling Validation}
+\begin{lstlisting}[language=Singular]
+========================
+Working out the last HW points to convert back from projective:
+========================
+I[1]=A2+(al^2+1)
+I[2]=B2+(al)
+I[3]=C+B+A
+I[4]=D+B^2+B*A+A^3+(al^2+1)*A^2
+I[5]=Z3+(al^2)
+I[6]=Y3+(al)
+I[7]=X3+(al^2+al+1)
+2P = 20P = 6P = ((al^2), (al^2+al))
+========================
+I[1]=A2+(al)
+I[2]=B2+(al^2+al)
+I[3]=C+B+A
+I[4]=D+B^2+B*A+A^3+(al^2+1)*A^2
+I[5]=Z3+(al^2+1)
+I[6]=Y3+(al^2+al)
+I[7]=X3+1
+2P = ((al^2+al+1), (al^2+1))
+========================
+Auf Wiedersehen.
+Execution Time: .041061799 seconds
+\end{lstlisting}
+\]
+#+end_export
+
+
+\newpage 
+* Appendix A - ECC LIB
+
+#+begin_src bash :results output
+  cat ../lib/ecclib.lib
+#+end_src
+
+#+RESULTS:
+#+begin_example
+/*
+,********
+This is a Procedure to do point doubling (x3, y3) = 2P(x1, y1).
+Proc takes a "list" P
+P[1] = x1,
+P[2] = y1
+returns a list R = [x3, y3].
+,********
+,*/
+proc doubleP(list P){
+list R;
+number m, x_3, y_3;
+
+//"List P is:";
+//P;
+
+m = P[1] + P[2]/P[1];
+
+x_3 = m^2 + m + A^2;
+
+y_3 = P[1]^2 + (m+1)*x_3;
+
+//printf("m:%s", m);
+//printf("x_3:%s", x_3);
+//printf("y_3:%s", y_3);
+R = x_3, y_3;
+
+//"List R:";
+//R;
+return(R);
+}
+
+/* this represents P + Q = R.
+This design takes into account the kind of elliptic curve used in weirstrauss form
+ECC(A^2,1) = y^2 + x*y = x^3 + A^2x^2 + 1
+,*/
+
+proc PaddQ(list P, list Q){
+list R;
+number m, x_3, y_3;
+
+//"List P is:";
+//P;
+if((P[1] + Q[1]) == 0)
+{
+R = 0, 0;
+return(R);
+}
+m = (P[2] + Q[2])/(P[1] + Q[1]);
+
+x_3 = m^2 + m + P[1] + Q[1] + A^2;
+
+y_3 = (m)*(x_3 + P[1]) + x_3 + P[2];
+
+//printf("m:%s", m);
+//printf("x_3:%s", x_3);
+//printf("y_3:%s", y_3);
+R = x_3, y_3;
+
+//"List R:";
+//R;
+return(R);
+
+}
+
+proc scalarMult(int num, list P) {
+    list Q = 0, 0; // Identity element of the elliptic curve
+    list R = P;    // Copy of the point P to be used in the multiplication
+    int r = num;
+    int val = 0;
+    int multiplier = 1;
+    int testint = 1;
+    while (r > 0) {
+    printf("r = %s",r);
+    printf("val = %s",val);
+        if (r % 2 == 1) {
+	   "adding";
+	   Q = PaddQ(Q, R); // Add R to Q if the current bit of r is 1
+	   val = val + multiplier;
+	   r = r-1;
+        }else{
+	"doubling";
+	R = doubleP(R); // Double R
+	r = r div 2; // Move to the next bit
+	multiplier = multiplier * 2; // Update the multiplier for the next addition
+	}
+    }
+    printf("r = %s",r);
+    printf("val = %s",val);    
+    return(Q);
+}
+
+
+proc inverter(list P){
+// number = element in the field
+number x1, y1;
+list P_inv;
+P_inv = x1, x1+y1;
+return(P_inv);
+}
+
+
+// Encryption takes char as point on curve and R
+proc encryptChar(list Pval, int R) {
+    list C1 = scalarMult(R, e1); // r * e1
+    list e2 = scalarMult(D, e1); // d * e1, assuming d is known/private key
+    list C2 = PaddQ(Pval, scalarMult(R, e2)); // Pval + r * e2
+    
+    return(list(C1, C2));
+}
+
+// Decryption
+proc decryptChar(list C1, list C2) {
+    list dC1 = scalarMult(D, C1); // d * C1
+    list Pval = PaddQ(C2, inverter(dC1)); // Effectively C2 - dC1
+    return(Pval);
+}
+
+
+proc genPoints(list P){
+list R, Q;
+//printf("P = (%s, %s)", P[1], P[2]);
+R = doubleP(P);
+//printf("2P = (%s, %s)", R[1], R[2]);
+list points = list(P); // Starting with 2P as the first element
+points = insert(points, R, size(points)+1);
+Q = R;
+for(int j = 1; j<15; j = j+1){
+    R = PaddQ(P, Q);
+    //printf("%sP = (%s, %s)", (j + 2), R[1], R[2]);
+    // Add the newly computed point to the list of points
+    points = insert(points, R, size(points)+1);
+    Q = R;
+}
+return(points);
+}
+
+
+// Assuming that the list is a list of points from proc above. This takes the index
+// and the List to then provide the Point on the curve
+proc getPoint(list L, int index){
+list R = L[(2*index-1)][1], L[(2*index-1)][2];
+return(R);
+}
+
+
+// Assuming that the list is a list of points from proc above. This takes the index
+// and the List to then provide the index for the Point on the curve given 
+proc getIndex(list points, list target){
+    int index = - 1;
+    list point;
+    //"target";
+    //printf("(%s:%s)",target[1],target[2]);
+    int i = 1;
+    int cond = 1;
+    while (i < size(points) div 2)
+    {  
+	 point = points[(2*i-1)][1], points[(2*i-1)][2];
+	 //"point";
+	 //printf("(%s:%s)",point[1],point[2]);
+	 if(typeof(point) <> typeof(points)) {break;}
+	 if (target[1] == point[1])
+	 {
+	    //"x matches.";
+	    if (target[2] == point[2])
+	    {
+		index = i;
+		cond = 0;
+		//"y matches.------------------";
+	    }
+	 }
+	 if (cond==0)
+	 {
+	  //"exiting";
+	  break;
+	 }
+	 //printf("i:%s",i);
+         i = i + 1;
+    }
+    return(index);
+}
+
+
+
+// Assuming that the list is a list of points from proc above. This takes the index
+// and the List to then provide the index for the Point on the curve given 
+proc getInverseIndex(list points, list target){
+    int index = - 1;
+    list point;
+    //"target";
+    //printf("(%s:%s)",target[1],target[2]);
+    int i = 1;
+    int cond = 1;
+    while (i < size(points) div 2)
+    {  
+	 point = points[(2*i-1)][1], points[(2*i-1)][2];
+	 //"point";
+	 //printf("(%s:%s)",point[1],point[2]);
+	 if(typeof(point) <> typeof(points)) {break;}
+	 if (target[1] == point[1])
+	 {
+	    //"x matches.";
+	    if (target[2] == point[2])
+	    {
+		index = i;
+		cond = 0;
+		//"y matches.------------------";
+	    }
+	 }
+	 if (cond==0)
+	 {
+	  //"exiting";
+	  break;
+	 }
+	 //printf("i:%s",i);
+         i = i + 1;
+    }
+    
+    return((14 - index)%14);
+}
+
+
+
+
+
+proc NumToChar(int n)
+{
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Define the mapping
+    return(chars[n+1]); // Singular strings are 1-indexed
+}
+
+proc CharToNum(string c)
+{
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Define the mapping
+    // Search for the character in the mapping string
+    for (int i = 1; i <= size(chars); i++)
+    {
+        if (chars[i] == c)
+        {
+            return(i-1); // Return the index adjusted for 0-based numbering
+        }
+    }
+    return(-1); // Return -1 if the character is not found
+}
+#+end_example
+
+
+#+begin_export latex
+\[
+\subsubsection{Singular ECC LIB}
+\begin{lstlisting}[language=Singular]
+/*
+,********
+This is a Procedure to do point doubling (x3, y3) = 2P(x1, y1).
+Proc takes a "list" P
+P[1] = x1,
+P[2] = y1
+returns a list R = [x3, y3].
+,********
+,*/
+
+proc doubleP(list P){
+list R;
+number m, x_3, y_3;
+
+//"List P is:";
+//P;
+
+m = P[1] + P[2]/P[1];
+
+x_3 = m^2 + m + A^2;
+
+y_3 = P[1]^2 + (m+1)*x_3;
+
+//printf("m:%s", m);
+//printf("x_3:%s", x_3);
+//printf("y_3:%s", y_3);
+R = x_3, y_3;
+
+//"List R:";
+//R;
+return(R);
+}
+
+/* this represents P + Q = R.
+This design takes into account the kind of elliptic curve used in weirstrauss form
+ECC(A^2,1) = y^2 + x*y = x^3 + A^2x^2 + 1
+,*/
+
+proc PaddQ(list P, list Q){
+list R;
+number m, x_3, y_3;
+
+//"List P is:";
+//P;
+if((P[1] + Q[1]) == 0)
+{
+R = 0, 0;
+return(R);
+}
+m = (P[2] + Q[2])/(P[1] + Q[1]);
+
+x_3 = m^2 + m + P[1] + Q[1] + A^2;
+
+y_3 = (m)*(x_3 + P[1]) + x_3 + P[2];
+
+//printf("m:%s", m);
+//printf("x_3:%s", x_3);
+//printf("y_3:%s", y_3);
+R = x_3, y_3;
+
+//"List R:";
+//R;
+return(R);
+
+}
+
+proc scalarMult(int num, list P) {
+    list Q = 0, 0; // Identity element of the elliptic curve
+    list R = P;    // Copy of the point P to be used in the multiplication
+    int r = num;
+    int val = 0;
+    int multiplier = 1;
+    int testint = 1;
+    while (r > 0) {
+    printf("r = %s",r);
+    printf("val = %s",val);
+        if (r % 2 == 1) {
+	   "adding";
+	   Q = PaddQ(Q, R); // Add R to Q if the current bit of r is 1
+	   val = val + multiplier;
+	   r = r-1;
+        }else{
+	"doubling";
+	R = doubleP(R); // Double R
+	r = r div 2; // Move to the next bit
+	multiplier = multiplier * 2; // Update the multiplier for the next addition
+	}
+    }
+    printf("r = %s",r);
+    printf("val = %s",val);    
+    return(Q);
+}
+
+
+proc inverter(list P){
+// number = element in the field
+number x1, y1;
+list P_inv;
+P_inv = x1, x1+y1;
+return(P_inv);
+}
+
+
+// Encryption takes char as point on curve and R
+proc encryptChar(list Pval, int R) {
+    list C1 = scalarMult(R, e1); // r * e1
+    list e2 = scalarMult(D, e1); // d * e1, assuming d is known/private key
+    list C2 = PaddQ(Pval, scalarMult(R, e2)); // Pval + r * e2
+    
+    return(list(C1, C2));
+}
+
+// Decryption
+proc decryptChar(list C1, list C2) {
+    list dC1 = scalarMult(D, C1); // d * C1
+    list Pval = PaddQ(C2, inverter(dC1)); // Effectively C2 - dC1
+    return(Pval);
+}
+
+
+proc genPoints(list P){
+list R, Q;
+//printf("P = (%s, %s)", P[1], P[2]);
+R = doubleP(P);
+//printf("2P = (%s, %s)", R[1], R[2]);
+list points = list(P); // Starting with 2P as the first element
+points = insert(points, R, size(points)+1);
+Q = R;
+for(int j = 1; j<15; j = j+1){
+    R = PaddQ(P, Q);
+    //printf("%sP = (%s, %s)", (j + 2), R[1], R[2]);
+    // Add the newly computed point to the list of points
+    points = insert(points, R, size(points)+1);
+    Q = R;
+}
+return(points);
+}
+
+
+// Assuming that the list is a list of points from proc above. This takes the index
+// and the List to then provide the Point on the curve
+proc getPoint(list L, int index){
+list R = L[(2*index-1)][1], L[(2*index-1)][2];
+return(R);
+}
+
+
+// Assuming that the list is a list of points from proc above. This takes the index
+// and the List to then provide the index for the Point on the curve given 
+proc getIndex(list points, list target){
+    int index = - 1;
+    list point;
+    //"target";
+    //printf("(%s:%s)",target[1],target[2]);
+    int i = 1;
+    int cond = 1;
+    while (i < size(points) div 2)
+    {  
+	 point = points[(2*i-1)][1], points[(2*i-1)][2];
+	 //"point";
+	 //printf("(%s:%s)",point[1],point[2]);
+	 if(typeof(point) <> typeof(points)) {break;}
+	 if (target[1] == point[1])
+	 {
+	    //"x matches.";
+	    if (target[2] == point[2])
+	    {
+		index = i;
+		cond = 0;
+		//"y matches.------------------";
+	    }
+	 }
+	 if (cond==0)
+	 {
+	  //"exiting";
+	  break;
+	 }
+	 //printf("i:%s",i);
+         i = i + 1;
+    }
+    return(index);
+}
+
+
+
+// Assuming that the list is a list of points from proc above. This takes the index
+// and the List to then provide the index for the Point on the curve given 
+proc getInverseIndex(list points, list target){
+    int index = - 1;
+    list point;
+    //"target";
+    //printf("(%s:%s)",target[1],target[2]);
+    int i = 1;
+    int cond = 1;
+    while (i < size(points) div 2)
+    {  
+	 point = points[(2*i-1)][1], points[(2*i-1)][2];
+	 //"point";
+	 //printf("(%s:%s)",point[1],point[2]);
+	 if(typeof(point) <> typeof(points)) {break;}
+	 if (target[1] == point[1])
+	 {
+	    //"x matches.";
+	    if (target[2] == point[2])
+	    {
+		index = i;
+		cond = 0;
+		//"y matches.------------------";
+	    }
+	 }
+	 if (cond==0)
+	 {
+	  //"exiting";
+	  break;
+	 }
+	 //printf("i:%s",i);
+         i = i + 1;
+    }
+    
+    return((14 - index)%14);
+}
+
+
+
+
+
+proc NumToChar(int n)
+{
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Define the mapping
+    return(chars[n+1]); // Singular strings are 1-indexed
+}
+
+proc CharToNum(string c)
+{
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Define the mapping
+    // Search for the character in the mapping string
+    for (int i = 1; i <= size(chars); i++)
+    {
+        if (chars[i] == c)
+        {
+            return(i-1); // Return the index adjusted for 0-based numbering
+        }
+    }
+    return(-1); // Return -1 if the character is not found
+}
 \end{lstlisting}
 \]
 #+end_export
 
 
 
-
-
-
-*** Defining projective plane
-Pick $Z_1 = 1$ to keep computations simple. Note that since each coordinate of a point is
-in $\mathbb{F}_8$ , each of $X_1, Y_1, Z_1$ is a 3-bit vector.
-
-*** $P = (\alpha, 1)$ simulate $2P$
-For affine point $P = (\alpha, 1)$, simulate $2P$ on your Verilog Testbench. What is $2P$?
-*** $P = (\alpha^3, \alpha + 1)$ simulate $2P$
-For affine point $P = (\alpha^3, \alpha + 1)$, simulate $2P$ on your Verilog Testbench. What is $2P$ for
-this case?
-*** Notes:
-Note that $(X_1 , Y_1 , Z_1 )$ computed by your circuit is actually $(\frac{X_1}{Z_1}, \frac{Y_1}{Z_1})$ in the affine
-space! You can of course check your answer with Singular.
