@@ -73,6 +73,20 @@ initial begin
       $stop; // Stop simulation
    end 
 
+   
+   #10;       
+   X1 = 3'b111; // A =  alpha + 1
+   Y1 = 3'b101; // 
+   Z1 = 3'b001; // 
+  // expecting Z = 3'b101 or alpha^2 + 1
+   #10;
+   // Use $display to show a message if the assertion fails
+   if (Z3 !== 3'b011) begin
+      $display("Assertion failed: Z is not 3'b011 as expected. Z=%b", Z3);
+      $fclose(file);
+      $stop; // Stop simulation
+   end 
+
     // End simulation
    $display("End of simulation @ %g ns\nIf reached, no errors present in logic.", $time);
    $fwrite(file,"If reached, no errors present in logic.\nEnd of simulation @ %g ns", $time);

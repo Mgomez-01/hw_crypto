@@ -4,26 +4,69 @@
 # Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
 # vmap work /home/speedy/repos/coursework/hw_crypto/hw3/verilog/testbenches/work 
 # Modifying modelsim.ini
-#  vsim work.TB_GFSQR
-# vsim work.TB_GFSQR 
-# Start time: 01:09:44 on Apr 01,2024
-# Loading work.TB_GFSQR
-# Loading work.GFSQR
+#  vsim work.TB_DOUB_PROJ
+# vsim work.TB_DOUB_PROJ 
+# Start time: 22:24:43 on Apr 01,2024
+# Loading work.TB_DOUB_PROJ
+# Loading work.DOUB_PROJ
 # Loading work.MM
+# Loading work.GFSQR
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'T0'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T0 File: ../DOUB_PROJ.v Line: 19
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(19): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(19): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'T1'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T1 File: ../DOUB_PROJ.v Line: 20
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(20): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(20): [TFMPC] - Missing connection for port 'reset'.
 # ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'sqrer'.  Expected 5, found 3.
-#    Time: 0 ps  Iteration: 0  Instance: /TB_GFSQR/uut0/sqrer File: ../GFSQR.v Line: 10
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T2/sqrer File: ../GFSQR.v Line: 10
 # ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'clk'.
 # ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'sqrer'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T3/sqrer File: ../GFSQR.v Line: 10
+# ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'sqrer'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T4/sqrer File: ../GFSQR.v Line: 10
+# ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'sqrer'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T5/sqrer File: ../GFSQR.v Line: 10
+# ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'T6'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T6 File: ../DOUB_PROJ.v Line: 30
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(30): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(30): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'T7'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T7 File: ../DOUB_PROJ.v Line: 34
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(34): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(34): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'T8'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T8 File: ../DOUB_PROJ.v Line: 36
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(36): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(36): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'sqrer'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T9/sqrer File: ../GFSQR.v Line: 10
+# ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../GFSQR.v(10): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'T10'.  Expected 5, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /TB_DOUB_PROJ/uut0/T10 File: ../DOUB_PROJ.v Line: 42
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(42): [TFMPC] - Missing connection for port 'clk'.
+# ** Warning: (vsim-3722) ../DOUB_PROJ.v(42): [TFMPC] - Missing connection for port 'reset'.
 #  add wave -r /*
 #  run -all
-# Time	A	Z
-# 0	xxx	xxx
-# 10	010	100
-# 30	001	001
-# 50	011	101
-# End of simulation @ 60 ns
+# Time	X1	Y1	Z1	X3	Y3	Z3
+# 0	xxx	xxx	xxx	xxx	xxx	xxx
+# 10	010	001	001	001	110	101
+# 30	101	011	001	111	010	100
+# 50	011	001	001	100	101	010
+# 70	000	001	001	000	001	000
+# 90	111	101	001	001	110	011
+# End of simulation @ 100 ns
 # If reached, no errors present in logic.
-# ** Note: $finish    : /home/speedy/repos/coursework/hw_crypto/hw3/verilog/testbenches/TB_GFSQR.v(60)
-#    Time: 60 ns  Iteration: 0  Instance: /TB_GFSQR
-# End time: 01:09:44 on Apr 01,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 3
+# ** Note: $finish    : /home/speedy/repos/coursework/hw_crypto/hw3/verilog/testbenches/TB_DOUB_PROJ.v(93)
+#    Time: 100 ns  Iteration: 0  Instance: /TB_DOUB_PROJ
+# End time: 22:24:43 on Apr 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 33
