@@ -24,17 +24,42 @@ end
 # Example usage
 l = 128 # Example lambda value, adjust as necessary for your Clifford::Crypto setup
 
-message = "
-This is a message I am encrypting.
-This will be passed through the encrypter one char at a time.
-Then after passing through encryption, it will be decrypted and
-rebuilt.
-"
-built_message = ""
-puts message
-message.each_char do |char|
-  built_message = built_message + encrypt_and_decrypt_char(char, l)
+
+# Initialize an empty string
+ascii_string = ""
+
+# Loop over the range of ASCII characters
+(0..127).each do |code_point|
+  # Convert the code point to a character and append it to the string
+  ascii_string << code_point.chr
 end
 
-puts "rebuilt decrypted text:"
-puts built_message
+puts "string of all ascii: \n" + ascii_string
+
+ascii_string.each_char do |char|
+  decrypted = encrypt_and_decrypt_char(char, l)  # And `decrypt_char` is your decryption method
+  puts "current char: |" + char + "|  decrypted: |" + decrypted + "|"
+  
+  if decrypted != char
+    puts "Mismatch for character #{char.inspect}: got #{decrypted.inspect}"
+  end
+end
+
+puts "All ASCII characters tested.\n\nAll passed."
+
+
+
+# message = "
+# This is a message I am encrypting.
+# This will be passed through the encrypter one char at a time.
+# Then after passing through encryption, it will be decrypted and
+# rebuilt.
+# "
+# built_message = ""
+# puts message
+# message.each_char do |char|
+#   built_message = built_message + encrypt_and_decrypt_char(char, l)
+# end
+
+# puts "rebuilt decrypted text:"
+# puts built_message
