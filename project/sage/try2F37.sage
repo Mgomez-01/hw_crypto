@@ -39,7 +39,7 @@ def find_and_verify_primitive_polynomial(degree):
     return None
 
 # Example usage: find and verify a primitive polynomial of degree 2 in F_37
-degree_k = 4
+degree_k = 3
 primitive_poly = find_and_verify_primitive_polynomial(degree_k)
 if primitive_poly:
     print(f"Verified primitive polynomial of degree {degree_k} in F_37 is: {primitive_poly}")

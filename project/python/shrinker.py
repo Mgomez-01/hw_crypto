@@ -1,5 +1,7 @@
 import sys
+import argparse
 
+# modified from the example at https://en.wikipedia.org/wiki/Shrinking_generator 
 # ----------------------------------------------------------------------------
 # Crypto4o functions start here
 # ----------------------------------------------------------------------------
@@ -61,8 +63,13 @@ class SPRNG:
 # ----------------------------------------------------------------------------
 # Crypto4o functions end here
 # ----------------------------------------------------------------------------
-
 def main():
+    parser = argparse.ArgumentParser(description="Encrypt or decrypt a file using a simple PRNG-based stream cipher.")
+    parser.add_argument("input_file", type=str, help="The input file to process.")
+    parser.add_argument("output_file", type=str, help="The file to output the processed data to.")
+
+    args = parser.parse_args()
+
     # Example of initializing the pseudo-random number generator
     polynom_d = 0x1002D  # 16-bit polynomial
     init_value_d = 0x1    # Non-zero initial value
@@ -72,7 +79,7 @@ def main():
 
     prng = SPRNG(polynom_d, init_value_d, polynom_c, init_value_c)
 
-    with open(sys.argv[1], "rb") as f, open(sys.argv[2], "wb") as g:
+    with open(args.input_file, "rb") as f, open(args.output_file, "wb") as g:
         while True:
             input_ch = f.read(1)
 

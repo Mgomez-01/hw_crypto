@@ -1,0 +1,8010 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    184166,       8002]
+NotebookOptionsPosition[    167334,       7684]
+NotebookOutlinePosition[    167748,       7701]
+CellTagsIndexPosition[    167705,       7698]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Totient Function", "Title",ExpressionUUID->"a610a874-0ef1-449f-b3f4-49d5c6d569d1"],
+
+Cell[CellGroupData[{
+
+Cell["Author", "Subsection",ExpressionUUID->"a0d245ac-7d73-4314-a2ad-302b37c38914"],
+
+Cell["\<\
+Eric W. Weisstein
+September 3, 2008\
+\>", "Text",ExpressionUUID->"65d7a832-c6af-4f89-8990-2ab65e542f76"],
+
+Cell[TextData[{
+ "This notebook downloaded from ",
+ ButtonBox["http://mathworld.wolfram.com/notebooks/NumberTheoreticFunctions/\
+TotientFunction.nb",
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://mathworld.wolfram.com/notebooks/NumberTheoreticFunctions/\
+TotientFunction.nb"], None}],
+ "."
+}], "Text",ExpressionUUID->"7112a013-3539-48bb-815f-e2d8016c75d2"],
+
+Cell[TextData[{
+ "For more information, see Eric's ",
+ StyleBox["MathWorld",
+  FontSlant->"Italic"],
+ " entry ",
+ ButtonBox["http://mathworld.wolfram.com/TotientFunction.html",
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://mathworld.wolfram.com/TotientFunction.html"], None}],
+ "."
+}], "Text",ExpressionUUID->"6bdfd374-39f4-4c90-a304-815b5e9dfac9"],
+
+Cell["\<\
+\[Copyright]2008 Wolfram Research, Inc. except for portions noted otherwise\
+\>", "Text",ExpressionUUID->"5a0c7b4e-fc40-41ea-adeb-435e41f0229e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Plot", "Section",ExpressionUUID->"5ce119b3-87d1-4a2e-bd30-213f7761f3c9"],
+
+Cell[BoxData[
+ RowBox[{"<<", "Utilities`Plot`"}]], "Input",ExpressionUUID->"bd822797-2e35-48a8-9b80-b26f355485c2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"IntegerListPlot", "[", 
+  RowBox[{
+   RowBox[{"EulerPhi", "[", 
+    RowBox[{"Range", "[", "100", "]"}], "]"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"TraditionalForm", "/@", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", 
+       RowBox[{"EulerPhi", "[", "n", "]"}]}], "}"}]}]}]}], "]"}]], "Input",Exp\
+ressionUUID->"d8659c4d-b2c1-401a-b91c-641af143a9f5"],
+
+Cell[GraphicsData["PostScript", "\<\
+%!
+%%Creator: Mathematica
+%%AspectRatio: .61803 
+MathPictureStart
+/Mabs {
+Mgmatrix idtransform
+Mtmatrix dtransform
+} bind def
+/Mabsadd { Mabs
+3 -1 roll add
+3 1 roll add
+exch } bind def
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0238095 0.00957167 0.0147151 0.00613129 [
+[.21524 .00222 -6 -9 ]
+[.21524 .00222 6 0 ]
+[.40668 .00222 -6 -9 ]
+[.40668 .00222 6 0 ]
+[.59811 .00222 -6 -9 ]
+[.59811 .00222 6 0 ]
+[.78954 .00222 -6 -9 ]
+[.78954 .00222 6 0 ]
+[.98098 .00222 -9 -9 ]
+[.98098 .00222 9 0 ]
+[1.025 .01472 0 -6 ]
+[1.025 .01472 9 6 ]
+[.01131 .13734 -12 -4.5 ]
+[.01131 .13734 0 4.5 ]
+[.01131 .25997 -12 -4.5 ]
+[.01131 .25997 0 4.5 ]
+[.01131 .38259 -12 -4.5 ]
+[.01131 .38259 0 4.5 ]
+[.01131 .50522 -12 -4.5 ]
+[.01131 .50522 0 4.5 ]
+[.02381 .64303 -10.4062 0 ]
+[.02381 .64303 10.4062 12 ]
+[ 0 0 0 0 ]
+[ 1 .61803 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 g
+.25 Mabswid
+[ ] 0 setdash
+.21524 .01472 m
+.21524 .02097 L
+s
+[(20)] .21524 .00222 0 1 Mshowa
+.40668 .01472 m
+.40668 .02097 L
+s
+[(40)] .40668 .00222 0 1 Mshowa
+.59811 .01472 m
+.59811 .02097 L
+s
+[(60)] .59811 .00222 0 1 Mshowa
+.78954 .01472 m
+.78954 .02097 L
+s
+[(80)] .78954 .00222 0 1 Mshowa
+.98098 .01472 m
+.98098 .02097 L
+s
+[(100)] .98098 .00222 0 1 Mshowa
+.125 Mabswid
+.07167 .01472 m
+.07167 .01847 L
+s
+.11953 .01472 m
+.11953 .01847 L
+s
+.16738 .01472 m
+.16738 .01847 L
+s
+.2631 .01472 m
+.2631 .01847 L
+s
+.31096 .01472 m
+.31096 .01847 L
+s
+.35882 .01472 m
+.35882 .01847 L
+s
+.45453 .01472 m
+.45453 .01847 L
+s
+.50239 .01472 m
+.50239 .01847 L
+s
+.55025 .01472 m
+.55025 .01847 L
+s
+.64597 .01472 m
+.64597 .01847 L
+s
+.69383 .01472 m
+.69383 .01847 L
+s
+.74168 .01472 m
+.74168 .01847 L
+s
+.8374 .01472 m
+.8374 .01847 L
+s
+.88526 .01472 m
+.88526 .01847 L
+s
+.93312 .01472 m
+.93312 .01847 L
+s
+.25 Mabswid
+0 .01472 m
+1 .01472 L
+s
+gsave
+1.025 .01472 -61 -10 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 20 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 13.000 moveto
+%%IncludeResource: font Times-Italic
+%%IncludeFont: Times-Italic
+/Times-Italic findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(n) show
+1.000 setlinewidth
+grestore
+.02381 .13734 m
+.03006 .13734 L
+s
+[(20)] .01131 .13734 1 0 Mshowa
+.02381 .25997 m
+.03006 .25997 L
+s
+[(40)] .01131 .25997 1 0 Mshowa
+.02381 .38259 m
+.03006 .38259 L
+s
+[(60)] .01131 .38259 1 0 Mshowa
+.02381 .50522 m
+.03006 .50522 L
+s
+[(80)] .01131 .50522 1 0 Mshowa
+.125 Mabswid
+.02381 .04537 m
+.02756 .04537 L
+s
+.02381 .07603 m
+.02756 .07603 L
+s
+.02381 .10668 m
+.02756 .10668 L
+s
+.02381 .168 m
+.02756 .168 L
+s
+.02381 .19865 m
+.02756 .19865 L
+s
+.02381 .22931 m
+.02756 .22931 L
+s
+.02381 .29062 m
+.02756 .29062 L
+s
+.02381 .32128 m
+.02756 .32128 L
+s
+.02381 .35194 m
+.02756 .35194 L
+s
+.02381 .41325 m
+.02756 .41325 L
+s
+.02381 .44391 m
+.02756 .44391 L
+s
+.02381 .47456 m
+.02756 .47456 L
+s
+.02381 .53587 m
+.02756 .53587 L
+s
+.02381 .56653 m
+.02756 .56653 L
+s
+.02381 .59719 m
+.02756 .59719 L
+s
+.25 Mabswid
+.02381 0 m
+.02381 .61803 L
+s
+gsave
+.02381 .64303 -71.4062 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 20 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+/MISOfy
+{
+    /newfontname exch def
+    /oldfontname exch def
+
+    oldfontname findfont
+    dup length dict begin
+        {1 index /FID ne {def} {pop pop} ifelse} forall
+        /Encoding MacintoshRomanEncoding def
+        currentdict
+    end
+
+    newfontname exch definefont pop
+} def
+63.000 13.000 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(f) show
+%%IncludeResource: font Mathematica2
+%%IncludeFont: Mathematica2
+/Mathematica2 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+68.438 13.000 moveto
+(H) show
+71.625 13.000 moveto
+%%IncludeResource: font Times-Italic
+%%IncludeFont: Times-Italic
+%%BeginResource: font Times-Italic-MISO
+%%BeginFont: Times-Italic-MISO
+/Times-Italic /Times-Italic-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(n) show
+%%IncludeResource: font Mathematica2
+%%IncludeFont: Mathematica2
+/Mathematica2 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+76.625 13.000 moveto
+(L) show
+1.000 setlinewidth
+grestore
+0 0 m
+1 0 L
+1 .61803 L
+0 .61803 L
+closepath
+clip
+newpath
+1 0 0 r
+.5 Mabswid
+.0286 .01472 m
+.0286 .02085 L
+.03817 .02085 L
+.03817 .02085 L
+.04774 .02085 L
+.04774 .02698 L
+.05731 .02698 L
+.05731 .02698 L
+.06688 .02698 L
+.06688 .03924 L
+.07645 .03924 L
+.07645 .02698 L
+.08603 .02698 L
+.08603 .0515 L
+.0956 .0515 L
+.0956 .03924 L
+.10517 .03924 L
+.10517 .0515 L
+.11474 .0515 L
+.11474 .03924 L
+.12431 .03924 L
+.12431 .07603 L
+.13388 .07603 L
+.13388 .03924 L
+.14346 .03924 L
+.14346 .08829 L
+.15303 .08829 L
+.15303 .0515 L
+.1626 .0515 L
+.1626 .06377 L
+.17217 .06377 L
+.17217 .06377 L
+.18174 .06377 L
+.18174 .11282 L
+.19131 .11282 L
+.19131 .0515 L
+.20089 .0515 L
+.20089 .12508 L
+.21046 .12508 L
+.21046 .06377 L
+.22003 .06377 L
+.22003 .08829 L
+.2296 .08829 L
+.2296 .07603 L
+.23917 .07603 L
+.23917 .1496 L
+.24874 .1496 L
+.24874 .06377 L
+.25832 .06377 L
+.25832 .13734 L
+Mistroke
+.26789 .13734 L
+.26789 .08829 L
+.27746 .08829 L
+.27746 .12508 L
+.28703 .12508 L
+.28703 .08829 L
+.2966 .08829 L
+.2966 .18639 L
+.30617 .18639 L
+.30617 .06377 L
+.31575 .06377 L
+.31575 .19865 L
+.32532 .19865 L
+.32532 .11282 L
+.33489 .11282 L
+.33489 .13734 L
+.34446 .13734 L
+.34446 .11282 L
+.35403 .11282 L
+.35403 .16187 L
+.3636 .16187 L
+.3636 .08829 L
+.37318 .08829 L
+.37318 .23544 L
+.38275 .23544 L
+.38275 .12508 L
+.39232 .12508 L
+.39232 .16187 L
+.40189 .16187 L
+.40189 .11282 L
+.41146 .11282 L
+.41146 .25997 L
+.42103 .25997 L
+.42103 .08829 L
+.43061 .08829 L
+.43061 .27223 L
+.44018 .27223 L
+.44018 .13734 L
+.44975 .13734 L
+.44975 .16187 L
+.45932 .16187 L
+.45932 .1496 L
+.46889 .1496 L
+.46889 .29675 L
+.47846 .29675 L
+.47846 .11282 L
+.48804 .11282 L
+.48804 .27223 L
+.49761 .27223 L
+.49761 .13734 L
+Mistroke
+.50718 .13734 L
+.50718 .21092 L
+.51675 .21092 L
+.51675 .16187 L
+.52632 .16187 L
+.52632 .33354 L
+.53589 .33354 L
+.53589 .12508 L
+.54547 .12508 L
+.54547 .25997 L
+.55504 .25997 L
+.55504 .16187 L
+.56461 .16187 L
+.56461 .23544 L
+.57418 .23544 L
+.57418 .18639 L
+.58375 .18639 L
+.58375 .37033 L
+.59332 .37033 L
+.59332 .11282 L
+.6029 .11282 L
+.6029 .38259 L
+.61247 .38259 L
+.61247 .19865 L
+.62204 .19865 L
+.62204 .23544 L
+.63161 .23544 L
+.63161 .21092 L
+.64118 .21092 L
+.64118 .30902 L
+.65075 .30902 L
+.65075 .13734 L
+.66033 .13734 L
+.66033 .41938 L
+.6699 .41938 L
+.6699 .21092 L
+.67947 .21092 L
+.67947 .28449 L
+.68904 .28449 L
+.68904 .16187 L
+.69861 .16187 L
+.69861 .44391 L
+.70818 .44391 L
+.70818 .16187 L
+.71776 .16187 L
+.71776 .45617 L
+.72733 .45617 L
+.72733 .23544 L
+.7369 .23544 L
+.7369 .25997 L
+Mistroke
+.74647 .25997 L
+.74647 .23544 L
+.75604 .23544 L
+.75604 .38259 L
+.76561 .38259 L
+.76561 .16187 L
+.77519 .16187 L
+.77519 .49296 L
+.78476 .49296 L
+.78476 .21092 L
+.79433 .21092 L
+.79433 .3458 L
+.8039 .3458 L
+.8039 .25997 L
+.81347 .25997 L
+.81347 .51748 L
+.82304 .51748 L
+.82304 .16187 L
+.83262 .16187 L
+.83262 .40712 L
+.84219 .40712 L
+.84219 .27223 L
+.85176 .27223 L
+.85176 .35807 L
+.86133 .35807 L
+.86133 .25997 L
+.8709 .25997 L
+.8709 .55427 L
+.88047 .55427 L
+.88047 .16187 L
+.89005 .16187 L
+.89005 .45617 L
+.89962 .45617 L
+.89962 .28449 L
+.90919 .28449 L
+.90919 .38259 L
+.91876 .38259 L
+.91876 .29675 L
+.92833 .29675 L
+.92833 .45617 L
+.9379 .45617 L
+.9379 .21092 L
+.94748 .21092 L
+.94748 .60332 L
+.95705 .60332 L
+.95705 .27223 L
+.96662 .27223 L
+.96662 .38259 L
+.97619 .38259 L
+.97619 .25997 L
+Mistroke
+Mfstroke
+% End of Graphics
+MathPictureEnd
+\
+\>"], "Graphics",
+ ImageSize->{288, 177.938},
+ ImageMargins->{{43, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 
+  1}},ImageCache->GraphicsData["CompressedBitmap", "\<\
+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
+II/0ObbzP+UKh9Y=\
+\>", "ImageResolution" -> 96.012],ImageRangeCache->{{{0., 287.}, {176.938, \
+0.}} -> {-10., -8., 0., \
+0.}},ExpressionUUID->"abe83d93-22f8-44b2-b4e1-7f4d5916e9cc"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"\[SkeletonIndicator]", "Graphics", "\[SkeletonIndicator]"}],
+  False,
+  Editable->False]], "Output",ExpressionUUID->"23ae6067-e3e5-4007-abd9-\
+1110c295dc4a"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Generating Functions", "Section",ExpressionUUID->"9de50e41-207d-4170-8c1f-ac3d65edd5f4"],
+
+Cell[CellGroupData[{
+
+Cell["Generating Function", "Subsection",ExpressionUUID->"da9096a0-4da1-4cad-b7f7-2fa045bfff57"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"EulerPhi", "[", "n", "]"}], 
+     RowBox[{"x", "^", "n"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "\[Infinity]"}], "}"}]}], "]"}], "//", 
+  "FullSimplify"}]], "Input",ExpressionUUID->"cd5d8473-b40d-47de-b8c7-\
+07a50951fcf7"],
+
+Cell[BoxData[
+ RowBox[{
+  UnderoverscriptBox["\[Sum]", "n", "\[Infinity]"], 
+  RowBox[{
+   SuperscriptBox["x", "n"], " ", 
+   RowBox[{"EulerPhi", "[", "n", "]"}]}]}]], "Output",ExpressionUUID->\
+"b5623a1a-84c2-470e-9448-a8fee97c27e9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GeneratingFunction", "[", 
+  RowBox[{
+   RowBox[{"EulerPhi", "[", "n", "]"}], ",", "n", ",", "z"}], "]"}]], "Input",\
+ExpressionUUID->"c30e7806-2dd9-4a8d-bbbf-795c3cfc9c64"],
+
+Cell[BoxData[
+ RowBox[{"GeneratingFunction", "[", 
+  RowBox[{
+   RowBox[{"EulerPhi", "[", "n", "]"}], ",", "n", ",", "z"}], "]"}]], "Output",\
+ExpressionUUID->"335191ef-7e36-4ac7-8dab-41de72ad2dc7"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["ExponentialGeneratingFunction", "Subsection",ExpressionUUID->"5963325e-acf3-48c4-af70-e493f2dfa6d7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"EulerPhi", "[", "n", "]"}], 
+    FractionBox[
+     RowBox[{"x", "^", "n"}], 
+     RowBox[{"n", "!"}]]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "\[Infinity]"}], "}"}]}], "]"}]], "Input",ExpressionUUID\
+->"4e638917-13b7-40a8-bd47-c4622f05f8b8"],
+
+Cell[BoxData[
+ RowBox[{
+  UnderoverscriptBox["\[Sum]", "n", "\[Infinity]"], 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["x", "n"], " ", 
+    RowBox[{"EulerPhi", "[", "n", "]"}]}], 
+   RowBox[{"n", "!"}]]}]], "Output",ExpressionUUID->"32fe5110-600b-4cb7-b219-\
+9df0885e0c54"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["DirichletGeneratingFunction", "Subsection",ExpressionUUID->"52d25d64-435f-4644-bd54-d6745caa1b1a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"EulerPhi", "[", "n", "]"}], 
+    SuperscriptBox["n", "s"]], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "\[Infinity]"}], "}"}]}], "]"}]], "Input",ExpressionUUID\
+->"1cc4f67e-cd26-45cc-8398-2c3124a490f3"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"Zeta", "[", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", "s"}], "]"}], 
+  RowBox[{"Zeta", "[", "s", "]"}]]], "Output",ExpressionUUID->"dbdc46e2-6866-\
+4043-a6d1-785f4c195fa6"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Lambert Series", "Subsection",ExpressionUUID->"c331bbf7-b977-4f42-a4d3-aedcd296d0e2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     RowBox[{"EulerPhi", "[", "n", "]"}], 
+     SuperscriptBox["x", "n"]}], 
+    RowBox[{"1", "-", 
+     SuperscriptBox["x", "n"]}]], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "\[Infinity]"}], "}"}]}], "]"}]], "Input",ExpressionUUID\
+->"a66c6829-9ece-401a-9fdd-9d6a366d76f2"],
+
+Cell[BoxData[
+ FractionBox["x", 
+  SuperscriptBox[
+   RowBox[{"(", 
+    RowBox[{"1", "-", "x"}], ")"}], "2"]]], "Output",ExpressionUUID->\
+"996f0c15-ceaa-4c55-b482-cd33f0a5f771"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Special Cases", "Section",ExpressionUUID->"2dbe9e76-5de3-4c11-a364-c4f49a2a91e1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{"p"},
+    "EulerPhi"], "\[LongEqual]", 
+   RowBox[{"p", "-", "1"}]}], TraditionalForm]], "Subsection",ExpressionUUID->\
+"67ca4a69-a115-4d5a-ad25-9979bf670184"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FunctionExpand", "[", 
+  RowBox[{
+   RowBox[{"EulerPhi", "[", "p", "]"}], ",", 
+   RowBox[{"p", "\[Element]", "Primes"}]}], "]"}]], "Input",ExpressionUUID->\
+"f5822ad2-b4a5-473a-8b64-90944c272f7d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "1"}], "+", "p"}]], "Output",ExpressionUUID->"29cbc928-ff19-46ee-981a-c3a9cce2aadc"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+     SuperscriptBox["p", "a"]},
+    "EulerPhi"], "\[LongEqual]", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"p", "-", "1"}], ")"}], " ", 
+    SuperscriptBox["p", 
+     RowBox[{"a", "-", "1"}]]}]}], TraditionalForm]], "Subsection",ExpressionU\
+UID->"bacfcfd5-08f8-4d85-b805-82d23418c863"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FunctionExpand", "[", 
+  RowBox[{
+   RowBox[{"EulerPhi", "[", 
+    RowBox[{"p", "^", "a"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{"p", "\[Element]", "Primes"}], "&&", 
+    RowBox[{"a", "\[Element]", "Integers"}], "&&", 
+    RowBox[{"a", ">", "0"}]}]}], "]"}]], "Input",ExpressionUUID->"ece104c2-\
+9aa0-4651-8fd1-edd93d595492"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   SuperscriptBox["p", 
+    RowBox[{
+     RowBox[{"-", "1"}], "+", "a"}]]}], "+", 
+  SuperscriptBox["p", "a"]}]], "Output",ExpressionUUID->"9254b79a-fe50-47bc-\
+b55c-5b602a6e17dc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Simplify", "[", "%", "]"}]], "Input",ExpressionUUID->"7a73c0df-04fa-494d-9a3f-51f2dff7cd81"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", "p"}], ")"}], " ", 
+  SuperscriptBox["p", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", "a"}]]}]], "Output",ExpressionUUID->"eeda438b-\
+d3c2-4358-9a8b-3c99655e4e7b"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   TemplateBox[{
+     SuperscriptBox["n", "k"]},
+    "EulerPhi"], "\[LongEqual]", 
+   RowBox[{
+    TemplateBox[{"n"},
+     "EulerPhi"], " ", 
+    SuperscriptBox["n", 
+     RowBox[{"k", "-", "1"}]]}]}], TraditionalForm]], "Subsection",ExpressionU\
+UID->"9db1893f-c4b6-492c-82e5-0c5ca27da524"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FunctionExpand", "[", 
+  RowBox[{
+   RowBox[{"EulerPhi", "[", 
+    RowBox[{"n", "^", "k"}], "]"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"n", "|", "k"}], ")"}], "\[Element]", "Integers"}], "&&", 
+    RowBox[{"n", ">", "0"}], "&&", 
+    RowBox[{"k", ">", "0"}]}]}], "]"}]], "Input",ExpressionUUID->"355b4f54-\
+7771-4f17-9d0e-444568401a43"],
+
+Cell[BoxData[
+ RowBox[{"EulerPhi", "[", 
+  SuperscriptBox["n", "k"], "]"}]], "Output",ExpressionUUID->"a13c4db5-461b-\
+4251-84ec-b279c8d75297"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Subtract", "@@@", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"EulerPhi", "[", 
+          SuperscriptBox["n", "k"], "]"}], ",", 
+         RowBox[{
+          SuperscriptBox["n", 
+           RowBox[{"k", "-", "1"}]], 
+          RowBox[{"EulerPhi", "[", "n", "]"}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "5"}], "}"}]}], "]"}], ",", "1"}], "]"}]}], "//", 
+  "Union"}]], "Input",ExpressionUUID->"5c8b03e9-5a5a-4312-a8d2-506b1916175e"],
+
+Cell[BoxData[
+ RowBox[{"{", "0", "}"}]], "Output",ExpressionUUID->"8c0b1099-51c5-4d5b-b967-66ff0a3348d1"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sums", "Section",ExpressionUUID->"6e81b2ca-b255-4b50-822c-38b549089810"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DivisorProduct", "[", 
+   RowBox[{"n_", ",", " ", 
+    RowBox[{"f_", ":", "Identity"}], ",", " ", "cond___"}], "]"}], ":=", 
+  RowBox[{"Exp", "[", 
+   RowBox[{"DivisorSum", "[", 
+    RowBox[{"n", ",", 
+     RowBox[{"Function", "[", 
+      RowBox[{"x", ",", 
+       RowBox[{"Log", "[", 
+        RowBox[{"f", "[", "x", "]"}], "]"}]}], "]"}], ",", "cond"}], "]"}], 
+   "]"}]}]], "Input",ExpressionUUID->"92e008f8-4e6c-4073-a453-1778671ae662"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", "n", "\[Infinity]"], 
+    FractionBox[
+     TemplateBox[{"n"},
+      "EulerPhi"], 
+     SuperscriptBox["n", "s"]]}], "\[LongEqual]", 
+   FractionBox[
+    TagBox[
+     RowBox[{
+      TooltipBox["\[Zeta]",
+       "Zeta"], "(", 
+      TagBox[
+       RowBox[{"s", "-", "1"}],
+       Zeta,
+       Editable->True,
+       Selectable->True], ")"}],
+     InterpretTemplate[
+      Function[BoxForm`e$, 
+       Zeta[BoxForm`e$]]],
+     Editable->False,
+     Selectable->False], 
+    TagBox[
+     RowBox[{
+      TooltipBox["\[Zeta]",
+       "Zeta"], "(", 
+      TagBox["s",
+       Zeta,
+       Editable->True,
+       Selectable->True], ")"}],
+     InterpretTemplate[
+      Function[BoxForm`e$, 
+       Zeta[BoxForm`e$]]],
+     Editable->False,
+     Selectable->False]]}], TraditionalForm]], "Subsection",ExpressionUUID->\
+"01c8e22a-4a27-4031-b08f-ee6dd122da12"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"EulerPhi", "[", "n", "]"}], 
+    SuperscriptBox["n", "s"]], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "\[Infinity]"}], "}"}]}], "]"}]], "Input",ExpressionUUID\
+->"5026bf1a-c069-40c6-89db-9224bc98d0b8"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"Zeta", "[", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", "s"}], "]"}], 
+  RowBox[{"Zeta", "[", "s", "]"}]]], "Output",ExpressionUUID->"dc521155-afd0-\
+4212-960f-f89ccf361cb5"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"n", " ", 
+    RowBox[{"DivisorProduct", "(", 
+     RowBox[{"n", ",", 
+      RowBox[{
+       RowBox[{"1", "-", 
+        FractionBox["1", "#1"]}], "&"}], ",", 
+      RowBox[{
+       RowBox[{"PrimeQ", "[", "#1", "]"}], "&"}]}], ")"}]}], "\[LongEqual]", 
+   TemplateBox[{"n"},
+    "EulerPhi"]}], TraditionalForm]], "Subsection",ExpressionUUID->"ee021fb6-\
+3d2b-41a1-b1ee-abcb6964bcd3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"n", " ", 
+  RowBox[{"DivisorProduct", "[", 
+   RowBox[{"n", ",", 
+    RowBox[{
+     RowBox[{"1", "-", 
+      FractionBox["1", "#"]}], "&"}], ",", 
+    RowBox[{
+     RowBox[{"PrimeQ", "[", "#", "]"}], "&"}]}], "]"}]}]], "Input",ExpressionU\
+UID->"90769bd0-7701-420c-80a8-46feb2b9109b"],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["\[ExponentialE]", 
+   RowBox[{"DivisorSum", "[", 
+    RowBox[{"n", ",", 
+     RowBox[{"Function", "[", 
+      RowBox[{"x$", ",", 
+       RowBox[{"Log", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"1", "-", 
+            FractionBox["1", "#1"]}], "&"}], ")"}], "[", "x$", "]"}], "]"}]}],
+       "]"}], ",", 
+     RowBox[{
+      RowBox[{"PrimeQ", "[", "#1", "]"}], "&"}]}], "]"}]], " ", 
+  "n"}]], "Output",ExpressionUUID->"4024b30b-c912-492c-8614-f6ab7279be0b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"DivisorSum", "[", 
+      RowBox[{"n", ",", 
+       RowBox[{
+        RowBox[{"Log", "[", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           FractionBox["1", "#1"]}], ")"}], "]"}], "&"}], ",", 
+       RowBox[{
+        RowBox[{"PrimeQ", "[", "#1", "]"}], "&"}]}], "]"}]], " ", "n"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{"n", ",", "10"}], "}"}]}], "]"}]], "Input",ExpressionUUID->\
+"f0e3d3fa-8d32-489c-afbb-988a237a4ddb"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "2", ",", "2", ",", "4", ",", "2", ",", "6", ",", "4", 
+   ",", "6", ",", "4"}], "}"}]], "Output",ExpressionUUID->"02ed2516-ab6f-4c68-\
+a1a3-50bf3d96b8c2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"n", " ", 
+  RowBox[{"Exp", "[", 
+   RowBox[{"DivisorSum", "[", 
+    RowBox[{"n", ",", " ", 
+     RowBox[{
+      RowBox[{"Log", "[", 
+       RowBox[{"1", " ", "-", " ", 
+        RowBox[{"1", "/", "#1"}]}], "]"}], " ", "&"}], ",", " ", "PrimeQ"}], 
+    "]"}], "]"}]}]], "Input",ExpressionUUID->"41aa457a-576f-408c-b368-\
+905d373eb281"],
+
+Cell[BoxData[
+ RowBox[{"EulerPhi", "[", "n", "]"}]], "Output",ExpressionUUID->"f66ed676-6c8d-492e-82a9-e5b04f2cdf64"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"n", " ", 
+    RowBox[{"Exp", "[", 
+     RowBox[{"DivisorSum", "[", 
+      RowBox[{"n", ",", " ", 
+       RowBox[{
+        RowBox[{"Log", "[", 
+         RowBox[{"1", " ", "-", " ", 
+          RowBox[{"1", "/", "#1"}]}], "]"}], " ", "&"}], ",", " ", "PrimeQ"}],
+       "]"}], "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "10"}], "}"}]}], "]"}]], "Input",ExpressionUUID->\
+"9240652f-3730-4dff-ba41-4a9fda2ea090"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "2", ",", "2", ",", "4", ",", "2", ",", "6", ",", "4", 
+   ",", "6", ",", "4"}], "}"}]], "Output",ExpressionUUID->"1ee93fbc-4e19-48d2-\
+a2b7-263a9f41f137"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EulerPhi", "[", 
+  RowBox[{"Range", "[", "10", "]"}], "]"}]], "Input",ExpressionUUID->\
+"f263056a-1b85-46d5-95bd-90387cbb5257"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "2", ",", "2", ",", "4", ",", "2", ",", "6", ",", "4", 
+   ",", "6", ",", "4"}], "}"}]], "Output",ExpressionUUID->"b5aeff6c-d8e9-4f1f-\
+9bce-40ef81861ff0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Subtract", "@@@", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"EulerPhi", "[", "n", "]"}], ",", 
+       RowBox[{"n", " ", 
+        RowBox[{"DivisorProduct", "[", 
+         RowBox[{"n", ",", 
+          RowBox[{
+           RowBox[{"1", "-", 
+            FractionBox["1", "#"]}], "&"}], ",", 
+          RowBox[{
+           RowBox[{"PrimeQ", "[", "#", "]"}], "&"}]}], "]"}]}]}], "}"}], ",", 
+     
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1000"}], "}"}]}], "]"}]}], "//", "Union"}]], "Input",\
+ExpressionUUID->"88ac56b8-1a04-44f1-8315-c09f3841b93f"],
+
+Cell[BoxData[
+ RowBox[{"{", "0", "}"}]], "Output",ExpressionUUID->"0d5f8cb1-e0ea-439a-9910-cdfeb2e7c37e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"DivisorSum", "[", 
+    RowBox[{"n", ",", 
+     RowBox[{
+      TemplateBox[{"#1"},
+       "EulerPhi"], "&"}]}], "]"}], "\[LongEqual]", "n"}], 
+  TraditionalForm]], "Subsection",ExpressionUUID->"7ccdd333-c68d-492a-955c-\
+fca2b09b2a83"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DivisorSum", "[", 
+  RowBox[{"n", ",", 
+   RowBox[{
+    RowBox[{"EulerPhi", "[", "#", "]"}], "&"}]}], "]"}]], "Input",ExpressionUU\
+ID->"6f4f31ea-77f8-4d93-be1c-55d2ae3dd012"],
+
+Cell[BoxData["n"], "Output",ExpressionUUID->"68049deb-b90c-4c4c-b2a4-04c43886c15c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DivisorSum", "[", 
+  RowBox[{"n", ",", "EulerPhi"}], "]"}]], "Input",ExpressionUUID->"2acfd37a-\
+1a2b-4b83-804e-0d9ec186f4bc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DivisorSum", "::", "\<\"func\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"-- Message text not found -- \
+(\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(EulerPhi\\), \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\") (\\\\\\\"\\\", \\\"MT\
+\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(2\\), \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\")\\\\\\\"\\\", \\\"MT\\\
+\"]\\)\"\>"}]], "Message", \
+"MSG",ExpressionUUID->"ca2f7916-c770-412d-9690-ac61abffb8f9"],
+
+Cell[BoxData[
+ RowBox[{"DivisorSum", "[", 
+  RowBox[{"n", ",", "EulerPhi"}], "]"}]], "Output",ExpressionUUID->"78c8dd0d-\
+4c70-4b25-8e9e-99d8427b8bf5"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"DivisorSum", "[", 
+    RowBox[{"n", ",", 
+     RowBox[{
+      RowBox[{"#1", " ", 
+       TemplateBox[{
+         FractionBox["n", "#1"]},
+        "MoebiusMu"]}], "&"}]}], "]"}], "\[LongEqual]", 
+   TemplateBox[{"n"},
+    "EulerPhi"]}], TraditionalForm]], "Subsection",ExpressionUUID->"9a824ec1-\
+3a9d-4200-9aa7-039471f254ad"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DivisorSum", "[", 
+  RowBox[{"n", ",", 
+   RowBox[{
+    RowBox[{"#", " ", 
+     RowBox[{"MoebiusMu", "[", 
+      FractionBox["n", "#"], "]"}]}], "&"}]}], "]"}]], "Input",ExpressionUUID->\
+"ebd2da76-c6ab-4f68-b1c3-43be8cf4b8dd"],
+
+Cell[BoxData[
+ RowBox[{"EulerPhi", "[", "n", "]"}]], "Output",ExpressionUUID->"a9a28ff4-984c-4d5f-b17e-ce885500e98e"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", "k", "n"], 
+    RowBox[{"Boole", "[", 
+     RowBox[{"CoprimeQ", "[", 
+      RowBox[{"n", ",", "k"}], "]"}], "]"}]}], "\[LongEqual]", 
+   TemplateBox[{"n"},
+    "EulerPhi"]}], TraditionalForm]], "Subsection",ExpressionUUID->"60b4fec0-\
+50d3-4334-9591-7d6c30f58d91"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{"Boole", "[", 
+     RowBox[{"CoprimeQ", "[", 
+      RowBox[{"n", ",", "k"}], "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "n"}], "}"}]}], "]"}], "//", "InputForm"}]], "Input",Ex\
+pressionUUID->"018ba369-8473-4eda-9297-25fc7891ebb0"],
+
+Cell["Sum[Boole[CoprimeQ[k, n]], {k, n}]", "Output",ExpressionUUID->"ed433eae-1346-44a3-bc22-2c1610ec5a28"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Subtract", "@@@", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Sum", "[", 
+        RowBox[{
+         RowBox[{"Boole", "[", 
+          RowBox[{"CoprimeQ", "[", 
+           RowBox[{"n", ",", "k"}], "]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "n"}], "}"}]}], "]"}], ",", 
+       RowBox[{"EulerPhi", "[", "n", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1000"}], "}"}]}], "]"}]}], "//", "Union"}]], "Input",\
+ExpressionUUID->"4211051b-be8c-4a07-a6ef-e9cab6fc1860"],
+
+Cell[BoxData[
+ RowBox[{"{", "0", "}"}]], "Output",ExpressionUUID->"63e27d03-a5b1-46d3-a7b7-4087e6e4243c"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", "k", "n"], 
+    RowBox[{"Boole", "[", 
+     RowBox[{
+      RowBox[{"gcd", "(", 
+       RowBox[{"n", ",", "k"}], ")"}], "\[LongEqual]", "1"}], "]"}]}], 
+   "\[LongEqual]", 
+   TemplateBox[{"n"},
+    "EulerPhi"]}], TraditionalForm]], "Subsection",ExpressionUUID->"3ec7aa43-\
+8899-4f71-a9a4-af451be32ebd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{"Boole", "[", 
+     RowBox[{
+      RowBox[{"GCD", "[", 
+       RowBox[{"n", ",", "k"}], "]"}], "\[Equal]", "1"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "n"}], "}"}]}], "]"}], "//", "InputForm"}]], "Input",Ex\
+pressionUUID->"eb7453a8-82da-4dec-b9be-a44902ec3275"],
+
+Cell["Sum[Boole[GCD[k, n] == 1], {k, n}]", "Output",ExpressionUUID->"711805b4-41a2-48a0-b8e7-c3abc99a9776"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Subtract", "@@@", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Sum", "[", 
+        RowBox[{
+         RowBox[{"Boole", "[", 
+          RowBox[{
+           RowBox[{"GCD", "[", 
+            RowBox[{"n", ",", "k"}], "]"}], "\[Equal]", "1"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "n"}], "}"}]}], "]"}], ",", 
+       RowBox[{"EulerPhi", "[", "n", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1000"}], "}"}]}], "]"}]}], "//", "Union"}]], "Input",\
+ExpressionUUID->"7f4b2420-a80c-452c-abf2-19949a9e501d"],
+
+Cell[BoxData[
+ RowBox[{"{", "0", "}"}]], "Output",ExpressionUUID->"e09d25ff-0ce8-4d2e-b585-89bd107d4807"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Subbarao", "Section",ExpressionUUID->"7a8b0b11-8497-4504-9f83-037f6c4a09e2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sub", "[", "n_", "]"}], ":=", 
+  RowBox[{"Mod", "[", 
+   RowBox[{
+    RowBox[{"n", " ", 
+     RowBox[{"DivisorSigma", "[", 
+      RowBox[{"1", ",", "n"}], "]"}]}], ",", 
+    RowBox[{"EulerPhi", "[", "n", "]"}]}], "]"}]}]], "Input",ExpressionUUID->\
+"1053525d-5402-4c58-be0a-ac3f8ad4b261"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"sub", "[", 
+    RowBox[{"Prime", "[", "n", "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "100"}], "}"}]}], "]"}]], "Input",ExpressionUUID->\
+"cbacca50-633c-4df9-b80f-e7a10d166dd0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "0", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", 
+   ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", 
+   "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", 
+   ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", 
+   "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", 
+   ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", 
+   "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", 
+   ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", 
+   "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", 
+   ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", 
+   "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", 
+   ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", 
+   "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "2", 
+   ",", "2", ",", "2"}], "}"}]], "Output",ExpressionUUID->"29f00e81-5c90-40dc-\
+a05c-8ced9b51b087"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Select", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"n", ",", 
+       RowBox[{"sub", "[", "n", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "100000"}], "}"}]}], "]"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"!", 
+      RowBox[{"PrimeQ", "[", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "&&", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "2"}], "||", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"EulerPhi", "[", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[Equal]", "2"}], "&&", 
+         RowBox[{
+          RowBox[{"#", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "0"}]}], ")"}]}], 
+      ")"}]}], "&"}]}], "]"}]], "Input",ExpressionUUID->"8ad422b0-00fb-41e2-\
+ba5e-2ba70c31fc85"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"4", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"22", ",", "2"}], "}"}]}], "}"}]], "Output",ExpressionUUID->\
+"c0a5abdc-bed6-4571-9886-d1d4817be1d6"]
+}, Open  ]],
+
+Cell["Subbarao states that solutions are 4, 6, 22.", "Text",ExpressionUUID->"05d62222-66ef-4e9e-adbd-441535f0f1c9"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Arithmetic Progressions Having the Same Value", "Section",ExpressionUUID->"e2660ebb-cdb1-4e74-a81e-74b89988b1b6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"t", "=", 
+    RowBox[{"EulerPhi", "[", 
+     RowBox[{"Range", "[", 
+      RowBox[{"10", "^", "7"}], "]"}], "]"}]}], ";"}], "//", 
+  "Timing"}]], "Input",ExpressionUUID->"ca560867-97a0-40b7-bd9f-c67e733fb261"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"460.46999999999997`", " ", "Second"}], ",", "Null"}], 
+  "}"}]], "Output",ExpressionUUID->"0f8ace79-2d7a-4127-9926-cd698dc9c6c4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Take", "[", 
+  RowBox[{"t", ",", "50"}], "]"}]], "Input",ExpressionUUID->"d698dc7b-c4e5-\
+44f3-9a25-a22c709c2f34"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "2", ",", "2", ",", "4", ",", "2", ",", "6", ",", "4", 
+   ",", "6", ",", "4", ",", "10", ",", "4", ",", "12", ",", "6", ",", "8", 
+   ",", "8", ",", "16", ",", "6", ",", "18", ",", "8", ",", "12", ",", "10", 
+   ",", "22", ",", "8", ",", "20", ",", "12", ",", "18", ",", "12", ",", "28",
+    ",", "8", ",", "30", ",", "16", ",", "20", ",", "16", ",", "24", ",", 
+   "12", ",", "36", ",", "18", ",", "24", ",", "16", ",", "40", ",", "12", 
+   ",", "42", ",", "20", ",", "24", ",", "22", ",", "46", ",", "16", ",", 
+   "42", ",", "20"}], "}"}]], "Output",ExpressionUUID->"40dc7ab5-c3c5-4c4c-\
+9ebd-e9b219aa7330"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"s", "=", 
+    RowBox[{"Split", "[", "t", "]"}]}], ";"}], "//", "Timing"}]], "Input",Expr\
+essionUUID->"e8bd9ea6-a5fa-48d8-9c36-2d0311d03ffd"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"10.050000000000068`", " ", "Second"}], ",", "Null"}], 
+  "}"}]], "Output",ExpressionUUID->"73d7260c-a002-46ce-9370-2082882497cc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Max", "[", 
+  RowBox[{"Length", "/@", "s"}], "]"}]], "Input",ExpressionUUID->"3b54495b-\
+ba93-482f-805b-4947050724c5"],
+
+Cell[BoxData["3"], "Output",ExpressionUUID->"a2f593d7-3141-43dc-b84d-9c5139da95fa"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Pairs", "Subsection",ExpressionUUID->"3166cb8c-682c-46c4-8f7c-d767d0c6125c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pairs", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{
+     RowBox[{"Length", "/@", 
+      RowBox[{"Take", "[", 
+       RowBox[{"s", ",", 
+        RowBox[{"10", "^", "4"}]}], "]"}]}], ",", "2", ",", 
+     RowBox[{"{", "1", "}"}]}], "]"}], "//", "Flatten"}]}]], "Input",Expressio\
+nUUID->"53185954-f2c7-4c3c-9974-626ed5b3dd02"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "13", ",", "101", ",", "160", ",", "189", ",", "249", 
+   ",", "488", ",", "576", ",", "966", ",", "2194", ",", "2614", ",", "2822", 
+   ",", "3242", ",", "3691", ",", "10587", ",", "11697", ",", "13346", ",", 
+   "18295", ",", "22914", ",", "25523", ",", "32841", ",", "38780", ",", 
+   "39499", ",", "46189", ",", "48677", ",", "49187", ",", "49306", ",", 
+   "56834", ",", "57553", ",", "57613", ",", "63971", ",", "65501", ",", 
+   "73089"}], "}"}]], "Output",ExpressionUUID->"ea156909-0c4e-4cfa-8638-\
+69c8e58a5190"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Transpose", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"s", "[", 
+       RowBox[{"[", 
+        RowBox[{"#", ",", "1"}], "]"}], "]"}], ",", 
+      RowBox[{"1", "+", 
+       RowBox[{"Plus", "@@", 
+        RowBox[{"(", 
+         RowBox[{"Length", "/@", 
+          RowBox[{"Take", "[", 
+           RowBox[{"s", ",", 
+            RowBox[{"#", "-", "1"}]}], "]"}]}], ")"}]}]}]}], "}"}], "&"}], "/@",
+    "pairs"}], "]"}]], "Input",ExpressionUUID->"c54bfcdd-9e7d-4748-b104-\
+bf505201eb56"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "8", ",", "48", ",", "80", ",", "96", ",", "128", ",",
+      "240", ",", "288", ",", "480", ",", "1008", ",", "1200", ",", "1296", 
+     ",", "1440", ",", "1728", ",", "4800", ",", "5600", ",", "6480", ",", 
+     "8640", ",", "11040", ",", "12480", ",", "14976", ",", "19008", ",", 
+     "19200", ",", "22464", ",", "24320", ",", "24576", ",", "21120", ",", 
+     "28416", ",", "27840", ",", "25920", ",", "32000", ",", "32768", ",", 
+     "36000"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "3", ",", "15", ",", "104", ",", "164", ",", "194", ",", "255", 
+     ",", "495", ",", "584", ",", "975", ",", "2204", ",", "2625", ",", 
+     "2834", ",", "3255", ",", "3705", ",", "10604", ",", "11715", ",", 
+     "13365", ",", "18315", ",", "22935", ",", "25545", ",", "32864", ",", 
+     "38804", ",", "39524", ",", "46215", ",", "48704", ",", "49215", ",", 
+     "49335", ",", "56864", ",", "57584", ",", "57645", ",", "64004", ",", 
+     "65535", ",", "73124"}], "}"}]}], "}"}]], "Output",ExpressionUUID->\
+"7ccc2568-e919-4aab-9c6f-31b1767e67fe"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Triples", "Subsection",ExpressionUUID->"457e3b81-fe9c-447b-9420-3fb98e4906b4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Position", "[", 
+   RowBox[{
+    RowBox[{"Length", "/@", "s"}], ",", "3", ",", 
+    RowBox[{"{", "1", "}"}]}], "]"}], "//", "Flatten"}]], "Input",ExpressionUU\
+ID->"3ab1ea0c-5ef6-4904-93cd-d73599eba641"],
+
+Cell[BoxData[
+ RowBox[{"{", "5171", "}"}]], "Output",ExpressionUUID->"c082f98c-52ed-4b36-936c-a0af34de7f79"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Guy", "Subsection",ExpressionUUID->"dc71c8b4-7822-4f0b-bdfe-d22fea97e63f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EulerPhi", "/@", 
+  RowBox[{"{", 
+   RowBox[{"5186", ",", "5187", ",", "5188"}], "}"}]}]], "Input",ExpressionUUI\
+D->"607ccc52-5d0e-49a0-9b0c-33035556074b"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2592", ",", "2592", ",", "2592"}], "}"}]], "Output",ExpressionUUID->\
+"f8e91583-776a-4036-86d5-7dc4e09d9bd9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EulerPhi", "/@", 
+  RowBox[{"{", 
+   RowBox[{"25930", ",", "25935", ",", "25940", ",", "25942"}], 
+   "}"}]}]], "Input",ExpressionUUID->"9a18a318-4ca8-438d-97eb-b5f784027458"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"10368", ",", "10368", ",", "10368", ",", "10368"}], 
+  "}"}]], "Output",ExpressionUUID->"e34bc9e9-13e6-4d43-8722-27266ffc5ddb"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EulerPhi", "/@", 
+  RowBox[{"{", 
+   RowBox[{"404471", ",", "404473", ",", "404477"}], "}"}]}]], "Input",Express\
+ionUUID->"c2a544a5-3c6d-495c-b145-3076d4b525dc"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"403200", ",", "403200", ",", "403200"}], "}"}]], "Output",Expressio\
+nUUID->"81ff78b2-10da-4b76-a104-b7aa05c62bbc"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["McCrainie", "Subsection",ExpressionUUID->"e1d1f580-6527-44e4-9db1-cb07be21bd42"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EulerPhi", "/@", 
+  RowBox[{"Range", "[", 
+   RowBox[{"583200", ",", "583350", ",", "30"}], "]"}]}]], "Input",ExpressionU\
+UID->"1954d875-85b8-45ca-9694-dd91282eeccb"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "155520", ",", "155520", ",", "155520", ",", "155520", ",", "155520", ",", 
+   "155520"}], "}"}]], "Output",ExpressionUUID->"8f458969-9c83-40bb-a345-\
+dadaf99b98d0"]
+}, Open  ]]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Special Identities", "Section",ExpressionUUID->"075e1839-22fb-48eb-988e-f4fa734422be"],
+
+Cell[CellGroupData[{
+
+Cell["Even Arguments", "Subsection",ExpressionUUID->"965a5b70-9c9b-46c1-85c5-3c6ef5d5d403"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"EulerPhi", "[", 
+    RowBox[{"2", "n"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "20"}], "}"}]}], "]"}]], "Input",ExpressionUUID->\
+"50542e65-3744-4ed1-8b60-d00ad8f1eae1"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "2", ",", "4", ",", "4", ",", "4", ",", "6", ",", "8", 
+   ",", "6", ",", "8", ",", "10", ",", "8", ",", "12", ",", "12", ",", "8", 
+   ",", "16", ",", "16", ",", "12", ",", "18", ",", "16"}], "}"}]], "Output",E\
+xpressionUUID->"972eabd3-27f2-4d2e-9fb3-87ce39964710"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Odd Values", "Subsection",ExpressionUUID->"1abda5ac-fd46-4e28-8121-0bc1f09c56b4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"EulerPhi", "[", "n", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", 
+         RowBox[{"10", "^", "6"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"_Integer", "?", "OddQ"}]}], "]"}], "//", "Flatten"}], "//", 
+  "Timing"}]], "Input",ExpressionUUID->"b3f95eda-f35d-4a2a-be34-d4acf0a0325b"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"50.41`", " ", "Second"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2"}], "}"}]}], "}"}]], "Output",ExpressionUUID->\
+"c0d6888f-5297-4a59-81fc-150dcad90fff"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"Values", " ", "of", " ", "n", " ", 
+    RowBox[{"s", ".", "t", ".", " ", 
+     RowBox[{
+      TagBox["\[Phi]",
+       EulerPhi], "(", 
+      RowBox[{
+       SubscriptBox[
+        TagBox["\[Sigma]",
+         DivisorSigma], "1"], "(", "n", ")"}], ")"}]}]}], "\[LongEqual]", 
+   "n"}], TraditionalForm]], "Subsection",ExpressionUUID->"191c5fad-e8f9-4f0f-\
+9236-4345d35335e6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"EulerPhi", "[", 
+         RowBox[{"DivisorSigma", "[", 
+          RowBox[{"1", ",", "n"}], "]"}], "]"}], "-", "n"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", 
+         RowBox[{"10", "^", "5"}]}], "}"}]}], "]"}], ",", "0", ",", 
+     RowBox[{"{", "1", "}"}]}], "]"}], "//", "Flatten"}], "//", 
+  "Timing"}]], "Input",ExpressionUUID->"e5a0e2d4-6744-4b70-852a-de364f9f0e03"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"8.210000000000008`", " ", "Second"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "8", ",", "12", ",", "128", ",", "240", ",", "720", 
+     ",", "6912", ",", "32768"}], "}"}]}], "}"}]], "Output",ExpressionUUID->\
+"c02c93fb-5683-407d-87e0-7a7c02415400"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Trailing Zeros for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"p", " ", "q"}], TraditionalForm]],ExpressionUUID->
+  "41eb7da0-e913-4d98-9de3-63d05abe8840"]
+}], "Section",ExpressionUUID->"5b8f6e6f-c40d-44fb-a0d1-85d81c60f986"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Do", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"EulerPhi", "[", 
+        RowBox[{
+         RowBox[{"Random", "[", 
+          RowBox[{"Integer", ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", 
+             RowBox[{"10", "^", "30"}]}], "}"}]}], "]"}], 
+         RowBox[{"Random", "[", 
+          RowBox[{"Integer", ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", 
+             RowBox[{"10", "^", "30"}]}], "}"}]}], "]"}]}], "]"}]}], "}"}], "//",
+      "Timing"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "10"}], "}"}]}], "]"}]], "Input",ExpressionUUID->\
+"9f278290-9d1c-46a4-b5f1-6e597334ca5b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"4.480000000000004`", " ", "Second"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "45271635718535678038933758143918855681036722778708522188800"}],
+     "}"}]}], "}"}]], "Print",ExpressionUUID->"5dc30ce3-72e5-4d5b-830d-\
+6ecb4376031c"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"0.8200000000000074`", " ", "Second"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "3002975742443984023206383674205779295507976193113587712000"}], 
+    "}"}]}], "}"}]], "Print",ExpressionUUID->"0a2f3917-e23c-498c-9ccb-\
+8459394372f7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"0.38999999999998636`", " ", "Second"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "3", ",", 
+     "208897985817098612350197962115721006781305984544440320000000"}], 
+    "}"}]}], "}"}]], "Print",ExpressionUUID->"ed849cba-6525-4fc8-bb4f-\
+cec6dc4cc76b"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"8.510000000000005`", " ", "Second"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "4", ",", 
+     "196901966914746808727528696061423273768426854037827748859392"}], 
+    "}"}]}], "}"}]], "Print",ExpressionUUID->"f3a8783b-b348-45fe-8189-\
+414ec1bf4f28"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"2.1099999999999994`", " ", "Second"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "5", ",", 
+     "101571477872840103944638780110537489037627131229194682773504"}], 
+    "}"}]}], "}"}]], "Print",ExpressionUUID->"f3a900fc-dec6-4f6a-9b77-\
+c23ec0515b53"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"0.8500000000000085`", " ", "Second"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "6", ",", "15268481753854427797748718698401782731684785215346409472000"}],
+     "}"}]}], "}"}]], "Print",ExpressionUUID->"d790b16d-2fd6-4c0e-8a79-\
+2b5e75b6fae3"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Inequalities", "Section",ExpressionUUID->"7ab4486d-dc0d-4895-801d-62bb00635981"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Blue", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Line", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "#"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"5000", ",", "#"}], "}"}]}], "}"}], "]"}], "&"}], "[", 
+         RowBox[{"Exp", "[", 
+          RowBox[{"-", "EulerGamma"}], "]"}], "]"}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PointSize", "[", ".005", "]"}], ",", "Red", ",", 
+      RowBox[{"Point", "/@", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"n", ",", 
+           RowBox[{
+            FractionBox[
+             RowBox[{"Log", "[", 
+              RowBox[{"Log", "[", "n", "]"}], "]"}], "n"], 
+            RowBox[{"EulerPhi", "[", "n", "]"}]}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", "2", ",", "5000"}], "}"}]}], "]"}]}]}], "}"}], 
+    "]"}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"TraditionalForm", "/@", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Log", "[", 
+          RowBox[{"Log", "[", "n", "]"}], "]"}], "/", "n"}], " ", 
+        RowBox[{"EulerPhi", "[", "n", "]"}]}]}], "}"}]}]}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",ExpressionUUID->"9d4c4e84-28a5-4e80-\
+b813-e3307f2185a5"],
+
+Cell[GraphicsData["PostScript", "\<\
+%!
+%%Creator: Mathematica
+%%AspectRatio: .61803 
+MathPictureStart
+/Mabs {
+Mgmatrix idtransform
+Mtmatrix dtransform
+} bind def
+/Mabsadd { Mabs
+3 -1 roll add
+3 1 roll add
+exch } bind def
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0238095 0.000190476 0.061111 0.253175 [
+[.21429 .04861 -12 -9 ]
+[.21429 .04861 12 0 ]
+[.40476 .04861 -12 -9 ]
+[.40476 .04861 12 0 ]
+[.59524 .04861 -12 -9 ]
+[.59524 .04861 12 0 ]
+[.78571 .04861 -12 -9 ]
+[.78571 .04861 12 0 ]
+[.97619 .04861 -12 -9 ]
+[.97619 .04861 12 0 ]
+[1.025 .06111 0 -6 ]
+[1.025 .06111 9 6 ]
+[.01131 .1877 -18 -4.5 ]
+[.01131 .1877 0 4.5 ]
+[.01131 .31429 -6 -4.5 ]
+[.01131 .31429 0 4.5 ]
+[.01131 .44087 -18 -4.5 ]
+[.01131 .44087 0 4.5 ]
+[.01131 .56746 -6 -4.5 ]
+[.01131 .56746 0 4.5 ]
+[.02381 .64303 -29.2188 0 ]
+[.02381 .64303 29.2188 22.9375 ]
+[ 0 0 0 0 ]
+[ 1 .61803 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 g
+.25 Mabswid
+[ ] 0 setdash
+.21429 .06111 m
+.21429 .06736 L
+s
+[(1000)] .21429 .04861 0 1 Mshowa
+.40476 .06111 m
+.40476 .06736 L
+s
+[(2000)] .40476 .04861 0 1 Mshowa
+.59524 .06111 m
+.59524 .06736 L
+s
+[(3000)] .59524 .04861 0 1 Mshowa
+.78571 .06111 m
+.78571 .06736 L
+s
+[(4000)] .78571 .04861 0 1 Mshowa
+.97619 .06111 m
+.97619 .06736 L
+s
+[(5000)] .97619 .04861 0 1 Mshowa
+.125 Mabswid
+.0619 .06111 m
+.0619 .06486 L
+s
+.1 .06111 m
+.1 .06486 L
+s
+.1381 .06111 m
+.1381 .06486 L
+s
+.17619 .06111 m
+.17619 .06486 L
+s
+.25238 .06111 m
+.25238 .06486 L
+s
+.29048 .06111 m
+.29048 .06486 L
+s
+.32857 .06111 m
+.32857 .06486 L
+s
+.36667 .06111 m
+.36667 .06486 L
+s
+.44286 .06111 m
+.44286 .06486 L
+s
+.48095 .06111 m
+.48095 .06486 L
+s
+.51905 .06111 m
+.51905 .06486 L
+s
+.55714 .06111 m
+.55714 .06486 L
+s
+.63333 .06111 m
+.63333 .06486 L
+s
+.67143 .06111 m
+.67143 .06486 L
+s
+.70952 .06111 m
+.70952 .06486 L
+s
+.74762 .06111 m
+.74762 .06486 L
+s
+.82381 .06111 m
+.82381 .06486 L
+s
+.8619 .06111 m
+.8619 .06486 L
+s
+.9 .06111 m
+.9 .06486 L
+s
+.9381 .06111 m
+.9381 .06486 L
+s
+.25 Mabswid
+0 .06111 m
+1 .06111 L
+s
+gsave
+1.025 .06111 -61 -10 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 20 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+63.000 13.000 moveto
+%%IncludeResource: font Times-Italic
+%%IncludeFont: Times-Italic
+/Times-Italic findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(n) show
+1.000 setlinewidth
+grestore
+.02381 .1877 m
+.03006 .1877 L
+s
+[(0.5)] .01131 .1877 1 0 Mshowa
+.02381 .31429 m
+.03006 .31429 L
+s
+[(1)] .01131 .31429 1 0 Mshowa
+.02381 .44087 m
+.03006 .44087 L
+s
+[(1.5)] .01131 .44087 1 0 Mshowa
+.02381 .56746 m
+.03006 .56746 L
+s
+[(2)] .01131 .56746 1 0 Mshowa
+.125 Mabswid
+.02381 .08643 m
+.02756 .08643 L
+s
+.02381 .11175 m
+.02756 .11175 L
+s
+.02381 .13706 m
+.02756 .13706 L
+s
+.02381 .16238 m
+.02756 .16238 L
+s
+.02381 .21302 m
+.02756 .21302 L
+s
+.02381 .23833 m
+.02756 .23833 L
+s
+.02381 .26365 m
+.02756 .26365 L
+s
+.02381 .28897 m
+.02756 .28897 L
+s
+.02381 .3396 m
+.02756 .3396 L
+s
+.02381 .36492 m
+.02756 .36492 L
+s
+.02381 .39024 m
+.02756 .39024 L
+s
+.02381 .41556 m
+.02756 .41556 L
+s
+.02381 .46619 m
+.02756 .46619 L
+s
+.02381 .49151 m
+.02756 .49151 L
+s
+.02381 .51683 m
+.02756 .51683 L
+s
+.02381 .54214 m
+.02756 .54214 L
+s
+.02381 .03579 m
+.02756 .03579 L
+s
+.02381 .01048 m
+.02756 .01048 L
+s
+.02381 .59278 m
+.02756 .59278 L
+s
+.25 Mabswid
+.02381 0 m
+.02381 .61803 L
+s
+gsave
+.02381 .64303 -90.2188 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 30.9375 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+/MISOfy
+{
+    /newfontname exch def
+    /oldfontname exch def
+
+    oldfontname findfont
+    dup length dict begin
+        {1 index /FID ne {def} {pop pop} ifelse} forall
+        /Encoding MacintoshRomanEncoding def
+        currentdict
+    end
+
+    newfontname exch definefont pop
+} def
+65.562 11.812 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(f) show
+%%IncludeResource: font Mathematica2
+%%IncludeFont: Mathematica2
+/Mathematica2 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+71.000 11.812 moveto
+(H) show
+74.188 11.812 moveto
+%%IncludeResource: font Times-Italic
+%%IncludeFont: Times-Italic
+%%BeginResource: font Times-Italic-MISO
+%%BeginFont: Times-Italic-MISO
+/Times-Italic /Times-Italic-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(n) show
+%%IncludeResource: font Mathematica2
+%%IncludeFont: Mathematica2
+/Mathematica2 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+79.188 11.812 moveto
+(L) show
+84.250 11.812 moveto
+(H) show
+87.438 11.812 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+%%BeginResource: font Times-Roman-MISO
+%%BeginFont: Times-Roman-MISO
+/Times-Roman /Times-Roman-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(ln) show
+95.188 11.812 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+( ) show
+97.062 11.812 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(ln) show
+104.812 11.812 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+( ) show
+106.688 11.812 moveto
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(n) show
+%%IncludeResource: font Mathematica2
+%%IncludeFont: Mathematica2
+/Mathematica2 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+111.688 11.812 moveto
+(L) show
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+64.438 19.000 moveto
+(\\200\\200\\200\\200\\200\\200\\200\\200\\200\\200\\200\\200\\200\\200\\200\\\
+200) show
+86.438 19.000 moveto
+(\\200\\200\\200\\200\\200\\200\\200\\200) show
+97.438 19.000 moveto
+(\\200\\200\\200\\200\\200\\200\\200\\200) show
+108.438 19.000 moveto
+(\\200\\200\\200\\200) show
+113.938 19.000 moveto
+(\\200) show
+114.375 19.000 moveto
+(\\200) show
+87.688 25.812 moveto
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(n) show
+1.000 setlinewidth
+grestore
+0 0 m
+1 0 L
+1 .61803 L
+0 .61803 L
+closepath
+clip
+newpath
+0 0 1 r
+.5 Mabswid
+.02381 .20326 m
+.97619 .20326 L
+s
+1 0 0 r
+.005 w
+.02419 .01472 Mdot
+.02438 .07698 Mdot
+.02457 .10246 Mdot
+.02476 .1575 Mdot
+.02495 .11033 Mdot
+.02514 .20558 Mdot
+.02533 .15379 Mdot
+.02552 .19398 Mdot
+.02571 .14557 Mdot
+.0259 .26241 Mdot
+.0261 .13793 Mdot
+.02629 .28124 Mdot
+.02648 .16641 Mdot
+.02667 .19563 Mdot
+.02686 .1902 Mdot
+.02705 .30926 Mdot
+.02724 .15068 Mdot
+.02743 .32013 Mdot
+.02762 .17222 Mdot
+.02781 .22218 Mdot
+.028 .19098 Mdot
+.02819 .33786 Mdot
+.02838 .15869 Mdot
+.02857 .29789 Mdot
+.02876 .19913 Mdot
+.02895 .26241 Mdot
+.02914 .19171 Mdot
+.02933 .35789 Mdot
+.02952 .14376 Mdot
+.02971 .36338 Mdot
+.0299 .21845 Mdot
+.0301 .25318 Mdot
+.03029 .21126 Mdot
+.03048 .28132 Mdot
+.03067 .16882 Mdot
+.03086 .37739 Mdot
+.03105 .21597 Mdot
+.03124 .26341 Mdot
+.03143 .1933 Mdot
+.03162 .38517 Mdot
+.03181 .15648 Mdot
+.032 .3887 Mdot
+.03219 .21426 Mdot
+.03238 .24161 Mdot
+.03257 .22367 Mdot
+.03276 .39516 Mdot
+.03295 .17534 Mdot
+.03314 .356 Mdot
+.03333 .19925 Mdot
+.03352 .2786 Mdot
+.03371 .22167 Mdot
+.0339 .40361 Mdot
+.0341 .17787 Mdot
+.03429 .3167 Mdot
+.03448 .21221 Mdot
+.03467 .28449 Mdot
+.03486 .23238 Mdot
+.03505 .41092 Mdot
+.03524 .15628 Mdot
+.03543 .41314 Mdot
+.03562 .23477 Mdot
+.03581 .26675 Mdot
+.036 .24153 Mdot
+.03619 .32827 Mdot
+.03638 .17102 Mdot
+.03657 .41929 Mdot
+.03676 .23264 Mdot
+.03695 .2941 Mdot
+.03714 .18668 Mdot
+.03733 .42302 Mdot
+.03752 .18375 Mdot
+.03771 .42478 Mdot
+.0379 .24088 Mdot
+.0381 .25861 Mdot
+.03829 .23689 Mdot
+.03848 .35086 Mdot
+.03867 .17576 Mdot
+.03886 .42973 Mdot
+.03905 .21074 Mdot
+.03924 .31097 Mdot
+.03943 .24428 Mdot
+.03962 .43277 Mdot
+.03981 .16879 Mdot
+.04 .34538 Mdot
+.04019 .24582 Mdot
+.04038 .30498 Mdot
+.04057 .23362 Mdot
+.04076 .43699 Mdot
+.04095 .16265 Mdot
+.04114 .36288 Mdot
+.04133 .24381 Mdot
+.04152 .30796 Mdot
+.04171 .24864 Mdot
+.0419 .352 Mdot
+.0421 .18924 Mdot
+.04229 .44211 Mdot
+.04248 .22634 Mdot
+.04267 .29511 Mdot
+.04286 .21577 Mdot
+.04305 .44447 Mdot
+.04324 .18275 Mdot
+.04343 .4456 Mdot
+.04362 .24055 Mdot
+.04381 .23908 Mdot
+.044 .25235 Mdot
+.04419 .4478 Mdot
+.04438 .19139 Mdot
+.04457 .44886 Mdot
+.04476 .20359 Mdot
+.04495 .31559 Mdot
+.04514 .22945 Mdot
+.04533 .45091 Mdot
+.04552 .18545 Mdot
+.04571 .36277 Mdot
+.0459 .25164 Mdot
+.0461 .30427 Mdot
+.04629 .25555 Mdot
+.04648 .3806 Mdot
+.04667 .16684 Mdot
+.04686 .42194 Mdot
+.04705 .25653 Mdot
+.04724 .31983 Mdot
+.04743 .25379 Mdot
+.04762 .38001 Mdot
+.04781 .17512 Mdot
+.048 .45742 Mdot
+.04819 .26104 Mdot
+.04838 .32175 Mdot
+.04857 .20905 Mdot
+.04876 .45912 Mdot
+.04895 .18277 Mdot
+.04914 .38743 Mdot
+.04933 .25923 Mdot
+.04952 .27585 Mdot
+.04971 .25076 Mdot
+.0499 .46155 Mdot
+.0501 .18985 Mdot
+.05029 .46233 Mdot
+.05048 .1998 Mdot
+.05067 .32528 Mdot
+.05086 .26087 Mdot
+.05105 .40146 Mdot
+.05124 .19642 Mdot
+.05143 .37493 Mdot
+.05162 .26164 Mdot
+.05181 .29367 Mdot
+.052 .25927 Mdot
+.05219 .46604 Mdot
+.05238 .16991 Mdot
+.05257 .46675 Mdot
+.05276 .25469 Mdot
+.05295 .31774 Mdot
+.05314 .22059 Mdot
+.05333 .37827 Mdot
+.05352 .18726 Mdot
+.05371 .4688 Mdot
+.0539 .26382 Mdot
+.0541 .3299 Mdot
+.05429 .22561 Mdot
+.05448 .39854 Mdot
+.05467 .1984 Mdot
+.05486 .47075 Mdot
+.05505 .26232 Mdot
+.05524 .26125 Mdot
+.05543 .26516 Mdot
+.05562 .47201 Mdot
+.05581 .1793 Mdot
+.056 .44323 Mdot
+.05619 .21707 Mdot
+.05638 .32293 Mdot
+.05657 .2637 Mdot
+.05676 .47383 Mdot
+.05695 .1948 Mdot
+.05714 .34615 Mdot
+.05733 .25018 Mdot
+.05752 .3339 Mdot
+.05771 .26703 Mdot
+.0579 .47557 Mdot
+.0581 .17233 Mdot
+.05829 .47613 Mdot
+.05848 .22631 Mdot
+.05867 .33512 Mdot
+.05886 .26108 Mdot
+.05905 .38678 Mdot
+.05924 .19616 Mdot
+.05943 .41954 Mdot
+.05962 .26624 Mdot
+.05981 .30078 Mdot
+.06 .22015 Mdot
+.06019 .47884 Mdot
+.06038 .20117 Mdot
+.06057 .47937 Mdot
+.06076 .26928 Mdot
+.06095 .26834 Mdot
+.06114 .24161 Mdot
+.06133 .48039 Mdot
+.06152 .18889 Mdot
+.06171 .48089 Mdot
+.0619 .22997 Mdot
+.0621 .33849 Mdot
+.06229 .27033 Mdot
+.06248 .41106 Mdot
+.06267 .19384 Mdot
+.06286 .39151 Mdot
+.06305 .27083 Mdot
+.06324 .33135 Mdot
+.06343 .25681 Mdot
+.06362 .42648 Mdot
+.06381 .15813 Mdot
+.064 .48378 Mdot
+.06419 .26956 Mdot
+.06438 .34054 Mdot
+.06457 .2718 Mdot
+.06476 .39365 Mdot
+.06495 .20304 Mdot
+.06514 .41448 Mdot
+.06533 .27227 Mdot
+.06552 .34151 Mdot
+.06571 .21626 Mdot
+.0659 .43196 Mdot
+.0661 .19962 Mdot
+.06629 .48648 Mdot
+.06648 .24432 Mdot
+.06667 .28922 Mdot
+.06686 .27317 Mdot
+.06705 .48735 Mdot
+.06724 .19637 Mdot
+.06743 .48777 Mdot
+.06762 .22515 Mdot
+.06781 .28393 Mdot
+.068 .26828 Mdot
+.06819 .4886 Mdot
+.06838 .19328 Mdot
+.06857 .39758 Mdot
+.06876 .27243 Mdot
+.06895 .34423 Mdot
+.06914 .23469 Mdot
+.06933 .48982 Mdot
+.06952 .17597 Mdot
+.06971 .49022 Mdot
+.0699 .25706 Mdot
+.0701 .34863 Mdot
+.07029 .27331 Mdot
+.07048 .3571 Mdot
+.07067 .20155 Mdot
+.07086 .43892 Mdot
+.07105 .27025 Mdot
+.07124 .34591 Mdot
+.07143 .23415 Mdot
+.07162 .49215 Mdot
+.07181 .18481 Mdot
+.072 .43775 Mdot
+.07219 .27606 Mdot
+.07238 .27871 Mdot
+.07257 .27795 Mdot
+.07276 .49327 Mdot
+.07295 .20242 Mdot
+.07314 .42323 Mdot
+.07333 .2215 Mdot
+.07352 .34082 Mdot
+.07371 .27681 Mdot
+.0739 .49436 Mdot
+.0741 .19295 Mdot
+.07429 .40274 Mdot
+.07448 .2379 Mdot
+.07467 .34824 Mdot
+.07486 .27574 Mdot
+.07505 .49541 Mdot
+.07524 .1774 Mdot
+.07543 .49576 Mdot
+.07562 .26649 Mdot
+.07581 .2914 Mdot
+.076 .27789 Mdot
+.07619 .37887 Mdot
+.07638 .20047 Mdot
+.07657 .49678 Mdot
+.07676 .27824 Mdot
+.07695 .34341 Mdot
+.07714 .21119 Mdot
+.07733 .49744 Mdot
+.07752 .20402 Mdot
+.07771 .49777 Mdot
+.0779 .27721 Mdot
+.0781 .28268 Mdot
+.07829 .24517 Mdot
+.07848 .42808 Mdot
+.07867 .20744 Mdot
+.07886 .47443 Mdot
+.07905 .23077 Mdot
+.07924 .35106 Mdot
+.07943 .2779 Mdot
+.07962 .49937 Mdot
+.07981 .1868 Mdot
+.08 .40719 Mdot
+.08019 .27527 Mdot
+.08038 .328 Mdot
+.08057 .27989 Mdot
+.08076 .45019 Mdot
+.08095 .17866 Mdot
+.08114 .43028 Mdot
+.08133 .2802 Mdot
+.08152 .35237 Mdot
+.08171 .27019 Mdot
+.0819 .40855 Mdot
+.0821 .19968 Mdot
+.08229 .5015 Mdot
+.08248 .23331 Mdot
+.08267 .353 Mdot
+.08286 .23231 Mdot
+.08305 .50209 Mdot
+.08324 .19728 Mdot
+.08343 .50238 Mdot
+.08362 .28111 Mdot
+.08381 .26361 Mdot
+.084 .27986 Mdot
+.08419 .50296 Mdot
+.08438 .20612 Mdot
+.08457 .45041 Mdot
+.08476 .23857 Mdot
+.08495 .35421 Mdot
+.08514 .2431 Mdot
+.08533 .45706 Mdot
+.08552 .20918 Mdot
+.08571 .38924 Mdot
+.0859 .28198 Mdot
+.0861 .3548 Mdot
+.08629 .27806 Mdot
+.08648 .43432 Mdot
+.08667 .16899 Mdot
+.08686 .5049 Mdot
+.08705 .28106 Mdot
+.08724 .35002 Mdot
+.08743 .28254 Mdot
+.08762 .41232 Mdot
+.08781 .18848 Mdot
+.088 .50571 Mdot
+.08819 .26698 Mdot
+.08838 .35593 Mdot
+.08857 .22913 Mdot
+.08876 .45387 Mdot
+.08895 .20213 Mdot
+.08914 .44399 Mdot
+.08933 .27932 Mdot
+.08952 .28911 Mdot
+.08971 .28335 Mdot
+.0899 .50701 Mdot
+.0901 .20507 Mdot
+.09029 .50727 Mdot
+.09048 .21456 Mdot
+.09067 .33661 Mdot
+.09086 .26466 Mdot
+.09105 .50777 Mdot
+.09124 .20793 Mdot
+.09143 .4146 Mdot
+.09162 .28274 Mdot
+.09181 .30228 Mdot
+.092 .28413 Mdot
+.09219 .50852 Mdot
+.09238 .18078 Mdot
+.09257 .48638 Mdot
+.09276 .28438 Mdot
+.09295 .33331 Mdot
+.09314 .23884 Mdot
+.09333 .41568 Mdot
+.09352 .20848 Mdot
+.09371 .50949 Mdot
+.0939 .27619 Mdot
+.0941 .35369 Mdot
+.09429 .23623 Mdot
+.09448 .4396 Mdot
+.09467 .20633 Mdot
+.09486 .5102 Mdot
+.09505 .2538 Mdot
+.09524 .30139 Mdot
+.09543 .28164 Mdot
+.09562 .46284 Mdot
+.09581 .18993 Mdot
+.096 .5109 Mdot
+.09619 .23205 Mdot
+.09638 .35954 Mdot
+.09657 .28559 Mdot
+.09676 .51136 Mdot
+.09695 .21162 Mdot
+.09714 .34266 Mdot
+.09733 .28582 Mdot
+.09752 .35535 Mdot
+.09771 .28477 Mdot
+.0979 .51204 Mdot
+.0981 .17242 Mdot
+.09829 .4683 Mdot
+.09848 .255 Mdot
+.09867 .36049 Mdot
+.09886 .28628 Mdot
+.09905 .41871 Mdot
+.09924 .19834 Mdot
+.09943 .51292 Mdot
+.09962 .2865 Mdot
+.09981 .30643 Mdot
+.1 .24242 Mdot
+.10019 .51335 Mdot
+.10038 .21001 Mdot
+.10057 .4663 Mdot
+.10076 .28571 Mdot
+.10095 .30313 Mdot
+.10114 .24893 Mdot
+.10133 .46268 Mdot
+.10152 .20357 Mdot
+.10171 .51421 Mdot
+.1019 .2384 Mdot
+.1021 .36184 Mdot
+.10229 .28616 Mdot
+.10248 .44418 Mdot
+.10267 .20609 Mdot
+.10286 .42058 Mdot
+.10305 .27107 Mdot
+.10324 .36228 Mdot
+.10343 .2571 Mdot
+.10362 .51525 Mdot
+.10381 .16518 Mdot
+.104 .51545 Mdot
+.10419 .28779 Mdot
+.10438 .35839 Mdot
+.10457 .28467 Mdot
+.10476 .40431 Mdot
+.10495 .21094 Mdot
+.10514 .44557 Mdot
+.10533 .28704 Mdot
+.10552 .31633 Mdot
+.10571 .23939 Mdot
+.1059 .51645 Mdot
+.1061 .21328 Mdot
+.10629 .51665 Mdot
+.10648 .25052 Mdot
+.10667 .29633 Mdot
+.10686 .28746 Mdot
+.10705 .47522 Mdot
+.10724 .21138 Mdot
+.10743 .51724 Mdot
+.10762 .22739 Mdot
+.10781 .32246 Mdot
+.108 .25982 Mdot
+.10819 .51762 Mdot
+.10838 .20953 Mdot
+.10857 .42318 Mdot
+.10876 .289 Mdot
+.10895 .36434 Mdot
+.10914 .2574 Mdot
+.10933 .5182 Mdot
+.10952 .1833 Mdot
+.10971 .46758 Mdot
+.1099 .28827 Mdot
+.1101 .36473 Mdot
+.11029 .28938 Mdot
+.11048 .35142 Mdot
+.11067 .20598 Mdot
+.11086 .51894 Mdot
+.11105 .28957 Mdot
+.11124 .34912 Mdot
+.11143 .23677 Mdot
+.11162 .51931 Mdot
+.11181 .18041 Mdot
+.112 .51949 Mdot
+.11219 .28292 Mdot
+.11238 .2983 Mdot
+.11257 .28994 Mdot
+.11276 .51986 Mdot
+.11295 .20259 Mdot
+.11314 .44943 Mdot
+.11333 .24119 Mdot
+.11352 .36588 Mdot
+.11371 .28729 Mdot
+.1139 .46979 Mdot
+.1141 .21262 Mdot
+.11429 .41007 Mdot
+.11448 .24686 Mdot
+.11467 .36238 Mdot
+.11486 .29049 Mdot
+.11505 .52092 Mdot
+.11524 .18401 Mdot
+.11543 .4751 Mdot
+.11562 .29067 Mdot
+.11581 .31315 Mdot
+.116 .27075 Mdot
+.11619 .42633 Mdot
+.11638 .2149 Mdot
+.11657 .52161 Mdot
+.11676 .28809 Mdot
+.11695 .36697 Mdot
+.11714 .21941 Mdot
+.11733 .52196 Mdot
+.11752 .21131 Mdot
+.11771 .4809 Mdot
+.1179 .26313 Mdot
+.1181 .28517 Mdot
+.11829 .28476 Mdot
+.11848 .45177 Mdot
+.11867 .21337 Mdot
+.11886 .52263 Mdot
+.11905 .24612 Mdot
+.11924 .36767 Mdot
+.11943 .29153 Mdot
+.11962 .52296 Mdot
+.11981 .19335 Mdot
+.12 .42779 Mdot
+.12019 .26242 Mdot
+.12038 .34609 Mdot
+.12057 .29087 Mdot
+.12076 .52345 Mdot
+.12095 .1774 Mdot
+.12114 .45288 Mdot
+.12133 .29286 Mdot
+.12152 .35389 Mdot
+.12171 .29203 Mdot
+.1219 .42849 Mdot
+.1221 .21212 Mdot
+.12229 .47385 Mdot
+.12248 .25458 Mdot
+.12267 .36868 Mdot
+.12286 .23248 Mdot
+.12305 .52442 Mdot
+.12324 .21053 Mdot
+.12343 .52457 Mdot
+.12362 .29155 Mdot
+.12381 .27346 Mdot
+.124 .29252 Mdot
+.12419 .48433 Mdot
+.12438 .20194 Mdot
+.12457 .50571 Mdot
+.12476 .24356 Mdot
+.12495 .36583 Mdot
+.12514 .24992 Mdot
+.12533 .47998 Mdot
+.12552 .21443 Mdot
+.12571 .42985 Mdot
+.1259 .29031 Mdot
+.1261 .36966 Mdot
+.12629 .29299 Mdot
+.12648 .42389 Mdot
+.12667 .18528 Mdot
+.12686 .52597 Mdot
+.12705 .29315 Mdot
+.12724 .36997 Mdot
+.12743 .28038 Mdot
+.12762 .4305 Mdot
+.12781 .18403 Mdot
+.128 .52642 Mdot
+.12819 .29253 Mdot
+.12838 .36689 Mdot
+.12857 .2307 Mdot
+.12876 .48777 Mdot
+.12895 .20986 Mdot
+.12914 .45599 Mdot
+.12933 .2936 Mdot
+.12952 .30331 Mdot
+.12971 .29284 Mdot
+.1299 .52716 Mdot
+.1301 .21174 Mdot
+.13029 .48219 Mdot
+.13048 .22126 Mdot
+.13067 .32759 Mdot
+.13086 .2939 Mdot
+.13105 .5276 Mdot
+.13124 .21359 Mdot
+.13143 .43177 Mdot
+.13162 .29405 Mdot
+.13181 .32831 Mdot
+.132 .29165 Mdot
+.13219 .52803 Mdot
+.13238 .17929 Mdot
+.13257 .52817 Mdot
+.13276 .25745 Mdot
+.13295 .37149 Mdot
+.13314 .25683 Mdot
+.13333 .41935 Mdot
+.13352 .21719 Mdot
+.13371 .52859 Mdot
+.1339 .28152 Mdot
+.1341 .37178 Mdot
+.13429 .24205 Mdot
+.13448 .4579 Mdot
+.13467 .21571 Mdot
+.13486 .47917 Mdot
+.13505 .29229 Mdot
+.13524 .29193 Mdot
+.13543 .29477 Mdot
+.13562 .52929 Mdot
+.13581 .19512 Mdot
+.136 .4912 Mdot
+.13619 .2456 Mdot
+.13638 .37235 Mdot
+.13657 .28943 Mdot
+.13676 .5297 Mdot
+.13695 .20337 Mdot
+.13714 .36413 Mdot
+.13733 .29433 Mdot
+.13752 .37264 Mdot
+.13771 .26848 Mdot
+.1379 .53011 Mdot
+.1381 .1864 Mdot
+.13829 .53024 Mdot
+.13848 .25785 Mdot
+.13867 .3698 Mdot
+.13886 .29461 Mdot
+.13905 .40306 Mdot
+.13924 .21631 Mdot
+.13943 .53064 Mdot
+.13962 .28392 Mdot
+.13981 .32066 Mdot
+.14 .24623 Mdot
+.14019 .48624 Mdot
+.14038 .20876 Mdot
+.14057 .53104 Mdot
+.14076 .29572 Mdot
+.14095 .30609 Mdot
+.14114 .24457 Mdot
+.14133 .5313 Mdot
+.14152 .21659 Mdot
+.14171 .53143 Mdot
+.1419 .24349 Mdot
+.1421 .36159 Mdot
+.14229 .29599 Mdot
+.14248 .46057 Mdot
+.14267 .20616 Mdot
+.14286 .43828 Mdot
+.14305 .29612 Mdot
+.14324 .33188 Mdot
+.14343 .29543 Mdot
+.14362 .49307 Mdot
+.14381 .16894 Mdot
+.144 .5322 Mdot
+.14419 .29407 Mdot
+.14438 .37426 Mdot
+.14457 .29638 Mdot
+.14476 .4358 Mdot
+.14495 .21552 Mdot
+.14514 .43472 Mdot
+.14533 .26837 Mdot
+.14552 .37156 Mdot
+.14571 .25007 Mdot
+.1459 .53282 Mdot
+.1461 .21714 Mdot
+.14629 .53295 Mdot
+.14648 .25486 Mdot
+.14667 .30735 Mdot
+.14686 .27187 Mdot
+.14705 .53319 Mdot
+.14724 .21874 Mdot
+.14743 .48376 Mdot
+.14762 .23576 Mdot
+.14781 .32271 Mdot
+.148 .29622 Mdot
+.14819 .53356 Mdot
+.14838 .21741 Mdot
+.14857 .43686 Mdot
+.14876 .29202 Mdot
+.14895 .3724 Mdot
+.14914 .25971 Mdot
+.14933 .53392 Mdot
+.14952 .17592 Mdot
+.14971 .53404 Mdot
+.1499 .29725 Mdot
+.1501 .33551 Mdot
+.15029 .29517 Mdot
+.15048 .36896 Mdot
+.15067 .21482 Mdot
+.15086 .49887 Mdot
+.15105 .29672 Mdot
+.15124 .37577 Mdot
+.15143 .24795 Mdot
+.15162 .48517 Mdot
+.15181 .19662 Mdot
+.152 .53476 Mdot
+.15219 .29761 Mdot
+.15238 .31416 Mdot
+.15257 .28012 Mdot
+.15276 .53499 Mdot
+.15295 .21792 Mdot
+.15314 .4638 Mdot
+.15333 .23984 Mdot
+.15352 .37626 Mdot
+.15371 .27 Mdot
+.1539 .53534 Mdot
+.1541 .2111 Mdot
+.15429 .43837 Mdot
+.15448 .26472 Mdot
+.15467 .37649 Mdot
+.15486 .29319 Mdot
+.15505 .49154 Mdot
+.15524 .18235 Mdot
+.15543 .5358 Mdot
+.15562 .29745 Mdot
+.15581 .30812 Mdot
+.156 .2982 Mdot
+.15619 .43885 Mdot
+.15638 .21419 Mdot
+.15657 .49792 Mdot
+.15676 .29831 Mdot
+.15695 .37696 Mdot
+.15714 .22427 Mdot
+.15733 .53636 Mdot
+.15752 .20757 Mdot
+.15771 .49991 Mdot
+.1579 .27752 Mdot
+.1581 .30965 Mdot
+.15829 .29854 Mdot
+.15848 .46529 Mdot
+.15867 .21719 Mdot
+.15886 .53681 Mdot
+.15905 .249 Mdot
+.15924 .37474 Mdot
+.15943 .2967 Mdot
+.15962 .50227 Mdot
+.15981 .18928 Mdot
+.16 .38113 Mdot
+.16019 .29815 Mdot
+.16038 .37765 Mdot
+.16057 .29887 Mdot
+.16076 .53736 Mdot
+.16095 .1883 Mdot
+.16114 .46601 Mdot
+.16133 .28709 Mdot
+.16152 .37787 Mdot
+.16171 .29838 Mdot
+.1619 .42973 Mdot
+.1621 .20574 Mdot
+.16229 .53779 Mdot
+.16248 .24997 Mdot
+.16267 .3794 Mdot
+.16286 .24949 Mdot
+.16305 .50011 Mdot
+.16324 .2177 Mdot
+.16343 .53811 Mdot
+.16362 .29931 Mdot
+.16381 .27951 Mdot
+.164 .28963 Mdot
+.16419 .48904 Mdot
+.16438 .21653 Mdot
+.16457 .53843 Mdot
+.16476 .24715 Mdot
+.16495 .33982 Mdot
+.16514 .26215 Mdot
+.16533 .53864 Mdot
+.16552 .21538 Mdot
+.16571 .44116 Mdot
+.1659 .29963 Mdot
+.1661 .37618 Mdot
+.16629 .26578 Mdot
+.16648 .4674 Mdot
+.16667 .18872 Mdot
+.16686 .53905 Mdot
+.16705 .29533 Mdot
+.16724 .37896 Mdot
+.16743 .27444 Mdot
+.16762 .4416 Mdot
+.16781 .19792 Mdot
+.168 .53936 Mdot
+.16819 .29995 Mdot
+.16838 .33878 Mdot
+.16857 .24264 Mdot
+.16876 .53956 Mdot
+.16895 .21956 Mdot
+.16914 .46807 Mdot
+.16933 .29947 Mdot
+.16952 .30169 Mdot
+.16971 .30015 Mdot
+.1699 .49612 Mdot
+.1701 .22092 Mdot
+.17029 .53997 Mdot
+.17048 .21058 Mdot
+.17067 .37959 Mdot
+.17086 .29968 Mdot
+.17105 .54017 Mdot
+.17124 .2173 Mdot
+.17143 .43255 Mdot
+.17162 .29855 Mdot
+.17181 .32791 Mdot
+.172 .30046 Mdot
+.17219 .50473 Mdot
+.17238 .17927 Mdot
+.17257 .49139 Mdot
+.17276 .27723 Mdot
+.17295 .37019 Mdot
+.17314 .26692 Mdot
+.17333 .44288 Mdot
+.17352 .21999 Mdot
+.17371 .54086 Mdot
+.1739 .3001 Mdot
+.1741 .3802 Mdot
+.17429 .25088 Mdot
+.17448 .46937 Mdot
+.17467 .20675 Mdot
+.17486 .49751 Mdot
+.17505 .30085 Mdot
+.17524 .31267 Mdot
+.17543 .3003 Mdot
+.17562 .54135 Mdot
+.17581 .19128 Mdot
+.176 .50413 Mdot
+.17619 .2535 Mdot
+.17638 .37819 Mdot
+.17657 .30105 Mdot
+.17676 .49251 Mdot
+.17695 .21911 Mdot
+.17714 .37674 Mdot
+.17733 .27607 Mdot
+.17752 .38079 Mdot
+.17771 .29941 Mdot
+.1779 .54192 Mdot
+.1781 .1895 Mdot
+.17829 .54202 Mdot
+.17848 .26037 Mdot
+.17867 .38099 Mdot
+.17886 .27412 Mdot
+.17905 .4441 Mdot
+.17924 .21224 Mdot
+.17943 .50692 Mdot
+.17962 .30143 Mdot
+.17981 .31528 Mdot
+.18 .24918 Mdot
+.18019 .54249 Mdot
+.18038 .22061 Mdot
+.18057 .54258 Mdot
+.18076 .29982 Mdot
+.18095 .29488 Mdot
+.18114 .26426 Mdot
+.18133 .54277 Mdot
+.18152 .21488 Mdot
+.18171 .54286 Mdot
+.1819 .25174 Mdot
+.1821 .38156 Mdot
+.18229 .28379 Mdot
+.18248 .45036 Mdot
+.18267 .22081 Mdot
+.18286 .44488 Mdot
+.18305 .26895 Mdot
+.18324 .37252 Mdot
+.18343 .3019 Mdot
+.18362 .54332 Mdot
+.18381 .17147 Mdot
+.184 .52733 Mdot
+.18419 .30199 Mdot
+.18438 .38194 Mdot
+.18457 .30147 Mdot
+.18476 .41782 Mdot
+.18495 .21872 Mdot
+.18514 .43758 Mdot
+.18533 .29814 Mdot
+.18552 .38212 Mdot
+.18571 .24305 Mdot
+.1859 .51092 Mdot
+.1861 .21996 Mdot
+.18629 .54395 Mdot
+.18648 .26491 Mdot
+.18667 .3054 Mdot
+.18686 .30062 Mdot
+.18705 .54412 Mdot
+.18724 .19639 Mdot
+.18743 .54421 Mdot
+.18762 .25009 Mdot
+.18781 .3308 Mdot
+.188 .30245 Mdot
+.18819 .54439 Mdot
+.18838 .2224 Mdot
+.18857 .44601 Mdot
+.18876 .30254 Mdot
+.18895 .3648 Mdot
+.18914 .26187 Mdot
+.18933 .49563 Mdot
+.18952 .18576 Mdot
+.18971 .50138 Mdot
+.1899 .301 Mdot
+.1901 .38063 Mdot
+.19029 .28055 Mdot
+.19048 .39324 Mdot
+.19067 .22037 Mdot
+.19086 .545 Mdot
+.19105 .3028 Mdot
+.19124 .38303 Mdot
+.19143 .23732 Mdot
+.19162 .54517 Mdot
+.19181 .19958 Mdot
+.192 .54526 Mdot
+.19219 .27168 Mdot
+.19238 .31528 Mdot
+.19257 .30297 Mdot
+.19276 .54543 Mdot
+.19295 .21838 Mdot
+.19314 .47351 Mdot
+.19333 .25293 Mdot
+.19352 .35507 Mdot
+.19371 .30256 Mdot
+.1939 .51092 Mdot
+.1941 .22174 Mdot
+.19429 .4471 Mdot
+.19448 .26907 Mdot
+.19467 .34676 Mdot
+.19486 .30323 Mdot
+.19505 .51462 Mdot
+.19524 .19055 Mdot
+.19543 .50938 Mdot
+.19562 .27641 Mdot
+.19581 .3321 Mdot
+.196 .30175 Mdot
+.19619 .44745 Mdot
+.19638 .22192 Mdot
+.19657 .54627 Mdot
+.19676 .30291 Mdot
+.19695 .38175 Mdot
+.19714 .21486 Mdot
+.19733 .54643 Mdot
+.19752 .21455 Mdot
+.19771 .49755 Mdot
+.1979 .30357 Mdot
+.1981 .31607 Mdot
+.19829 .30308 Mdot
+.19848 .47459 Mdot
+.19867 .21363 Mdot
+.19886 .54676 Mdot
+.19905 .24714 Mdot
+.19924 .38423 Mdot
+.19943 .30373 Mdot
+.19962 .50372 Mdot
+.19981 .18744 Mdot
+.2 .43973 Mdot
+.20019 .30382 Mdot
+.20038 .3823 Mdot
+.20057 .29599 Mdot
+.20076 .54717 Mdot
+.20095 .18669 Mdot
+.20114 .4563 Mdot
+.20133 .30342 Mdot
+.20152 .38456 Mdot
+.20171 .30398 Mdot
+.2019 .39434 Mdot
+.2021 .21091 Mdot
+.20229 .54749 Mdot
+.20248 .26668 Mdot
+.20267 .38473 Mdot
+.20286 .25177 Mdot
+.20305 .54765 Mdot
+.20324 .22244 Mdot
+.20343 .5157 Mdot
+.20362 .30057 Mdot
+.20381 .28384 Mdot
+.204 .27744 Mdot
+.20419 .54789 Mdot
+.20438 .2215 Mdot
+.20457 .50483 Mdot
+.20476 .24581 Mdot
+.20495 .38505 Mdot
+.20514 .25774 Mdot
+.20533 .54813 Mdot
+.20552 .22057 Mdot
+.20571 .44915 Mdot
+.2059 .30391 Mdot
+.2061 .34648 Mdot
+.20629 .30446 Mdot
+.20648 .47614 Mdot
+.20667 .19119 Mdot
+.20686 .53321 Mdot
+.20705 .2802 Mdot
+.20724 .38335 Mdot
+.20743 .30407 Mdot
+.20762 .44948 Mdot
+.20781 .19448 Mdot
+.208 .54867 Mdot
+.20819 .28298 Mdot
+.20838 .35127 Mdot
+.20857 .25437 Mdot
+.20876 .54882 Mdot
+.20895 .22386 Mdot
+.20914 .47664 Mdot
+.20933 .30477 Mdot
+.20952 .30154 Mdot
+.20971 .30131 Mdot
+.2099 .54905 Mdot
+.2101 .22294 Mdot
+.21029 .50023 Mdot
+.21048 .22862 Mdot
+.21067 .38385 Mdot
+.21086 .30493 Mdot
+.21105 .54928 Mdot
+.21124 .22004 Mdot
+.21143 .45012 Mdot
+.21162 .28319 Mdot
+.21181 .33449 Mdot
+.212 .27486 Mdot
+.21219 .51787 Mdot
+.21238 .17964 Mdot
+.21257 .54958 Mdot
+.21276 .29773 Mdot
+.21295 .38615 Mdot
+.21314 .26776 Mdot
+.21333 .45044 Mdot
+.21352 .2222 Mdot
+.21371 .54981 Mdot
+.2139 .30523 Mdot
+.2141 .37847 Mdot
+.21429 .25683 Mdot
+.21448 .41308 Mdot
+.21467 .22326 Mdot
+.21486 .51392 Mdot
+.21505 .30486 Mdot
+.21524 .31827 Mdot
+.21543 .30538 Mdot
+.21562 .51615 Mdot
+.21581 .20099 Mdot
+.216 .55025 Mdot
+.21619 .25504 Mdot
+.21638 .38661 Mdot
+.21657 .27404 Mdot
+.21676 .5504 Mdot
+.21695 .21182 Mdot
+.21714 .38542 Mdot
+.21733 .30412 Mdot
+.21752 .38483 Mdot
+.21771 .3056 Mdot
+.2179 .55062 Mdot
+.2181 .1841 Mdot
+.21829 .55069 Mdot
+.21848 .26827 Mdot
+.21867 .34858 Mdot
+.21886 .30619 Mdot
+.21905 .44371 Mdot
+.21924 .21592 Mdot
+.21943 .50794 Mdot
+.21962 .30531 Mdot
+.21981 .34131 Mdot
+.22 .25536 Mdot
+.22019 .55105 Mdot
+.22038 .22079 Mdot
+.22057 .55112 Mdot
+.22076 .27933 Mdot
+.22095 .31136 Mdot
+.22114 .26568 Mdot
+.22133 .51531 Mdot
+.22152 .22372 Mdot
+.22171 .55133 Mdot
+.2219 .2423 Mdot
+.2221 .38734 Mdot
+.22229 .30604 Mdot
+.22248 .479 Mdot
+.22267 .21909 Mdot
+.22286 .39934 Mdot
+.22305 .30611 Mdot
+.22324 .38749 Mdot
+.22343 .30474 Mdot
+.22362 .55169 Mdot
+.22381 .17336 Mdot
+.224 .55176 Mdot
+.22419 .30575 Mdot
+.22438 .36338 Mdot
+.22457 .28482 Mdot
+.22476 .45225 Mdot
+.22495 .20999 Mdot
+.22514 .47945 Mdot
+.22533 .29611 Mdot
+.22552 .38778 Mdot
+.22571 .25397 Mdot
+.2259 .55211 Mdot
+.2261 .22216 Mdot
+.22629 .55217 Mdot
+.22648 .26069 Mdot
+.22667 .3196 Mdot
+.22686 .28248 Mdot
+.22705 .50347 Mdot
+.22724 .22317 Mdot
+.22743 .55238 Mdot
+.22762 .25598 Mdot
+.22781 .32561 Mdot
+.228 .30336 Mdot
+.22819 .52318 Mdot
+.22838 .22416 Mdot
+.22857 .44551 Mdot
+.22876 .30618 Mdot
+.22895 .3882 Mdot
+.22914 .25281 Mdot
+.22933 .50986 Mdot
+.22952 .19234 Mdot
+.22971 .52183 Mdot
+.2299 .30674 Mdot
+.2301 .37198 Mdot
+.23029 .30632 Mdot
+.23048 .38778 Mdot
+.23067 .22431 Mdot
+.23086 .55299 Mdot
+.23105 .29281 Mdot
+.23124 .35954 Mdot
+.23143 .25628 Mdot
+.23162 .55313 Mdot
+.23181 .191 Mdot
+.232 .5532 Mdot
+.23219 .30694 Mdot
+.23238 .32023 Mdot
+.23257 .30563 Mdot
+.23276 .55333 Mdot
+.23295 .22265 Mdot
+.23314 .48076 Mdot
+.23333 .2403 Mdot
+.23352 .38875 Mdot
+.23371 .28651 Mdot
+.2339 .55353 Mdot
+.2341 .21827 Mdot
+.23429 .40371 Mdot
+.23448 .26971 Mdot
+.23467 .38176 Mdot
+.23486 .30674 Mdot
+.23505 .55373 Mdot
+.23524 .18905 Mdot
+.23543 .50497 Mdot
+.23562 .30592 Mdot
+.23581 .33762 Mdot
+.236 .30728 Mdot
+.23619 .45395 Mdot
+.23638 .22024 Mdot
+.23657 .55399 Mdot
+.23676 .28352 Mdot
+.23695 .38915 Mdot
+.23714 .23028 Mdot
+.23733 .52067 Mdot
+.23752 .20185 Mdot
+.23771 .55418 Mdot
+.2379 .30701 Mdot
+.2381 .32435 Mdot
+.23829 .30748 Mdot
+.23848 .46584 Mdot
+.23867 .22217 Mdot
+.23886 .55438 Mdot
+.23905 .25686 Mdot
+.23924 .35449 Mdot
+.23943 .30714 Mdot
+.23962 .50569 Mdot
+.23981 .20222 Mdot
+.24 .45449 Mdot
+.24019 .3046 Mdot
+.24038 .38955 Mdot
+.24057 .30767 Mdot
+.24076 .51913 Mdot
+.24095 .18592 Mdot
+.24114 .48201 Mdot
+.24133 .30774 Mdot
+.24152 .38795 Mdot
+.24171 .26846 Mdot
+.2419 .45475 Mdot
+.2421 .225 Mdot
+.24229 .52651 Mdot
+.24248 .26779 Mdot
+.24267 .38981 Mdot
+.24286 .25026 Mdot
+.24305 .55508 Mdot
+.24324 .22592 Mdot
+.24343 .55514 Mdot
+.24362 .30793 Mdot
+.24381 .26663 Mdot
+.244 .29384 Mdot
+.24419 .51252 Mdot
+.24438 .22513 Mdot
+.24457 .52204 Mdot
+.24476 .25216 Mdot
+.24495 .38325 Mdot
+.24514 .27059 Mdot
+.24533 .55546 Mdot
+.24552 .22434 Mdot
+.24571 .45528 Mdot
+.2459 .28181 Mdot
+.2461 .39019 Mdot
+.24629 .30518 Mdot
+.24648 .48282 Mdot
+.24667 .18295 Mdot
+.24686 .55571 Mdot
+.24705 .30779 Mdot
+.24724 .35824 Mdot
+.24743 .30824 Mdot
+.24762 .44879 Mdot
+.24781 .20259 Mdot
+.248 .50709 Mdot
+.24819 .28813 Mdot
+.24838 .38876 Mdot
+.24857 .25587 Mdot
+.24876 .55601 Mdot
+.24895 .22539 Mdot
+.24914 .45306 Mdot
+.24933 .30212 Mdot
+.24952 .322 Mdot
+.24971 .30843 Mdot
+.2499 .5562 Mdot
+.2501 .21127 Mdot
+.25029 .52792 Mdot
+.25048 .22103 Mdot
+.25067 .39069 Mdot
+.25086 .30727 Mdot
+.25105 .55638 Mdot
+.25124 .22552 Mdot
+.25143 .45605 Mdot
+.25162 .27998 Mdot
+.25181 .32952 Mdot
+.252 .30861 Mdot
+.25219 .50776 Mdot
+.25238 .19335 Mdot
+.25257 .55662 Mdot
+.25276 .30867 Mdot
+.25295 .39094 Mdot
+.25314 .26874 Mdot
+.25333 .4563 Mdot
+.25352 .224 Mdot
+.25371 .52145 Mdot
+.2539 .30753 Mdot
+.2541 .35659 Mdot
+.25429 .24154 Mdot
+.25448 .48398 Mdot
+.25467 .22489 Mdot
+.25486 .55698 Mdot
+.25505 .30886 Mdot
+.25524 .32582 Mdot
+.25543 .29623 Mdot
+.25562 .5571 Mdot
+.25581 .19806 Mdot
+.256 .52702 Mdot
+.25619 .25645 Mdot
+.25638 .35389 Mdot
+.25657 .28541 Mdot
+.25676 .55727 Mdot
+.25695 .21691 Mdot
+.25714 .40166 Mdot
+.25733 .30903 Mdot
+.25752 .39143 Mdot
+.25771 .30866 Mdot
+.2579 .55745 Mdot
+.2581 .19035 Mdot
+.25829 .55751 Mdot
+.25848 .25468 Mdot
+.25867 .38993 Mdot
+.25886 .30915 Mdot
+.25905 .40875 Mdot
+.25924 .22515 Mdot
+.25943 .55768 Mdot
+.25962 .30921 Mdot
+.25981 .34032 Mdot
+.26 .25352 Mdot
+.26019 .52255 Mdot
+.26038 .21961 Mdot
+.26057 .50906 Mdot
+.26076 .3089 Mdot
+.26095 .32309 Mdot
+.26114 .27182 Mdot
+.26133 .53006 Mdot
+.26152 .21412 Mdot
+.26171 .55803 Mdot
+.2619 .26005 Mdot
+.2621 .39031 Mdot
+.26229 .30902 Mdot
+.26248 .4851 Mdot
+.26267 .20392 Mdot
+.26286 .45752 Mdot
+.26305 .30828 Mdot
+.26324 .39202 Mdot
+.26343 .28893 Mdot
+.26362 .55832 Mdot
+.26381 .17485 Mdot
+.264 .51575 Mdot
+.26419 .30956 Mdot
+.26438 .39213 Mdot
+.26457 .30683 Mdot
+.26476 .40739 Mdot
+.26495 .22626 Mdot
+.26514 .48546 Mdot
+.26533 .30925 Mdot
+.26552 .38597 Mdot
+.26571 .25871 Mdot
+.2659 .53123 Mdot
+.2661 .22397 Mdot
+.26629 .52585 Mdot
+.26648 .25813 Mdot
+.26667 .31111 Mdot
+.26686 .2797 Mdot
+.26705 .55882 Mdot
+.26724 .22482 Mdot
+.26743 .55888 Mdot
+.26762 .26039 Mdot
+.26781 .34114 Mdot
+.268 .30984 Mdot
+.26819 .55899 Mdot
+.26838 .22566 Mdot
+.26857 .45822 Mdot
+.26876 .3099 Mdot
+.26895 .33992 Mdot
+.26914 .26543 Mdot
+.26933 .55916 Mdot
+.26952 .19094 Mdot
+.26971 .55921 Mdot
+.2699 .28336 Mdot
+.2701 .3927 Mdot
+.27029 .31001 Mdot
+.27048 .39377 Mdot
+.27067 .22732 Mdot
+.27086 .55938 Mdot
+.27105 .28394 Mdot
+.27124 .39281 Mdot
+.27143 .24526 Mdot
+.27162 .55949 Mdot
+.27181 .19902 Mdot
+.272 .55954 Mdot
+.27219 .309 Mdot
+.27238 .318 Mdot
+.27257 .31018 Mdot
+.27276 .55965 Mdot
+.27295 .2259 Mdot
+.27314 .42705 Mdot
+.27333 .25919 Mdot
+.27352 .36259 Mdot
+.27371 .30455 Mdot
+.2739 .51724 Mdot
+.2741 .2252 Mdot
+.27429 .4589 Mdot
+.27448 .27049 Mdot
+.27467 .39315 Mdot
+.27486 .31034 Mdot
+.27505 .55998 Mdot
+.27524 .18215 Mdot
+.27543 .56003 Mdot
+.27562 .3104 Mdot
+.27581 .34646 Mdot
+.276 .31005 Mdot
+.27619 .4531 Mdot
+.27638 .20574 Mdot
+.27657 .56019 Mdot
+.27676 .30785 Mdot
+.27695 .39337 Mdot
+.27714 .22337 Mdot
+.27733 .51526 Mdot
+.27752 .22314 Mdot
+.27771 .53337 Mdot
+.2779 .29183 Mdot
+.2781 .32461 Mdot
+.27829 .30946 Mdot
+.27848 .4872 Mdot
+.27867 .22695 Mdot
+.27886 .51796 Mdot
+.27905 .25805 Mdot
+.27924 .39209 Mdot
+.27943 .28459 Mdot
+.27962 .52563 Mdot
+.27981 .20394 Mdot
+.28 .45957 Mdot
+.28019 .31072 Mdot
+.28038 .39369 Mdot
+.28057 .31037 Mdot
+.28076 .52816 Mdot
+.28095 .19446 Mdot
+.28114 .48754 Mdot
+.28133 .29193 Mdot
+.28152 .35683 Mdot
+.28171 .31083 Mdot
+.2819 .45979 Mdot
+.2821 .22638 Mdot
+.28229 .5315 Mdot
+.28248 .2733 Mdot
+.28267 .39243 Mdot
+.28286 .24947 Mdot
+.28305 .56109 Mdot
+.28324 .22717 Mdot
+.28343 .53398 Mdot
+.28362 .28124 Mdot
+.28381 .27229 Mdot
+.284 .31098 Mdot
+.28419 .56125 Mdot
+.28438 .21917 Mdot
+.28457 .54814 Mdot
+.28476 .25988 Mdot
+.28495 .39412 Mdot
+.28514 .27567 Mdot
+.28533 .5614 Mdot
+.28552 .22728 Mdot
+.28571 .42526 Mdot
+.2859 .30565 Mdot
+.2861 .37531 Mdot
+.28629 .28788 Mdot
+.28648 .4882 Mdot
+.28667 .18886 Mdot
+.28686 .56161 Mdot
+.28705 .31119 Mdot
+.28724 .39433 Mdot
+.28743 .31013 Mdot
+.28762 .46043 Mdot
+.28781 .19124 Mdot
+.288 .52925 Mdot
+.28819 .31091 Mdot
+.28838 .39443 Mdot
+.28857 .2601 Mdot
+.28876 .51935 Mdot
+.28895 .2224 Mdot
+.28914 .48852 Mdot
+.28933 .29121 Mdot
+.28952 .3198 Mdot
+.28971 .31101 Mdot
+.2899 .51322 Mdot
+.2901 .22749 Mdot
+.29029 .56207 Mdot
+.29048 .233 Mdot
+.29067 .39464 Mdot
+.29086 .31145 Mdot
+.29105 .53286 Mdot
+.29124 .2154 Mdot
+.29143 .46085 Mdot
+.29162 .29224 Mdot
+.29181 .34341 Mdot
+.292 .28908 Mdot
+.29219 .56232 Mdot
+.29238 .19202 Mdot
+.29257 .52753 Mdot
+.29276 .31122 Mdot
+.29295 .39342 Mdot
+.29314 .27399 Mdot
+.29333 .46106 Mdot
+.29352 .22552 Mdot
+.29371 .52002 Mdot
+.2939 .31165 Mdot
+.2941 .35816 Mdot
+.29429 .25902 Mdot
+.29448 .47644 Mdot
+.29467 .22629 Mdot
+.29486 .56267 Mdot
+.29505 .30926 Mdot
+.29524 .31473 Mdot
+.29543 .29344 Mdot
+.29562 .56276 Mdot
+.29581 .19611 Mdot
+.296 .56281 Mdot
+.29619 .22964 Mdot
+.29638 .38953 Mdot
+.29657 .31077 Mdot
+.29676 .56291 Mdot
+.29695 .2278 Mdot
+.29714 .39708 Mdot
+.29733 .31152 Mdot
+.29752 .39524 Mdot
+.29771 .3119 Mdot
+.2979 .56306 Mdot
+.2981 .19506 Mdot
+.29829 .5143 Mdot
+.29848 .27432 Mdot
+.29867 .36192 Mdot
+.29886 .2991 Mdot
+.29905 .43942 Mdot
+.29924 .2279 Mdot
+.29943 .56325 Mdot
+.29962 .31098 Mdot
+.29981 .33579 Mdot
+.3 .2552 Mdot
+.30019 .56335 Mdot
+.30038 .21342 Mdot
+.30057 .5634 Mdot
+.30076 .31209 Mdot
+.30095 .32644 Mdot
+.30114 .25998 Mdot
+.30133 .53727 Mdot
+.30152 .2287 Mdot
+.30171 .56354 Mdot
+.3019 .25948 Mdot
+.3021 .39564 Mdot
+.30229 .29224 Mdot
+.30248 .43234 Mdot
+.30267 .22599 Mdot
+.30286 .46207 Mdot
+.30305 .31224 Mdot
+.30324 .39436 Mdot
+.30343 .31192 Mdot
+.30362 .52132 Mdot
+.30381 .17609 Mdot
+.304 .56383 Mdot
+.30419 .30172 Mdot
+.30438 .39583 Mdot
+.30457 .28639 Mdot
+.30476 .45681 Mdot
+.30495 .22475 Mdot
+.30514 .49038 Mdot
+.30533 .31238 Mdot
+.30552 .36599 Mdot
+.30571 .25698 Mdot
+.3059 .56407 Mdot
+.3061 .20783 Mdot
+.30629 .56411 Mdot
+.30648 .27277 Mdot
+.30667 .30518 Mdot
+.30686 .31248 Mdot
+.30705 .56421 Mdot
+.30724 .22352 Mdot
+.30743 .56426 Mdot
+.30762 .26116 Mdot
+.30781 .34479 Mdot
+.308 .31221 Mdot
+.30819 .56435 Mdot
+.30838 .22695 Mdot
+.30857 .41685 Mdot
+.30876 .27657 Mdot
+.30895 .39622 Mdot
+.30914 .27496 Mdot
+.30933 .56449 Mdot
+.30952 .19544 Mdot
+.30971 .53232 Mdot
+.3099 .31267 Mdot
+.3101 .39497 Mdot
+.31029 .30767 Mdot
+.31048 .39858 Mdot
+.31067 .2284 Mdot
+.31086 .51586 Mdot
+.31105 .28567 Mdot
+.31124 .39641 Mdot
+.31143 .26136 Mdot
+.31162 .56477 Mdot
+.31181 .20511 Mdot
+.312 .53017 Mdot
+.31219 .31281 Mdot
+.31238 .32729 Mdot
+.31257 .3125 Mdot
+.31276 .53965 Mdot
+.31295 .20724 Mdot
+.31314 .47932 Mdot
+.31333 .25217 Mdot
+.31352 .3714 Mdot
+.31371 .3129 Mdot
+.3139 .56504 Mdot
+.3141 .22788 Mdot
+.31429 .45794 Mdot
+.31448 .27527 Mdot
+.31467 .39669 Mdot
+.31486 .31198 Mdot
+.31505 .51636 Mdot
+.31524 .18771 Mdot
+.31543 .56523 Mdot
+.31562 .31269 Mdot
+.31581 .34544 Mdot
+.316 .29002 Mdot
+.31619 .46342 Mdot
+.31638 .2293 Mdot
+.31657 .5391 Mdot
+.31676 .31308 Mdot
+.31695 .37982 Mdot
+.31714 .2184 Mdot
+.31733 .53663 Mdot
+.31752 .22869 Mdot
+.31771 .5655 Mdot
+.3179 .31217 Mdot
+.3181 .3277 Mdot
+.31829 .31318 Mdot
+.31848 .43702 Mdot
+.31867 .22547 Mdot
+.31886 .56563 Mdot
+.31905 .25654 Mdot
+.31924 .3606 Mdot
+.31943 .31097 Mdot
+.31962 .56572 Mdot
+.31981 .20149 Mdot
+.32 .4638 Mdot
+.32019 .31296 Mdot
+.32038 .39585 Mdot
+.32057 .29451 Mdot
+.32076 .56586 Mdot
+.32095 .18544 Mdot
+.32114 .49212 Mdot
+.32133 .28748 Mdot
+.32152 .39724 Mdot
+.32171 .28851 Mdot
+.3219 .46398 Mdot
+.3221 .22371 Mdot
+.32229 .56603 Mdot
+.32248 .27765 Mdot
+.32267 .39733 Mdot
+.32286 .26195 Mdot
+.32305 .56612 Mdot
+.32324 .22828 Mdot
+.32343 .4852 Mdot
+.32362 .31349 Mdot
+.32381 .29216 Mdot
+.324 .31255 Mdot
+.32419 .5342 Mdot
+.32438 .22897 Mdot
+.32457 .5663 Mdot
+.32476 .26076 Mdot
+.32495 .36809 Mdot
+.32514 .27587 Mdot
+.32533 .56639 Mdot
+.32552 .21433 Mdot
+.32571 .46435 Mdot
+.3259 .29067 Mdot
+.3261 .38357 Mdot
+.32629 .31333 Mdot
+.32648 .49268 Mdot
+.32667 .19343 Mdot
+.32686 .54177 Mdot
+.32705 .31274 Mdot
+.32724 .3926 Mdot
+.32743 .31371 Mdot
+.32762 .41632 Mdot
+.32781 .19804 Mdot
+.328 .56669 Mdot
+.32819 .29413 Mdot
+.32838 .36487 Mdot
+.32857 .2635 Mdot
+.32876 .56678 Mdot
+.32895 .22788 Mdot
+.32914 .49295 Mdot
+.32933 .3135 Mdot
+.32952 .32849 Mdot
+.32971 .288 Mdot
+.3299 .56691 Mdot
+.3301 .2273 Mdot
+.33029 .56695 Mdot
+.33048 .22711 Mdot
+.33067 .39669 Mdot
+.33086 .28721 Mdot
+.33105 .56704 Mdot
+.33124 .22924 Mdot
+.33143 .42225 Mdot
+.33162 .31176 Mdot
+.33181 .32414 Mdot
+.332 .31397 Mdot
+.33219 .56717 Mdot
+.33238 .19615 Mdot
+.33257 .56721 Mdot
+.33276 .31401 Mdot
+.33295 .39812 Mdot
+.33314 .27069 Mdot
+.33333 .43514 Mdot
+.33352 .22933 Mdot
+.33371 .56734 Mdot
+.3339 .28514 Mdot
+.3341 .39696 Mdot
+.33429 .26251 Mdot
+.33448 .49349 Mdot
+.33467 .22006 Mdot
+.33486 .53892 Mdot
+.33505 .29554 Mdot
+.33524 .32887 Mdot
+.33543 .31385 Mdot
+.33562 .56755 Mdot
+.33581 .19476 Mdot
+.336 .51873 Mdot
+.33619 .25889 Mdot
+.33638 .39838 Mdot
+.33657 .31423 Mdot
+.33676 .54238 Mdot
+.33695 .22884 Mdot
+.33714 .40131 Mdot
+.33733 .31427 Mdot
+.33752 .39354 Mdot
+.33771 .31214 Mdot
+.3379 .53336 Mdot
+.3381 .18402 Mdot
+.33829 .52546 Mdot
+.33848 .27474 Mdot
+.33867 .37033 Mdot
+.33886 .31435 Mdot
+.33905 .46558 Mdot
+.33924 .22281 Mdot
+.33943 .56797 Mdot
+.33962 .3144 Mdot
+.33981 .34727 Mdot
+.34 .26156 Mdot
+.34019 .51919 Mdot
+.34038 .22959 Mdot
+.34057 .56809 Mdot
+.34076 .29525 Mdot
+.34095 .32437 Mdot
+.34114 .26575 Mdot
+.34133 .56817 Mdot
+.34152 .22902 Mdot
+.34171 .56821 Mdot
+.3419 .26287 Mdot
+.3421 .3988 Mdot
+.34229 .27964 Mdot
+.34248 .49428 Mdot
+.34267 .22482 Mdot
+.34286 .46107 Mdot
+.34305 .31428 Mdot
+.34324 .3662 Mdot
+.34343 .3146 Mdot
+.34362 .54 Mdot
+.34381 .17714 Mdot
+.344 .55638 Mdot
+.34419 .30619 Mdot
+.34438 .3507 Mdot
+.34457 .31436 Mdot
+.34476 .46609 Mdot
+.34495 .22976 Mdot
+.34514 .49454 Mdot
+.34533 .3138 Mdot
+.34552 .39905 Mdot
+.34571 .24862 Mdot
+.3459 .53683 Mdot
+.3461 .2268 Mdot
+.34629 .5687 Mdot
+.34648 .259 Mdot
+.34667 .32961 Mdot
+.34686 .3103 Mdot
+.34705 .56879 Mdot
+.34724 .22984 Mdot
+.34743 .56883 Mdot
+.34762 .25237 Mdot
+.34781 .35143 Mdot
+.348 .29754 Mdot
+.34819 .52654 Mdot
+.34838 .2281 Mdot
+.34857 .41874 Mdot
+.34876 .31489 Mdot
+.34895 .3993 Mdot
+.34914 .27534 Mdot
+.34933 .56903 Mdot
+.34952 .18951 Mdot
+.34971 .54352 Mdot
+.3499 .31287 Mdot
+.3501 .39938 Mdot
+.35029 .31497 Mdot
+.35048 .40968 Mdot
+.35067 .20331 Mdot
+.35086 .53484 Mdot
+.35105 .31501 Mdot
+.35124 .39828 Mdot
+.35143 .25975 Mdot
+.35162 .56927 Mdot
+.35181 .20285 Mdot
+.352 .56931 Mdot
+.35219 .31478 Mdot
+.35238 .32054 Mdot
+.35257 .31509 Mdot
+.35276 .5205 Mdot
+.35295 .23064 Mdot
+.35314 .44235 Mdot
+.35333 .26339 Mdot
+.35352 .39962 Mdot
+.35371 .31486 Mdot
+.3539 .56951 Mdot
+.3541 .22071 Mdot
+.35429 .46692 Mdot
+.35448 .27211 Mdot
+.35467 .39853 Mdot
+.35486 .28945 Mdot
+.35505 .54563 Mdot
+.35524 .19212 Mdot
+.35543 .56966 Mdot
+.35562 .29247 Mdot
+.35581 .3484 Mdot
+.356 .31323 Mdot
+.35619 .46708 Mdot
+.35638 .22901 Mdot
+.35657 .56978 Mdot
+.35676 .29172 Mdot
+.35695 .36378 Mdot
+.35714 .23563 Mdot
+.35733 .53555 Mdot
+.35752 .22847 Mdot
+.35771 .5699 Mdot
+.3579 .31537 Mdot
+.3581 .31175 Mdot
+.35829 .3151 Mdot
+.35848 .49579 Mdot
+.35867 .23026 Mdot
+.35886 .57001 Mdot
+.35905 .24628 Mdot
+.35924 .40002 Mdot
+.35943 .31545 Mdot
+.35962 .5464 Mdot
+.35981 .20662 Mdot
+.36 .4674 Mdot
+.36019 .31549 Mdot
+.36038 .37243 Mdot
+.36057 .28237 Mdot
+.36076 .54487 Mdot
+.36095 .19465 Mdot
+.36114 .44081 Mdot
+.36133 .31526 Mdot
+.36152 .39903 Mdot
+.36171 .31556 Mdot
+.3619 .46297 Mdot
+.3621 .22636 Mdot
+.36229 .57036 Mdot
+.36248 .27777 Mdot
+.36267 .40026 Mdot
+.36286 .26266 Mdot
+.36305 .52809 Mdot
+.36324 .21555 Mdot
+.36343 .57048 Mdot
+.36362 .3148 Mdot
+.36381 .28041 Mdot
+.364 .29741 Mdot
+.36419 .57055 Mdot
+.36438 .22989 Mdot
+.36457 .57059 Mdot
+.36476 .26389 Mdot
+.36495 .39927 Mdot
+.36514 .27961 Mdot
+.36533 .52176 Mdot
+.36552 .21117 Mdot
+.36571 .46788 Mdot
+.3659 .31549 Mdot
+.3661 .40049 Mdot
+.36629 .29935 Mdot
+.36648 .49651 Mdot
+.36667 .1971 Mdot
+.36686 .57082 Mdot
+.36705 .29659 Mdot
+.36724 .40056 Mdot
+.36743 .2873 Mdot
+.36762 .44769 Mdot
+.36781 .20346 Mdot
+.368 .52859 Mdot
+.36819 .31391 Mdot
+.36838 .39613 Mdot
+.36857 .26405 Mdot
+.36876 .57101 Mdot
+.36895 .23005 Mdot
+.36914 .48662 Mdot
+.36933 .31595 Mdot
+.36952 .30851 Mdot
+.36971 .31512 Mdot
+.3699 .54304 Mdot
+.3701 .22953 Mdot
+.37029 .53693 Mdot
+.37048 .22263 Mdot
+.37067 .40079 Mdot
+.37086 .31602 Mdot
+.37105 .57123 Mdot
+.37124 .2223 Mdot
+.37143 .46387 Mdot
+.37162 .29034 Mdot
+.37181 .34275 Mdot
+.372 .3158 Mdot
+.37219 .54678 Mdot
+.37238 .19502 Mdot
+.37257 .57138 Mdot
+.37276 .31528 Mdot
+.37295 .36863 Mdot
+.37314 .27827 Mdot
+.37333 .4685 Mdot
+.37352 .22131 Mdot
+.37371 .52257 Mdot
+.3739 .31617 Mdot
+.3741 .40102 Mdot
+.37429 .25651 Mdot
+.37448 .49722 Mdot
+.37467 .23081 Mdot
+.37486 .54001 Mdot
+.37505 .31595 Mdot
+.37524 .3269 Mdot
+.37543 .29355 Mdot
+.37562 .57168 Mdot
+.37581 .1938 Mdot
+.376 .56011 Mdot
+.37619 .25995 Mdot
+.37638 .40117 Mdot
+.37657 .31603 Mdot
+.37676 .53759 Mdot
+.37695 .22978 Mdot
+.37714 .40489 Mdot
+.37733 .3078 Mdot
+.37752 .40124 Mdot
+.37771 .31636 Mdot
+.3779 .48997 Mdot
+.3781 .193 Mdot
+.37829 .57193 Mdot
+.37848 .26863 Mdot
+.37867 .38705 Mdot
+.37886 .31559 Mdot
+.37905 .46895 Mdot
+.37924 .23096 Mdot
+.37943 .57204 Mdot
+.37962 .31617 Mdot
+.37981 .34997 Mdot
+.38 .23609 Mdot
+.38019 .57211 Mdot
+.38038 .21843 Mdot
+.38057 .57215 Mdot
+.38076 .3165 Mdot
+.38095 .33383 Mdot
+.38114 .277 Mdot
+.38133 .57222 Mdot
+.38152 .23103 Mdot
+.38171 .57226 Mdot
+.3819 .26133 Mdot
+.3821 .35477 Mdot
+.38229 .31658 Mdot
+.38248 .4979 Mdot
+.38267 .23053 Mdot
+.38286 .42583 Mdot
+.38305 .2998 Mdot
+.38324 .37342 Mdot
+.38343 .31257 Mdot
+.38362 .57244 Mdot
+.38381 .17805 Mdot
+.384 .54812 Mdot
+.38419 .28827 Mdot
+.38438 .40168 Mdot
+.38457 .31668 Mdot
+.38476 .46939 Mdot
+.38495 .22953 Mdot
+.38514 .49813 Mdot
+.38533 .29407 Mdot
+.38552 .40068 Mdot
+.38571 .25505 Mdot
+.3859 .57265 Mdot
+.3861 .23118 Mdot
+.38629 .52373 Mdot
+.38648 .26758 Mdot
+.38667 .33196 Mdot
+.38686 .31679 Mdot
+.38705 .57276 Mdot
+.38724 .22854 Mdot
+.38743 .5449 Mdot
+.38762 .26483 Mdot
+.38781 .33117 Mdot
+.388 .31604 Mdot
+.38819 .57286 Mdot
+.38838 .21092 Mdot
+.38857 .46969 Mdot
+.38876 .31661 Mdot
+.38895 .3977 Mdot
+.38914 .27898 Mdot
+.38933 .54148 Mdot
+.38952 .19768 Mdot
+.38971 .53888 Mdot
+.3899 .30894 Mdot
+.3901 .40204 Mdot
+.39029 .29113 Mdot
+.39048 .38042 Mdot
+.39067 .23026 Mdot
+.39086 .55025 Mdot
+.39105 .31619 Mdot
+.39124 .40211 Mdot
+.39143 .26498 Mdot
+.39162 .57318 Mdot
+.39181 .20113 Mdot
+.392 .57321 Mdot
+.39219 .31704 Mdot
+.39238 .32804 Mdot
+.39257 .29403 Mdot
+.39276 .53096 Mdot
+.39295 .21342 Mdot
+.39314 .49879 Mdot
+.39333 .26399 Mdot
+.39352 .40225 Mdot
+.39371 .31711 Mdot
+.3939 .54859 Mdot
+.3941 .23196 Mdot
+.39429 .47012 Mdot
+.39448 .27921 Mdot
+.39467 .36652 Mdot
+.39486 .3169 Mdot
+.39505 .57349 Mdot
+.39524 .1873 Mdot
+.39543 .57353 Mdot
+.39562 .31326 Mdot
+.39581 .34464 Mdot
+.396 .31721 Mdot
+.39619 .43039 Mdot
+.39638 .23098 Mdot
+.39657 .54219 Mdot
+.39676 .29158 Mdot
+.39695 .40246 Mdot
+.39714 .23694 Mdot
+.39733 .55068 Mdot
+.39752 .2305 Mdot
+.39771 .53141 Mdot
+.3979 .31704 Mdot
+.3981 .33258 Mdot
+.39829 .31732 Mdot
+.39848 .49922 Mdot
+.39867 .22793 Mdot
+.39886 .52486 Mdot
+.39905 .26527 Mdot
+.39924 .39844 Mdot
+.39943 .29421 Mdot
+.39962 .5739 Mdot
+.39981 .20458 Mdot
+.4 .46638 Mdot
+.40019 .28546 Mdot
+.40038 .40267 Mdot
+.40057 .30082 Mdot
+.40076 .57401 Mdot
+.40095 .18552 Mdot
+.40114 .49943 Mdot
+.40133 .31745 Mdot
+.40152 .40274 Mdot
+.40171 .30945 Mdot
+.4019 .47068 Mdot
+.4021 .23168 Mdot
+.40229 .57414 Mdot
+.40248 .278 Mdot
+.40267 .35842 Mdot
+.40286 .26541 Mdot
+.40305 .52522 Mdot
+.40324 .23017 Mdot
+.40343 .57424 Mdot
+.40362 .31756 Mdot
+.40381 .28347 Mdot
+.404 .31732 Mdot
+.40419 .57431 Mdot
+.40438 .22764 Mdot
+.40457 .57434 Mdot
+.40476 .26651 Mdot
+.40495 .37728 Mdot
+.40514 .2458 Mdot
+.40533 .57441 Mdot
+.40552 .23128 Mdot
+.40571 .47096 Mdot
+.4059 .29871 Mdot
+.4061 .40199 Mdot
+.40629 .31691 Mdot
+.40648 .49065 Mdot
+.40667 .19605 Mdot
+.40686 .57454 Mdot
+.40705 .31745 Mdot
+.40724 .36735 Mdot
+.40743 .29987 Mdot
+.40762 .42826 Mdot
+.40781 .2079 Mdot
+.408 .57464 Mdot
+.40819 .31776 Mdot
+.40838 .40315 Mdot
+.40857 .26461 Mdot
+.40876 .55234 Mdot
+.40895 .23189 Mdot
+.40914 .47567 Mdot
+.40933 .28455 Mdot
+.40952 .3352 Mdot
+.40971 .31783 Mdot
+.4099 .57481 Mdot
+.4101 .21926 Mdot
+.41029 .57484 Mdot
+.41048 .23126 Mdot
+.41067 .40328 Mdot
+.41086 .3161 Mdot
+.41105 .54355 Mdot
+.41124 .23095 Mdot
+.41143 .42488 Mdot
+.41162 .31766 Mdot
+.41181 .35186 Mdot
+.412 .31792 Mdot
+.41219 .57501 Mdot
+.41238 .19016 Mdot
+.41257 .53272 Mdot
+.41276 .31796 Mdot
+.41295 .40241 Mdot
+.41314 .27848 Mdot
+.41333 .4715 Mdot
+.41352 .21192 Mdot
+.41371 .5475 Mdot
+.4139 .31826 Mdot
+.4141 .40348 Mdot
+.41429 .26182 Mdot
+.41448 .50047 Mdot
+.41467 .22354 Mdot
+.41486 .57524 Mdot
+.41505 .29552 Mdot
+.41524 .33346 Mdot
+.41543 .31732 Mdot
+.41562 .50127 Mdot
+.41581 .2081 Mdot
+.416 .55085 Mdot
+.41619 .26491 Mdot
+.41638 .40262 Mdot
+.41657 .31812 Mdot
+.41676 .5754 Mdot
+.41695 .22864 Mdot
+.41714 .40798 Mdot
+.41733 .31815 Mdot
+.41752 .37181 Mdot
+.41771 .29005 Mdot
+.4179 .5755 Mdot
+.4181 .19238 Mdot
+.41829 .54422 Mdot
+.41848 .27573 Mdot
+.41867 .40375 Mdot
+.41886 .29936 Mdot
+.41905 .46793 Mdot
+.41924 .2317 Mdot
+.41943 .55183 Mdot
+.41962 .31825 Mdot
+.41981 .32854 Mdot
+.42 .25119 Mdot
+.42019 .57569 Mdot
+.42038 .23223 Mdot
+.42057 .57572 Mdot
+.42076 .31805 Mdot
+.42095 .33374 Mdot
+.42114 .2803 Mdot
+.42133 .57578 Mdot
+.42152 .22684 Mdot
+.42171 .57582 Mdot
+.4219 .23852 Mdot
+.4221 .37636 Mdot
+.42229 .31812 Mdot
+.42248 .45088 Mdot
+.42267 .2323 Mdot
+.42286 .47217 Mdot
+.42305 .31668 Mdot
+.42324 .40302 Mdot
+.42343 .31841 Mdot
+.42362 .57598 Mdot
+.42381 .17885 Mdot
+.424 .52697 Mdot
+.42419 .31844 Mdot
+.42438 .40407 Mdot
+.42457 .31773 Mdot
+.42476 .4723 Mdot
+.42495 .21964 Mdot
+.42514 .49247 Mdot
+.42533 .29576 Mdot
+.42552 .37775 Mdot
+.42571 .26625 Mdot
+.4259 .57617 Mdot
+.4261 .21727 Mdot
+.42629 .5762 Mdot
+.42648 .28051 Mdot
+.42667 .33012 Mdot
+.42686 .3076 Mdot
+.42705 .55191 Mdot
+.42724 .23243 Mdot
+.42743 .53397 Mdot
+.42762 .2634 Mdot
+.42781 .35274 Mdot
+.428 .3186 Mdot
+.42819 .52731 Mdot
+.42838 .23003 Mdot
+.42857 .44927 Mdot
+.42876 .31863 Mdot
+.42895 .40433 Mdot
+.42914 .27044 Mdot
+.42933 .57645 Mdot
+.42952 .19667 Mdot
+.42971 .57648 Mdot
+.4299 .29329 Mdot
+.4301 .40052 Mdot
+.43029 .29308 Mdot
+.43048 .40892 Mdot
+.43067 .23108 Mdot
+.43086 .57657 Mdot
+.43105 .31873 Mdot
+.43124 .37938 Mdot
+.43143 .26548 Mdot
+.43162 .57664 Mdot
+.43181 .19981 Mdot
+.432 .57667 Mdot
+.43219 .31517 Mdot
+.43238 .29197 Mdot
+.43257 .30341 Mdot
+.43276 .54549 Mdot
+.43295 .23211 Mdot
+.43314 .50186 Mdot
+.43333 .26267 Mdot
+.43352 .40362 Mdot
+.43371 .31812 Mdot
+.4339 .57682 Mdot
+.4341 .23262 Mdot
+.43429 .47294 Mdot
+.43448 .26215 Mdot
+.43467 .40464 Mdot
+.43486 .29641 Mdot
+.43505 .54297 Mdot
+.43524 .19873 Mdot
+.43543 .57694 Mdot
+.43562 .30268 Mdot
+.43581 .35316 Mdot
+.436 .31869 Mdot
+.43619 .47306 Mdot
+.43638 .22411 Mdot
+.43657 .52797 Mdot
+.43676 .31825 Mdot
+.43695 .40381 Mdot
+.43714 .23239 Mdot
+.43733 .53477 Mdot
+.43752 .23224 Mdot
+.43771 .55527 Mdot
+.4379 .31901 Mdot
+.4381 .32697 Mdot
+.43829 .30408 Mdot
+.43848 .50224 Mdot
+.43867 .21757 Mdot
+.43886 .57722 Mdot
+.43905 .26576 Mdot
+.43924 .40489 Mdot
+.43943 .31907 Mdot
+.43962 .55504 Mdot
+.43981 .19731 Mdot
+.44 .4355 Mdot
+.44019 .3191 Mdot
+.44038 .40542 Mdot
+.44057 .31888 Mdot
+.44076 .52829 Mdot
+.44095 .19696 Mdot
+.44114 .50243 Mdot
+.44133 .3175 Mdot
+.44152 .37769 Mdot
+.44171 .31916 Mdot
+.4419 .47344 Mdot
+.4421 .23049 Mdot
+.44229 .53799 Mdot
+.44248 .28111 Mdot
+.44267 .40507 Mdot
+.44286 .24899 Mdot
+.44305 .55408 Mdot
+.44324 .23287 Mdot
+.44343 .57758 Mdot
+.44362 .29743 Mdot
+.44381 .29733 Mdot
+.444 .31925 Mdot
+.44419 .57764 Mdot
+.44438 .22588 Mdot
+.44457 .56691 Mdot
+.44476 .24071 Mdot
+.44495 .36966 Mdot
+.44514 .27981 Mdot
+.44533 .57773 Mdot
+.44552 .2292 Mdot
+.44571 .47369 Mdot
+.4459 .31863 Mdot
+.4461 .40525 Mdot
+.44629 .31934 Mdot
+.44648 .50281 Mdot
+.44667 .19524 Mdot
+.44686 .57785 Mdot
+.44705 .29378 Mdot
+.44724 .36252 Mdot
+.44743 .31776 Mdot
+.44762 .47009 Mdot
+.44781 .20605 Mdot
+.448 .54404 Mdot
+.44819 .31919 Mdot
+.44838 .40537 Mdot
+.44857 .26703 Mdot
+.44876 .55065 Mdot
+.44895 .22793 Mdot
+.44914 .45019 Mdot
+.44933 .31946 Mdot
+.44952 .33509 Mdot
+.44971 .29426 Mdot
+.4499 .57809 Mdot
+.4501 .23306 Mdot
+.45029 .57812 Mdot
+.45048 .23845 Mdot
+.45067 .4018 Mdot
+.45086 .30199 Mdot
+.45105 .57818 Mdot
+.45124 .20865 Mdot
+.45143 .47405 Mdot
+.45162 .31955 Mdot
+.45181 .35398 Mdot
+.452 .31888 Mdot
+.45219 .53594 Mdot
+.45238 .19908 Mdot
+.45257 .57829 Mdot
+.45276 .31937 Mdot
+.45295 .40561 Mdot
+.45314 .27324 Mdot
+.45333 .42828 Mdot
+.45352 .22994 Mdot
+.45371 .55637 Mdot
+.4539 .31964 Mdot
+.4541 .40476 Mdot
+.45429 .2663 Mdot
+.45448 .45666 Mdot
+.45467 .21487 Mdot
+.45486 .55514 Mdot
+.45505 .319 Mdot
+.45524 .33535 Mdot
+.45543 .29411 Mdot
+.45562 .57853 Mdot
+.45581 .20901 Mdot
+.456 .57856 Mdot
+.45619 .26727 Mdot
+.45638 .40579 Mdot
+.45657 .31632 Mdot
+.45676 .57862 Mdot
+.45695 .23324 Mdot
+.45714 .38884 Mdot
+.45733 .31954 Mdot
+.45752 .36128 Mdot
+.45771 .30115 Mdot
+.4579 .55734 Mdot
+.4581 .19193 Mdot
+.45829 .57873 Mdot
+.45848 .28169 Mdot
+.45867 .40591 Mdot
+.45886 .3196 Mdot
+.45905 .47453 Mdot
+.45924 .23239 Mdot
+.45943 .57882 Mdot
+.45962 .27843 Mdot
+.45981 .35437 Mdot
+.46 .2674 Mdot
+.46019 .55491 Mdot
+.46038 .23288 Mdot
+.46057 .5789 Mdot
+.46076 .305 Mdot
+.46095 .32115 Mdot
+.46114 .27772 Mdot
+.46133 .57896 Mdot
+.46152 .23336 Mdot
+.46171 .50733 Mdot
+.4619 .25935 Mdot
+.4621 .37456 Mdot
+.46229 .31996 Mdot
+.46248 .4958 Mdot
+.46267 .23384 Mdot
+.46286 .47476 Mdot
+.46305 .31999 Mdot
+.46324 .40614 Mdot
+.46343 .31978 Mdot
+.46362 .57913 Mdot
+.46381 .1688 Mdot
+.464 .57916 Mdot
+.46419 .30501 Mdot
+.46438 .4053 Mdot
+.46457 .29765 Mdot
+.46476 .47488 Mdot
+.46495 .233 Mdot
+.46514 .50408 Mdot
+.46533 .30263 Mdot
+.46552 .40626 Mdot
+.46571 .26132 Mdot
+.4659 .53016 Mdot
+.4661 .2299 Mdot
+.46629 .5521 Mdot
+.46648 .28063 Mdot
+.46667 .32871 Mdot
+.46686 .32013 Mdot
+.46705 .53705 Mdot
+.46724 .23217 Mdot
+.46743 .54558 Mdot
+.46762 .26764 Mdot
+.46781 .34942 Mdot
+.468 .29238 Mdot
+.46819 .57947 Mdot
+.46838 .23353 Mdot
+.46857 .47511 Mdot
+.46876 .31687 Mdot
+.46895 .38068 Mdot
+.46914 .28206 Mdot
+.46933 .57956 Mdot
+.46952 .18879 Mdot
+.46971 .57959 Mdot
+.4699 .32024 Mdot
+.4701 .37106 Mdot
+.47029 .31959 Mdot
+.47048 .41152 Mdot
+.47067 .21678 Mdot
+.47086 .57967 Mdot
+.47105 .32007 Mdot
+.47124 .39506 Mdot
+.47143 .26422 Mdot
+.47162 .57973 Mdot
+.47181 .20935 Mdot
+.472 .53742 Mdot
+.47219 .29476 Mdot
+.47238 .33609 Mdot
+.47257 .29898 Mdot
+.47276 .57981 Mdot
+.47295 .23277 Mdot
+.47314 .5046 Mdot
+.47333 .26518 Mdot
+.47352 .40665 Mdot
+.47371 .32039 Mdot
+.4739 .54607 Mdot
+.4741 .23324 Mdot
+.47429 .42981 Mdot
+.47448 .26645 Mdot
+.47467 .40583 Mdot
+.47486 .31363 Mdot
+.47505 .55281 Mdot
+.47524 .19778 Mdot
+.47543 .58 Mdot
+.47562 .32024 Mdot
+.47581 .35514 Mdot
+.476 .32047 Mdot
+.47619 .45458 Mdot
+.47638 .21844 Mdot
+.47657 .58009 Mdot
+.47676 .30565 Mdot
+.47695 .37539 Mdot
+.47714 .22866 Mdot
+.47733 .58014 Mdot
+.47752 .23376 Mdot
+.47771 .58017 Mdot
+.4779 .31901 Mdot
+.4781 .33285 Mdot
+.47829 .32055 Mdot
+.47848 .45273 Mdot
+.47867 .23336 Mdot
+.47886 .58025 Mdot
+.47905 .26799 Mdot
+.47924 .40693 Mdot
+.47943 .29041 Mdot
+.47962 .58031 Mdot
+.47981 .20171 Mdot
+.48 .47579 Mdot
+.48019 .3204 Mdot
+.48038 .38012 Mdot
+.48057 .29507 Mdot
+.48076 .58039 Mdot
+.48095 .19965 Mdot
+.48114 .50641 Mdot
+.48133 .32066 Mdot
+.48152 .40358 Mdot
+.48171 .32046 Mdot
+.4819 .43443 Mdot
+.4821 .23388 Mdot
+.48229 .55675 Mdot
+.48248 .27862 Mdot
+.48267 .37172 Mdot
+.48286 .26811 Mdot
+.48305 .58055 Mdot
+.48324 .23175 Mdot
+.48343 .54957 Mdot
+.48362 .30223 Mdot
+.48381 .28836 Mdot
+.484 .31925 Mdot
+.48419 .58063 Mdot
+.48438 .21588 Mdot
+.48457 .5596 Mdot
+.48476 .25012 Mdot
+.48495 .40635 Mdot
+.48514 .2826 Mdot
+.48533 .58071 Mdot
+.48552 .23267 Mdot
+.48571 .4727 Mdot
+.4859 .32083 Mdot
+.4861 .40726 Mdot
+.48629 .32062 Mdot
+.48648 .50545 Mdot
+.48667 .19975 Mdot
+.48686 .47175 Mdot
+.48705 .3074 Mdot
+.48724 .40732 Mdot
+.48743 .32088 Mdot
+.48762 .47624 Mdot
+.48781 .20456 Mdot
+.488 .5809 Mdot
+.48819 .30512 Mdot
+.48838 .40652 Mdot
+.48857 .26572 Mdot
+.48876 .58096 Mdot
+.48895 .21445 Mdot
+.48914 .50562 Mdot
+.48933 .29605 Mdot
+.48952 .3368 Mdot
+.48971 .32096 Mdot
+.4899 .58104 Mdot
+.4901 .2243 Mdot
+.49029 .55812 Mdot
+.49048 .23946 Mdot
+.49067 .38201 Mdot
+.49086 .32079 Mdot
+.49105 .53191 Mdot
+.49124 .2341 Mdot
+.49143 .47646 Mdot
+.49162 .32039 Mdot
+.49181 .33554 Mdot
+.492 .32104 Mdot
+.49219 .5812 Mdot
+.49238 .19648 Mdot
+.49257 .55416 Mdot
+.49276 .32107 Mdot
+.49295 .40759 Mdot
+.49314 .26385 Mdot
+.49333 .43941 Mdot
+.49352 .23331 Mdot
+.49371 .5813 Mdot
+.4939 .3209 Mdot
+.4941 .40764 Mdot
+.49429 .24316 Mdot
+.49448 .50595 Mdot
+.49467 .23292 Mdot
+.49486 .58138 Mdot
+.49505 .32115 Mdot
+.49524 .31348 Mdot
+.49543 .32095 Mdot
+.49562 .58143 Mdot
+.49581 .20732 Mdot
+.496 .56004 Mdot
+.49619 .26262 Mdot
+.49638 .40775 Mdot
+.49657 .30274 Mdot
+.49676 .53916 Mdot
+.49695 .22711 Mdot
+.49714 .41309 Mdot
+.49733 .29568 Mdot
+.49752 .4078 Mdot
+.49771 .32061 Mdot
+.4979 .55063 Mdot
+.4981 .19829 Mdot
+.49829 .56113 Mdot
+.49848 .28177 Mdot
+.49867 .40702 Mdot
+.49886 .30666 Mdot
+.49905 .47689 Mdot
+.49924 .22135 Mdot
+.49943 .53247 Mdot
+.49962 .32131 Mdot
+.49981 .34122 Mdot
+.5 .26944 Mdot
+.50019 .56092 Mdot
+.50038 .23348 Mdot
+.50057 .58177 Mdot
+.50076 .32072 Mdot
+.50095 .33726 Mdot
+.50114 .28311 Mdot
+.50133 .55481 Mdot
+.50152 .21066 Mdot
+.50171 .53949 Mdot
+.5019 .26867 Mdot
+.5021 .39722 Mdot
+.50229 .31995 Mdot
+.50248 .50644 Mdot
+.50267 .23437 Mdot
+.50286 .4771 Mdot
+.50305 .29968 Mdot
+.50324 .40806 Mdot
+.50343 .32144 Mdot
+.50362 .53275 Mdot
+.50381 .18022 Mdot
+.504 .58201 Mdot
+.50419 .29915 Mdot
+.50438 .39655 Mdot
+.50457 .32127 Mdot
+.50476 .47391 Mdot
+.50495 .23442 Mdot
+.50514 .48432 Mdot
+.50533 .31841 Mdot
+.50552 .40734 Mdot
+.50571 .2424 Mdot
+.5059 .58214 Mdot
+.5061 .23404 Mdot
+.50629 .54841 Mdot
+.50648 .28328 Mdot
+.50667 .31774 Mdot
+.50686 .32094 Mdot
+.50705 .56166 Mdot
+.50724 .23119 Mdot
+.50743 .58224 Mdot
+.50762 .26801 Mdot
+.50781 .33195 Mdot
+.508 .30723 Mdot
+.50819 .58229 Mdot
+.50838 .23163 Mdot
+.50857 .47742 Mdot
+.50876 .30441 Mdot
+.50895 .40751 Mdot
+.50914 .2674 Mdot
+.50933 .58237 Mdot
+.50952 .19199 Mdot
+.50971 .58239 Mdot
+.5099 .28998 Mdot
+.5101 .38468 Mdot
+.51029 .32167 Mdot
+.51048 .41384 Mdot
+.51067 .23251 Mdot
+.51086 .58247 Mdot
+.51105 .32169 Mdot
+.51124 .40843 Mdot
+.51143 .26975 Mdot
+.51162 .54015 Mdot
+.51181 .2077 Mdot
+.512 .53329 Mdot
+.51219 .32153 Mdot
+.51238 .32469 Mdot
+.51257 .32174 Mdot
+.51276 .54886 Mdot
+.51295 .23339 Mdot
+.51314 .50707 Mdot
+.51333 .26899 Mdot
+.51352 .40853 Mdot
+.51371 .32158 Mdot
+.5139 .55996 Mdot
+.5141 .20706 Mdot
+.51429 .47449 Mdot
+.51448 .27502 Mdot
+.51467 .40858 Mdot
+.51486 .32182 Mdot
+.51505 .58274 Mdot
+.51524 .19703 Mdot
+.51543 .55932 Mdot
+.51562 .32185 Mdot
+.51581 .35206 Mdot
+.516 .29378 Mdot
+.51619 .43261 Mdot
+.51638 .23468 Mdot
+.51657 .54048 Mdot
+.51676 .32168 Mdot
+.51695 .40868 Mdot
+.51714 .23524 Mdot
+.51733 .5829 Mdot
+.51752 .23511 Mdot
+.51771 .58292 Mdot
+.5179 .32192 Mdot
+.5181 .33792 Mdot
+.51829 .29438 Mdot
+.51848 .50015 Mdot
+.51867 .23473 Mdot
+.51886 .55608 Mdot
+.51905 .25389 Mdot
+.51924 .38871 Mdot
+.51943 .32197 Mdot
+.51962 .55215 Mdot
+.51981 .20548 Mdot
+.52 .47804 Mdot
+.52019 .322 Mdot
+.52038 .37358 Mdot
+.52057 .32061 Mdot
+.52076 .58312 Mdot
+.52095 .19557 Mdot
+.52114 .50754 Mdot
+.52133 .32183 Mdot
+.52152 .3777 Mdot
+.52171 .32205 Mdot
+.5219 .47814 Mdot
+.5221 .23361 Mdot
+.52229 .58322 Mdot
+.52248 .25264 Mdot
+.52267 .40574 Mdot
+.52286 .26845 Mdot
+.52305 .58327 Mdot
+.52324 .2189 Mdot
+.52343 .56298 Mdot
+.52362 .31594 Mdot
+.52381 .29992 Mdot
+.524 .29984 Mdot
+.52419 .56226 Mdot
+.52438 .23287 Mdot
+.52457 .53408 Mdot
+.52476 .2693 Mdot
+.52495 .40903 Mdot
+.52514 .28027 Mdot
+.52533 .58342 Mdot
+.52552 .23489 Mdot
+.52571 .44185 Mdot
+.5259 .32198 Mdot
+.5261 .40829 Mdot
+.52629 .3222 Mdot
+.52648 .46032 Mdot
+.52667 .1878 Mdot
+.52686 .55264 Mdot
+.52705 .32222 Mdot
+.52724 .40913 Mdot
+.52743 .32203 Mdot
+.52762 .46105 Mdot
+.52781 .21044 Mdot
+.528 .58359 Mdot
+.52819 .32166 Mdot
+.52838 .40918 Mdot
+.52857 .26625 Mdot
+.52876 .53434 Mdot
+.52895 .21249 Mdot
+.52914 .508 Mdot
+.52933 .32229 Mdot
+.52952 .3352 Mdot
+.52971 .31935 Mdot
+.5299 .58371 Mdot
+.5301 .23499 Mdot
+.53029 .58373 Mdot
+.53048 .23093 Mdot
+.53067 .40928 Mdot
+.53086 .29877 Mdot
+.53105 .58378 Mdot
+.53124 .23069 Mdot
+.53143 .43783 Mdot
+.53162 .30824 Mdot
+.53181 .35757 Mdot
+.532 .30258 Mdot
+.53219 .55015 Mdot
+.53238 .199 Mdot
+.53257 .58388 Mdot
+.53276 .32103 Mdot
+.53295 .37807 Mdot
+.53314 .28408 Mdot
+.53333 .47561 Mdot
+.53352 .23467 Mdot
+.53371 .58395 Mdot
+.5339 .30017 Mdot
+.5341 .38444 Mdot
+.53429 .26722 Mdot
+.53448 .5083 Mdot
+.53467 .23431 Mdot
+.53486 .58402 Mdot
+.53505 .29499 Mdot
+.53524 .33856 Mdot
+.53543 .30418 Mdot
+.53562 .58407 Mdot
+.53581 .21059 Mdot
+.536 .5841 Mdot
+.53619 .26961 Mdot
+.53638 .36908 Mdot
+.53657 .32233 Mdot
+.53676 .58414 Mdot
+.53695 .23514 Mdot
+.53714 .38729 Mdot
+.53733 .32197 Mdot
+.53752 .38707 Mdot
+.53771 .30549 Mdot
+.5379 .58421 Mdot
+.5381 .20066 Mdot
+.53829 .56331 Mdot
+.53848 .28423 Mdot
+.53867 .38329 Mdot
+.53886 .30266 Mdot
+.53905 .47903 Mdot
+.53924 .21584 Mdot
+.53943 .58431 Mdot
+.53962 .32243 Mdot
+.53981 .35325 Mdot
+.54 .26971 Mdot
+.54019 .58436 Mdot
+.54038 .23405 Mdot
+.54057 .58438 Mdot
+.54076 .30723 Mdot
+.54095 .33876 Mdot
+.54114 .28315 Mdot
+.54133 .4773 Mdot
+.54152 .23446 Mdot
+.54171 .58445 Mdot
+.5419 .25821 Mdot
+.5421 .40976 Mdot
+.54229 .3227 Mdot
+.54248 .50874 Mdot
+.54267 .23487 Mdot
+.54286 .47615 Mdot
+.54305 .30851 Mdot
+.54324 .40674 Mdot
+.54343 .29145 Mdot
+.54362 .58457 Mdot
+.54381 .1716 Mdot
+.544 .58459 Mdot
+.54419 .32257 Mdot
+.54438 .40986 Mdot
+.54457 .32277 Mdot
+.54476 .47932 Mdot
+.54495 .2265 Mdot
+.54514 .46526 Mdot
+.54533 .31591 Mdot
+.54552 .37472 Mdot
+.54571 .26909 Mdot
+.5459 .58471 Mdot
+.5461 .23533 Mdot
+.54629 .54234 Mdot
+.54648 .28561 Mdot
+.54667 .33591 Mdot
+.54686 .32285 Mdot
+.54705 .56457 Mdot
+.54724 .23497 Mdot
+.54743 .58481 Mdot
+.54762 .25162 Mdot
+.54781 .3582 Mdot
+.548 .31698 Mdot
+.54819 .58485 Mdot
+.54838 .22549 Mdot
+.54857 .44452 Mdot
+.54876 .29838 Mdot
+.54895 .41005 Mdot
+.54914 .28454 Mdot
+.54933 .56251 Mdot
+.54952 .19477 Mdot
+.54971 .5356 Mdot
+.5499 .32294 Mdot
+.5501 .40934 Mdot
+.55029 .32276 Mdot
+.55048 .41592 Mdot
+.55067 .23543 Mdot
+.55086 .58502 Mdot
+.55105 .32165 Mdot
+.55124 .3791 Mdot
+.55143 .27001 Mdot
+.55162 .55139 Mdot
+.55181 .19725 Mdot
+.552 .56543 Mdot
+.55219 .306 Mdot
+.55238 .33312 Mdot
+.55257 .32245 Mdot
+.55276 .58513 Mdot
+.55295 .23547 Mdot
+.55314 .50932 Mdot
+.55333 .2693 Mdot
+.55352 .40722 Mdot
+.55371 .30082 Mdot
+.5539 .51701 Mdot
+.5541 .22985 Mdot
+.55429 .4798 Mdot
+.55448 .28469 Mdot
+.55467 .41028 Mdot
+.55486 .30184 Mdot
+.55505 .58527 Mdot
+.55524 .19643 Mdot
+.55543 .58529 Mdot
+.55562 .32255 Mdot
+.55581 .34499 Mdot
+.556 .2976 Mdot
+.55619 .43937 Mdot
+.55638 .23517 Mdot
+.55657 .58536 Mdot
+.55676 .32315 Mdot
+.55695 .40963 Mdot
+.55714 .24093 Mdot
+.55733 .58541 Mdot
+.55752 .23557 Mdot
+.55771 .58543 Mdot
+.5579 .323 Mdot
+.5581 .30047 Mdot
+.55829 .30787 Mdot
+.55848 .50961 Mdot
+.55867 .22252 Mdot
+.55886 .57579 Mdot
+.55905 .2702 Mdot
+.55924 .41047 Mdot
+.55943 .30289 Mdot
+.55962 .56242 Mdot
+.55981 .20877 Mdot
+.56 .48008 Mdot
+.56019 .29959 Mdot
+.56038 .40977 Mdot
+.56057 .32326 Mdot
+.56076 .58561 Mdot
+.56095 .19805 Mdot
+.56114 .46287 Mdot
+.56133 .30506 Mdot
+.56152 .41056 Mdot
+.56171 .32274 Mdot
+.5619 .4772 Mdot
+.5621 .23492 Mdot
+.56229 .53633 Mdot
+.56248 .28379 Mdot
+.56267 .3876 Mdot
+.56286 .27029 Mdot
+.56305 .55498 Mdot
+.56324 .23309 Mdot
+.56343 .58577 Mdot
+.56362 .30113 Mdot
+.56381 .30105 Mdot
+.564 .32318 Mdot
+.56419 .58582 Mdot
+.56438 .21647 Mdot
+.56457 .55219 Mdot
+.56476 .26812 Mdot
+.56495 .4107 Mdot
+.56514 .27833 Mdot
+.56533 .58588 Mdot
+.56552 .23389 Mdot
+.56571 .48036 Mdot
+.5659 .32342 Mdot
+.5661 .37976 Mdot
+.56629 .32067 Mdot
+.56648 .45916 Mdot
+.56667 .19375 Mdot
+.56686 .58597 Mdot
+.56705 .30413 Mdot
+.56724 .41005 Mdot
+.56743 .32347 Mdot
+.56762 .48045 Mdot
+.56781 .20232 Mdot
+.568 .58604 Mdot
+.56819 .32349 Mdot
+.56838 .41083 Mdot
+.56857 .23738 Mdot
+.56876 .58609 Mdot
+.56895 .23286 Mdot
+.56914 .51017 Mdot
+.56933 .32224 Mdot
+.56952 .33975 Mdot
+.56971 .32353 Mdot
+.5699 .56673 Mdot
+.5701 .23546 Mdot
+.57029 .55542 Mdot
+.57048 .23681 Mdot
+.57067 .36848 Mdot
+.57086 .32302 Mdot
+.57105 .51747 Mdot
+.57124 .23585 Mdot
+.57143 .46309 Mdot
+.57162 .32341 Mdot
+.57181 .35911 Mdot
+.572 .3236 Mdot
+.57219 .58629 Mdot
+.57238 .20121 Mdot
+.57257 .56661 Mdot
+.57276 .2981 Mdot
+.57295 .40008 Mdot
+.57314 .2841 Mdot
+.57333 .48072 Mdot
+.57352 .21841 Mdot
+.57371 .58638 Mdot
+.5739 .31001 Mdot
+.5741 .40815 Mdot
+.57429 .25894 Mdot
+.57448 .5039 Mdot
+.57467 .23555 Mdot
+.57486 .53703 Mdot
+.57505 .32369 Mdot
+.57524 .33994 Mdot
+.57543 .32243 Mdot
+.57562 .58649 Mdot
+.57581 .20474 Mdot
+.576 .54408 Mdot
+.57619 .2641 Mdot
+.57638 .41115 Mdot
+.57657 .32374 Mdot
+.57676 .58655 Mdot
+.57695 .22039 Mdot
+.57714 .41721 Mdot
+.57733 .32376 Mdot
+.57752 .37358 Mdot
+.57771 .32359 Mdot
+.5779 .58662 Mdot
+.5781 .19985 Mdot
+.57829 .56677 Mdot
+.57848 .26909 Mdot
+.57867 .41124 Mdot
+.57886 .31009 Mdot
+.57905 .43626 Mdot
+.57924 .23637 Mdot
+.57943 .58671 Mdot
+.57962 .32382 Mdot
+.57981 .3594 Mdot
+.58 .26855 Mdot
+.58019 .56011 Mdot
+.58038 .23603 Mdot
+.58057 .56626 Mdot
+.58076 .30282 Mdot
+.58095 .32 Mdot
+.58114 .25521 Mdot
+.58133 .58681 Mdot
+.58152 .23354 Mdot
+.58171 .56385 Mdot
+.5819 .27076 Mdot
+.5821 .41137 Mdot
+.58229 .32372 Mdot
+.58248 .51085 Mdot
+.58267 .23536 Mdot
+.58286 .48117 Mdot
+.58305 .32338 Mdot
+.58324 .37631 Mdot
+.58343 .30173 Mdot
+.58362 .58695 Mdot
+.58381 .18135 Mdot
+.584 .55334 Mdot
+.58419 .32395 Mdot
+.58438 .4086 Mdot
+.58457 .31271 Mdot
+.58476 .44696 Mdot
+.58495 .23612 Mdot
+.58514 .51098 Mdot
+.58533 .29668 Mdot
+.58552 .4115 Mdot
+.58571 .268 Mdot
+.5859 .54464 Mdot
+.5861 .23222 Mdot
+.58629 .5871 Mdot
+.58648 .28555 Mdot
+.58667 .34032 Mdot
+.58686 .32385 Mdot
+.58705 .58714 Mdot
+.58724 .22051 Mdot
+.58743 .53772 Mdot
+.58762 .26592 Mdot
+.58781 .35543 Mdot
+.588 .32406 Mdot
+.58819 .5872 Mdot
+.58838 .21452 Mdot
+.58857 .48143 Mdot
+.58876 .32408 Mdot
+.58895 .38893 Mdot
+.58914 .28242 Mdot
+.58933 .58727 Mdot
+.58952 .18871 Mdot
+.58971 .58729 Mdot
+.5899 .32394 Mdot
+.5901 .41168 Mdot
+.59029 .32413 Mdot
+.59048 .40084 Mdot
+.59067 .23092 Mdot
+.59086 .54492 Mdot
+.59105 .32415 Mdot
+.59124 .41101 Mdot
+.59143 .27028 Mdot
+.59162 .53795 Mdot
+.59181 .20941 Mdot
+.592 .55671 Mdot
+.59219 .32365 Mdot
+.59238 .3405 Mdot
+.59257 .32419 Mdot
+.59276 .56455 Mdot
+.59295 .23451 Mdot
+.59314 .50504 Mdot
+.59333 .24708 Mdot
+.59352 .4118 Mdot
+.59371 .28639 Mdot
+.5939 .56782 Mdot
+.5941 .23629 Mdot
+.59429 .4817 Mdot
+.59448 .2847 Mdot
+.59467 .40271 Mdot
+.59486 .32426 Mdot
+.59505 .58759 Mdot
+.59524 .20155 Mdot
+.59543 .58761 Mdot
+.59562 .30744 Mdot
+.59581 .31367 Mdot
+.596 .32411 Mdot
+.59619 .48178 Mdot
+.59638 .23564 Mdot
+.59657 .5656 Mdot
+.59676 .31888 Mdot
+.59695 .38602 Mdot
+.59714 .23752 Mdot
+.59733 .58772 Mdot
+.59752 .23601 Mdot
+.59771 .56116 Mdot
+.5979 .29882 Mdot
+.5981 .33789 Mdot
+.59829 .29588 Mdot
+.59848 .51164 Mdot
+.59867 .23638 Mdot
+.59886 .5878 Mdot
+.59905 .27046 Mdot
+.59924 .3876 Mdot
+.59943 .32438 Mdot
+.59962 .58784 Mdot
+.59981 .21166 Mdot
+.6 .44433 Mdot
+.60019 .30629 Mdot
+.60038 .41206 Mdot
+.60057 .32424 Mdot
+.60076 .54545 Mdot
+.60095 .20025 Mdot
+.60114 .51177 Mdot
+.60133 .32392 Mdot
+.60152 .41141 Mdot
+.60171 .31125 Mdot
+.6019 .48204 Mdot
+.6021 .21388 Mdot
+.60229 .58799 Mdot
+.60248 .27971 Mdot
+.60267 .41215 Mdot
+.60286 .26085 Mdot
+.60305 .58803 Mdot
+.60324 .2233 Mdot
+.60343 .55445 Mdot
+.60362 .32433 Mdot
+.60381 .29378 Mdot
+.604 .32451 Mdot
+.60419 .53861 Mdot
+.60438 .23545 Mdot
+.60457 .58811 Mdot
+.60476 .26853 Mdot
+.60495 .40946 Mdot
+.60514 .28498 Mdot
+.60533 .56881 Mdot
+.60552 .23651 Mdot
+.60571 .44217 Mdot
+.6059 .32335 Mdot
+.6061 .41227 Mdot
+.60629 .29905 Mdot
+.60648 .47066 Mdot
+.60667 .19345 Mdot
+.60686 .58824 Mdot
+.60705 .32459 Mdot
+.60724 .41231 Mdot
+.60743 .32409 Mdot
+.60762 .4823 Mdot
+.60781 .20972 Mdot
+.608 .5883 Mdot
+.60819 .30039 Mdot
+.60838 .37043 Mdot
+.60857 .27138 Mdot
+.60876 .56808 Mdot
+.60895 .23692 Mdot
+.60914 .51216 Mdot
+.60933 .31093 Mdot
+.60952 .33555 Mdot
+.60971 .32449 Mdot
+.6099 .5548 Mdot
+.6101 .22768 Mdot
+.61029 .58842 Mdot
+.61048 .22552 Mdot
+.61067 .38162 Mdot
+.61086 .30964 Mdot
+.61105 .58846 Mdot
+.61124 .23627 Mdot
+.61143 .48246 Mdot
+.61162 .32472 Mdot
+.61181 .36258 Mdot
+.612 .32353 Mdot
+.61219 .58853 Mdot
+.61238 .20044 Mdot
+.61257 .53905 Mdot
+.61276 .32458 Mdot
+.61295 .41252 Mdot
+.61314 .25757 Mdot
+.61333 .48255 Mdot
+.61352 .23291 Mdot
+.61371 .55794 Mdot
+.6139 .32478 Mdot
+.6141 .41256 Mdot
+.61429 .26538 Mdot
+.61448 .51241 Mdot
+.61467 .21762 Mdot
+.61486 .56588 Mdot
+.61505 .32226 Mdot
+.61524 .33034 Mdot
+.61543 .32482 Mdot
+.61562 .54624 Mdot
+.61581 .20783 Mdot
+.616 .58873 Mdot
+.61619 .27155 Mdot
+.61638 .38686 Mdot
+.61657 .32434 Mdot
+.61676 .53926 Mdot
+.61695 .23604 Mdot
+.61714 .419 Mdot
+.61733 .30505 Mdot
+.61752 .41269 Mdot
+.61771 .32488 Mdot
+.6179 .58883 Mdot
+.6181 .19106 Mdot
+.61829 .58885 Mdot
+.61848 .28635 Mdot
+.61867 .41205 Mdot
+.61886 .2977 Mdot
+.61905 .48347 Mdot
+.61924 .23676 Mdot
+.61943 .57034 Mdot
+.61962 .29877 Mdot
+.61981 .3608 Mdot
+.62 .27164 Mdot
+.62019 .56703 Mdot
+.62038 .23105 Mdot
+.62057 .5465 Mdot
+.62076 .32496 Mdot
+.62095 .30366 Mdot
+.62114 .28742 Mdot
+.62133 .58901 Mdot
+.62152 .2368 Mdot
+.62171 .56986 Mdot
+.6219 .27101 Mdot
+.6221 .41218 Mdot
+.62229 .325 Mdot
+.62248 .51279 Mdot
+.62267 .23581 Mdot
+.62286 .44803 Mdot
+.62305 .28272 Mdot
+.62324 .41289 Mdot
+.62343 .32487 Mdot
+.62362 .57035 Mdot
+.62381 .18184 Mdot
+.624 .56267 Mdot
+.62419 .32388 Mdot
+.62438 .41293 Mdot
+.62457 .30832 Mdot
+.62476 .48304 Mdot
+.62495 .23653 Mdot
+.62514 .46271 Mdot
+.62533 .32508 Mdot
+.62552 .38621 Mdot
+.62571 .26976 Mdot
+.6259 .56652 Mdot
+.6261 .22151 Mdot
+.62629 .58928 Mdot
+.62648 .28554 Mdot
+.62667 .34156 Mdot
+.62686 .32512 Mdot
+.62705 .58931 Mdot
+.62724 .22123 Mdot
+.62743 .58933 Mdot
+.62762 .2718 Mdot
+.62781 .36106 Mdot
+.628 .301 Mdot
+.62819 .55873 Mdot
+.62838 .2296 Mdot
+.62857 .48054 Mdot
+.62876 .32468 Mdot
+.62895 .41243 Mdot
+.62914 .2866 Mdot
+.62933 .51329 Mdot
+.62952 .19939 Mdot
+.62971 .58945 Mdot
+.6299 .31225 Mdot
+.6301 .41313 Mdot
+.63029 .32405 Mdot
+.63048 .39566 Mdot
+.63067 .23431 Mdot
+.63086 .58951 Mdot
+.63105 .32507 Mdot
+.63124 .41317 Mdot
+.63143 .2467 Mdot
+.63162 .58955 Mdot
+.63181 .2042 Mdot
+.632 .56772 Mdot
+.63219 .32526 Mdot
+.63238 .33909 Mdot
+.63257 .3046 Mdot
+.63276 .56315 Mdot
+.63295 .21981 Mdot
+.63314 .51328 Mdot
+.63333 .27259 Mdot
+.63352 .37824 Mdot
+.63371 .3253 Mdot
+.6339 .58967 Mdot
+.6341 .23538 Mdot
+.63429 .48345 Mdot
+.63448 .28673 Mdot
+.63467 .41329 Mdot
+.63486 .32484 Mdot
+.63505 .58973 Mdot
+.63524 .2008 Mdot
+.63543 .52355 Mdot
+.63562 .29819 Mdot
+.63581 .34552 Mdot
+.636 .32536 Mdot
+.63619 .48353 Mdot
+.63638 .23476 Mdot
+.63657 .58981 Mdot
+.63676 .32538 Mdot
+.63695 .39234 Mdot
+.63714 .23456 Mdot
+.63733 .58985 Mdot
+.63752 .23643 Mdot
+.63771 .54031 Mdot
+.6379 .29736 Mdot
+.6381 .33665 Mdot
+.63829 .32542 Mdot
+.63848 .51352 Mdot
+.63867 .23678 Mdot
+.63886 .58993 Mdot
+.63905 .24978 Mdot
+.63924 .41279 Mdot
+.63943 .323 Mdot
+.63962 .57164 Mdot
+.63981 .19852 Mdot
+.64 .48369 Mdot
+.64019 .32531 Mdot
+.64038 .38276 Mdot
+.64057 .32548 Mdot
+.64076 .57075 Mdot
+.64095 .2022 Mdot
+.64114 .51364 Mdot
+.64133 .3255 Mdot
+.64152 .39134 Mdot
+.64171 .32535 Mdot
+.6419 .43941 Mdot
+.6421 .23717 Mdot
+.64229 .55653 Mdot
+.64248 .28007 Mdot
+.64267 .39533 Mdot
+.64286 .2565 Mdot
+.64305 .59014 Mdot
+.64324 .23686 Mdot
+.64343 .59016 Mdot
+.64362 .32556 Mdot
+.64381 .29524 Mdot
+.644 .29517 Mdot
+.64419 .5902 Mdot
+.64438 .23656 Mdot
+.64457 .59022 Mdot
+.64476 .27152 Mdot
+.64495 .41364 Mdot
+.64514 .28698 Mdot
+.64533 .54776 Mdot
+.64552 .22717 Mdot
+.64571 .48392 Mdot
+.6459 .31071 Mdot
+.6461 .38193 Mdot
+.64629 .30603 Mdot
+.64648 .51388 Mdot
+.64667 .20098 Mdot
+.64686 .59033 Mdot
+.64705 .32516 Mdot
+.64724 .41372 Mdot
+.64743 .32566 Mdot
+.64762 .48142 Mdot
+.64781 .20074 Mdot
+.648 .56777 Mdot
+.64819 .30016 Mdot
+.64838 .41376 Mdot
+.64857 .26773 Mdot
+.64876 .55686 Mdot
+.64895 .23728 Mdot
+.64914 .50819 Mdot
+.64933 .32554 Mdot
+.64952 .33965 Mdot
+.64971 .3125 Mdot
+.6499 .55988 Mdot
+.6501 .23634 Mdot
+.65029 .48617 Mdot
+.65048 .23881 Mdot
+.65067 .41384 Mdot
+.65086 .32558 Mdot
+.65105 .5706 Mdot
+.65124 .23475 Mdot
+.65143 .48416 Mdot
+.65162 .32335 Mdot
+.65181 .36183 Mdot
+.652 .30778 Mdot
+.65219 .5906 Mdot
+.65238 .18951 Mdot
+.65257 .59062 Mdot
+.65276 .30365 Mdot
+.65295 .41327 Mdot
+.65314 .28428 Mdot
+.65333 .48424 Mdot
+.65352 .22262 Mdot
+.65371 .59068 Mdot
+.6539 .32566 Mdot
+.6541 .41395 Mdot
+.65429 .27237 Mdot
+.65448 .46431 Mdot
+.65467 .23002 Mdot
+.65486 .59073 Mdot
+.65505 .32585 Mdot
+.65524 .30659 Mdot
+.65543 .3257 Mdot
+.65562 .56905 Mdot
+.65581 .21057 Mdot
+.656 .59079 Mdot
+.65619 .2705 Mdot
+.65638 .40573 Mdot
+.65657 .30036 Mdot
+.65676 .59083 Mdot
+.65695 .2371 Mdot
+.65714 .40534 Mdot
+.65733 .3259 Mdot
+.65752 .41407 Mdot
+.65771 .30569 Mdot
+.6579 .59088 Mdot
+.6581 .19861 Mdot
+.65829 .5909 Mdot
+.65848 .27488 Mdot
+.65867 .37913 Mdot
+.65886 .32594 Mdot
+.65905 .45268 Mdot
+.65924 .23651 Mdot
+.65943 .57254 Mdot
+.65962 .32596 Mdot
+.65981 .35827 Mdot
+.66 .27186 Mdot
+.66019 .54848 Mdot
+.66038 .23748 Mdot
+.66057 .59102 Mdot
+.66076 .28937 Mdot
+.66095 .34255 Mdot
+.66114 .28734 Mdot
+.66133 .59105 Mdot
+.66152 .23211 Mdot
+.66171 .55751 Mdot
+.6619 .27 Mdot
+.6621 .41422 Mdot
+.66229 .32555 Mdot
+.66248 .51458 Mdot
+.66267 .22045 Mdot
+.66286 .44037 Mdot
+.66305 .32589 Mdot
+.66324 .41363 Mdot
+.66343 .31121 Mdot
+.66362 .59117 Mdot
+.66381 .1823 Mdot
+.664 .59118 Mdot
+.66419 .31976 Mdot
+.66438 .39033 Mdot
+.66457 .3171 Mdot
+.66476 .4847 Mdot
+.66495 .21235 Mdot
+.66514 .46934 Mdot
+.66533 .32563 Mdot
+.66552 .41433 Mdot
+.66571 .27261 Mdot
+.6659 .59128 Mdot
+.6661 .23726 Mdot
+.66629 .5913 Mdot
+.66648 .28746 Mdot
+.66667 .34397 Mdot
+.66686 .32504 Mdot
+.66705 .5417 Mdot
+.66724 .23759 Mdot
+.66743 .56969 Mdot
+.66762 .25695 Mdot
+.66781 .35103 Mdot
+.668 .30954 Mdot
+.66819 .55783 Mdot
+.66838 .23416 Mdot
+.66857 .48485 Mdot
+.66876 .32619 Mdot
+.66895 .41445 Mdot
+.66914 .26779 Mdot
+.66933 .59144 Mdot
+.66952 .20133 Mdot
+.66971 .59146 Mdot
+.6699 .32136 Mdot
+.6701 .37633 Mdot
+.67029 .32622 Mdot
+.67048 .42116 Mdot
+.67067 .23734 Mdot
+.67086 .57278 Mdot
+.67105 .32624 Mdot
+.67124 .37955 Mdot
+.67143 .26086 Mdot
+.67162 .56098 Mdot
+.67181 .21271 Mdot
+.672 .57255 Mdot
+.67219 .30803 Mdot
+.67238 .34287 Mdot
+.67257 .30415 Mdot
+.67276 .59161 Mdot
+.67295 .23551 Mdot
+.67314 .51504 Mdot
+.67333 .24786 Mdot
+.67352 .41397 Mdot
+.67371 .32615 Mdot
+.6739 .59167 Mdot
+.6741 .23771 Mdot
+.67429 .48507 Mdot
+.67448 .28484 Mdot
+.67467 .38916 Mdot
+.67486 .32633 Mdot
+.67505 .54918 Mdot
+.67524 .1952 Mdot
+.67543 .54209 Mdot
+.67562 .31301 Mdot
+.67581 .36256 Mdot
+.676 .32404 Mdot
+.67619 .48267 Mdot
+.67638 .23774 Mdot
+.67657 .56546 Mdot
+.67676 .32622 Mdot
+.67695 .41223 Mdot
+.67714 .24312 Mdot
+.67733 .57357 Mdot
+.67752 .20961 Mdot
+.67771 .59185 Mdot
+.6779 .30847 Mdot
+.6781 .34303 Mdot
+.67829 .32626 Mdot
+.67848 .51526 Mdot
+.67867 .23716 Mdot
+.67886 .56133 Mdot
+.67905 .26855 Mdot
+.67924 .39441 Mdot
+.67943 .32644 Mdot
+.67962 .54228 Mdot
+.67981 .20912 Mdot
+.68 .44584 Mdot
+.68019 .32646 Mdot
+.68038 .4142 Mdot
+.68057 .32601 Mdot
+.68076 .59199 Mdot
+.68095 .19657 Mdot
+.68114 .47475 Mdot
+.68133 .32633 Mdot
+.68152 .41485 Mdot
+.68171 .30097 Mdot
+.6819 .48537 Mdot
+.6821 .23814 Mdot
+.68229 .59207 Mdot
+.68248 .26016 Mdot
+.68267 .41489 Mdot
+.68286 .27234 Mdot
+.68305 .5921 Mdot
+.68324 .23786 Mdot
+.68343 .59212 Mdot
+.68362 .32608 Mdot
+.68381 .28186 Mdot
+.684 .32655 Mdot
+.68419 .59216 Mdot
+.68438 .22776 Mdot
+.68457 .59217 Mdot
+.68476 .27299 Mdot
+.68495 .38435 Mdot
+.68514 .28144 Mdot
+.68533 .5659 Mdot
+.68552 .23728 Mdot
+.68571 .48307 Mdot
+.6859 .29954 Mdot
+.6861 .39116 Mdot
+.68629 .31408 Mdot
+.68648 .5101 Mdot
+.68667 .19791 Mdot
+.68686 .58343 Mdot
+.68705 .32662 Mdot
+.68724 .4071 Mdot
+.68743 .30269 Mdot
+.68762 .45143 Mdot
+.68781 .2111 Mdot
+.688 .54266 Mdot
+.68819 .32437 Mdot
+.68838 .41507 Mdot
+.68857 .27306 Mdot
+.68876 .59237 Mdot
+.68895 .23643 Mdot
+.68914 .51571 Mdot
+.68933 .32668 Mdot
+.68952 .34333 Mdot
+.68971 .30191 Mdot
+.6899 .54987 Mdot
+.6901 .21912 Mdot
+.69029 .59244 Mdot
+.69048 .24334 Mdot
+.69067 .41453 Mdot
+.69086 .3088 Mdot
+.69105 .57093 Mdot
+.69124 .23586 Mdot
+.69143 .48573 Mdot
+.69162 .32673 Mdot
+.69181 .36304 Mdot
+.692 .32659 Mdot
+.69219 .52769 Mdot
+.69238 .19196 Mdot
+.69257 .59255 Mdot
+.69276 .3263 Mdot
+.69295 .41521 Mdot
+.69314 .28804 Mdot
+.69333 .45314 Mdot
+.69352 .23772 Mdot
+.69371 .5926 Mdot
+.6939 .32679 Mdot
+.6941 .3802 Mdot
+.69429 .25444 Mdot
+.69448 .51593 Mdot
+.69467 .23804 Mdot
+.69486 .5501 Mdot
+.69505 .32666 Mdot
+.69524 .33866 Mdot
+.69543 .31446 Mdot
+.69562 .59269 Mdot
+.69581 .21304 Mdot
+.696 .59271 Mdot
+.69619 .27321 Mdot
+.69638 .38038 Mdot
+.69657 .3267 Mdot
+.69676 .59274 Mdot
+.69695 .22363 Mdot
+.69714 .42216 Mdot
+.69733 .29212 Mdot
+.69752 .41295 Mdot
+.69771 .31365 Mdot
+.6979 .5928 Mdot
+.6981 .20053 Mdot
+.69829 .59281 Mdot
+.69848 .25932 Mdot
+.69867 .41539 Mdot
+.69886 .32645 Mdot
+.69905 .48602 Mdot
+.69924 .23751 Mdot
+.69943 .59287 Mdot
+.69962 .32677 Mdot
+.69981 .34169 Mdot
+.7 .27089 Mdot
+.70019 .57522 Mdot
+.70038 .23363 Mdot
+.70057 .49231 Mdot
+.70076 .32694 Mdot
+.70095 .34124 Mdot
+.70114 .28731 Mdot
+.70133 .59295 Mdot
+.70152 .23815 Mdot
+.70171 .59297 Mdot
+.7019 .27153 Mdot
+.7021 .4155 Mdot
+.70229 .30487 Mdot
+.70248 .51625 Mdot
+.70267 .22234 Mdot
+.70286 .45512 Mdot
+.70305 .327 Mdot
+.70324 .39525 Mdot
+.70343 .32596 Mdot
+.70362 .57457 Mdot
+.70381 .17558 Mdot
+.704 .59308 Mdot
+.70419 .30781 Mdot
+.70438 .41497 Mdot
+.70457 .32703 Mdot
+.70476 .41836 Mdot
+.70495 .23731 Mdot
+.70514 .511 Mdot
+.70533 .32705 Mdot
+.70552 .4156 Mdot
+.70571 .2728 Mdot
+.7059 .59316 Mdot
+.7061 .23762 Mdot
+.70629 .59318 Mdot
+.70648 .28921 Mdot
+.70667 .34378 Mdot
+.70686 .30156 Mdot
+.70705 .55968 Mdot
+.70724 .21776 Mdot
+.70743 .57366 Mdot
+.70762 .27343 Mdot
+.70781 .34927 Mdot
+.708 .32667 Mdot
+.70819 .59327 Mdot
+.70838 .23825 Mdot
+.70857 .48638 Mdot
+.70876 .30981 Mdot
+.70895 .38078 Mdot
+.70914 .28837 Mdot
+.70933 .57586 Mdot
+.70952 .20307 Mdot
+.70971 .55076 Mdot
+.7099 .32715 Mdot
+.7101 .41574 Mdot
+.71029 .30692 Mdot
+.71048 .42265 Mdot
+.71067 .23829 Mdot
+.71086 .59339 Mdot
+.71105 .29722 Mdot
+.71124 .41519 Mdot
+.71143 .26288 Mdot
+.71162 .56718 Mdot
+.71181 .20971 Mdot
+.712 .59344 Mdot
+.71219 .3051 Mdot
+.71238 .34393 Mdot
+.71257 .32501 Mdot
+.71276 .59347 Mdot
+.71295 .23597 Mdot
+.71314 .46724 Mdot
+.71333 .27295 Mdot
+.71352 .39055 Mdot
+.71371 .32724 Mdot
+.7139 .59353 Mdot
+.7141 .23746 Mdot
+.71429 .47248 Mdot
+.71448 .28319 Mdot
+.71467 .37829 Mdot
+.71486 .32712 Mdot
+.71505 .56305 Mdot
+.71524 .19023 Mdot
+.71543 .59359 Mdot
+.71562 .32626 Mdot
+.71581 .36372 Mdot
+.716 .31263 Mdot
+.71619 .48666 Mdot
+.71638 .23691 Mdot
+.71657 .59364 Mdot
+.71676 .30945 Mdot
+.71695 .41595 Mdot
+.71714 .2297 Mdot
+.71733 .54393 Mdot
+.71752 .23839 Mdot
+.71771 .5937 Mdot
+.7179 .32719 Mdot
+.7181 .34524 Mdot
+.71829 .32734 Mdot
+.71848 .51689 Mdot
+.71867 .22936 Mdot
+.71886 .57506 Mdot
+.71905 .27131 Mdot
+.71924 .41602 Mdot
+.71943 .30038 Mdot
+.71962 .55119 Mdot
+.71981 .2081 Mdot
+.72 .45297 Mdot
+.72019 .32695 Mdot
+.72038 .39449 Mdot
+.72057 .31458 Mdot
+.72076 .59383 Mdot
+.72095 .20088 Mdot
+.72114 .51699 Mdot
+.72133 .32741 Mdot
+.72152 .37535 Mdot
+.72171 .3264 Mdot
+.7219 .48686 Mdot
+.7221 .2216 Mdot
+.72229 .56338 Mdot
+.72248 .28777 Mdot
+.72267 .41612 Mdot
+.72286 .27371 Mdot
+.72305 .59393 Mdot
+.72324 .22832 Mdot
+.72343 .59395 Mdot
+.72362 .30193 Mdot
+.72381 .30477 Mdot
+.724 .32733 Mdot
+.72419 .59398 Mdot
+.72438 .2385 Mdot
+.72457 .5514 Mdot
+.72476 .26506 Mdot
+.72495 .41561 Mdot
+.72514 .2887 Mdot
+.72533 .57174 Mdot
+.72552 .23822 Mdot
+.72571 .44302 Mdot
+.7259 .31103 Mdot
+.7261 .41622 Mdot
+.72629 .32709 Mdot
+.72648 .47732 Mdot
+.72667 .19981 Mdot
+.72686 .5941 Mdot
+.72705 .30371 Mdot
+.72724 .41626 Mdot
+.72743 .32755 Mdot
+.72762 .48707 Mdot
+.72781 .1996 Mdot
+.728 .59415 Mdot
+.72819 .32151 Mdot
+.72838 .41398 Mdot
+.72857 .26863 Mdot
+.72876 .59419 Mdot
+.72895 .23857 Mdot
+.72914 .4983 Mdot
+.72933 .32716 Mdot
+.72952 .30982 Mdot
+.72971 .30975 Mdot
+.7299 .54446 Mdot
+.7301 .23714 Mdot
+.73029 .59425 Mdot
+.73048 .2405 Mdot
+.73067 .41636 Mdot
+.73086 .31857 Mdot
+.73105 .57647 Mdot
+.73124 .2386 Mdot
+.73143 .4872 Mdot
+.73162 .3275 Mdot
+.73181 .36072 Mdot
+.732 .2849 Mdot
+.73219 .59434 Mdot
+.73238 .19876 Mdot
+.73257 .58575 Mdot
+.73276 .32766 Mdot
+.73295 .39121 Mdot
+.73314 .27768 Mdot
+.73333 .48498 Mdot
+.73352 .23119 Mdot
+.73371 .5944 Mdot
+.7339 .32669 Mdot
+.7341 .38155 Mdot
+.73429 .27392 Mdot
+.73448 .4729 Mdot
+.73467 .23836 Mdot
+.73486 .59445 Mdot
+.73505 .32771 Mdot
+.73524 .34222 Mdot
+.73543 .32729 Mdot
+.73562 .57507 Mdot
+.73581 .21183 Mdot
+.736 .5945 Mdot
+.73619 .24371 Mdot
+.73638 .39656 Mdot
+.73657 .32775 Mdot
+.73676 .56403 Mdot
+.73695 .22529 Mdot
+.73714 .42358 Mdot
+.73733 .32776 Mdot
+.73752 .41656 Mdot
+.73771 .32763 Mdot
+.7379 .56839 Mdot
+.7381 .20341 Mdot
+.73829 .53058 Mdot
+.73848 .2864 Mdot
+.73867 .41432 Mdot
+.73886 .3278 Mdot
+.73905 .48747 Mdot
+.73924 .23843 Mdot
+.73943 .52476 Mdot
+.73962 .32781 Mdot
+.73981 .36438 Mdot
+.74 .27005 Mdot
+.74019 .59468 Mdot
+.74038 .21433 Mdot
+.74057 .57739 Mdot
+.74076 .3277 Mdot
+.74095 .34464 Mdot
+.74114 .28901 Mdot
+.74133 .59473 Mdot
+.74152 .2379 Mdot
+.74171 .59475 Mdot
+.7419 .25141 Mdot
+.7421 .41612 Mdot
+.74229 .31018 Mdot
+.74248 .47707 Mdot
+.74267 .22406 Mdot
+.74286 .48534 Mdot
+.74305 .3235 Mdot
+.74324 .41672 Mdot
+.74343 .3279 Mdot
+.74362 .59483 Mdot
+.74381 .18314 Mdot
+.744 .56435 Mdot
+.74419 .31521 Mdot
+.74438 .38627 Mdot
+.74457 .29815 Mdot
+.74476 .48767 Mdot
+.74495 .2388 Mdot
+.74514 .51792 Mdot
+.74533 .3278 Mdot
+.74552 .41623 Mdot
+.74571 .27413 Mdot
+.7459 .56141 Mdot
+.7461 .23685 Mdot
+.74629 .59494 Mdot
+.74648 .28912 Mdot
+.74667 .30876 Mdot
+.74686 .3042 Mdot
+.74705 .59498 Mdot
+.74724 .23827 Mdot
+.74743 .57278 Mdot
+.74762 .26348 Mdot
+.74781 .36459 Mdot
+.748 .32799 Mdot
+.74819 .59503 Mdot
+.74838 .23857 Mdot
+.74857 .48781 Mdot
+.74876 .30247 Mdot
+.74895 .40959 Mdot
+.74914 .27654 Mdot
+.74933 .55245 Mdot
+.74952 .20242 Mdot
+.74971 .57575 Mdot
+.7499 .32789 Mdot
+.7501 .39731 Mdot
+.75029 .32804 Mdot
+.75048 .42403 Mdot
+.75067 .2358 Mdot
+.75086 .54532 Mdot
+.75105 .31351 Mdot
+.75124 .39345 Mdot
+.75143 .27367 Mdot
+.75162 .59517 Mdot
+.75181 .202 Mdot
+.752 .59519 Mdot
+.75219 .32711 Mdot
+.75238 .32927 Mdot
+.75257 .32809 Mdot
+.75276 .57707 Mdot
+.75295 .21742 Mdot
+.75314 .51821 Mdot
+.75333 .27426 Mdot
+.75352 .41702 Mdot
+.75371 .3277 Mdot
+.7539 .59527 Mdot
+.7541 .2367 Mdot
+.75429 .44899 Mdot
+.75448 .28843 Mdot
+.75467 .41705 Mdot
+.75486 .31171 Mdot
+.75505 .54549 Mdot
+.75524 .2036 Mdot
+.75543 .56918 Mdot
+.75562 .31035 Mdot
+.75581 .36146 Mdot
+.756 .31968 Mdot
+.75619 .48807 Mdot
+.75638 .23897 Mdot
+.75657 .59538 Mdot
+.75676 .3011 Mdot
+.75695 .41712 Mdot
+.75714 .22769 Mdot
+.75733 .59541 Mdot
+.75752 .2376 Mdot
+.75771 .59543 Mdot
+.7579 .31628 Mdot
+.7581 .34505 Mdot
+.75829 .32724 Mdot
+.75848 .48016 Mdot
+.75867 .239 Mdot
+.75886 .56196 Mdot
+.75905 .27381 Mdot
+.75924 .36014 Mdot
+.75943 .32824 Mdot
+.75962 .59551 Mdot
+.75981 .2072 Mdot
+.76 .4882 Mdot
+.76019 .32825 Mdot
+.76038 .41721 Mdot
+.76057 .32812 Mdot
+.76076 .57842 Mdot
+.76095 .20035 Mdot
+.76114 .51354 Mdot
+.76133 .30411 Mdot
+.76152 .41724 Mdot
+.76171 .3062 Mdot
+.7619 .47502 Mdot
+.7621 .22001 Mdot
+.76229 .59562 Mdot
+.76248 .28942 Mdot
+.76267 .41673 Mdot
+.76286 .27277 Mdot
+.76305 .59565 Mdot
+.76324 .23906 Mdot
+.76343 .54582 Mdot
+.76362 .32819 Mdot
+.76381 .29894 Mdot
+.764 .3154 Mdot
+.76419 .53324 Mdot
+.76438 .23936 Mdot
+.76457 .59571 Mdot
+.76476 .27446 Mdot
+.76495 .41734 Mdot
+.76514 .28865 Mdot
+.76533 .56223 Mdot
+.76552 .22042 Mdot
+.76571 .45654 Mdot
+.7659 .32796 Mdot
+.7661 .41682 Mdot
+.76629 .32838 Mdot
+.76648 .5187 Mdot
+.76667 .19276 Mdot
+.76686 .57826 Mdot
+.76705 .3284 Mdot
+.76724 .4174 Mdot
+.76743 .32416 Mdot
+.76762 .44463 Mdot
+.76781 .209 Mdot
+.768 .59586 Mdot
+.76819 .32828 Mdot
+.76838 .41744 Mdot
+.76857 .25373 Mdot
+.76876 .59589 Mdot
+.76895 .23832 Mdot
+.76914 .47451 Mdot
+.76933 .31204 Mdot
+.76952 .33658 Mdot
+.76971 .30154 Mdot
+.7699 .59593 Mdot
+.7701 .23916 Mdot
+.77029 .59595 Mdot
+.77048 .24453 Mdot
+.77067 .4175 Mdot
+.77086 .31647 Mdot
+.77105 .59598 Mdot
+.77124 .23781 Mdot
+.77143 .4864 Mdot
+.77162 .30641 Mdot
+.77181 .3227 Mdot
+.772 .32809 Mdot
+.77219 .59603 Mdot
+.77238 .2027 Mdot
+.77257 .59604 Mdot
+.77276 .32838 Mdot
+.77295 .38437 Mdot
+.77314 .28962 Mdot
+.77333 .48865 Mdot
+.77352 .23513 Mdot
+.77371 .57489 Mdot
+.7739 .30299 Mdot
+.7741 .38716 Mdot
+.77429 .27408 Mdot
+.77448 .51899 Mdot
+.77467 .23705 Mdot
+.77486 .59614 Mdot
+.77505 .30427 Mdot
+.77524 .34545 Mdot
+.77543 .32857 Mdot
+.77562 .59617 Mdot
+.77581 .21077 Mdot
+.776 .54631 Mdot
+.77619 .27249 Mdot
+.77638 .41711 Mdot
+.77657 .29514 Mdot
+.77676 .57943 Mdot
+.77695 .23926 Mdot
+.77714 .4249 Mdot
+.77733 .31115 Mdot
+.77752 .41769 Mdot
+.77771 .32862 Mdot
+.7779 .57706 Mdot
+.7781 .19088 Mdot
+.77829 .56276 Mdot
+.77848 .28972 Mdot
+.77867 .41772 Mdot
+.77886 .3285 Mdot
+.77905 .44995 Mdot
+.77924 .23929 Mdot
+.77943 .59632 Mdot
+.77962 .32015 Mdot
+.77981 .36703 Mdot
+.78 .27472 Mdot
+.78019 .5222 Mdot
+.78038 .23903 Mdot
+.78057 .57427 Mdot
+.78076 .32868 Mdot
+.78095 .34127 Mdot
+.78114 .28734 Mdot
+.78133 .57809 Mdot
+.78152 .21617 Mdot
+.78171 .57031 Mdot
+.7819 .27421 Mdot
+.7821 .41781 Mdot
+.78229 .30316 Mdot
+.78248 .51928 Mdot
+.78267 .23745 Mdot
+.78286 .48896 Mdot
+.78305 .32872 Mdot
+.78324 .41731 Mdot
+.78343 .3286 Mdot
+.78362 .59649 Mdot
+.78381 .17707 Mdot
+.784 .55384 Mdot
+.78419 .32834 Mdot
+.78438 .38569 Mdot
+.78457 .32875 Mdot
+.78476 .45578 Mdot
+.78495 .23481 Mdot
+.78514 .51937 Mdot
+.78533 .32877 Mdot
+.78552 .39862 Mdot
+.78571 .27535 Mdot
+.7859 .59659 Mdot
+.7861 .226 Mdot
+.78629 .5966 Mdot
+.78648 .25375 Mdot
+.78667 .34358 Mdot
+.78686 .3288 Mdot
+.78705 .59663 Mdot
+.78724 .2386 Mdot
+.78743 .56618 Mdot
+.78762 .27485 Mdot
+.78781 .36561 Mdot
+.788 .30893 Mdot
+.78819 .59668 Mdot
+.78838 .23888 Mdot
+.78857 .44538 Mdot
+.78876 .32791 Mdot
+.78895 .38759 Mdot
+.78914 .28511 Mdot
+.78933 .59672 Mdot
+.78952 .20185 Mdot
+.78971 .59674 Mdot
+.7899 .32886 Mdot
+.7901 .4159 Mdot
+.79029 .32847 Mdot
+.79048 .41254 Mdot
+.79067 .22081 Mdot
+.79086 .59678 Mdot
+.79105 .31013 Mdot
+.79124 .39306 Mdot
+.79143 .25257 Mdot
+.79162 .57475 Mdot
+.79181 .21421 Mdot
+.792 .5777 Mdot
+.79219 .32891 Mdot
+.79238 .34584 Mdot
+.79257 .32878 Mdot
+.79276 .54695 Mdot
+.79295 .23948 Mdot
+.79314 .51966 Mdot
+.79333 .27335 Mdot
+.79352 .41759 Mdot
+.79371 .31727 Mdot
+.7939 .55422 Mdot
+.7941 .23923 Mdot
+.79429 .48933 Mdot
+.79448 .27729 Mdot
+.79467 .39484 Mdot
+.79486 .29414 Mdot
+.79505 .59695 Mdot
+.79524 .20404 Mdot
+.79543 .59697 Mdot
+.79562 .32884 Mdot
+.79581 .36581 Mdot
+.796 .32898 Mdot
+.79619 .4894 Mdot
+.79638 .22604 Mdot
+.79657 .59701 Mdot
+.79676 .329 Mdot
+.79695 .37806 Mdot
+.79714 .23856 Mdot
+.79733 .57592 Mdot
+.79752 .23954 Mdot
+.79771 .56354 Mdot
+.7979 .32704 Mdot
+.7981 .34597 Mdot
+.79829 .31268 Mdot
+.79848 .5151 Mdot
+.79867 .23823 Mdot
+.79886 .55441 Mdot
+.79905 .2508 Mdot
+.79924 .3972 Mdot
+.79943 .32866 Mdot
+.79962 .59713 Mdot
+.79981 .21272 Mdot
+.8 .48741 Mdot
+.80019 .32894 Mdot
+.80038 .4162 Mdot
+.80057 .32907 Mdot
+.80076 .59718 Mdot
+.80095 .19569 Mdot
+.80114 .47106 Mdot
+.80133 .30702 Mdot
+.80152 .41833 Mdot
+.80171 .32897 Mdot
+.8019 .45807 Mdot
+.8021 .23907 Mdot
+.80229 .5807 Mdot
+.80248 .28779 Mdot
+.80267 .39895 Mdot
+.80286 .2751 Mdot
+.80305 .59727 Mdot
+.80324 .21838 Mdot
+.80343 .59728 Mdot
+.80362 .31472 Mdot
+.80381 .28742 Mdot
+.804 .32927 Mdot
+.80419 .5638 Mdot
+.80438 .23963 Mdot
+.80457 .59733 Mdot
+.80476 .27042 Mdot
+.80495 .41842 Mdot
+.80514 .2902 Mdot
+.80533 .54742 Mdot
+.80552 .2305 Mdot
+.80571 .4897 Mdot
+.8059 .32918 Mdot
+.8061 .40905 Mdot
+.80629 .30555 Mdot
+.80648 .52012 Mdot
+.80667 .20311 Mdot
+.80686 .59742 Mdot
+.80705 .32829 Mdot
+.80724 .41796 Mdot
+.80743 .29061 Mdot
+.80762 .48976 Mdot
+.80781 .21439 Mdot
+.808 .5714 Mdot
+.80819 .31646 Mdot
+.80838 .41851 Mdot
+.80857 .27363 Mdot
+.80876 .55479 Mdot
+.80895 .23917 Mdot
+.80914 .48273 Mdot
+.80933 .32912 Mdot
+.80952 .32125 Mdot
+.80971 .32925 Mdot
+.8099 .59753 Mdot
+.8101 .23581 Mdot
+.81029 .59755 Mdot
+.81048 .24196 Mdot
+.81067 .39779 Mdot
+.81086 .32915 Mdot
+.81105 .59758 Mdot
+.81124 .2231 Mdot
+.81143 .48988 Mdot
+.81162 .29984 Mdot
+.81181 .3662 Mdot
+.812 .3293 Mdot
+.81219 .59762 Mdot
+.81238 .198 Mdot
+.81257 .57949 Mdot
+.81276 .31299 Mdot
+.81295 .41863 Mdot
+.81314 .2849 Mdot
+.81333 .48994 Mdot
+.81352 .23975 Mdot
+.81371 .49596 Mdot
+.8139 .30954 Mdot
+.8141 .41814 Mdot
+.81429 .27321 Mdot
+.81448 .52039 Mdot
+.81467 .23899 Mdot
+.81486 .59773 Mdot
+.81505 .31695 Mdot
+.81524 .34635 Mdot
+.81543 .32924 Mdot
+.81562 .59776 Mdot
+.81581 .20053 Mdot
+.816 .59777 Mdot
+.81619 .25931 Mdot
+.81638 .3955 Mdot
+.81657 .32939 Mdot
+.81676 .57175 Mdot
+.81695 .23954 Mdot
+.81714 .40757 Mdot
+.81733 .3294 Mdot
+.81752 .41824 Mdot
+.81771 .32902 Mdot
+.8179 .54788 Mdot
+.8181 .20325 Mdot
+.81829 .58009 Mdot
+.81848 .28966 Mdot
+.81867 .38842 Mdot
+.81886 .32943 Mdot
+.81905 .48806 Mdot
+.81924 .23391 Mdot
+.81943 .5979 Mdot
+.81962 .32945 Mdot
+.81981 .36639 Mdot
+.82 .24609 Mdot
+.82019 .57892 Mdot
+.82038 .22546 Mdot
+.82057 .58074 Mdot
+.82076 .32908 Mdot
+.82095 .33826 Mdot
+.82114 .26431 Mdot
+.82133 .5813 Mdot
+.82152 .2396 Mdot
+.82171 .58158 Mdot
+.8219 .2754 Mdot
+.8221 .38402 Mdot
+.82229 .32758 Mdot
+.82248 .52066 Mdot
+.82267 .23936 Mdot
+.82286 .49024 Mdot
+.82305 .32938 Mdot
+.82324 .4189 Mdot
+.82343 .32952 Mdot
+.82362 .50316 Mdot
+.82381 .18387 Mdot
+.824 .59808 Mdot
+.82419 .30397 Mdot
+.82438 .41842 Mdot
+.82457 .32941 Mdot
+.82476 .47599 Mdot
+.82495 .2399 Mdot
+.82514 .52075 Mdot
+.82533 .32866 Mdot
+.82552 .39803 Mdot
+.82571 .27546 Mdot
+.8259 .59815 Mdot
+.8261 .22639 Mdot
+.82629 .54818 Mdot
+.82648 .28598 Mdot
+.82667 .34659 Mdot
+.82686 .30576 Mdot
+.82705 .59819 Mdot
+.82724 .22617 Mdot
+.82743 .59821 Mdot
+.82762 .27498 Mdot
+.82781 .36352 Mdot
+.828 .32961 Mdot
+.82819 .58017 Mdot
+.82838 .22392 Mdot
+.82857 .45786 Mdot
+.82876 .32962 Mdot
+.82895 .41904 Mdot
+.82914 .28985 Mdot
+.82933 .59828 Mdot
+.82952 .20134 Mdot
+.82971 .59829 Mdot
+.8299 .31809 Mdot
+.8301 .39419 Mdot
+.83029 .31696 Mdot
+.83048 .39607 Mdot
+.83067 .23972 Mdot
+.83086 .5679 Mdot
+.83105 .3076 Mdot
+.83124 .41707 Mdot
+.83143 .272 Mdot
+.83162 .59836 Mdot
+.83181 .21313 Mdot
+.832 .59838 Mdot
+.83219 .32956 Mdot
+.83238 .34672 Mdot
+.83257 .30413 Mdot
+.83276 .5774 Mdot
+.83295 .23722 Mdot
+.83314 .52101 Mdot
+.83333 .26344 Mdot
+.83352 .38882 Mdot
+.83371 .32959 Mdot
+.8339 .59845 Mdot
+.8341 .24002 Mdot
+.83429 .46128 Mdot
+.83448 .27934 Mdot
+.83467 .37929 Mdot
+.83486 .32974 Mdot
+.83505 .59849 Mdot
+.83524 .20243 Mdot
+.83543 .59851 Mdot
+.83562 .32975 Mdot
+.83581 .35768 Mdot
+.836 .30316 Mdot
+.83619 .49065 Mdot
+.83638 .23803 Mdot
+.83657 .56504 Mdot
+.83676 .30294 Mdot
+.83695 .41925 Mdot
+.83714 .2424 Mdot
+.83733 .59858 Mdot
+.83752 .2383 Mdot
+.83771 .59859 Mdot
+.8379 .32979 Mdot
+.8381 .33275 Mdot
+.83829 .32967 Mdot
+.83848 .47744 Mdot
+.83867 .227 Mdot
+.83886 .54863 Mdot
+.83905 .27416 Mdot
+.83924 .4193 Mdot
+.83943 .32982 Mdot
+.83962 .59866 Mdot
+.83981 .2057 Mdot
+.84 .49076 Mdot
+.84019 .32984 Mdot
+.84038 .41933 Mdot
+.84057 .32596 Mdot
+.84076 .59871 Mdot
+.84095 .18144 Mdot
+.84114 .52128 Mdot
+.84133 .31369 Mdot
+.84152 .41285 Mdot
+.84171 .31358 Mdot
+.8419 .49082 Mdot
+.8421 .23937 Mdot
+.84229 .59876 Mdot
+.84248 .29084 Mdot
+.84267 .41939 Mdot
+.84286 .27123 Mdot
+.84305 .50126 Mdot
+.84324 .23963 Mdot
+.84343 .55606 Mdot
+.84362 .32902 Mdot
+.84381 .30098 Mdot
+.844 .32991 Mdot
+.84419 .5826 Mdot
+.84438 .2399 Mdot
+.84457 .57788 Mdot
+.84476 .27576 Mdot
+.84495 .41895 Mdot
+.84514 .27068 Mdot
+.84533 .56845 Mdot
+.84552 .24016 Mdot
+.84571 .49094 Mdot
+.8459 .30639 Mdot
+.8461 .41947 Mdot
+.84629 .31226 Mdot
+.84648 .52145 Mdot
+.84667 .20456 Mdot
+.84686 .57702 Mdot
+.84705 .32996 Mdot
+.84724 .38466 Mdot
+.84743 .31293 Mdot
+.84762 .489 Mdot
+.84781 .21333 Mdot
+.848 .59897 Mdot
+.84819 .32961 Mdot
+.84838 .38324 Mdot
+.84857 .27582 Mdot
+.84876 .58285 Mdot
+.84895 .23101 Mdot
+.84914 .52153 Mdot
+.84933 .30443 Mdot
+.84952 .33119 Mdot
+.84971 .32914 Mdot
+.8499 .59904 Mdot
+.8501 .23972 Mdot
+.85029 .59906 Mdot
+.85048 .23964 Mdot
+.85067 .41959 Mdot
+.85086 .30797 Mdot
+.85105 .58149 Mdot
+.85124 .23949 Mdot
+.85143 .44751 Mdot
+.85162 .31866 Mdot
+.85181 .35524 Mdot
+.852 .32993 Mdot
+.85219 .59913 Mdot
+.85238 .19967 Mdot
+.85257 .56872 Mdot
+.85276 .31436 Mdot
+.85295 .41964 Mdot
+.85314 .29102 Mdot
+.85333 .45261 Mdot
+.85352 .2242 Mdot
+.85371 .59918 Mdot
+.8539 .33009 Mdot
+.8541 .41967 Mdot
+.85429 .27442 Mdot
+.85448 .51726 Mdot
+.85467 .24027 Mdot
+.85486 .59923 Mdot
+.85505 .32999 Mdot
+.85524 .34522 Mdot
+.85543 .31853 Mdot
+.85562 .54921 Mdot
+.85581 .20307 Mdot
+.856 .56576 Mdot
+.85619 .25622 Mdot
+.85638 .40101 Mdot
+.85657 .33002 Mdot
+.85676 .5993 Mdot
+.85695 .24055 Mdot
+.85714 .43025 Mdot
+.85733 .32978 Mdot
+.85752 .41976 Mdot
+.85771 .30458 Mdot
+.8579 .57745 Mdot
+.8581 .20271 Mdot
+.85829 .55659 Mdot
+.85848 .2911 Mdot
+.85867 .41929 Mdot
+.85886 .32834 Mdot
+.85905 .49133 Mdot
+.85924 .22609 Mdot
+.85943 .58147 Mdot
+.85962 .33007 Mdot
+.85981 .32609 Mdot
+.86 .27599 Mdot
+.86019 .59942 Mdot
+.86038 .23765 Mdot
+.86057 .57345 Mdot
+.86076 .30963 Mdot
+.86095 .34731 Mdot
+.86114 .29041 Mdot
+.86133 .59946 Mdot
+.86152 .24036 Mdot
+.86171 .58307 Mdot
+.8619 .25693 Mdot
+.8621 .41791 Mdot
+.86229 .31801 Mdot
+.86248 .4838 Mdot
+.86267 .24013 Mdot
+.86286 .49144 Mdot
+.86305 .33026 Mdot
+.86324 .38959 Mdot
+.86343 .30742 Mdot
+.86362 .59954 Mdot
+.86381 .18421 Mdot
+.864 .5495 Mdot
+.86419 .33015 Mdot
+.86438 .41992 Mdot
+.86457 .33028 Mdot
+.86476 .4915 Mdot
+.86495 .23284 Mdot
+.86514 .52205 Mdot
+.86533 .32469 Mdot
+.86552 .41946 Mdot
+.86571 .24829 Mdot
+.8659 .59963 Mdot
+.8661 .2219 Mdot
+.86629 .59964 Mdot
+.86648 .28904 Mdot
+.86667 .34353 Mdot
+.86686 .33032 Mdot
+.86705 .56925 Mdot
+.86724 .23629 Mdot
+.86743 .58217 Mdot
+.86762 .2761 Mdot
+.86781 .36748 Mdot
+.868 .32949 Mdot
+.86819 .4986 Mdot
+.86838 .24044 Mdot
+.86857 .49161 Mdot
+.86876 .33024 Mdot
+.86895 .38749 Mdot
+.86914 .29128 Mdot
+.86933 .57378 Mdot
+.86952 .2009 Mdot
+.86971 .59976 Mdot
+.8699 .33038 Mdot
+.8701 .42006 Mdot
+.87029 .30359 Mdot
+.87048 .42767 Mdot
+.87067 .21817 Mdot
+.87086 .5998 Mdot
+.87105 .32858 Mdot
+.87124 .42009 Mdot
+.87143 .27422 Mdot
+.87162 .59983 Mdot
+.87181 .21216 Mdot
+.872 .58387 Mdot
+.87219 .31276 Mdot
+.87238 .32238 Mdot
+.87257 .33006 Mdot
+.87276 .59987 Mdot
+.87295 .2405 Mdot
+.87314 .48749 Mdot
+.87333 .27571 Mdot
+.87352 .42014 Mdot
+.87371 .3162 Mdot
+.8739 .59991 Mdot
+.8741 .23496 Mdot
+.87429 .46088 Mdot
+.87448 .26385 Mdot
+.87467 .42017 Mdot
+.87486 .33035 Mdot
+.87505 .5821 Mdot
+.87524 .20387 Mdot
+.87543 .56645 Mdot
+.87562 .30409 Mdot
+.87581 .36477 Mdot
+.876 .33049 Mdot
+.87619 .4899 Mdot
+.87638 .2403 Mdot
+.87657 .53788 Mdot
+.87676 .3305 Mdot
+.87695 .42022 Mdot
+.87714 .24592 Mdot
+.87733 .60003 Mdot
+.87752 .23863 Mdot
+.87771 .60005 Mdot
+.8779 .31213 Mdot
+.8781 .31496 Mdot
+.87829 .33053 Mdot
+.87848 .52246 Mdot
+.87867 .21486 Mdot
+.87886 .59216 Mdot
+.87905 .27627 Mdot
+.87924 .4198 Mdot
+.87943 .33043 Mdot
+.87962 .60012 Mdot
+.87981 .21371 Mdot
+.88 .46411 Mdot
+.88019 .32972 Mdot
+.88038 .42031 Mdot
+.88057 .30851 Mdot
+.88076 .55006 Mdot
+.88095 .20489 Mdot
+.88114 .52254 Mdot
+.88133 .33058 Mdot
+.88152 .39734 Mdot
+.88171 .33023 Mdot
+.8819 .45944 Mdot
+.8821 .24061 Mdot
+.88229 .60021 Mdot
+.88248 .28216 Mdot
+.88267 .41845 Mdot
+.88286 .25241 Mdot
+.88305 .55744 Mdot
+.88324 .23704 Mdot
+.88343 .60025 Mdot
+.88362 .31916 Mdot
+.88381 .3019 Mdot
+.884 .33051 Mdot
+.88419 .60028 Mdot
+.88438 .24016 Mdot
+.88457 .60029 Mdot
+.88476 .27492 Mdot
+.88495 .38558 Mdot
+.88514 .2672 Mdot
+.88533 .60032 Mdot
+.88552 .22134 Mdot
+.88571 .4902 Mdot
+.8859 .31851 Mdot
+.8861 .41996 Mdot
+.88629 .32984 Mdot
+.88648 .52271 Mdot
+.88667 .20399 Mdot
+.88686 .57442 Mdot
+.88705 .30391 Mdot
+.88724 .42047 Mdot
+.88743 .33069 Mdot
+.88762 .49216 Mdot
+.88781 .21523 Mdot
+.888 .55761 Mdot
+.88819 .3307 Mdot
+.88838 .39577 Mdot
+.88857 .27594 Mdot
+.88876 .57002 Mdot
+.88895 .24069 Mdot
+.88914 .47434 Mdot
+.88933 .32704 Mdot
+.88952 .34598 Mdot
+.88971 .33073 Mdot
+.8899 .60048 Mdot
+.8901 .24047 Mdot
+.89029 .60049 Mdot
+.89048 .23185 Mdot
+.89067 .40253 Mdot
+.89086 .3304 Mdot
+.89105 .57871 Mdot
+.89124 .2175 Mdot
+.89143 .49227 Mdot
+.89162 .31122 Mdot
+.89181 .35948 Mdot
+.892 .31964 Mdot
+.89219 .58375 Mdot
+.89238 .19742 Mdot
+.89257 .60057 Mdot
+.89276 .33078 Mdot
+.89295 .39317 Mdot
+.89314 .29095 Mdot
+.89333 .44882 Mdot
+.89352 .24074 Mdot
+.89371 .60061 Mdot
+.8939 .33045 Mdot
+.8941 .42063 Mdot
+.89429 .27649 Mdot
+.89448 .52295 Mdot
+.89467 .23958 Mdot
+.89486 .56713 Mdot
+.89505 .33082 Mdot
+.89524 .34422 Mdot
+.89543 .28755 Mdot
+.89562 .57473 Mdot
+.89581 .21389 Mdot
+.896 .57028 Mdot
+.89619 .27605 Mdot
+.89638 .42021 Mdot
+.89657 .31836 Mdot
+.89676 .60071 Mdot
+.89695 .24008 Mdot
+.89714 .42839 Mdot
+.89733 .33086 Mdot
+.89752 .38588 Mdot
+.89771 .31522 Mdot
+.8979 .55794 Mdot
+.8981 .19658 Mdot
+.89829 .60077 Mdot
+.89848 .2868 Mdot
+.89867 .42073 Mdot
+.89886 .33089 Mdot
+.89905 .49248 Mdot
+.89924 .24058 Mdot
+.89943 .60081 Mdot
+.89962 .29357 Mdot
+.89981 .36536 Mdot
+.9 .26766 Mdot
+.90019 .58347 Mdot
+.90038 .2244 Mdot
+.90057 .60084 Mdot
+.90076 .33081 Mdot
+.90095 .3481 Mdot
+.90114 .28756 Mdot
+.90133 .56736 Mdot
+.90152 .24107 Mdot
+.90171 .55075 Mdot
+.9019 .2766 Mdot
+.9021 .40208 Mdot
+.90229 .33083 Mdot
+.90248 .52319 Mdot
+.90267 .24085 Mdot
+.90286 .45421 Mdot
+.90305 .33061 Mdot
+.90324 .40213 Mdot
+.90343 .33097 Mdot
+.90362 .58014 Mdot
+.90381 .17331 Mdot
+.904 .60096 Mdot
+.90419 .33098 Mdot
+.90438 .40031 Mdot
+.90457 .31522 Mdot
+.90476 .48143 Mdot
+.90495 .24041 Mdot
+.90514 .52327 Mdot
+.90533 .30755 Mdot
+.90552 .42089 Mdot
+.90571 .27666 Mdot
+.9059 .55088 Mdot
+.9061 .24019 Mdot
+.90629 .58332 Mdot
+.90648 .29186 Mdot
+.90667 .34635 Mdot
+.90686 .31274 Mdot
+.90705 .60107 Mdot
+.90724 .2409 Mdot
+.90743 .60108 Mdot
+.90762 .2697 Mdot
+.90781 .32924 Mdot
+.908 .30545 Mdot
+.90819 .60111 Mdot
+.90838 .23696 Mdot
+.90857 .49274 Mdot
+.90876 .31688 Mdot
+.90895 .42097 Mdot
+.90914 .28981 Mdot
+.90933 .60114 Mdot
+.90952 .20051 Mdot
+.90971 .60116 Mdot
+.9099 .33096 Mdot
+.9101 .38152 Mdot
+.91029 .30903 Mdot
+.91048 .41203 Mdot
+.91067 .23932 Mdot
+.91086 .6012 Mdot
+.91105 .31347 Mdot
+.91124 .42102 Mdot
+.91143 .27627 Mdot
+.91162 .58546 Mdot
+.91181 .21129 Mdot
+.912 .60123 Mdot
+.91219 .30204 Mdot
+.91238 .34832 Mdot
+.91257 .33112 Mdot
+.91276 .55843 Mdot
+.91295 .24074 Mdot
+.91314 .4888 Mdot
+.91333 .27676 Mdot
+.91352 .41922 Mdot
+.91371 .32756 Mdot
+.9139 .6013 Mdot
+.9141 .22757 Mdot
+.91429 .43095 Mdot
+.91448 .29129 Mdot
+.91467 .4211 Mdot
+.91486 .33116 Mdot
+.91505 .60134 Mdot
+.91524 .19412 Mdot
+.91543 .58057 Mdot
+.91562 .33118 Mdot
+.91581 .36851 Mdot
+.916 .33107 Mdot
+.91619 .49295 Mdot
+.91638 .22256 Mdot
+.91657 .58409 Mdot
+.91676 .33039 Mdot
+.91695 .42069 Mdot
+.91714 .24363 Mdot
+.91733 .60141 Mdot
+.91752 .22328 Mdot
+.91771 .53372 Mdot
+.9179 .33121 Mdot
+.9181 .34843 Mdot
+.91829 .33088 Mdot
+.91848 .47534 Mdot
+.91867 .23505 Mdot
+.91886 .58283 Mdot
+.91905 .2727 Mdot
+.91924 .4212 Mdot
+.91943 .33124 Mdot
+.91962 .60149 Mdot
+.91981 .21554 Mdot
+.92 .49306 Mdot
+.92019 .3092 Mdot
+.92038 .42077 Mdot
+.92057 .30451 Mdot
+.92076 .56801 Mdot
+.92095 .20434 Mdot
+.92114 .52375 Mdot
+.92133 .3089 Mdot
+.92152 .42125 Mdot
+.92171 .33128 Mdot
+.9219 .46468 Mdot
+.9221 .23993 Mdot
+.92229 .58554 Mdot
+.92248 .29211 Mdot
+.92267 .36354 Mdot
+.92286 .27369 Mdot
+.92305 .60161 Mdot
+.92324 .24109 Mdot
+.92343 .60162 Mdot
+.92362 .3312 Mdot
+.92381 .30826 Mdot
+.924 .3137 Mdot
+.92419 .57991 Mdot
+.92438 .24041 Mdot
+.92457 .60166 Mdot
+.92476 .25314 Mdot
+.92495 .39847 Mdot
+.92514 .27501 Mdot
+.92533 .60168 Mdot
+.92552 .24066 Mdot
+.92571 .49321 Mdot
+.9259 .32416 Mdot
+.9261 .42136 Mdot
+.92629 .3172 Mdot
+.92648 .5239 Mdot
+.92667 .20348 Mdot
+.92686 .55155 Mdot
+.92705 .33137 Mdot
+.92724 .38946 Mdot
+.92743 .33103 Mdot
+.92762 .45497 Mdot
+.92781 .21425 Mdot
+.928 .58514 Mdot
+.92819 .33127 Mdot
+.92838 .42141 Mdot
+.92857 .26604 Mdot
+.92876 .6018 Mdot
+.92895 .22499 Mdot
+.92914 .51989 Mdot
+.92933 .33141 Mdot
+.92952 .34864 Mdot
+.92971 .31583 Mdot
+.9299 .58637 Mdot
+.9301 .2248 Mdot
+.93029 .60185 Mdot
+.93048 .23564 Mdot
+.93067 .40601 Mdot
+.93086 .33143 Mdot
+.93105 .55168 Mdot
+.93124 .24095 Mdot
+.93143 .49337 Mdot
+.93162 .33144 Mdot
+.93181 .36884 Mdot
+.932 .32975 Mdot
+.93219 .57151 Mdot
+.93238 .20263 Mdot
+.93257 .55907 Mdot
+.93276 .33135 Mdot
+.93295 .40383 Mdot
+.93314 .26507 Mdot
+.93333 .49161 Mdot
+.93352 .24052 Mdot
+.93371 .56844 Mdot
+.9339 .33148 Mdot
+.9341 .41565 Mdot
+.93429 .2766 Mdot
+.93448 .52414 Mdot
+.93467 .24122 Mdot
+.93486 .602 Mdot
+.93505 .29995 Mdot
+.93524 .31437 Mdot
+.93543 .33151 Mdot
+.93562 .60202 Mdot
+.93581 .20756 Mdot
+.936 .60204 Mdot
+.93619 .27708 Mdot
+.93638 .42159 Mdot
+.93657 .33119 Mdot
+.93676 .60206 Mdot
+.93695 .22725 Mdot
+.93714 .42943 Mdot
+.93733 .3048 Mdot
+.93752 .38597 Mdot
+.93771 .33154 Mdot
+.9379 .6021 Mdot
+.9381 .20541 Mdot
+.93829 .60211 Mdot
+.93848 .29302 Mdot
+.93867 .42164 Mdot
+.93886 .33145 Mdot
+.93905 .48006 Mdot
+.93924 .23947 Mdot
+.93943 .50691 Mdot
+.93962 .33124 Mdot
+.93981 .369 Mdot
+.94 .25553 Mdot
+.94019 .56865 Mdot
+.94038 .24105 Mdot
+.94057 .60219 Mdot
+.94076 .31923 Mdot
+.94095 .34705 Mdot
+.94114 .28766 Mdot
+.94133 .60221 Mdot
+.94152 .22287 Mdot
+.94171 .58672 Mdot
+.9419 .2767 Mdot
+.9421 .42171 Mdot
+.94229 .33162 Mdot
+.94248 .48127 Mdot
+.94267 .23884 Mdot
+.94286 .49188 Mdot
+.94305 .31548 Mdot
+.94324 .42174 Mdot
+.94343 .31224 Mdot
+.94362 .55207 Mdot
+.94381 .17946 Mdot
+.944 .6023 Mdot
+.94419 .32997 Mdot
+.94438 .41997 Mdot
+.94457 .33166 Mdot
+.94476 .49372 Mdot
+.94495 .2223 Mdot
+.94514 .52444 Mdot
+.94533 .3207 Mdot
+.94552 .42179 Mdot
+.94571 .25797 Mdot
+.9459 .58581 Mdot
+.9461 .2409 Mdot
+.94629 .58069 Mdot
+.94648 .29179 Mdot
+.94667 .31856 Mdot
+.94686 .33169 Mdot
+.94705 .58385 Mdot
+.94724 .23979 Mdot
+.94743 .55953 Mdot
+.94762 .27544 Mdot
+.94781 .34237 Mdot
+.948 .3316 Mdot
+.94819 .57655 Mdot
+.94838 .24137 Mdot
+.94857 .49382 Mdot
+.94876 .33139 Mdot
+.94895 .42186 Mdot
+.94914 .2925 Mdot
+.94933 .58531 Mdot
+.94952 .2055 Mdot
+.94971 .60248 Mdot
+.9499 .27494 Mdot
+.9501 .42189 Mdot
+.95029 .31761 Mdot
+.95048 .42976 Mdot
+.95067 .24139 Mdot
+.95086 .58182 Mdot
+.95105 .33165 Mdot
+.95124 .42146 Mdot
+.95143 .27728 Mdot
+.95162 .60254 Mdot
+.95181 .2105 Mdot
+.952 .55232 Mdot
+.95219 .33178 Mdot
+.95238 .32773 Mdot
+.95257 .31524 Mdot
+.95276 .60258 Mdot
+.95295 .24097 Mdot
+.95314 .48737 Mdot
+.95333 .2742 Mdot
+.95352 .42196 Mdot
+.95371 .33181 Mdot
+.9539 .57223 Mdot
+.9541 .2208 Mdot
+.95429 .49397 Mdot
+.95448 .29258 Mdot
+.95467 .42021 Mdot
+.95486 .30578 Mdot
+.95505 .60265 Mdot
+.95524 .20467 Mdot
+.95543 .58738 Mdot
+.95562 .33173 Mdot
+.95581 .36931 Mdot
+.956 .33184 Mdot
+.95619 .45064 Mdot
+.95638 .23106 Mdot
+.95657 .58722 Mdot
+.95676 .31991 Mdot
+.95695 .40169 Mdot
+.95714 .24684 Mdot
+.95733 .54392 Mdot
+.95752 .22821 Mdot
+.95771 .60274 Mdot
+.9579 .33154 Mdot
+.9581 .34739 Mdot
+.95829 .30626 Mdot
+.95848 .52482 Mdot
+.95867 .24126 Mdot
+.95886 .60278 Mdot
+.95905 .27738 Mdot
+.95924 .42208 Mdot
+.95943 .33113 Mdot
+.95962 .57104 Mdot
+.95981 .204 Mdot
+.96 .49412 Mdot
+.96019 .3318 Mdot
+.96038 .38729 Mdot
+.96057 .33192 Mdot
+.96076 .60284 Mdot
+.96095 .20208 Mdot
+.96114 .48922 Mdot
+.96133 .31784 Mdot
+.96152 .42169 Mdot
+.96171 .33182 Mdot
+.9619 .49241 Mdot
+.9621 .24152 Mdot
+.96229 .55999 Mdot
+.96248 .27224 Mdot
+.96267 .40413 Mdot
+.96286 .25809 Mdot
+.96305 .60291 Mdot
+.96324 .24043 Mdot
+.96343 .60292 Mdot
+.96362 .33196 Mdot
+.96381 .30358 Mdot
+.964 .33164 Mdot
+.96419 .60295 Mdot
+.96438 .24154 Mdot
+.96457 .5527 Mdot
+.96476 .25069 Mdot
+.96495 .4165 Mdot
+.96514 .29273 Mdot
+.96533 .60298 Mdot
+.96552 .24002 Mdot
+.96571 .46621 Mdot
+.9659 .332 Mdot
+.9661 .39769 Mdot
+.96629 .3319 Mdot
+.96648 .5211 Mdot
+.96667 .19251 Mdot
+.96686 .60303 Mdot
+.96705 .33169 Mdot
+.96724 .39205 Mdot
+.96743 .33203 Mdot
+.96762 .49432 Mdot
+.96781 .21336 Mdot
+.968 .60307 Mdot
+.96819 .32089 Mdot
+.96838 .39167 Mdot
+.96857 .27095 Mdot
+.96876 .5419 Mdot
+.96895 .24159 Mdot
+.96914 .52511 Mdot
+.96933 .31273 Mdot
+.96952 .34936 Mdot
+.96971 .31001 Mdot
+.9699 .60313 Mdot
+.9701 .23396 Mdot
+.97029 .60314 Mdot
+.97048 .24437 Mdot
+.97067 .42233 Mdot
+.97086 .30536 Mdot
+.97105 .60316 Mdot
+.97124 .24162 Mdot
+.97143 .49267 Mdot
+.97162 .33133 Mdot
+.97181 .36701 Mdot
+.972 .31598 Mdot
+.97219 .56029 Mdot
+.97238 .20396 Mdot
+.97257 .56968 Mdot
+.97276 .32144 Mdot
+.97295 .38755 Mdot
+.97314 .29088 Mdot
+.97333 .49446 Mdot
+.97352 .2412 Mdot
+.97371 .60325 Mdot
+.9739 .3168 Mdot
+.9741 .4224 Mdot
+.97429 .27758 Mdot
+.97448 .49136 Mdot
+.97467 .22796 Mdot
+.97486 .60328 Mdot
+.97505 .30652 Mdot
+.97524 .34252 Mdot
+.97543 .33204 Mdot
+.97562 .57292 Mdot
+.97581 .20694 Mdot
+.976 .60332 Mdot
+.97619 .27804 Mdot
+% End of Graphics
+MathPictureEnd
+\
+\>"], "Graphics",
+ ImageSize->{288, 177.938},
+ ImageMargins->{{43, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 
+  1}},ImageCache->GraphicsData["CompressedBitmap", "\<\
+eJztnduOJEcRhsvT3TOzM7Peo/dkmxnven02BtuADcKADbZBQghxCTeLZcm+
+QCBjybwCtzwA74DEe/ASHMQViGtbzVRmVUUevj8rerdnLxAjbXVvVGZkZkRk
+nDKq+sf3Pv3ow1/d+/TjD+6dvPfJvd989PEHvz1599efnIIWj3TdIydd1/3p
+pOu/r0+/Dpen1qd/3aL/z3r46z4P127u1k5/54u87Tppe9JfQ/fl1Jy+Xe+/
+rfpvi2a7m058t6Z2bXw3nPguaXIQbCdclyms/74Z+Po2kDRxrzLwcGs7A9za
+8gA5fa+e9fQvxs+Hyu8bZ4X48W0gITY81l9XWxPKW2c1z0fjvYfKzaCpzmwD
+hP27M+m3M1I1W8H9P8XVa+HzDBXPme3VawWs2xZ/A+Ll1sQl1bxBwO3bcmvT
+PUsOnrlpvTkRZHv8K4RlK5Te0IZux1HzOoiPwwx2mj28LmrDVXQ61cWtfzF5
+z91vjyf6j3/3gP2ib9dGu+uE7T1A34cB+//8/LCj/rqYkbcXAfaCs52372F/
+3TGzNd4chNizqdabb0WKbx98Rz/4vIZeIw22Mo3t3pKUa0w5/tt0cEK4NKLG
+JqNsp7T+jxPZKr01Ih3czxzjP9Nuuzbz/HOn/7IH3Q8B9iOA/SFfaja70U3K
+e9Bol5ztCPZdgP0MYM/HKT0al93Z5Cq7G0Cr8m70LqY9P7JnMZGxuEFzJXrc
+dq6TxMZLj4sAezfO9fwwscJAR8zsOkrCaTKscpkdMBE5Fo32+9CeyLIA2OtO
+snhJTyJ7FWCPAewkrkeQftx6FXlP15+xo97SFUG7Qd0EzozOcaE+DhlMRNwB
+WCQiM+z8NPaH0JPI+tp9ksZ0ZjeGAcmaZ8TjtMeFNpVYtpfTjSV1YhqS0K8A
+dgQw0soEo740F+IA9SXYe3GJLf2xrBTpYFZXSNHT/x2M5ABhot3qYu9E9ARv
+rtXXYd/XY05tjNMmWufk2N4ttttYLWE/32hP+ojE6ibAaKyYK2ubh4bPPvAz
+0G1l24rnftS4Z/b1QqOV3FTSwWnZmYBtabOekTnhGbRWTIqa5DZyxqVXjFDB
+TIabl6Gdy8CdTuel+Gn+UkC7SrjaK9s4NeP4yOz63gReTOBIuRzWf1wEWGgX
+ybwaO6e4g+CVnfYAtpwQUQ+azmWAHSrMxfJsNMIcZhDIVPZV+CKWVUl1u7dj
+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
+pgOv96b1nYdOg2LrHvkvtgsX7w==\
+\>", "ImageResolution" -> 96.012],ImageRangeCache->{{{0., 287.}, {176.938, \
+0.}} -> {-739., 0., 21., \
+0.}},ExpressionUUID->"63012ed5-16ae-49a9-bad9-c67a132803bd"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"\[SkeletonIndicator]", "Graphics", "\[SkeletonIndicator]"}],
+  False,
+  Editable->False]], "Output",ExpressionUUID->"1bc79626-ccad-45b5-9f13-\
+b56a1c4acf78"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"1", "+", 
+   RowBox[{"Position", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"EulerPhi", "[", "n", "]"}], "<", 
+        FractionBox["n", 
+         RowBox[{
+          RowBox[{"Exp", "[", "EulerGamma", "]"}], 
+          RowBox[{"Log", "[", 
+           RowBox[{"Log", "[", "n", "]"}], "]"}]}]]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "2", ",", "2000"}], "}"}]}], "]"}], ",", "True"}], 
+    "]"}]}], "//", "Flatten"}]], "Input",ExpressionUUID->"0e793965-6df3-43cf-\
+83ff-a74f0510fabe"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "3", ",", "4", ",", "5", ",", "6", ",", "8", ",", "9", ",", "10", ",", "12",
+    ",", "14", ",", "15", ",", "16", ",", "18", ",", "20", ",", "22", ",", 
+   "24", ",", "26", ",", "28", ",", "30", ",", "36", ",", "40", ",", "42", 
+   ",", "48", ",", "50", ",", "54", ",", "60", ",", "66", ",", "70", ",", 
+   "72", ",", "78", ",", "84", ",", "90", ",", "96", ",", "102", ",", "108", 
+   ",", "114", ",", "120", ",", "126", ",", "132", ",", "138", ",", "140", 
+   ",", "144", ",", "150", ",", "156", ",", "162", ",", "168", ",", "174", 
+   ",", "180", ",", "186", ",", "192", ",", "198", ",", "204", ",", "210", 
+   ",", "216", ",", "222", ",", "228", ",", "234", ",", "240", ",", "246", 
+   ",", "252", ",", "258", ",", "264", ",", "270", ",", "276", ",", "294", 
+   ",", "300", ",", "306", ",", "312", ",", "330", ",", "336", ",", "342", 
+   ",", "360", ",", "378", ",", "390", ",", "396", ",", "420", ",", "450", 
+   ",", "462", ",", "468", ",", "480", ",", "504", ",", "510", ",", "528", 
+   ",", "540", ",", "546", ",", "570", ",", "588", ",", "600", ",", "630", 
+   ",", "660", ",", "672", ",", "690", ",", "714", ",", "720", ",", "750", 
+   ",", "756", ",", "780", ",", "798", ",", "810", ",", "840", ",", "858", 
+   ",", "870", ",", "882", ",", "900", ",", "924", ",", "930", ",", "960", 
+   ",", "966", ",", "990", ",", "1008", ",", "1020", ",", "1050", ",", "1080",
+    ",", "1092", ",", "1110", ",", "1122", ",", "1134", ",", "1140", ",", 
+   "1170", ",", "1176", ",", "1200", ",", "1218", ",", "1230", ",", "1260", 
+   ",", "1290", ",", "1302", ",", "1320", ",", "1350", ",", "1380", ",", 
+   "1386", ",", "1410", ",", "1428", ",", "1440", ",", "1470", ",", "1500", 
+   ",", "1530", ",", "1554", ",", "1560", ",", "1590", ",", "1596", ",", 
+   "1620", ",", "1638", ",", "1650", ",", "1680", ",", "1710", ",", "1722", 
+   ",", "1740", ",", "1770", ",", "1800", ",", "1830", ",", "1848", ",", 
+   "1860", ",", "1890", ",", "1920", ",", "1932", ",", "1950", ",", "1980"}], 
+  "}"}]], "Output",ExpressionUUID->"1e223fca-f371-4c82-956a-db4e641d343f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Function", "[", 
+   RowBox[{"n", ",", 
+    RowBox[{
+     RowBox[{"EulerPhi", "[", "n", "]"}], "<", 
+     FractionBox["n", 
+      RowBox[{
+       RowBox[{"Exp", "[", "EulerGamma", "]"}], 
+       RowBox[{"Log", "[", 
+        RowBox[{"Log", "[", "n", "]"}], "]"}]}]]}]}], "]"}], "/@", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]}]], "Input",ExpressionUU\
+ID->"a41c2c63-17fe-414e-8e80-9d90f5320363"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"False", ",", "False", ",", "True", ",", "True"}], "}"}]], "Output",\
+ExpressionUUID->"fee0054e-2761-4854-8adb-1bb52cdf14bb"]
+}, Open  ]],
+
+Cell["\<\
+http://functions.wolfram.com/NumberTheoryFunctions/EulerPhi/29/0003/\
+\>", "Text",ExpressionUUID->"8180590b-efe1-4e5e-a357-e27ddc75f60e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"1", "+", 
+   RowBox[{"Position", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"EulerPhi", "[", "n", "]"}], "<", 
+        FractionBox["n", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Exp", "[", "EulerGamma", "]"}], 
+           RowBox[{"Log", "[", 
+            RowBox[{"Log", "[", "n", "]"}], "]"}]}], "+", 
+          FractionBox["2.50637", 
+           RowBox[{"Log", "[", 
+            RowBox[{"Log", "[", "n", "]"}], "]"}]]}]]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "2", ",", 
+         RowBox[{"10", "^", "5"}]}], "}"}]}], "]"}], ",", "True"}], "]"}]}], "//",
+   "Timing"}]], "Input",ExpressionUUID->"f7eced85-0f48-4393-afb3-\
+bdc22ff282ff"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"27.25`", " ", "Second"}], ",", 
+   RowBox[{"{", "}"}]}], "}"}]], "Output",ExpressionUUID->"eca9b5c8-11d2-4b43-\
+a725-85db211ae8dd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"1", "+", 
+   RowBox[{"Position", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"EulerPhi", "[", "n", "]"}], "<", 
+        FractionBox["n", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Exp", "[", "EulerGamma", "]"}], 
+           RowBox[{"Log", "[", 
+            RowBox[{"Log", "[", "n", "]"}], "]"}]}], "+", 
+          FractionBox["2.50637", 
+           RowBox[{"Log", "[", 
+            RowBox[{"Log", "[", "n", "]"}], "]"}]]}]]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "2", ",", 
+         RowBox[{"10", "^", "6"}]}], "}"}]}], "]"}], ",", "True"}], "]"}]}], "//",
+   "Timing"}]], "Input",ExpressionUUID->"ec895d4b-81c1-4e9a-b096-\
+3f8643c12949"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"264.1200000000008`", " ", "Second"}], ",", 
+   RowBox[{"{", "}"}]}], "}"}]], "Output",ExpressionUUID->"b3a581af-18b5-4acb-\
+ba3c-5df64a3a6424"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EulerPhi", "[", 
+  RowBox[{
+   SuperscriptBox["37", "4"], "-", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.922933081588015*^9, 3.9229330918445663`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"137a7aa5-6c4f-407e-8c07-9739605fa53a"],
+
+Cell[BoxData["470016"], "Output",
+ CellChangeTimes->{3.922933092577916*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"593712e8-4d66-4bc1-b2fb-2d2c83c235d8"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1920, 1056},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+ShowSelection->True,
+FrontEndVersion->"13.2 for Linux x86 (64-bit) (January 31, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c4def122-c4d5-46d6-95cd-2d0e234c73ed"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 88, 0, 98, "Title",ExpressionUUID->"a610a874-0ef1-449f-b3f4-49d5c6d569d1"],
+Cell[CellGroupData[{
+Cell[693, 26, 83, 0, 54, "Subsection",ExpressionUUID->"a0d245ac-7d73-4314-a2ad-302b37c38914"],
+Cell[779, 28, 114, 3, 58, "Text",ExpressionUUID->"65d7a832-c6af-4f89-8990-2ab65e542f76"],
+Cell[896, 33, 368, 9, 35, "Text",ExpressionUUID->"7112a013-3539-48bb-815f-e2d8016c75d2"],
+Cell[1267, 44, 360, 10, 35, "Text",ExpressionUUID->"6bdfd374-39f4-4c90-a304-815b5e9dfac9"],
+Cell[1630, 56, 154, 2, 35, "Text",ExpressionUUID->"5a0c7b4e-fc40-41ea-adeb-435e41f0229e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1821, 63, 78, 0, 68, "Section",ExpressionUUID->"5ce119b3-87d1-4a2e-bd30-213f7761f3c9"],
+Cell[1902, 65, 114, 1, 29, "Input",ExpressionUUID->"bd822797-2e35-48a8-9b80-b26f355485c2"],
+Cell[CellGroupData[{
+Cell[2041, 70, 391, 10, 29, "Input",ExpressionUUID->"d8659c4d-b2c1-401a-b91c-641af143a9f5"],
+Cell[2435, 82, 11604, 559, 185, 9019, 514, "GraphicsData", "PostScript", "Graphics",ExpressionUUID->"abe83d93-22f8-44b2-b4e1-7f4d5916e9cc"],
+Cell[14042, 643, 191, 5, 36, "Output",ExpressionUUID->"23ae6067-e3e5-4007-abd9-1110c295dc4a"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14282, 654, 94, 0, 68, "Section",ExpressionUUID->"9de50e41-207d-4170-8c1f-ac3d65edd5f4"],
+Cell[CellGroupData[{
+Cell[14401, 658, 96, 0, 54, "Subsection",ExpressionUUID->"da9096a0-4da1-4cad-b7f7-2fa045bfff57"],
+Cell[CellGroupData[{
+Cell[14522, 662, 320, 10, 33, "Input",ExpressionUUID->"cd5d8473-b40d-47de-b8c7-07a50951fcf7"],
+Cell[14845, 674, 234, 6, 55, "Output",ExpressionUUID->"b5623a1a-84c2-470e-9448-a8fee97c27e9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15116, 685, 197, 4, 29, "Input",ExpressionUUID->"c30e7806-2dd9-4a8d-bbbf-795c3cfc9c64"],
+Cell[15316, 691, 198, 4, 33, "Output",ExpressionUUID->"335191ef-7e36-4ac7-8dab-41de72ad2dc7"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15563, 701, 106, 0, 54, "Subsection",ExpressionUUID->"5963325e-acf3-48c4-af70-e493f2dfa6d7"],
+Cell[CellGroupData[{
+Cell[15694, 705, 321, 10, 46, "Input",ExpressionUUID->"4e638917-13b7-40a8-bd47-c4622f05f8b8"],
+Cell[16018, 717, 277, 8, 58, "Output",ExpressionUUID->"32fe5110-600b-4cb7-b219-9df0885e0c54"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16344, 731, 104, 0, 54, "Subsection",ExpressionUUID->"52d25d64-435f-4644-bd54-d6745caa1b1a"],
+Cell[CellGroupData[{
+Cell[16473, 735, 280, 8, 46, "Input",ExpressionUUID->"1cc4f67e-cd26-45cc-8398-2c3124a490f3"],
+Cell[16756, 745, 211, 6, 50, "Output",ExpressionUUID->"dbdc46e2-6866-4043-a6d1-785f4c195fa6"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17016, 757, 91, 0, 54, "Subsection",ExpressionUUID->"c331bbf7-b977-4f42-a4d3-aedcd296d0e2"],
+Cell[CellGroupData[{
+Cell[17132, 761, 354, 11, 49, "Input",ExpressionUUID->"a66c6829-9ece-401a-9fdd-9d6a366d76f2"],
+Cell[17489, 774, 178, 5, 49, "Output",ExpressionUUID->"996f0c15-ceaa-4c55-b482-cd33f0a5f771"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17728, 786, 87, 0, 68, "Section",ExpressionUUID->"2dbe9e76-5de3-4c11-a364-c4f49a2a91e1"],
+Cell[CellGroupData[{
+Cell[17840, 790, 210, 6, 53, "Subsection",ExpressionUUID->"67ca4a69-a115-4d5a-ad25-9979bf670184"],
+Cell[CellGroupData[{
+Cell[18075, 800, 221, 5, 29, "Input",ExpressionUUID->"f5822ad2-b4a5-473a-8b64-90944c272f7d"],
+Cell[18299, 807, 123, 2, 33, "Output",ExpressionUUID->"29cbc928-ff19-46ee-981a-c3a9cce2aadc"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18471, 815, 340, 11, 56, "Subsection",ExpressionUUID->"bacfcfd5-08f8-4d85-b805-82d23418c863"],
+Cell[CellGroupData[{
+Cell[18836, 830, 349, 9, 29, "Input",ExpressionUUID->"ece104c2-9aa0-4651-8fd1-edd93d595492"],
+Cell[19188, 841, 220, 7, 33, "Output",ExpressionUUID->"9254b79a-fe50-47bc-b55c-5b602a6e17dc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19445, 853, 116, 1, 29, "Input",ExpressionUUID->"7a73c0df-04fa-494d-9a3f-51f2dff7cd81"],
+Cell[19564, 856, 242, 8, 36, "Output",ExpressionUUID->"eeda438b-d3c2-4358-9a8b-3c99655e4e7b"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19855, 870, 326, 11, 56, "Subsection",ExpressionUUID->"9db1893f-c4b6-492c-82e5-0c5ca27da524"],
+Cell[CellGroupData[{
+Cell[20206, 885, 388, 11, 30, "Input",ExpressionUUID->"355b4f54-7771-4f17-9d0e-444568401a43"],
+Cell[20597, 898, 143, 3, 35, "Output",ExpressionUUID->"a13c4db5-461b-4251-84ec-b279c8d75297"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20777, 906, 653, 19, 33, "Input",ExpressionUUID->"5c8b03e9-5a5a-4312-a8d2-506b1916175e"],
+Cell[21433, 927, 105, 1, 33, "Output",ExpressionUUID->"8c0b1099-51c5-4d5b-b967-66ff0a3348d1"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21599, 935, 78, 0, 68, "Section",ExpressionUUID->"6e81b2ca-b255-4b50-822c-38b549089810"],
+Cell[21680, 937, 474, 12, 33, "Input",ExpressionUUID->"92e008f8-4e6c-4073-a453-1778671ae662"],
+Cell[CellGroupData[{
+Cell[22179, 953, 929, 37, 81, "Subsection",ExpressionUUID->"01c8e22a-4a27-4031-b08f-ee6dd122da12"],
+Cell[CellGroupData[{
+Cell[23133, 994, 280, 8, 70, "Input",ExpressionUUID->"5026bf1a-c069-40c6-89db-9224bc98d0b8"],
+Cell[23416, 1004, 211, 6, 70, "Output",ExpressionUUID->"dc521155-afd0-4212-960f-f89ccf361cb5"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[23676, 1016, 428, 13, 56, "Subsection",ExpressionUUID->"ee021fb6-3d2b-41a1-b1ee-abcb6964bcd3"],
+Cell[CellGroupData[{
+Cell[24129, 1033, 308, 9, 44, "Input",ExpressionUUID->"90769bd0-7701-420c-80a8-46feb2b9109b"],
+Cell[24440, 1044, 541, 16, 41, "Output",ExpressionUUID->"4024b30b-c912-492c-8614-f6ab7279be0b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25018, 1065, 547, 17, 41, "Input",ExpressionUUID->"f0e3d3fa-8d32-489c-afbb-988a237a4ddb"],
+Cell[25568, 1084, 217, 5, 33, "Output",ExpressionUUID->"02ed2516-ab6f-4c68-a1a3-50bf3d96b8c2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25822, 1094, 357, 10, 33, "Input",ExpressionUUID->"41aa457a-576f-408c-b368-905d373eb281"],
+Cell[26182, 1106, 117, 1, 33, "Output",ExpressionUUID->"f66ed676-6c8d-492e-82a9-e5b04f2cdf64"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26336, 1112, 479, 14, 33, "Input",ExpressionUUID->"9240652f-3730-4dff-ba41-4a9fda2ea090"],
+Cell[26818, 1128, 217, 5, 33, "Output",ExpressionUUID->"1ee93fbc-4e19-48d2-a2b7-263a9f41f137"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27072, 1138, 151, 3, 29, "Input",ExpressionUUID->"f263056a-1b85-46d5-95bd-90387cbb5257"],
+Cell[27226, 1143, 217, 5, 33, "Output",ExpressionUUID->"b5aeff6c-d8e9-4f1f-9bce-40ef81861ff0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27480, 1153, 628, 19, 44, "Input",ExpressionUUID->"88ac56b8-1a04-44f1-8315-c09f3841b93f"],
+Cell[28111, 1174, 105, 1, 33, "Output",ExpressionUUID->"0d5f8cb1-e0ea-439a-9910-cdfeb2e7c37e"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28265, 1181, 280, 9, 53, "Subsection",ExpressionUUID->"7ccdd333-c68d-492a-955c-fca2b09b2a83"],
+Cell[CellGroupData[{
+Cell[28570, 1194, 199, 5, 70, "Input",ExpressionUUID->"6f4f31ea-77f8-4d93-be1c-55d2ae3dd012"],
+Cell[28772, 1201, 83, 0, 70, "Output",ExpressionUUID->"68049deb-b90c-4c4c-b2a4-04c43886c15c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28892, 1206, 150, 3, 70, "Input",ExpressionUUID->"2acfd37a-1a2b-4b83-804e-0d9ec186f4bc"],
+Cell[29045, 1211, 527, 9, 70, "Message",ExpressionUUID->"ca2f7916-c770-412d-9690-ac61abffb8f9"],
+Cell[29575, 1222, 151, 3, 70, "Output",ExpressionUUID->"78c8dd0d-4c70-4b25-8e9e-99d8427b8bf5"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[29775, 1231, 371, 12, 53, "Subsection",ExpressionUUID->"9a824ec1-3a9d-4200-9aa7-039471f254ad"],
+Cell[CellGroupData[{
+Cell[30171, 1247, 251, 7, 70, "Input",ExpressionUUID->"ebd2da76-c6ab-4f68-b1c3-43be8cf4b8dd"],
+Cell[30425, 1256, 117, 1, 70, "Output",ExpressionUUID->"a9a28ff4-984c-4d5f-b17e-ce885500e98e"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[30591, 1263, 344, 10, 68, "Subsection",ExpressionUUID->"60b4fec0-50d3-4334-9591-7d6c30f58d91"],
+Cell[CellGroupData[{
+Cell[30960, 1277, 319, 9, 70, "Input",ExpressionUUID->"018ba369-8473-4eda-9297-25fc7891ebb0"],
+Cell[31282, 1288, 107, 0, 70, "Output",ExpressionUUID->"ed433eae-1346-44a3-bc22-2c1610ec5a28"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31426, 1293, 589, 17, 70, "Input",ExpressionUUID->"4211051b-be8c-4a07-a6ef-e9cab6fc1860"],
+Cell[32018, 1312, 105, 1, 70, "Output",ExpressionUUID->"63e27d03-a5b1-46d3-a7b7-4087e6e4243c"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[32172, 1319, 382, 12, 68, "Subsection",ExpressionUUID->"3ec7aa43-8899-4f71-a9a4-af451be32ebd"],
+Cell[CellGroupData[{
+Cell[32579, 1335, 349, 10, 70, "Input",ExpressionUUID->"eb7453a8-82da-4dec-b9be-a44902ec3275"],
+Cell[32931, 1347, 107, 0, 70, "Output",ExpressionUUID->"711805b4-41a2-48a0-b8e7-c3abc99a9776"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33075, 1352, 624, 18, 70, "Input",ExpressionUUID->"7f4b2420-a80c-452c-abf2-19949a9e501d"],
+Cell[33702, 1372, 105, 1, 70, "Output",ExpressionUUID->"e09d25ff-0ce8-4d2e-b585-89bd107d4807"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33868, 1380, 82, 0, 68, "Section",ExpressionUUID->"7a8b0b11-8497-4504-9f83-037f6c4a09e2"],
+Cell[33953, 1382, 323, 9, 70, "Input",ExpressionUUID->"1053525d-5402-4c58-be0a-ac3f8ad4b261"],
+Cell[CellGroupData[{
+Cell[34301, 1395, 254, 7, 70, "Input",ExpressionUUID->"cbacca50-633c-4df9-b80f-e7a10d166dd0"],
+Cell[34558, 1404, 1165, 17, 70, "Output",ExpressionUUID->"29f00e81-5c90-40dc-a05c-8ced9b51b087"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35760, 1426, 981, 31, 70, "Input",ExpressionUUID->"8ad422b0-00fb-41e2-ba5e-2ba70c31fc85"],
+Cell[36744, 1459, 288, 9, 70, "Output",ExpressionUUID->"c0a5abdc-bed6-4571-9886-d1d4817be1d6"]
+}, Open  ]],
+Cell[37047, 1471, 115, 0, 70, "Text",ExpressionUUID->"05d62222-66ef-4e9e-adbd-441535f0f1c9"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[37199, 1476, 119, 0, 54, "Section",ExpressionUUID->"e2660ebb-cdb1-4e74-a81e-74b89988b1b6"],
+Cell[CellGroupData[{
+Cell[37343, 1480, 255, 7, 70, "Input",ExpressionUUID->"ca560867-97a0-40b7-bd9f-c67e733fb261"],
+Cell[37601, 1489, 181, 4, 70, "Output",ExpressionUUID->"0f8ace79-2d7a-4127-9926-cd698dc9c6c4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37819, 1498, 138, 3, 70, "Input",ExpressionUUID->"d698dc7b-c4e5-44f3-9a25-a22c709c2f34"],
+Cell[37960, 1503, 673, 11, 70, "Output",ExpressionUUID->"40dc7ab5-c3c5-4c4c-9ebd-e9b219aa7330"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38670, 1519, 188, 5, 70, "Input",ExpressionUUID->"e8bd9ea6-a5fa-48d8-9c36-2d0311d03ffd"],
+Cell[38861, 1526, 181, 4, 70, "Output",ExpressionUUID->"73d7260c-a002-46ce-9370-2082882497cc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39079, 1535, 142, 3, 70, "Input",ExpressionUUID->"3b54495b-ba93-482f-805b-4947050724c5"],
+Cell[39224, 1540, 83, 0, 70, "Output",ExpressionUUID->"a2f593d7-3141-43dc-b84d-9c5139da95fa"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39344, 1545, 82, 0, 70, "Subsection",ExpressionUUID->"3166cb8c-682c-46c4-8f7c-d767d0c6125c"],
+Cell[CellGroupData[{
+Cell[39451, 1549, 362, 10, 70, "Input",ExpressionUUID->"53185954-f2c7-4c3c-9974-626ed5b3dd02"],
+Cell[39816, 1561, 583, 10, 70, "Output",ExpressionUUID->"ea156909-0c4e-4cfa-8638-69c8e58a5190"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40436, 1576, 538, 17, 70, "Input",ExpressionUUID->"c54bfcdd-9e7d-4748-b104-bf505201eb56"],
+Cell[40977, 1595, 1154, 21, 70, "Output",ExpressionUUID->"7ccc2568-e919-4aab-9c6f-31b1767e67fe"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42180, 1622, 84, 0, 70, "Subsection",ExpressionUUID->"457e3b81-fe9c-447b-9420-3fb98e4906b4"],
+Cell[CellGroupData[{
+Cell[42289, 1626, 238, 6, 70, "Input",ExpressionUUID->"3ab1ea0c-5ef6-4904-93cd-d73599eba641"],
+Cell[42530, 1634, 108, 1, 70, "Output",ExpressionUUID->"c082f98c-52ed-4b36-936c-a0af34de7f79"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42687, 1641, 80, 0, 70, "Subsection",ExpressionUUID->"dc71c8b4-7822-4f0b-bdfe-d22fea97e63f"],
+Cell[CellGroupData[{
+Cell[42792, 1645, 180, 4, 70, "Input",ExpressionUUID->"607ccc52-5d0e-49a0-9b0c-33035556074b"],
+Cell[42975, 1651, 149, 3, 70, "Output",ExpressionUUID->"f8e91583-776a-4036-86d5-7dc4e09d9bd9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43161, 1659, 199, 4, 70, "Input",ExpressionUUID->"9a18a318-4ca8-438d-97eb-b5f784027458"],
+Cell[43363, 1665, 167, 3, 70, "Output",ExpressionUUID->"e34bc9e9-13e6-4d43-8722-27266ffc5ddb"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43567, 1673, 186, 4, 70, "Input",ExpressionUUID->"c2a544a5-3c6d-495c-b145-3076d4b525dc"],
+Cell[43756, 1679, 155, 3, 70, "Output",ExpressionUUID->"81ff78b2-10da-4b76-a104-b7aa05c62bbc"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43960, 1688, 86, 0, 70, "Subsection",ExpressionUUID->"e1d1f580-6527-44e4-9db1-cb07be21bd42"],
+Cell[CellGroupData[{
+Cell[44071, 1692, 191, 4, 70, "Input",ExpressionUUID->"1954d875-85b8-45ca-9694-dd91282eeccb"],
+Cell[44265, 1698, 207, 5, 70, "Output",ExpressionUUID->"8f458969-9c83-40bb-a345-dadaf99b98d0"]
+}, Open  ]]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[44533, 1710, 92, 0, 54, "Section",ExpressionUUID->"075e1839-22fb-48eb-988e-f4fa734422be"],
+Cell[CellGroupData[{
+Cell[44650, 1714, 91, 0, 54, "Subsection",ExpressionUUID->"965a5b70-9c9b-46c1-85c5-3c6ef5d5d403"],
+Cell[CellGroupData[{
+Cell[44766, 1718, 244, 7, 33, "Input",ExpressionUUID->"50542e65-3744-4ed1-8b60-d00ad8f1eae1"],
+Cell[45013, 1727, 329, 6, 33, "Output",ExpressionUUID->"972eabd3-27f2-4d2e-9fb3-87ce39964710"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45391, 1739, 87, 0, 54, "Subsection",ExpressionUUID->"1abda5ac-fd46-4e28-8121-0bc1f09c56b4"],
+Cell[CellGroupData[{
+Cell[45503, 1743, 430, 12, 29, "Input",ExpressionUUID->"b3f95eda-f35d-4a2a-be34-d4acf0a0325b"],
+Cell[45936, 1757, 213, 6, 37, "Output",ExpressionUUID->"c0d6888f-5297-4a59-81fc-150dcad90fff"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46198, 1769, 419, 13, 55, "Subsection",ExpressionUUID->"191c5fad-e8f9-4f0f-9236-4345d35335e6"],
+Cell[CellGroupData[{
+Cell[46642, 1786, 536, 15, 29, "Input",ExpressionUUID->"e5a0e2d4-6744-4b70-852a-de364f9f0e03"],
+Cell[47181, 1803, 320, 8, 37, "Output",ExpressionUUID->"c02c93fb-5683-407d-87e0-7a7c02415400"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47562, 1818, 240, 6, 70, "Section",ExpressionUUID->"5b8f6e6f-c40d-44fb-a0d1-85d81c60f986"],
+Cell[CellGroupData[{
+Cell[47827, 1828, 751, 22, 51, "Input",ExpressionUUID->"9f278290-9d1c-46a4-b5f1-6e597334ca5b"],
+Cell[CellGroupData[{
+Cell[48603, 1854, 292, 8, 25, "Print",ExpressionUUID->"5dc30ce3-72e5-4d5b-830d-6ecb4376031c"],
+Cell[48898, 1864, 292, 8, 25, "Print",ExpressionUUID->"0a2f3917-e23c-498c-9ccb-8459394372f7"],
+Cell[49193, 1874, 301, 9, 25, "Print",ExpressionUUID->"ed849cba-6525-4fc8-bb4f-cec6dc4cc76b"],
+Cell[49497, 1885, 299, 9, 25, "Print",ExpressionUUID->"f3a8783b-b348-45fe-8189-414ec1bf4f28"],
+Cell[49799, 1896, 300, 9, 25, "Print",ExpressionUUID->"f3a900fc-dec6-4f6a-9b77-c23ec0515b53"],
+Cell[50102, 1907, 293, 8, 25, "Print",ExpressionUUID->"d790b16d-2fd6-4c0e-8a79-2b5e75b6fae3"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50456, 1922, 86, 0, 68, "Section",ExpressionUUID->"7ab4486d-dc0d-4895-801d-62bb00635981"],
+Cell[CellGroupData[{
+Cell[50567, 1926, 1599, 45, 144, "Input",ExpressionUUID->"9d4c4e84-28a5-4e80-b813-e3307f2185a5"],
+Cell[52169, 1973, 108985, 5537, 185, 101751, 5416, "GraphicsData", "PostScript", "Graphics",ExpressionUUID->"63012ed5-16ae-49a9-bad9-c67a132803bd"],
+Cell[161157, 7512, 191, 5, 36, "Output",ExpressionUUID->"1bc79626-ccad-45b5-9f13-b56a1c4acf78"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[161385, 7522, 582, 17, 50, "Input",ExpressionUUID->"0e793965-6df3-43cf-83ff-a74f0510fabe"],
+Cell[161970, 7541, 2096, 29, 96, "Output",ExpressionUUID->"1e223fca-f371-4c82-956a-db4e641d343f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[164103, 7575, 457, 13, 50, "Input",ExpressionUUID->"a41c2c63-17fe-414e-8e80-9d90f5320363"],
+Cell[164563, 7590, 164, 3, 33, "Output",ExpressionUUID->"fee0054e-2761-4854-8adb-1bb52cdf14bb"]
+}, Open  ]],
+Cell[164742, 7596, 147, 2, 35, "Text",ExpressionUUID->"8180590b-efe1-4e5e-a357-e27ddc75f60e"],
+Cell[CellGroupData[{
+Cell[164914, 7602, 755, 22, 55, "Input",ExpressionUUID->"f7eced85-0f48-4393-afb3-bdc22ff282ff"],
+Cell[165672, 7626, 183, 5, 37, "Output",ExpressionUUID->"eca9b5c8-11d2-4b43-a725-85db211ae8dd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[165892, 7636, 755, 22, 55, "Input",ExpressionUUID->"ec895d4b-81c1-4e9a-b096-3f8643c12949"],
+Cell[166650, 7660, 195, 5, 37, "Output",ExpressionUUID->"b3a581af-18b5-4acb-ba3c-5df64a3a6424"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[166882, 7670, 256, 5, 32, "Input",ExpressionUUID->"137a7aa5-6c4f-407e-8c07-9739605fa53a"],
+Cell[167141, 7677, 153, 2, 33, "Output",ExpressionUUID->"593712e8-4d66-4bc1-b2fb-2d2c83c235d8"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

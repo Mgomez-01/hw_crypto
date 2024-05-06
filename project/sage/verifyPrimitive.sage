@@ -6,9 +6,9 @@ F37 = FiniteField(37)
 P.<x> = PolynomialRing(F37)
 
 # Define the primitive polynomial that was found in previous run to randomly search
-#primitive_poly = P('34*x^2 + 36*x + 20') # one that I found for degree 2
-primitive_poly = P('31*x^4 + 10*x^3 + 20*x^2 + 10*x + 28') # the one for degree 4 
-#primitive_poly = P('33*x^4 + 33*x^3 + 25*x^2 + 21*x + 2') # the one for degree 4 
+#primitive_poly = P('26*x^3 + 24*x^2 + 13*x + 22') # one that I found for degree 3
+#primitive_poly = P('31*x^4 + 10*x^3 + 20*x^2 + 10*x + 28') # the one for degree 4 
+primitive_poly = P('33*x^4 + 33*x^3 + 25*x^2 + 21*x + 2') # the one for degree 4 
 
 # Construct the extension field using the primitive polynomial
 F37_2 = F37.extension(primitive_poly, 'alpha')
